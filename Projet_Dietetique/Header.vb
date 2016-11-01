@@ -25,6 +25,10 @@
         Dim canard As DockStyle = DockStyle.Top
         Dock = canard
 
+        AddHandler currentForm.FormClosed, Sub()
+                                               Application.Exit()
+                                           End Sub
+
 
         Height = 50
         BackColor = Color.FromArgb(0, 176, 240)

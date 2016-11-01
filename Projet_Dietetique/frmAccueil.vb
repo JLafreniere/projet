@@ -11,6 +11,8 @@ Public Class frmAccueil
     Dim btn As PanelOptionsAccueil
     Dim cal
     Dim lblSemaine As New Label
+    Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
+
     Public Property _date_selectionne As Date = Date.Today
     Dim p As New PanelSemaine(210, 140, 750, 150)
 
@@ -43,6 +45,11 @@ Public Class frmAccueil
         panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         panel1.Controls.Add(message)
 
+
+
+        remplirIndexHtml()
+
+
         message.Navigate("file:///" & IO.Path.GetFullPath(".\index.html"))
         Controls.Add(panel1)
 
@@ -74,6 +81,36 @@ Public Class frmAccueil
 
 
     End Sub
+
+    Sub remplirIndexHtml()
+
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter
+
+        bd.miseAjourDS(ds, da, "select * from messages", 0)
+
+
+        System.IO.File.WriteAllText("Index.html", "")
+
+        '        <!DOCTYPE html>
+        '<html>
+        '<head>
+        '<link rel = "stylesheet" type="text/css" href="style.css">
+
+        '</head>
+        '<body>
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+
+
+
+
+        Next
+
+
+
+    End Sub
+
 
     Private Sub creerBoutonRefresh()
         Dim refresh As New PictureBox()
@@ -192,6 +229,10 @@ Public Class frmAccueil
 
     Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
 
+
+    End Sub
+
+    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

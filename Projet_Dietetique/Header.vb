@@ -16,15 +16,16 @@
         If tabs Then
             currentForm.WindowState = 2
             currentForm.BackColor = Color.White
+            AddHandler currentForm.FormClosed, Sub()
+                                                   Application.Exit()
+                                               End Sub
+
 
 
         End If
-        Dim canard As DockStyle = DockStyle.Top
-        Dock = canard
+        Dim duck As DockStyle = DockStyle.Top
+        Dock = duck
 
-        AddHandler currentForm.FormClosed, Sub()
-                                               Application.Exit()
-                                           End Sub
 
 
         Height = 50

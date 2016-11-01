@@ -5,8 +5,8 @@
     Public pbLogo As PictureBox
     Dim OngletOffset As Integer = 60
     Dim f As New Font("Segoe UI", 14.25, FontStyle.Bold)
-    Dim nomOnglets() As String = {"Accueil", "Agenda", "Inventaire", "Produits", "Recettes"}
-    Dim formulairesOnglets() As Form = {frmAccueil, frmAgenda, frmInventaire, frmProduits, frmVoirRecettes}
+    Dim nomOnglets() As String = {"Accueil", "Agenda", "Inventaire", "Produits", "Recettes", "Fournisseurs", "Commandes"}
+    Dim formulairesOnglets() As Form = {frmAccueil, frmAgenda, frmInventaire, frmProduits, frmVoirRecettes, frmFournisseurs, frmCommandes}
 
     'Par Jonathan Lafrenière
     'En tête de tous les formulaires, gestion de la transition entre les onglets

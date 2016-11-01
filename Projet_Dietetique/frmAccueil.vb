@@ -194,5 +194,9 @@ Public Class frmAccueil
 
 
     End Sub
+
+    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
 

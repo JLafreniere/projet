@@ -265,7 +265,7 @@ Partial Class frmProduits
         Me.Panel1.Controls.Add(Me.gbModifier)
         Me.Panel1.Controls.Add(Me.lsvProduits)
         Me.Panel1.Controls.Add(Me.txtRechercher)
-        Me.Panel1.Location = New System.Drawing.Point(272, 166)
+        Me.Panel1.Location = New System.Drawing.Point(301, 136)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1141, 654)
         Me.Panel1.TabIndex = 68

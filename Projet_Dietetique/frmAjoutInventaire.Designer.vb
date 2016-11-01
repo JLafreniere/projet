@@ -51,7 +51,7 @@ Partial Class frmAjoutInventaire
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(301, 262)
+        Me.lblTotal.Location = New System.Drawing.Point(301, 287)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(0, 13)
         Me.lblTotal.TabIndex = 69
@@ -59,7 +59,7 @@ Partial Class frmAjoutInventaire
         'txtTotal
         '
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(196, 259)
+        Me.txtTotal.Location = New System.Drawing.Point(196, 284)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(91, 20)
         Me.txtTotal.TabIndex = 68
@@ -67,7 +67,7 @@ Partial Class frmAjoutInventaire
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(68, 262)
+        Me.Label8.Location = New System.Drawing.Point(68, 287)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(101, 13)
         Me.Label8.TabIndex = 67
@@ -75,7 +75,7 @@ Partial Class frmAjoutInventaire
         '
         'txtFormat
         '
-        Me.txtFormat.Location = New System.Drawing.Point(198, 170)
+        Me.txtFormat.Location = New System.Drawing.Point(198, 195)
         Me.txtFormat.Name = "txtFormat"
         Me.txtFormat.Size = New System.Drawing.Size(92, 20)
         Me.txtFormat.TabIndex = 66
@@ -84,14 +84,14 @@ Partial Class frmAjoutInventaire
         'cmbEquivalence
         '
         Me.cmbEquivalence.FormattingEnabled = True
-        Me.cmbEquivalence.Location = New System.Drawing.Point(297, 212)
+        Me.cmbEquivalence.Location = New System.Drawing.Point(297, 237)
         Me.cmbEquivalence.Name = "cmbEquivalence"
         Me.cmbEquivalence.Size = New System.Drawing.Size(72, 21)
         Me.cmbEquivalence.TabIndex = 65
         '
         'txtEquivalence
         '
-        Me.txtEquivalence.Location = New System.Drawing.Point(198, 212)
+        Me.txtEquivalence.Location = New System.Drawing.Point(198, 237)
         Me.txtEquivalence.Name = "txtEquivalence"
         Me.txtEquivalence.Size = New System.Drawing.Size(91, 20)
         Me.txtEquivalence.TabIndex = 64
@@ -99,7 +99,7 @@ Partial Class frmAjoutInventaire
         'lblEquivalence
         '
         Me.lblEquivalence.AutoSize = True
-        Me.lblEquivalence.Location = New System.Drawing.Point(59, 215)
+        Me.lblEquivalence.Location = New System.Drawing.Point(59, 240)
         Me.lblEquivalence.Name = "lblEquivalence"
         Me.lblEquivalence.Size = New System.Drawing.Size(113, 13)
         Me.lblEquivalence.TabIndex = 63
@@ -111,7 +111,7 @@ Partial Class frmAjoutInventaire
         Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAnnuler.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAnnuler.ForeColor = System.Drawing.Color.White
-        Me.btnAnnuler.Location = New System.Drawing.Point(429, 537)
+        Me.btnAnnuler.Location = New System.Drawing.Point(429, 562)
         Me.btnAnnuler.Name = "btnAnnuler"
         Me.btnAnnuler.Size = New System.Drawing.Size(90, 35)
         Me.btnAnnuler.TabIndex = 62
@@ -124,7 +124,7 @@ Partial Class frmAjoutInventaire
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(333, 537)
+        Me.btnAjouter.Location = New System.Drawing.Point(333, 562)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(90, 35)
         Me.btnAjouter.TabIndex = 61
@@ -134,7 +134,7 @@ Partial Class frmAjoutInventaire
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(65, 359)
+        Me.Label7.Location = New System.Drawing.Point(65, 384)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(106, 13)
         Me.Label7.TabIndex = 60
@@ -143,7 +143,7 @@ Partial Class frmAjoutInventaire
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(71, 306)
+        Me.Label6.Location = New System.Drawing.Point(71, 331)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(98, 13)
         Me.Label6.TabIndex = 59
@@ -152,7 +152,7 @@ Partial Class frmAjoutInventaire
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(102, 413)
+        Me.Label5.Location = New System.Drawing.Point(102, 438)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 13)
         Me.Label5.TabIndex = 58
@@ -161,7 +161,7 @@ Partial Class frmAjoutInventaire
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(126, 172)
+        Me.Label4.Location = New System.Drawing.Point(126, 197)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(45, 13)
         Me.Label4.TabIndex = 57
@@ -170,7 +170,7 @@ Partial Class frmAjoutInventaire
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(116, 133)
+        Me.Label3.Location = New System.Drawing.Point(116, 158)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 13)
         Me.Label3.TabIndex = 56
@@ -179,7 +179,7 @@ Partial Class frmAjoutInventaire
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(134, 93)
+        Me.Label2.Location = New System.Drawing.Point(134, 118)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 55
@@ -188,7 +188,7 @@ Partial Class frmAjoutInventaire
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(123, 46)
+        Me.Label1.Location = New System.Drawing.Point(123, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 54
@@ -196,7 +196,7 @@ Partial Class frmAjoutInventaire
         '
         'dtpPeremption
         '
-        Me.dtpPeremption.Location = New System.Drawing.Point(199, 357)
+        Me.dtpPeremption.Location = New System.Drawing.Point(199, 382)
         Me.dtpPeremption.MinDate = New Date(1988, 12, 26, 0, 0, 0, 0)
         Me.dtpPeremption.Name = "dtpPeremption"
         Me.dtpPeremption.Size = New System.Drawing.Size(200, 20)
@@ -204,14 +204,14 @@ Partial Class frmAjoutInventaire
         '
         'dtpReception
         '
-        Me.dtpReception.Location = New System.Drawing.Point(199, 303)
+        Me.dtpReception.Location = New System.Drawing.Point(199, 328)
         Me.dtpReception.Name = "dtpReception"
         Me.dtpReception.Size = New System.Drawing.Size(200, 20)
         Me.dtpReception.TabIndex = 52
         '
         'txtDescription
         '
-        Me.txtDescription.Location = New System.Drawing.Point(198, 413)
+        Me.txtDescription.Location = New System.Drawing.Point(198, 438)
         Me.txtDescription.Name = "txtDescription"
         Me.txtDescription.Size = New System.Drawing.Size(321, 96)
         Me.txtDescription.TabIndex = 51
@@ -220,14 +220,14 @@ Partial Class frmAjoutInventaire
         'cmbUnite
         '
         Me.cmbUnite.FormattingEnabled = True
-        Me.cmbUnite.Location = New System.Drawing.Point(298, 169)
+        Me.cmbUnite.Location = New System.Drawing.Point(298, 194)
         Me.cmbUnite.Name = "cmbUnite"
         Me.cmbUnite.Size = New System.Drawing.Size(71, 21)
         Me.cmbUnite.TabIndex = 50
         '
         'txtQuantite
         '
-        Me.txtQuantite.Location = New System.Drawing.Point(198, 130)
+        Me.txtQuantite.Location = New System.Drawing.Point(198, 155)
         Me.txtQuantite.Name = "txtQuantite"
         Me.txtQuantite.Size = New System.Drawing.Size(92, 20)
         Me.txtQuantite.TabIndex = 49
@@ -236,14 +236,14 @@ Partial Class frmAjoutInventaire
         'cmbProduit
         '
         Me.cmbProduit.FormattingEnabled = True
-        Me.cmbProduit.Location = New System.Drawing.Point(198, 43)
+        Me.cmbProduit.Location = New System.Drawing.Point(198, 68)
         Me.cmbProduit.Name = "cmbProduit"
         Me.cmbProduit.Size = New System.Drawing.Size(201, 21)
         Me.cmbProduit.TabIndex = 48
         '
         'txtNom
         '
-        Me.txtNom.Location = New System.Drawing.Point(198, 90)
+        Me.txtNom.Location = New System.Drawing.Point(198, 115)
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(321, 20)
         Me.txtNom.TabIndex = 47

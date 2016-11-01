@@ -62,7 +62,7 @@ Partial Class frmInventaire
         Me.btnDGV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDGV.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnDGV.ForeColor = System.Drawing.Color.White
-        Me.btnDGV.Location = New System.Drawing.Point(1446, 87)
+        Me.btnDGV.Location = New System.Drawing.Point(1424, 100)
         Me.btnDGV.Name = "btnDGV"
         Me.btnDGV.Size = New System.Drawing.Size(90, 35)
         Me.btnDGV.TabIndex = 79
@@ -74,7 +74,7 @@ Partial Class frmInventaire
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRechercher.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.txtRechercher.Location = New System.Drawing.Point(152, 108)
+        Me.txtRechercher.Location = New System.Drawing.Point(226, 107)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(248, 22)
         Me.txtRechercher.TabIndex = 76
@@ -188,7 +188,7 @@ Partial Class frmInventaire
         Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRechercher.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.btnRechercher.ForeColor = System.Drawing.Color.White
-        Me.btnRechercher.Location = New System.Drawing.Point(406, 101)
+        Me.btnRechercher.Location = New System.Drawing.Point(480, 100)
         Me.btnRechercher.Name = "btnRechercher"
         Me.btnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.btnRechercher.TabIndex = 77
@@ -212,7 +212,7 @@ Partial Class frmInventaire
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(503, 101)
+        Me.btnAjouter.Location = New System.Drawing.Point(577, 100)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnAjouter.TabIndex = 75
@@ -312,10 +312,10 @@ Partial Class frmInventaire
         Me.dgvData.AllowUserToDeleteRows = False
         Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvData.GridColor = System.Drawing.SystemColors.Control
-        Me.dgvData.Location = New System.Drawing.Point(149, 142)
+        Me.dgvData.Location = New System.Drawing.Point(223, 141)
         Me.dgvData.Name = "dgvData"
         Me.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvData.Size = New System.Drawing.Size(1309, 642)
+        Me.dgvData.Size = New System.Drawing.Size(1291, 642)
         Me.dgvData.TabIndex = 78
         Me.dgvData.Visible = False
         '
@@ -344,7 +344,7 @@ Partial Class frmInventaire
         Me.gbInventaire.Controls.Add(Me.Label1)
         Me.gbInventaire.Controls.Add(Me.txtNom)
         Me.gbInventaire.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.gbInventaire.Location = New System.Drawing.Point(675, 142)
+        Me.gbInventaire.Location = New System.Drawing.Point(749, 141)
         Me.gbInventaire.Name = "gbInventaire"
         Me.gbInventaire.Size = New System.Drawing.Size(493, 445)
         Me.gbInventaire.TabIndex = 74
@@ -368,7 +368,7 @@ Partial Class frmInventaire
         'TreeView1
         '
         Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TreeView1.Location = New System.Drawing.Point(149, 142)
+        Me.TreeView1.Location = New System.Drawing.Point(223, 141)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.Size = New System.Drawing.Size(500, 449)
         Me.TreeView1.TabIndex = 73

@@ -10,15 +10,12 @@
 
     'Par Jonathan Lafrenière
     'En tête de tous les formulaires, gestion de la transition entre les onglets
-    'Francis audé yé foken pipé
     Public Sub New(currentForm As Form, tabs As Boolean)
 
         Me.currentForm = currentForm
         If tabs Then
             currentForm.WindowState = 2
             currentForm.BackColor = Color.White
-
-            'VIVE LES KEKS
 
 
         End If

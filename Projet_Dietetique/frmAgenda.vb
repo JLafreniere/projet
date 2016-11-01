@@ -59,4 +59,30 @@ Public Class frmAgenda
         Else Button2.Visible = False
         End If
     End Sub
+
+    Private Sub btnEnregistrerMessage_Click(sender As Object, e As EventArgs) Handles btnEnregistrerMessage.Click
+
+        If Not txtMessage.Text = "" And Not TxtTitreMessage.Text = "" Then
+            Dim ds = New DataSet
+            Dim da = New MySqlDataAdapter
+            bd.miseAjourDS(ds, da, "select * from messages", 0)
+
+            Dim dr As DataRow = ds.Tables(0).NewRow
+            dr(1) = TxtTitreMessage.Text
+            dr(2) = txtMessage.Text
+            ds.Tables(0).Rows.Add(dr)
+
+            bd.miseAjourBD(ds, da, 0)
+
+            txtMessage.Text = ""
+            TxtTitreMessage.Text = ""
+            frmAccueil.remplirIndexHtml()
+
+        ElseIf txtMessage.Text = "" Then
+            MsgBox("Veuillez composer un message")
+        Else
+            MsgBox("Veuillez entrer un titre")
+        End If
+
+    End Sub
 End Class

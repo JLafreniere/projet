@@ -8,6 +8,7 @@ Public Class frmProduits
     Dim daCategorie As New MySqlDataAdapter
     Dim ordre As String = "order by nom_produit"
     Private Sub frmCategories_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'connection bd + charger dataset
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
         remplircontroles()
@@ -22,7 +23,7 @@ Public Class frmProduits
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
 
-
+        'bouton refresh
         AddHandler refresh.Click, Sub(sender2, eventargs2)
                                       cacherComposantModification()
                                       CacherComposantAjout()
@@ -56,6 +57,7 @@ Public Class frmProduits
     End Sub
 
     Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
         If etat = "D" Then
             b.BackColor = (Color.LightGray)
             b.ForeColor = Color.White
@@ -68,9 +70,6 @@ Public Class frmProduits
     End Sub
 
 
-    'Private Sub centerControl(c As Control)
-    '    c.Left = (Me.ClientSize.Width / 2) - (c.Width / 2)
-    'End Sub
     Sub remplircontroles() 'Remplit le listview des produits de la BD
 
         lsvProduits.Items.Clear()
@@ -164,7 +163,8 @@ Public Class frmProduits
         lsvProduits.Enabled = True
     End Sub
 
-    Private Sub btnVoirAjouter_Click(sender As Object, e As EventArgs) Handles btnVoirAjouter.Click  'Affiche les options pour l'ajout
+    Private Sub btnVoirAjouter_Click(sender As Object, e As EventArgs) Handles btnVoirAjouter.Click
+        'Affiche les options pour l'ajout
         lsvProduits.SelectedItems.Clear()
         gbAjouter.Visible = True
         btnSupprimer.Enabled = False
@@ -182,11 +182,13 @@ Public Class frmProduits
 
     End Sub
 
-    Private Sub btnAnnulerAjout_Click(sender As Object, e As EventArgs) Handles btnAnnulerAjout.Click   'annuler l'ajout
+    Private Sub btnAnnulerAjout_Click(sender As Object, e As EventArgs) Handles btnAnnulerAjout.Click
+        'annuler l'ajout
         CacherComposantAjout()
     End Sub
 
-    Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click  'Ajout d'un nouveau produit appelant la méthode Ajouter
+    Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
+        'Ajout d'un nouveau produit appelant la méthode Ajouter
         Dim flag As Boolean = False
         For i As Integer = 0 To bd.dsProduits.Tables(0).Rows.Count - 1
             If (bd.dsProduits.Tables(0).Rows(i).Item(1)).ToString.ToLower = txtAjouter.Text.ToLower Then
@@ -208,6 +210,7 @@ Public Class frmProduits
     End Sub
 
     Sub information()
+        'affiche les informations d'un produit
         gbModifier.Visible = True
 
         txtModifier.Text = lsvProduits.FocusedItem.SubItems(0).Text
@@ -248,16 +251,19 @@ Public Class frmProduits
         couleurBouton("D", btnEnregistrer)
     End Sub
 
-    Private Sub btnVoirModifier_Click(sender As Object, e As EventArgs)   'Affiche les options pour la modification
+    Private Sub btnVoirModifier_Click(sender As Object, e As EventArgs)
+        'Affiche les options pour la modification
         information()
     End Sub
     Sub cacherComposantModification()
+        'cache l'affichage du produit
         gbModifier.Visible = False
         btnVoirAjouter.Enabled = True
         btnSupprimer.Enabled = True
         couleurBouton("E", btnSupprimer) 'E=Enabled
     End Sub
-    Private Sub btnAnnulerModification_Click(sender As Object, e As EventArgs) Handles btnAnnulerModification.Click  'annule la modification
+    Private Sub btnAnnulerModification_Click(sender As Object, e As EventArgs) Handles btnAnnulerModification.Click
+        'annule la modification
         cacherComposantModification()
         btnSupprimer.Enabled = True
         couleurBouton("E", btnSupprimer)
@@ -266,7 +272,8 @@ Public Class frmProduits
         lsvProduits.SelectedItems.Clear()
     End Sub
 
-    Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click  'Modification d'un produit appelant la méthode Modifier
+    Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
+        'Modification d'un produit appelant la méthode Modifier
         Modifier()
         cacherComposantModification()
         btnSupprimer.Enabled = False
@@ -277,7 +284,8 @@ Public Class frmProduits
     End Sub
 
 
-    Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click  'Suppression d'un produit
+    Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click
+        'Suppression d'un produit
         Try
             If MsgBox("Voulez-vous supprimer : " & lsvProduits.FocusedItem.SubItems(0).Text & "?" & vbNewLine & "La mention au produit sera supprimée dans toutes les recettes", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
                 bd.dsProduits.Tables(0).Rows(intPosition).Delete()
@@ -293,7 +301,8 @@ Public Class frmProduits
         Catch exc As Exception : MsgBox("Veuillez supprimer tous les produits en inventaire avant de procéder à l'opération ") : End Try
     End Sub
 
-    Private Sub BtnRechercher_Click(sender As Object, e As EventArgs) Handles btnRechercher.Click  'Recherche par nom de produit
+    Private Sub BtnRechercher_Click(sender As Object, e As EventArgs) Handles btnRechercher.Click
+        'Recherche par nom de produit
 
         cacherComposantModification()
         CacherComposantAjout()
@@ -342,11 +351,13 @@ Public Class frmProduits
     End Sub
 
     Private Sub txtModifier_TextChanged(sender As Object, e As EventArgs) Handles txtModifier.TextChanged, cmbCategorie2.TextChanged, txtDescription2.TextChanged, ckPerissable2.CheckedChanged, ckTaxeFederale2.CheckedChanged, ckTaxeProvinciale2.CheckedChanged
+        'Active le bouton enregistrer quand il y a modification
         couleurBouton("E", btnEnregistrer)
     End Sub
 
 
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lsvProduits.ColumnClick  'Permet de trier la liste par colonne
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lsvProduits.ColumnClick
+        'Permet de trier la liste par colonne
         If e.Column = 0 Then
             If ordre = "order by nom_produit" Then
                 ordre = "order by nom_produit desc"
@@ -368,11 +379,9 @@ Public Class frmProduits
         remplircontroles()
     End Sub
 
-    Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown
+        'recherche sur "ENTER"'
         If e.KeyCode = Keys.Enter Then
             btnRechercher.PerformClick()
         End If

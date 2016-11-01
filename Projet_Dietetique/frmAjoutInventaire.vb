@@ -7,10 +7,12 @@ Public Class frmAjoutInventaire
         Me.TopMost = True
 
         Controls.Add(New Header(Me, False))
+        'connection bd + charger ds
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         bd.dsInventaire.Clear()
         bd.Requete("select * from inventaire", bd.dsInventaire, bd.daInventaire, "inventaire")
 
+        'auto completion
         bd.dsProduits.Clear()
         bd.Requete("Select * from produits order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
         cmbProduit.DataSource = bd.dsProduits.Tables(0)
@@ -43,7 +45,7 @@ Public Class frmAjoutInventaire
     End Sub
 
 
-    Private Sub kek() Handles MyBase.Shown
+    Private Sub afficherform() Handles MyBase.Shown
         Dim r As Rectangle
         If Parent IsNot Nothing Then
             r = Parent.RectangleToScreen(Parent.ClientRectangle)
@@ -57,6 +59,7 @@ Public Class frmAjoutInventaire
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
+        'ajoute l'item en inventaire
         Dim drnouvel As DataRow
         drnouvel = bd.dsInventaire.Tables(0).NewRow()
         drnouvel(1) = cmbProduit.SelectedValue
@@ -86,6 +89,7 @@ Public Class frmAjoutInventaire
     End Sub
 
     Sub effacerText()
+        'vide le formulaire
         For Each element In Controls
             If TypeOf (element) IsNot Label And TypeOf (element) IsNot Button Then
                 element.resetText
@@ -94,6 +98,7 @@ Public Class frmAjoutInventaire
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
+        'ferme le formulaire
         effacerText()
         Me.Close()
         frmInventaire.Show()
@@ -106,6 +111,7 @@ Public Class frmAjoutInventaire
 
 
     Private Sub cmbFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnite.SelectedIndexChanged
+        'affiche ou pas l'équvalence
         If cmbUnite.Text = "Unité" Then
             lblEquivalence.Visible = True
             txtEquivalence.Visible = True
@@ -125,6 +131,7 @@ Public Class frmAjoutInventaire
 
 
     Private Sub txtFormat_TextChanged(sender As Object, e As EventArgs) Handles txtFormat.TextChanged, txtQuantite.TextChanged
+        'calcul total
         Try
             If txtQuantite.Text >= 1 And txtFormat.Text >= 1 Then
                 txtTotal.Text = txtQuantite.Text * txtFormat.Text

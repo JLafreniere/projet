@@ -85,7 +85,7 @@ Public Class frmAjoutCommandes
 
 
         chargerDataset()
-        viderChamp()
+
 
         'On ajoute les produits de la commande dans la table dÉtails_commandes
         For Each element As ListViewItem In lsvProduits.Items
@@ -102,8 +102,8 @@ Public Class frmAjoutCommandes
 
         Next
 
-
-
+        bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
+        viderChamp()
     End Sub
     'Modifie le contenu de la commande dans la bd
     Sub modifier()
@@ -138,6 +138,7 @@ Public Class frmAjoutCommandes
         cbFournisseurs.Text = ""
         cbProduits.Text = ""
         dtpDate.Value = Today
+        lsvProduits.Items.Clear()
 
 
 

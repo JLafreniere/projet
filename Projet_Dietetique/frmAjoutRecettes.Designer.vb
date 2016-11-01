@@ -22,7 +22,6 @@ Partial Class frmAjoutRecettes
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.cbUnite = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnSupprimerAllergies = New System.Windows.Forms.Button()
@@ -80,15 +79,6 @@ Partial Class frmAjoutRecettes
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(1229, 470)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(222, 157)
-        Me.RichTextBox1.TabIndex = 163
-        Me.RichTextBox1.Text = ""
         '
         'cbUnite
         '
@@ -599,7 +589,6 @@ Partial Class frmAjoutRecettes
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1472, 939)
-        Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.cbUnite)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnSupprimerAllergies)
@@ -658,8 +647,6 @@ Partial Class frmAjoutRecettes
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents cbUnite As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnSupprimerAllergies As Button

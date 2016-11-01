@@ -62,7 +62,7 @@ Partial Class frmInventaire
         Me.btnDGV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDGV.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnDGV.ForeColor = System.Drawing.Color.White
-        Me.btnDGV.Location = New System.Drawing.Point(1424, 100)
+        Me.btnDGV.Location = New System.Drawing.Point(1423, 100)
         Me.btnDGV.Name = "btnDGV"
         Me.btnDGV.Size = New System.Drawing.Size(90, 35)
         Me.btnDGV.TabIndex = 79
@@ -74,7 +74,7 @@ Partial Class frmInventaire
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRechercher.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.txtRechercher.Location = New System.Drawing.Point(226, 107)
+        Me.txtRechercher.Location = New System.Drawing.Point(225, 107)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(248, 22)
         Me.txtRechercher.TabIndex = 76

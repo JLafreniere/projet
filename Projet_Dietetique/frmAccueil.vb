@@ -12,7 +12,7 @@ Public Class frmAccueil
     Dim cal
     Dim lblSemaine As New Label
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
-
+    Dim message As New WebBrowser()
     Public Property _date_selectionne As Date = Date.Today
     Dim p As New PanelSemaine(210, 140, 750, 150)
 
@@ -23,9 +23,9 @@ Public Class frmAccueil
         Dim sb As New System.Text.StringBuilder
 
 
-        Dim message As New WebBrowser()
 
-        message.SetBounds(1000, 600, 400, 265)
+
+        Message.SetBounds(1000, 600, 400, 265)
 
         btnOmnivox.Text = "Omnivox"
         btnOmnivox.SetBounds(message.Location.X, message.Location.Y, 100, 30)
@@ -47,7 +47,7 @@ Public Class frmAccueil
 
 
 
-        remplirIndexHtml()
+
 
 
         message.Navigate("file:///" & IO.Path.GetFullPath(".\index.html"))
@@ -55,7 +55,7 @@ Public Class frmAccueil
 
 
         btn = New PanelOptionsAccueil(1000, 190, 400, 2)
-        Dim img As Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "background.png")
+
 
         cal = New Calendrier(240, 340, 700, 612, _date_selectionne)
         Me.WindowState = FormWindowState.Maximized
@@ -78,11 +78,11 @@ Public Class frmAccueil
 
         Dim ds = New DataSet
         Dim da = New MySqlDataAdapter
-
+        remplirIndexHtml()
 
     End Sub
 
-    Sub remplirIndexHtml()
+    Public Sub remplirIndexHtml()
 
         Dim ds As New DataSet
         Dim da As New MySqlDataAdapter
@@ -101,7 +101,7 @@ Public Class frmAccueil
         Next
         File.AppendAllText("Index.html", "</body></html>")
 
-
+        message.Refresh()
     End Sub
 
 

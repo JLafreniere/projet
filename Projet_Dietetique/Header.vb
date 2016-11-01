@@ -133,7 +133,7 @@
         End If
 
         lbl.AutoSize = True
-        lbl.SetBounds(20, 20, 0, 0)
+        lbl.SetBounds(20, 13, 0, 0)
 
         pnl.Controls.Add(lbl)
         pnl.SetBounds(OngletOffset, 0, lbl.Width + 40, 100)

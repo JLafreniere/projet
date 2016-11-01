@@ -1,44 +1,3 @@
-C:\Users\1433095\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
-C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
-C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
-C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
-H:\Projet------------\application\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
-H:\Projet------------\application\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
-H:\Projet------------\application\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
-H:\Projet------------\application\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
-<<<<<<< HEAD
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutInventaire.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmInventaire.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmProduits.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
-=======
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
@@ -48,4 +7,14 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.fr
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
->>>>>>> 2b3d67971104b349c8beb66f4cfb3ecf714cfa9b
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml

@@ -5,8 +5,7 @@ set /p message="Message du commit: "
 git commit -m "%message%"
 git pull
 git push
-echo.
-echo.
+pause
 echo                __    --------------------
 echo               / _)   FIN DE LA SAUVEGARDE
 echo      _.----._/ /     -------------------- 

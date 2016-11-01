@@ -125,7 +125,7 @@ Partial Class frmAgenda
         Me.Panel1.Controls.Add(Me.rbtype2)
         Me.Panel1.Controls.Add(Me.rbtype4)
         Me.Panel1.Controls.Add(Me.rbtype3)
-        Me.Panel1.Location = New System.Drawing.Point(489, 144)
+        Me.Panel1.Location = New System.Drawing.Point(830, 229)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(214, 195)
         Me.Panel1.TabIndex = 8

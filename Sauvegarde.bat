@@ -1,6 +1,7 @@
 pushd %~dp0
 git add .
-git commit -m "Sauvegarde de fin de journée"
+set /p message="Message du commit: "
+git commit -m "%message%"
 git pull
 git push
 pause

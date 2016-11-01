@@ -23,6 +23,17 @@ Public Class GestionBD
     Public dsCategories As New DataSet
     Public daCategories As New MySqlDataAdapter
 
+    Public dsFournisseurs As New DataSet
+    Public daFournisseurs As New MySqlDataAdapter
+
+    Public dsCommandes As New DataSet
+    Public daCommandes As New MySqlDataAdapter
+
+    Public dsProduitFourn As New DataSet
+    Public daProduitFourn As New MySqlDataAdapter
+
+    Public dsDetailsCommandes As New DataSet
+    Public daDetailsCommandes As New MySqlDataAdapter
 
 
     Private _position As Integer = 0

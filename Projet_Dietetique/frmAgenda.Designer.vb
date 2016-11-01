@@ -117,7 +117,9 @@ Partial Class frmAgenda
         '
         'Panel1
         '
+
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAjouter)
         Me.Panel1.Controls.Add(Me.dt_date_evenement)

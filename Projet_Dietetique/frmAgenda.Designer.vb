@@ -32,8 +32,8 @@ Partial Class frmAgenda
         Me.dt_date_evenement = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.TxtTitreMessage = New System.Windows.Forms.TextBox()
+        Me.txtMessage = New System.Windows.Forms.RichTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnEnregistrerMessage = New System.Windows.Forms.Button()
@@ -139,20 +139,20 @@ Partial Class frmAgenda
         Me.Panel1.Size = New System.Drawing.Size(214, 195)
         Me.Panel1.TabIndex = 8
         '
-        'TextBox1
+        'TxtTitreMessage
         '
-        Me.TextBox1.Location = New System.Drawing.Point(620, 145)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(240, 20)
-        Me.TextBox1.TabIndex = 9
+        Me.TxtTitreMessage.Location = New System.Drawing.Point(620, 145)
+        Me.TxtTitreMessage.Name = "TxtTitreMessage"
+        Me.TxtTitreMessage.Size = New System.Drawing.Size(240, 20)
+        Me.TxtTitreMessage.TabIndex = 9
         '
-        'RichTextBox1
+        'txtMessage
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(620, 175)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(240, 157)
-        Me.RichTextBox1.TabIndex = 10
-        Me.RichTextBox1.Text = ""
+        Me.txtMessage.Location = New System.Drawing.Point(620, 175)
+        Me.txtMessage.Name = "txtMessage"
+        Me.txtMessage.Size = New System.Drawing.Size(240, 157)
+        Me.txtMessage.TabIndex = 10
+        Me.txtMessage.Text = ""
         '
         'Label2
         '
@@ -219,8 +219,8 @@ Partial Class frmAgenda
         Me.Controls.Add(Me.btnEnregistrerMessage)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.RichTextBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtMessage)
+        Me.Controls.Add(Me.TxtTitreMessage)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAgenda"
@@ -241,8 +241,8 @@ Partial Class frmAgenda
     Friend WithEvents dt_date_evenement As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents TxtTitreMessage As TextBox
+    Friend WithEvents txtMessage As RichTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnEnregistrerMessage As Button

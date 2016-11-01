@@ -3,23 +3,28 @@
     Dim no As Integer = 0
     Dim flag As Boolean = False
     Private Sub frmInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'connection bd
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
+        'ajouter l'header
         Controls.Add(New Header(Me, True))
 
-
+        'Bouton refresh sur la recherche
         Dim refresh As New PictureBox()
         refresh.SetBounds(btnAjouter.Location.X + btnAjouter.Width + 13, btnAjouter.Location.Y - 3, 40, 40)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
         Controls.Add(refresh)
 
+        'click
         AddHandler refresh.Click, Sub(sender2, eventargs2)
+                                      'Refresh pour la grille
                                       If btnDGV.Text = "Grille" Then
                                           gbInventaire.Visible = False
                                           txtRechercher.ResetText()
                                           bd.dsProduits.Clear()
                                           remplircontroles()
 
+                                          'Refresh pour le treeview
                                       Else
                                           Dim dsTemp As New DataSet
 
@@ -31,6 +36,7 @@
 
                                   End Sub
 
+        'les différentes couleurs du bouton selon l'etat
         AddHandler refresh.MouseEnter, Sub(sender2, eventargs2)
                                            refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
                                        End Sub
@@ -48,6 +54,7 @@
 
 
     Public Sub init()
+        'initialisation de la form (remplir le treeview , charger dataset...)
         remplircontroles()
         couleurBouton("D", btnEnregistrer)
         lblEquivalence.Visible = False
@@ -69,6 +76,7 @@
     End Sub
 
     Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
         If etat = "D" Then
             b.BackColor = (Color.LightGray)
             b.ForeColor = Color.White
@@ -104,9 +112,11 @@
         Dim ctr2 As Integer = 0
 
         TreeView1.BeginUpdate()
+        'boucle 1 pour la catégorie
         For i As Integer = 0 To bd.dsCategories.Tables(0).Rows.Count - 1
             TreeView1.Nodes.Add(New TreeNode(bd.dsCategories.Tables(0).Rows(i).Item(1)))
 
+            'boucle 2 pour produit
             For j As Integer = 0 To bd.dsProduits.Tables(0).Rows.Count - 1
                 If bd.dsCategories.Tables(0).Rows(i).Item(0) = bd.dsProduits.Tables(0).Rows(j).Item(2) Then
 
@@ -114,6 +124,7 @@
                     TreeView1.Nodes(i).Nodes.Add(New TreeNode(bd.dsProduits.Tables(0).Rows(j).Item(1) & " [Total : " & calcul(bd.dsProduits.Tables(0).Rows(j).Item(0)) & "]"))
                     ctr += 1
 
+                    'boucle 3 pour inventaire
                     For k As Integer = 0 To bd.dsInventaire.Tables(0).Rows.Count - 1
                         If bd.dsProduits.Tables(0).Rows(j).Item(0) = bd.dsInventaire.Tables(0).Rows(k).Item(1) Then
                             TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) &
@@ -133,6 +144,7 @@
     End Sub
 
     Private Sub TreeView1_DrawNode(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawTreeNodeEventArgs) Handles TreeView1.DrawNode
+        'permet de mettre la couleur et le style du treeview
         Dim NodeBaseColor As Color
         Dim NodeTextColor As SolidBrush
         If e.Node.Level = 0 Then
@@ -159,8 +171,9 @@
         Dim Ident As Integer = 3 + e.Node.Level * 20
         e.Graphics.DrawString(e.Node.Text, New Font("Segoe UI", 12, FontStyle.Regular), NodeTextColor, e.Bounds.Location + New Size(Ident, 3))
     End Sub
-    ' Expand or colapse when the node is click
+
     Private Sub TreeView1_NodeMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs) Handles TreeView1.NodeMouseClick
+        ' Expand or colapse when the node is click
         If e.Node.IsExpanded Then
             e.Node.Collapse()
         Else
@@ -192,6 +205,8 @@
 
 
     Sub information(ByVal id As String)
+        'Affiche toutes les informations selon le produit sélectionné
+        'L'id du produit est passé en parametre
         gbInventaire.Visible = True
 
 
@@ -235,6 +250,7 @@
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
+        'cache les informations
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
         lblUniteEquivalence.Visible = False
@@ -243,6 +259,7 @@
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
+        'affiche le formulaire ajout inventaire
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
         lblUniteEquivalence.Visible = False
@@ -252,6 +269,7 @@
     End Sub
 
     Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click
+        'supprime l'item dans l'inventaire
         Try
             If MsgBox("Voulez-vous supprimer : " & txtNom.Text & " de l'inventaire ?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
                 bd.nonQuery("delete from inventaire where id_inventaire = " & no)
@@ -266,8 +284,8 @@
         Catch exc As Exception : MsgBox("Veuillez supprimer tous les produits en inventaire avant de procéder à l'opération ") : End Try
     End Sub
 
-    Sub Modifier() 'modifie le nom d'un produit
-
+    Sub Modifier()
+        'modifie l'item dans l'inventaire
         bd.dsInventaire.Clear()
         bd.Requete("select * from inventaire where id_inventaire = " & no, bd.dsInventaire, bd.daInventaire, "inventaire")
 
@@ -287,10 +305,12 @@
     End Sub
 
     Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtEquivalence.TextChanged, txtQuantite.TextChanged, txtDescription.TextChanged, dtpPeremption.TextChanged, dtpReception.TextChanged, txtFormat.TextChanged
+        'Permet l'enregistrement quand il y a une modification
         couleurBouton("E", btnEnregistrer)
     End Sub
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
+        'enregistre
         Modifier()
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
@@ -300,22 +320,20 @@
 
     Function calcul(ByVal id As String)
         'pour chaque produit
-        'regarder tout les entrés
+        'regarder toutes les entrées
         'si c'est ml / L calculer en L
         'si c'est g / Kg, calculer en KG
-        'ajouter les unité comme ca + valeur selon équivalence
+        'si c'est unité, regarder valeur selon l'équivalence
 
         Dim total As Double = 0
         Dim str As String = ""
 
-        'bd.Requete("select * from categories", bd.dsCategories, bd.daCategories, "categories")
-        'bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
-        'bd.Requete("select * from inventaire", bd.dsInventaire, bd.daInventaire, "inventaire")
 
         bd.dsInventaire.Clear()
         bd.Requete("select * from inventaire where produit = " & id, bd.dsInventaire, bd.daInventaire, "inventaire")
         For Each rows As DataRow In bd.dsInventaire.Tables(0).Rows
 
+            'si l'item est en unité
             If rows.Item(10).ToString = "Unité" Then
                 If rows.Item(9).ToString = "g" Then
                     total += ((rows.Item(8).ToString() / 1000) * rows.Item(11).ToString())
@@ -338,6 +356,7 @@
                     str = "L"
                 End If
 
+                'si l'item est autre
             Else
                 If rows.Item(10).ToString = "g" Then
                     total += (rows.Item(11).ToString() / 1000)
@@ -368,7 +387,7 @@
         Next
 
 
-
+        'arrondir et mettre le format a coté
         str = (Decimal.Round(total, 2, MidpointRounding.AwayFromZero) & " " & str)
         Return str
 
@@ -376,11 +395,13 @@
 
     Private Sub txtFormat_TextChanged(sender As Object, e As EventArgs) Handles txtFormat.TextChanged, txtQuantite.TextChanged
         Try
+            'auto calcul du total
             txtTotal.Text = txtQuantite.Text * txtFormat.Text
         Catch exc As Exception : End Try
     End Sub
 
     Sub recherche()
+        'recherche pour la grille
         If btnDGV.Text = "Grille" Then
 
             TreeView1.Nodes.Clear()
@@ -420,8 +441,9 @@
                 flag = True
             End If
 
+            'recherche sur le treeview
         Else
-
+            'refresh
             If txtRechercher.Text = "" Then
                 Dim dsTemp As New DataSet
                 dsTemp.Clear()
@@ -429,6 +451,7 @@
                 dgvData.DataSource = Nothing
                 dgvData.DataSource = dsTemp.Tables(0)
 
+                'recherche
             Else
                 Dim dsTemp As New DataSet
                 dsTemp.Clear()
@@ -444,6 +467,7 @@
     End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown
+        'recherche quand "Enter"
         If e.KeyCode = Keys.Enter Then
             recherche()
         End If
@@ -452,7 +476,7 @@
 
 
     Private Sub btnDGV_Click(sender As Object, e As EventArgs) Handles btnDGV.Click
-
+        'Afficher la grille
         If btnDGV.Text = "Grille" Then
             btnDGV.Text = "Arbre"
             Dim dsTemp As New DataSet

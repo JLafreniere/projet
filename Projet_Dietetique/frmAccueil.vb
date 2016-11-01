@@ -91,22 +91,15 @@ Public Class frmAccueil
 
 
         System.IO.File.WriteAllText("Index.html", "")
+        File.AppendAllText("Index.html", "<!DOCTYPE html><html><head><link rel = ""stylesheet"" type=""text/css"" href=""style.css""></head><body>")
 
-        '        <!DOCTYPE html>
-        '<html>
-        '<head>
-        '<link rel = "stylesheet" type="text/css" href="style.css">
-
-        '</head>
-        '<body>
 
         For Each dr As DataRow In ds.Tables(0).Rows
-
-
-
-
+            File.AppendAllText("Index.html", "<div id=" & dr(0) & ">")
+            File.AppendAllText("Index.html", "<h1>" & dr(1) & "</h1>")
+            File.AppendAllText("Index.html", "<p>" & dr(2) & "</p><br><hr></div>")
         Next
-
+        File.AppendAllText("Index.html", "</body></html>")
 
 
     End Sub

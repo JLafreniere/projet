@@ -122,6 +122,12 @@
     <Compile Include="frmAjoutRecettes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCommandes.Designer.vb">
+      <DependentUpon>frmCommandes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCommandes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFournisseurs.Designer.vb">
       <DependentUpon>frmFournisseurs.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAjoutRecettes.resx">
       <DependentUpon>frmAjoutRecettes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCommandes.resx">
+      <DependentUpon>frmCommandes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFournisseurs.resx">
       <DependentUpon>frmFournisseurs.vb</DependentUpon>

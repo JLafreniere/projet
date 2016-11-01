@@ -22,10 +22,5 @@ Projet_Dietetique
   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
 </summary>
 </member>
-<member name="P:Projet_Dietetique.My.Resources.Resources.bck">
-<summary>
-  Recherche une ressource localisée de type System.Drawing.Bitmap.
-</summary>
-</member>
 </members>
 </doc>

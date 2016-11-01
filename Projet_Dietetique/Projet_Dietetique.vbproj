@@ -98,10 +98,34 @@
     <Compile Include="frmAgenda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAjoutCommandes.Designer.vb">
+      <DependentUpon>frmAjoutCommandes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAjoutCommandes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjoutFournisseurs.Designer.vb">
+      <DependentUpon>frmAjoutFournisseurs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAjoutFournisseurs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAjoutInventaire.Designer.vb">
       <DependentUpon>frmAjoutInventaire.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAjoutInventaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjoutRecettes.Designer.vb">
+      <DependentUpon>frmAjoutRecettes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAjoutRecettes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFournisseurs.Designer.vb">
+      <DependentUpon>frmFournisseurs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFournisseurs.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInventaire.Designer.vb">
@@ -162,8 +186,20 @@
     <EmbeddedResource Include="frmAgenda.resx">
       <DependentUpon>frmAgenda.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAjoutCommandes.resx">
+      <DependentUpon>frmAjoutCommandes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAjoutFournisseurs.resx">
+      <DependentUpon>frmAjoutFournisseurs.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAjoutInventaire.resx">
       <DependentUpon>frmAjoutInventaire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAjoutRecettes.resx">
+      <DependentUpon>frmAjoutRecettes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFournisseurs.resx">
+      <DependentUpon>frmFournisseurs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInventaire.resx">
       <DependentUpon>frmInventaire.vb</DependentUpon>

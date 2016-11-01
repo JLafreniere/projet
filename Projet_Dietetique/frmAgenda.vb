@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 
 Public Class frmAgenda
 
@@ -10,6 +11,8 @@ Public Class frmAgenda
 
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
+        Dim messages = File.ReadAllText("index.html")
+        MsgBox(messages)
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
@@ -50,4 +53,10 @@ Public Class frmAgenda
 
     End Sub
 
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        If ListBox1.SelectedItems.Count > 0 Then
+            Button2.Visible = True
+        Else Button2.Visible = False
+        End If
+    End Sub
 End Class

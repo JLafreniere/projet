@@ -32,6 +32,14 @@ Partial Class frmAgenda
         Me.dt_date_evenement = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnEnregistrerMessage = New System.Windows.Forms.Button()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -117,9 +125,7 @@ Partial Class frmAgenda
         '
         'Panel1
         '
-
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAjouter)
         Me.Panel1.Controls.Add(Me.dt_date_evenement)
@@ -128,16 +134,93 @@ Partial Class frmAgenda
         Me.Panel1.Controls.Add(Me.rbtype2)
         Me.Panel1.Controls.Add(Me.rbtype4)
         Me.Panel1.Controls.Add(Me.rbtype3)
-        Me.Panel1.Location = New System.Drawing.Point(830, 229)
+        Me.Panel1.Location = New System.Drawing.Point(180, 126)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(214, 195)
         Me.Panel1.TabIndex = 8
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(620, 145)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(240, 20)
+        Me.TextBox1.TabIndex = 9
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(620, 175)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(240, 157)
+        Me.RichTextBox1.TabIndex = 10
+        Me.RichTextBox1.Text = ""
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(557, 148)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(28, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Titre"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(535, 179)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Message"
+        '
+        'btnEnregistrerMessage
+        '
+        Me.btnEnregistrerMessage.Location = New System.Drawing.Point(785, 349)
+        Me.btnEnregistrerMessage.Name = "btnEnregistrerMessage"
+        Me.btnEnregistrerMessage.Size = New System.Drawing.Size(75, 23)
+        Me.btnEnregistrerMessage.TabIndex = 13
+        Me.btnEnregistrerMessage.Text = "Enregistrer"
+        Me.btnEnregistrerMessage.UseVisualStyleBackColor = True
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(930, 169)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
+        Me.ListBox1.TabIndex = 14
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(927, 148)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(99, 13)
+        Me.Label4.TabIndex = 15
+        Me.Label4.Text = "Messages existants"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(975, 270)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 16
+        Me.Button2.Text = "Supprimer"
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
         '
         'frmAgenda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.btnEnregistrerMessage)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAgenda"
@@ -145,6 +228,7 @@ Partial Class frmAgenda
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -157,4 +241,12 @@ Partial Class frmAgenda
     Friend WithEvents dt_date_evenement As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnEnregistrerMessage As Button
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Button2 As Button
 End Class

@@ -11,9 +11,6 @@ echo               / _)   FIN DE LA SAUVEGARDE
 echo      _.----._/ /     -------------------- 
 echo     /         /
 echo  __/ (  | (  |       Henri le pti dino
-pause
 echo /__.-'|_|--|_|
-echo.
-echo.
 pause
 pause

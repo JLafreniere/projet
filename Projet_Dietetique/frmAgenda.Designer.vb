@@ -117,6 +117,7 @@ Partial Class frmAgenda
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAjouter)
         Me.Panel1.Controls.Add(Me.dt_date_evenement)

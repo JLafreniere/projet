@@ -16,3 +16,4 @@ echo/__.-'|_|--|_|
 echo.
 echo.
 pause
+pause

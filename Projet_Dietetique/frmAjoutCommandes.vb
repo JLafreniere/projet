@@ -108,6 +108,7 @@ Public Class frmAjoutCommandes
     'Modifie le contenu de la commande dans la bd
     Sub modifier()
 
+
     End Sub
     'Modifie le contenu du combobox des produits en fonction du fournisseur sélectionné
     Private Sub cbFournisseurs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFournisseurs.SelectedIndexChanged

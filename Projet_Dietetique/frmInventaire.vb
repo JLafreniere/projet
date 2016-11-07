@@ -127,9 +127,14 @@
                     'boucle 3 pour inventaire
                     For k As Integer = 0 To bd.dsInventaire.Tables(0).Rows.Count - 1
                         If bd.dsProduits.Tables(0).Rows(j).Item(0) = bd.dsInventaire.Tables(0).Rows(k).Item(1) Then
-                            TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) &
-                            " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & "]"))
+                            If bd.dsInventaire.Tables(0).Rows(k).Item(10) = "Unité" Then
+                                TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) & " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & " de " & bd.dsInventaire.Tables(0).Rows(k).Item(8) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(9) & "]"))
+                            Else
+                                TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) & " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & "]"))
+                            End If
                             ctr2 += 1
+
+
                             TreeView1.Nodes(i).Nodes(ctr - 1).Nodes(ctr2 - 1).Tag = bd.dsInventaire.Tables(0).Rows(k).Item(0)
                         End If
                     Next
@@ -479,14 +484,15 @@
         'Afficher la grille
         If btnDGV.Text = "Grille" Then
             btnDGV.Text = "Arbre"
+            gbInventaire.Visible = False
             Dim dsTemp As New DataSet
             TreeView1.Hide()
             dsTemp.Clear()
             bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
-
             dgvData.DataSource = dsTemp.Tables(0)
             dgvData.Visible = True
             dgvData.RowHeadersVisible = False
+
 
         Else
             TreeView1.Show()

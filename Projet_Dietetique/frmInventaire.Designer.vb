@@ -310,10 +310,14 @@ Partial Class frmInventaire
         '
         Me.dgvData.AllowUserToAddRows = False
         Me.dgvData.AllowUserToDeleteRows = False
+        Me.dgvData.AllowUserToResizeColumns = False
+        Me.dgvData.AllowUserToResizeRows = False
+        Me.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvData.GridColor = System.Drawing.SystemColors.Control
         Me.dgvData.Location = New System.Drawing.Point(223, 141)
         Me.dgvData.Name = "dgvData"
+        Me.dgvData.ReadOnly = True
         Me.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvData.Size = New System.Drawing.Size(1291, 642)
         Me.dgvData.TabIndex = 78

@@ -127,9 +127,14 @@
                     'boucle 3 pour inventaire
                     For k As Integer = 0 To bd.dsInventaire.Tables(0).Rows.Count - 1
                         If bd.dsProduits.Tables(0).Rows(j).Item(0) = bd.dsInventaire.Tables(0).Rows(k).Item(1) Then
-                            TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) &
-                            " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & "]"))
+                            If bd.dsInventaire.Tables(0).Rows(k).Item(10) = "Unité" Then
+                                TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) & " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & " de " & bd.dsInventaire.Tables(0).Rows(k).Item(8) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(9) & "]"))
+                            Else
+                                TreeView1.Nodes(i).Nodes(ctr - 1).Nodes.Add(New TreeNode(bd.dsInventaire.Tables(0).Rows(k).Item(2) & " [Quantité : " & bd.dsInventaire.Tables(0).Rows(k).Item(11) & " " & bd.dsInventaire.Tables(0).Rows(k).Item(10) & "]"))
+                            End If
                             ctr2 += 1
+
+
                             TreeView1.Nodes(i).Nodes(ctr - 1).Nodes(ctr2 - 1).Tag = bd.dsInventaire.Tables(0).Rows(k).Item(0)
                         End If
                     Next
@@ -487,7 +492,7 @@
             dgvData.DataSource = dsTemp.Tables(0)
             dgvData.Visible = True
             dgvData.RowHeadersVisible = False
-
+            dgvData.AutoSize(AutoSize(AutoSize(AutoSize(AutoSize))))2
         Else
             TreeView1.Show()
             btnDGV.Text = "Grille"

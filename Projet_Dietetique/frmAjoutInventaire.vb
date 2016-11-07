@@ -130,12 +130,18 @@ Public Class frmAjoutInventaire
 
 
 
-    Private Sub txtFormat_TextChanged(sender As Object, e As EventArgs) Handles txtFormat.TextChanged, txtQuantite.TextChanged
+    Private Sub txtFormat_TextChanged(sender As Object, e As EventArgs) Handles txtFormat.TextChanged, txtQuantite.TextChanged, txtEquivalence.TextChanged
         'calcul total
         Try
-            If txtQuantite.Text >= 1 And txtFormat.Text >= 1 Then
-                txtTotal.Text = txtQuantite.Text * txtFormat.Text
+            If cmbUnite.Text = "Unité" Then
+                txtTotal.Text = txtQuantite.Text * txtFormat.Text * txtEquivalence.Text
+
+            Else
+                If txtQuantite.Text >= 1 And txtFormat.Text >= 1 Then
+                    txtTotal.Text = txtQuantite.Text * txtFormat.Text
+                End If
             End If
+
         Catch exc As Exception : End Try
     End Sub
 End Class

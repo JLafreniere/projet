@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 25 Octobre 2016 à 22:01
+-- Généré le :  Lun 07 Novembre 2016 à 21:56
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -175,8 +175,19 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
   `message` text NOT NULL,
+  `debut_affichage` date DEFAULT NULL,
+  `fin_affichage` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `titre`, `message`, `debut_affichage`, `fin_affichage`) VALUES
+(1, 'Message test', 'Test contenu lorem ipsumndaslkjfpaodkf aosfjsdapoifsfksafpj`k^sadfas`dfbtnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)', '2016-11-07', '2016-11-07'),
+(2, 'asdfasdf', 'sadfasdfasdfsadf', '2016-11-07', '2016-11-07'),
+(3, 'sadfsdafgahfdh', 'gdfhgdfhg', NULL, NULL);
 
 -- --------------------------------------------------------
 

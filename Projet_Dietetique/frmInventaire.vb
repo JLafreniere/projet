@@ -503,7 +503,11 @@
 
     End Sub
 
-    Private Sub frmInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnRetirer.Click
+        frmRetraitInventaire.Show()
+    End Sub
 
+    Private Sub btnRetourner_Click(sender As Object, e As EventArgs) Handles btnRetourner.Click
+        frmRetourInventaire.Show()
     End Sub
 End Class

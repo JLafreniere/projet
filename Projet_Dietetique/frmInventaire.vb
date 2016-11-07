@@ -484,15 +484,16 @@
         'Afficher la grille
         If btnDGV.Text = "Grille" Then
             btnDGV.Text = "Arbre"
+            gbInventaire.Visible = False
             Dim dsTemp As New DataSet
             TreeView1.Hide()
             dsTemp.Clear()
             bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
-
             dgvData.DataSource = dsTemp.Tables(0)
             dgvData.Visible = True
             dgvData.RowHeadersVisible = False
-            dgvData.AutoSize(AutoSize(AutoSize(AutoSize(AutoSize))))2
+
+
         Else
             TreeView1.Show()
             btnDGV.Text = "Grille"

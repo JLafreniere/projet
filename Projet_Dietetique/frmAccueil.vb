@@ -17,6 +17,10 @@ Public Class frmAccueil
     Dim p As New PanelSemaine(210, 140, 750, 150)
 
 
+    Public Sub refreshBrowser()
+        message.Refresh()
+    End Sub
+
     Private Sub frmAccueil_shown(sender As Object, e As EventArgs) Handles MyBase.Shown
 
 
@@ -25,7 +29,7 @@ Public Class frmAccueil
 
 
 
-        Message.SetBounds(1000, 600, 400, 265)
+        message.SetBounds(1000, 600, 400, 265)
 
         btnOmnivox.Text = "Omnivox"
         btnOmnivox.SetBounds(message.Location.X, message.Location.Y, 100, 30)
@@ -87,7 +91,7 @@ Public Class frmAccueil
         Dim ds As New DataSet
         Dim da As New MySqlDataAdapter
 
-        bd.miseAjourDS(ds, da, "select * from messages", 0)
+        bd.miseAjourDS(ds, da, "select * from messages where (fin_affichage >= CURDATE() and debut_affichage <= CURDATE())", 0)
 
 
         System.IO.File.WriteAllText("Index.html", "")
@@ -220,13 +224,8 @@ Public Class frmAccueil
         MsgBox(Me.WindowState)
     End Sub
 
-    Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
 
 
-    End Sub
 
-    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
 

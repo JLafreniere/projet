@@ -37,7 +37,6 @@ Partial Class frmAgenda
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnEnregistrerMessage = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.dpDebutAffichage = New System.Windows.Forms.DateTimePicker()
@@ -46,6 +45,7 @@ Partial Class frmAgenda
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dpFinAffichage = New System.Windows.Forms.DateTimePicker()
         Me.cbPeriodeAffichage = New System.Windows.Forms.CheckBox()
+        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -188,14 +188,6 @@ Partial Class frmAgenda
         Me.btnEnregistrerMessage.Text = "Enregistrer"
         Me.btnEnregistrerMessage.UseVisualStyleBackColor = True
         '
-        'ListBox1
-        '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(930, 169)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
-        Me.ListBox1.TabIndex = 14
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -207,7 +199,7 @@ Partial Class frmAgenda
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(975, 270)
+        Me.Button2.Location = New System.Drawing.Point(976, 330)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 16
@@ -271,16 +263,25 @@ Partial Class frmAgenda
         Me.cbPeriodeAffichage.Text = "Définir une période d'affichage"
         Me.cbPeriodeAffichage.UseVisualStyleBackColor = True
         '
+        'ListView1
+        '
+        Me.ListView1.Location = New System.Drawing.Point(930, 172)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(121, 97)
+        Me.ListView1.TabIndex = 20
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.List
+        '
         'frmAgenda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.cbPeriodeAffichage)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.btnEnregistrerMessage)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -313,7 +314,6 @@ Partial Class frmAgenda
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnEnregistrerMessage As Button
-    Friend WithEvents ListBox1 As ListBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents dpDebutAffichage As DateTimePicker
@@ -322,4 +322,5 @@ Partial Class frmAgenda
     Friend WithEvents cbPeriodeAffichage As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents ListView1 As ListView
 End Class

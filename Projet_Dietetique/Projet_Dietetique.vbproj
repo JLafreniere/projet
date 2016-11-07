@@ -146,6 +146,18 @@
     <Compile Include="frmProduits.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRetourInventaire.Designer.vb">
+      <DependentUpon>frmRetourInventaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetourInventaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetraitInventaire.Designer.vb">
+      <DependentUpon>frmRetraitInventaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetraitInventaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmVoirRecettes.Designer.vb">
       <DependentUpon>frmVoirRecettes.vb</DependentUpon>
     </Compile>
@@ -215,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProduits.resx">
       <DependentUpon>frmProduits.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetourInventaire.resx">
+      <DependentUpon>frmRetourInventaire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetraitInventaire.resx">
+      <DependentUpon>frmRetraitInventaire.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVoirRecettes.resx">
       <DependentUpon>frmVoirRecettes.vb</DependentUpon>

@@ -96,3 +96,5 @@ H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_D
 H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
 H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources

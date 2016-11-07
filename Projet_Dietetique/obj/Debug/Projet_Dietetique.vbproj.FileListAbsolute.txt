@@ -74,4 +74,27 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.fr
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutFournisseurs.resources
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutRecettes.resources
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmFournisseurs.resources
-C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutCommandes.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutFournisseurs.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutInventaire.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutRecettes.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmFournisseurs.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmInventaire.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmProduits.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
+H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources

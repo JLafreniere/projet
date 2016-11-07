@@ -13,6 +13,7 @@ Public Class frmAgenda
         Me.WindowState = FormWindowState.Maximized
         Dim messages = File.ReadAllText("index.html")
         MsgBox(messages)
+        dpFinAffichage.MinDate = Date.Today
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
@@ -70,19 +71,43 @@ Public Class frmAgenda
             Dim dr As DataRow = ds.Tables(0).NewRow
             dr(1) = TxtTitreMessage.Text
             dr(2) = txtMessage.Text
+            If cbPeriodeAffichage.Checked Then
+                dr(3) = dpDebutAffichage.Value
+                dr(4) = dpDebutAffichage.Value
+            End If
             ds.Tables(0).Rows.Add(dr)
 
-            bd.miseAjourBD(ds, da, 0)
+                bd.miseAjourBD(ds, da, 0)
 
-            txtMessage.Text = ""
-            TxtTitreMessage.Text = ""
-            frmAccueil.remplirIndexHtml()
+                txtMessage.Text = ""
+                TxtTitreMessage.Text = ""
+                frmAccueil.remplirIndexHtml()
 
-        ElseIf txtMessage.Text = "" Then
-            MsgBox("Veuillez composer un message")
-        Else
-            MsgBox("Veuillez entrer un titre")
+                MsgBox("Message enregistré")
+            ElseIf txtMessage.Text = "" Then
+                MsgBox("Veuillez composer un message")
+            Else
+                MsgBox("Veuillez entrer un titre")
         End If
 
     End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles cbPeriodeAffichage.CheckedChanged
+
+        Dim cb As CheckBox = sender
+        GroupBox1.Visible = cb.Checked
+
+        If Not cb.Checked Then
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 25)
+        Else
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 150)
+        End If
+
+    End Sub
+
+    Private Sub dpDebutAffichage_ValueChanged(sender As Object, e As EventArgs) Handles dpDebutAffichage.ValueChanged
+        dpFinAffichage.MinDate = dpDebutAffichage.Value
+    End Sub
+
+
 End Class

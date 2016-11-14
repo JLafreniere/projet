@@ -8,6 +8,8 @@ Public Class frmCommandes
     Dim ds2 As New DataSet
     Dim ds3 As New DataSet
     Dim ds4 As New DataSet
+    Dim ds5 As New DataSet
+    Public position As Integer
 
 
 
@@ -126,5 +128,52 @@ Public Class frmCommandes
         dtpDate.Visible = False
         txtRecherche.Visible = True
         txtRecherche.Enabled = True
+    End Sub
+
+
+
+    'Transfert les données de la commande dans les contrôles de frmAjoutCommandes
+    Sub rempliFormulaire()
+        'Si la commande est envoyee on bloque les champs et elle est juste consultable
+        If bd.dsCommandes.Tables(0).Rows(position).Item(5) = True Then
+            frmAjoutCommandes.cbFournisseurs.Enabled = False
+            frmAjoutCommandes.txtNotes.Enabled = False
+            frmAjoutCommandes.dtpDate.Enabled = False
+            frmAjoutCommandes.cbProduits.Enabled = False
+            frmAjoutCommandes.nudQuantite.Enabled = False
+            frmAjoutCommandes.lsvProduits.Enabled = False
+
+
+        End If
+        frmAjoutCommandes.btnEnregistrer.Text = "Modifier"
+        frmAjoutCommandes.dtpDate.Value = bd.dsCommandes.Tables(0).Rows(position).Item(1)
+        frmAjoutCommandes.txtNotes.Text = bd.dsCommandes.Tables(0).Rows(position).Item(4)
+        'On recherche le fournisseur pour le faire afficher dans le ComboBox de frmAjoutCommandes
+        bd.Requete("Select  * from fournisseurs where `id_fournisseur` = '" + bd.dsCommandes.Tables(0).Rows(position).Item(2).ToString + "'", ds5, bd.daFournisseurs, "fournisseurs")
+        frmAjoutCommandes.cbFournisseurs.Text = ds5.Tables(0).Rows(0).Item(1)
+
+        frmAjoutCommandes.remplirListView()
+
+
+    End Sub
+
+    Private Sub lsvCommandes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvCommandes.SelectedIndexChanged
+        'Renvoie l'Indice de l'élément sélectionné dans le ListView
+        If lsvCommandes.SelectedItems.Count > 0 Then
+            btnModifier.Enabled = True
+            btnSupprimer.Enabled = True
+            position = lsvCommandes.SelectedIndices(0)
+        Else
+            btnSupprimer.Enabled = False
+            btnModifier.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnModifier.Click
+        rempliFormulaire()
+        Hide()
+        frmAjoutCommandes.Show()
+
+
     End Sub
 End Class

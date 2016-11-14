@@ -29,7 +29,6 @@ Public Class frmAgenda
 
         bd.miseAjourDS(ds, da, "select * from messages", 0)
 
-
         For Each r As DataRow In ds.Tables(0).Rows
             ListView1.Items.Add(r.Item(1))
             ListView1.Items(ListView1.Items.Count - 1).Tag = r.Item(0)

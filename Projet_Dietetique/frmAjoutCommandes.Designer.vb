@@ -34,19 +34,22 @@ Partial Class frmAjoutCommandes
         Me.btnEnregistrer = New System.Windows.Forms.Button()
         Me.txtNotes = New System.Windows.Forms.RichTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cbProduits = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.cbFournisseurs = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtpDate = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnEnvoyer = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cbProduits = New System.Windows.Forms.ComboBox()
+        Me.cbFormat = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'nudQuantite
         '
-        Me.nudQuantite.Location = New System.Drawing.Point(885, 324)
+        Me.nudQuantite.Location = New System.Drawing.Point(855, 319)
         Me.nudQuantite.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudQuantite.Name = "nudQuantite"
         Me.nudQuantite.Size = New System.Drawing.Size(58, 20)
@@ -55,23 +58,23 @@ Partial Class frmAjoutCommandes
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Total"
-        Me.ColumnHeader3.Width = 197
+        Me.ColumnHeader3.Text = "Format"
+        Me.ColumnHeader3.Width = 128
         '
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Nombre"
-        Me.ColumnHeader2.Width = 178
+        Me.ColumnHeader2.Width = 74
         '
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Produit"
-        Me.ColumnHeader1.Width = 305
+        Me.ColumnHeader1.Width = 167
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(829, 326)
+        Me.Label4.Location = New System.Drawing.Point(799, 321)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(47, 13)
         Me.Label4.TabIndex = 91
@@ -79,13 +82,13 @@ Partial Class frmAjoutCommandes
         '
         'lsvProduits
         '
-        Me.lsvProduits.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.lsvProduits.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lsvProduits.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvProduits.HideSelection = False
         Me.lsvProduits.Location = New System.Drawing.Point(496, 123)
         Me.lsvProduits.MultiSelect = False
         Me.lsvProduits.Name = "lsvProduits"
-        Me.lsvProduits.Size = New System.Drawing.Size(584, 169)
+        Me.lsvProduits.Size = New System.Drawing.Size(744, 169)
         Me.lsvProduits.TabIndex = 90
         Me.lsvProduits.UseCompatibleStateImageBehavior = False
         Me.lsvProduits.View = System.Windows.Forms.View.Details
@@ -159,23 +162,6 @@ Partial Class frmAjoutCommandes
         Me.Label6.TabIndex = 84
         Me.Label6.Text = "Notes"
         '
-        'cbProduits
-        '
-        Me.cbProduits.FormattingEnabled = True
-        Me.cbProduits.Location = New System.Drawing.Point(593, 318)
-        Me.cbProduits.Name = "cbProduits"
-        Me.cbProduits.Size = New System.Drawing.Size(200, 21)
-        Me.cbProduits.TabIndex = 83
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(475, 321)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 13)
-        Me.Label3.TabIndex = 82
-        Me.Label3.Text = "Ajouter un produit"
-        '
         'cbFournisseurs
         '
         Me.cbFournisseurs.FormattingEnabled = True
@@ -222,11 +208,51 @@ Partial Class frmAjoutCommandes
         Me.btnEnvoyer.Text = "Envoyer"
         Me.btnEnvoyer.UseVisualStyleBackColor = False
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(475, 321)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(90, 13)
+        Me.Label3.TabIndex = 82
+        Me.Label3.Text = "Ajouter un produit"
+        '
+        'cbProduits
+        '
+        Me.cbProduits.FormattingEnabled = True
+        Me.cbProduits.Location = New System.Drawing.Point(593, 318)
+        Me.cbProduits.Name = "cbProduits"
+        Me.cbProduits.Size = New System.Drawing.Size(200, 21)
+        Me.cbProduits.TabIndex = 83
+        '
+        'cbFormat
+        '
+        Me.cbFormat.FormattingEnabled = True
+        Me.cbFormat.Location = New System.Drawing.Point(1006, 318)
+        Me.cbFormat.Name = "cbFormat"
+        Me.cbFormat.Size = New System.Drawing.Size(101, 21)
+        Me.cbFormat.TabIndex = 95
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(919, 321)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(81, 13)
+        Me.Label5.TabIndex = 94
+        Me.Label5.Text = "Choisir le format"
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Total"
+        '
         'frmAjoutCommandes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1138, 592)
+        Me.ClientSize = New System.Drawing.Size(1270, 592)
+        Me.Controls.Add(Me.cbFormat)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnEnvoyer)
         Me.Controls.Add(Me.nudQuantite)
         Me.Controls.Add(Me.Label4)
@@ -263,11 +289,14 @@ Partial Class frmAjoutCommandes
     Friend WithEvents btnEnregistrer As Button
     Friend WithEvents txtNotes As RichTextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents cbProduits As ComboBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents cbFournisseurs As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents dtpDate As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents btnEnvoyer As Button
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents cbFormat As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cbProduits As ComboBox
+    Friend WithEvents Label3 As Label
 End Class

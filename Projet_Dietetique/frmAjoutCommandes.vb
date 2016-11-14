@@ -4,19 +4,19 @@ Imports System.Data
 Public Class frmAjoutCommandes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim ds As New DataSet
+
+    Dim col(2) As String
+    Dim envoye As Integer = 0
+    Dim ds1 As New DataSet
     Dim ds2 As New DataSet
     Dim ds3 As New DataSet
     Dim ds4 As New DataSet
     Dim ds5 As New DataSet
     Dim ds6 As New DataSet
     Dim ds7 As New DataSet
-    Dim dss As New DataSet
-    Dim col(2) As String
-    Dim envoye As Boolean = False
-
-
-
-
+    Dim ds8 As New DataSet
+    Dim ds9 As New DataSet
+    Dim ds10 As New DataSet
 
     Private Sub frmAjoutCommandes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
@@ -65,12 +65,12 @@ Public Class frmAjoutCommandes
 
         drNouvel = bd.dsCommandes.Tables(0).NewRow
         drNouvel(1) = dtpDate.Value
-
+        ds = New DataSet
         'On recherche le no du fournisseur qui correspond à l'élément sélectionné du comboBox des Founisseurs
-        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", ds5, bd.daFournisseurs, "fournisseurs")
+        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", ds, bd.daFournisseurs, "fournisseurs")
 
 
-        drNouvel(2) = ds5.Tables(0).Rows(0).Item(0)
+        drNouvel(2) = ds.Tables(0).Rows(0).Item(0)
 
 
         'Le no de référence sera un nombre aléatoire
@@ -98,7 +98,7 @@ Public Class frmAjoutCommandes
             'On recherche le produit qui correspond au nom du produit dans le listView
             bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
             drNouvel = bd.dsDetailsCommandes.Tables(0).NewRow
-            drNouvel(0) = bd.dsCommandes.Tables(0).Rows.Count + 1
+            drNouvel(0) = bd.dsCommandes.Tables(0).Rows.Count
 
 
             drNouvel(1) = ds8.Tables(0).Rows(0).Item(0)
@@ -113,39 +113,44 @@ Public Class frmAjoutCommandes
     End Sub
     'Modifie le contenu de la commande dans la bd
     Sub modifier()
-        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", dss, bd.daFournisseurs, "fournisseurs")
+        ds = New DataSet
+        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", ds, bd.daFournisseurs, "fournisseurs")
         Dim drnouvel As DataRow
         'On met à jour la table details_commandes
         bd.nonQuery("Delete from details_commande where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
         bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
         For Each element As ListViewItem In lsvProduits.Items
-            Dim ds8 As New DataSet
+            ds2 = New DataSet
             'On recherche le produit qui correspond au nom du produit dans le listView
-            bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds, bd.daProduits, "produits")
             drnouvel = bd.dsDetailsCommandes.Tables(0).NewRow
             drnouvel(0) = frmCommandes.position + 1
 
 
 
-            drnouvel(1) = ds8.Tables(0).Rows(0).Item(0)
+            drnouvel(1) = ds.Tables(0).Rows(0).Item(0)
             drnouvel(2) = element.SubItems(2).Text
             bd.dsDetailsCommandes.Tables(0).Rows.Add(drnouvel)
 
 
         Next
 
-        bd.nonQuery("UPDATE `commandes` set `date_commande` = '" + dtpDate.Value.Date.ToString + "' , `note` = '" + txtNotes.Text + "', `fournisseur` = '" + dss.Tables(0).Rows(0).Item(0).ToString + "' where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
+        bd.nonQuery("UPDATE `commandes` set `date_commande` = '" + dtpDate.Value.Date.ToString + "' , `note` = '" + txtNotes.Text + "', `fournisseur` = '" + ds2.Tables(0).Rows(0).Item(0).ToString + "' , `envoye` = '" + envoye.ToString + "' where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
 
 
         bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
         bd.miseAjourBD(bd.dsCommandes, bd.daCommandes, "commandes")
+
+        viderChamp()
+
 
     End Sub
     'Modifie le contenu du combobox des produits en fonction du fournisseur sélectionné
     Private Sub cbFournisseurs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFournisseurs.SelectedIndexChanged
         cbProduits.Items.Clear()
         ds.Clear()
-        ds2.Clear()
+        ds = New DataSet
+        ds2 = New DataSet
         bd.Requete("Select * from `produits_fournisseurs` where `id_fournisseur` = '" + (cbFournisseurs.SelectedIndex + 1).ToString + "'", ds, bd.daProduitFourn, "produits_fournisseurs")
 
         If ds.Tables(0).Rows.Count > 0 Then
@@ -230,15 +235,39 @@ Public Class frmAjoutCommandes
     End Sub
     'Envoie la commande (elle ne sera que consultable)
     Sub envoyer()
-        envoye = True
+        envoye = 1
         ajouter()
 
 
     End Sub
 
     Private Sub btnEnvoyer_Click(sender As Object, e As EventArgs) Handles btnEnvoyer.Click
-        'Si la commande est dans la base de données on la modifie, si elle 
-        envoyer()
+        'Si la commande est dans la base de données on la modifie, si elle n'y est pas on l'ajoute
+        envoye = 1
+        If frmCommandes.position = -1 Then
+            envoyer()
+        Else
+
+            modifier()
+
+
+        End If
+
+        MsgBox("Votre commande a été envoyée")
+
+    End Sub
+    'Modifie le contenu du comboBox des formats en fonction du produit sélectionné
+    Private Sub cbProduits_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProduits.SelectedIndexChanged
+        cbFormat.Items.Clear()
+        ds9.Clear()
+        ds10.Clear()
+        bd.Requete("Select  * from produits where `nom_produit` = '" + cbProduits.Text + "'", ds9, bd.daProduits, "produits")
+
+        For i As Integer = 0 To ds9.Tables(0).Rows.Count - 1
+            bd.Requete("Select * from `produits_fournisseurs` where `id_produit` = '" + ds9.Tables(0).Rows(i).Item(0).ToString + "'", ds10, bd.daProduitFourn, "produits_fournisseurs")
+            cbFormat.Items.Add(ds10.Tables(0).Rows(i).Item(4))
+        Next
+
 
     End Sub
 End Class

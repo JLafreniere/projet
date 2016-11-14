@@ -9,7 +9,7 @@ Public Class frmCommandes
     Dim ds3 As New DataSet
     Dim ds4 As New DataSet
     Dim ds5 As New DataSet
-    Public position As Integer
+    Public position As Integer = -1
 
 
 

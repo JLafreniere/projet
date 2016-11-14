@@ -1,6 +1,6 @@
 ﻿Public Class frmInventaire
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
-    Dim no As Integer = 0
+    Public no As Integer = 0
     Dim flag As Boolean = False
     Private Sub frmInventaire(sender As Object, e As EventArgs) Handles MyBase.Load
         'connection bd
@@ -34,6 +34,8 @@
                                           txtRechercher.ResetText()
                                       End If
 
+                                      couleurBouton("D", btnRetirer)
+                                      couleurBouton("D", btnRetourner)
                                   End Sub
 
         'les différentes couleurs du bouton selon l'etat
@@ -53,10 +55,13 @@
     End Sub
 
 
+
     Public Sub init()
         'initialisation de la form (remplir le treeview , charger dataset...)
         remplircontroles()
         couleurBouton("D", btnEnregistrer)
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
         lblUniteEquivalence.Visible = False
@@ -91,6 +96,9 @@
 
     Sub remplircontroles() 'Remplit le treeview avec la BD
         flag = False
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
+        gbInventaire.Visible = False
         TreeView1.Hide()
         TreeView1.Nodes.Clear()
 
@@ -252,6 +260,8 @@
             lblUniteEquivalence.Visible = False
         End If
         couleurBouton("D", btnEnregistrer)
+        couleurBouton("E", btnRetirer)
+        couleurBouton("E", btnRetourner)
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
@@ -261,6 +271,8 @@
         lblUniteEquivalence.Visible = False
         gbInventaire.Visible = False
         TreeView1.SelectedNode = Nothing
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
@@ -309,7 +321,7 @@
 
     End Sub
 
-    Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtEquivalence.TextChanged, txtQuantite.TextChanged, txtDescription.TextChanged, dtpPeremption.TextChanged, dtpReception.TextChanged, txtFormat.TextChanged
+    Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtEquivalence.TextChanged, txtQuantite.TextChanged, txtDescription.TextChanged, dtpPeremption.TextChanged, dtpReception.TextChanged, txtFormat.TextChanged, txtTotal.TextChanged
         'Permet l'enregistrement quand il y a une modification
         couleurBouton("E", btnEnregistrer)
     End Sub
@@ -321,6 +333,8 @@
         txtEquivalence.Visible = False
         lblUniteEquivalence.Visible = False
         gbInventaire.Visible = False
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
     End Sub
 
     Function calcul(ByVal id As String)
@@ -465,6 +479,9 @@
                 dgvData.DataSource = dsTemp.Tables(0)
             End If
         End If
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
+        gbInventaire.Visible = False
     End Sub
 
     Private Sub btnRechercher_Click(sender As Object, e As EventArgs) Handles btnRechercher.Click

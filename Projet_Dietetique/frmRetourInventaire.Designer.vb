@@ -23,87 +23,118 @@ Partial Class frmRetourInventaire
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRetourInventaire))
-        Me.btnRechercher = New System.Windows.Forms.Button()
-        Me.btnAjouter = New System.Windows.Forms.Button()
+        Me.btnRetour = New System.Windows.Forms.Button()
+        Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.lblItem = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblUnite = New System.Windows.Forms.Label()
         Me.txtQuantite = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblQuantite = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblUniteTotal = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'btnRechercher
+        'btnRetour
         '
-        Me.btnRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRechercher.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.btnRechercher.ForeColor = System.Drawing.Color.White
-        Me.btnRechercher.Location = New System.Drawing.Point(194, 185)
-        Me.btnRechercher.Name = "btnRechercher"
-        Me.btnRechercher.Size = New System.Drawing.Size(91, 35)
-        Me.btnRechercher.TabIndex = 86
-        Me.btnRechercher.Text = "Retirer"
-        Me.btnRechercher.UseVisualStyleBackColor = False
+        Me.btnRetour.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRetour.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRetour.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btnRetour.ForeColor = System.Drawing.Color.White
+        Me.btnRetour.Location = New System.Drawing.Point(194, 185)
+        Me.btnRetour.Name = "btnRetour"
+        Me.btnRetour.Size = New System.Drawing.Size(91, 35)
+        Me.btnRetour.TabIndex = 86
+        Me.btnRetour.Text = "Retour"
+        Me.btnRetour.UseVisualStyleBackColor = False
         '
-        'btnAjouter
+        'btnAnnuler
         '
-        Me.btnAjouter.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAjouter.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(291, 185)
-        Me.btnAjouter.Name = "btnAjouter"
-        Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
-        Me.btnAjouter.TabIndex = 85
-        Me.btnAjouter.Text = "Annuler"
-        Me.btnAjouter.UseVisualStyleBackColor = False
+        Me.btnAnnuler.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAnnuler.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btnAnnuler.ForeColor = System.Drawing.Color.White
+        Me.btnAnnuler.Location = New System.Drawing.Point(291, 185)
+        Me.btnAnnuler.Name = "btnAnnuler"
+        Me.btnAnnuler.Size = New System.Drawing.Size(91, 35)
+        Me.btnAnnuler.TabIndex = 85
+        Me.btnAnnuler.Text = "Annuler"
+        Me.btnAnnuler.UseVisualStyleBackColor = False
         '
         'lblItem
         '
         Me.lblItem.AutoSize = True
         Me.lblItem.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblItem.Location = New System.Drawing.Point(141, 81)
+        Me.lblItem.Location = New System.Drawing.Point(141, 71)
         Me.lblItem.Name = "lblItem"
         Me.lblItem.Size = New System.Drawing.Size(0, 13)
         Me.lblItem.TabIndex = 84
         '
-        'Label3
+        'lblUnite
         '
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label3.Location = New System.Drawing.Point(250, 122)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(97, 13)
-        Me.Label3.TabIndex = 83
+        Me.lblUnite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.lblUnite.Location = New System.Drawing.Point(250, 108)
+        Me.lblUnite.Name = "lblUnite"
+        Me.lblUnite.Size = New System.Drawing.Size(97, 13)
+        Me.lblUnite.TabIndex = 83
         '
         'txtQuantite
         '
         Me.txtQuantite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtQuantite.Location = New System.Drawing.Point(147, 119)
+        Me.txtQuantite.Location = New System.Drawing.Point(147, 105)
         Me.txtQuantite.Name = "txtQuantite"
         Me.txtQuantite.Size = New System.Drawing.Size(100, 22)
         Me.txtQuantite.TabIndex = 82
+        Me.txtQuantite.Text = "0"
         '
-        'Label2
+        'lblQuantite
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label2.Location = New System.Drawing.Point(15, 122)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(126, 13)
-        Me.Label2.TabIndex = 81
-        Me.Label2.Text = "Quantité  à retourner : "
+        Me.lblQuantite.AutoSize = True
+        Me.lblQuantite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.lblQuantite.Location = New System.Drawing.Point(9, 108)
+        Me.lblQuantite.Name = "lblQuantite"
+        Me.lblQuantite.Size = New System.Drawing.Size(126, 13)
+        Me.lblQuantite.TabIndex = 81
+        Me.lblQuantite.Text = "Quantité  à retourner : "
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label1.Location = New System.Drawing.Point(76, 81)
+        Me.Label1.Location = New System.Drawing.Point(67, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(68, 13)
         Me.Label1.TabIndex = 80
         Me.Label1.Text = "Retourner : "
+        '
+        'lblUniteTotal
+        '
+        Me.lblUniteTotal.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.lblUniteTotal.Location = New System.Drawing.Point(250, 147)
+        Me.lblUniteTotal.Name = "lblUniteTotal"
+        Me.lblUniteTotal.Size = New System.Drawing.Size(97, 13)
+        Me.lblUniteTotal.TabIndex = 89
+        '
+        'txtTotal
+        '
+        Me.txtTotal.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtTotal.Location = New System.Drawing.Point(147, 144)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.ReadOnly = True
+        Me.txtTotal.Size = New System.Drawing.Size(100, 22)
+        Me.txtTotal.TabIndex = 88
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.Label5.Location = New System.Drawing.Point(27, 147)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(108, 13)
+        Me.Label5.TabIndex = 87
+        Me.Label5.Text = "Total en inventaire :"
         '
         'frmRetourInventaire
         '
@@ -111,27 +142,34 @@ Partial Class frmRetourInventaire
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(394, 232)
-        Me.Controls.Add(Me.btnRechercher)
-        Me.Controls.Add(Me.btnAjouter)
+        Me.Controls.Add(Me.lblUniteTotal)
+        Me.Controls.Add(Me.txtTotal)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.btnRetour)
+        Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.lblItem)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lblUnite)
         Me.Controls.Add(Me.txtQuantite)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblQuantite)
         Me.Controls.Add(Me.Label1)
         Me.ForeColor = System.Drawing.Color.Black
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmRetourInventaire"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Retour en inventaire"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents btnRechercher As Button
-    Friend WithEvents btnAjouter As Button
+    Friend WithEvents btnRetour As Button
+    Friend WithEvents btnAnnuler As Button
     Friend WithEvents lblItem As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblUnite As Label
     Friend WithEvents txtQuantite As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblQuantite As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents lblUniteTotal As Label
+    Friend WithEvents txtTotal As TextBox
+    Friend WithEvents Label5 As Label
 End Class

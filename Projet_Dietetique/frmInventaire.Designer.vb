@@ -386,7 +386,7 @@ Partial Class frmInventaire
         Me.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetirer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRetirer.ForeColor = System.Drawing.Color.White
-        Me.btnRetirer.Location = New System.Drawing.Point(933, 100)
+        Me.btnRetirer.Location = New System.Drawing.Point(1054, 100)
         Me.btnRetirer.Name = "btnRetirer"
         Me.btnRetirer.Size = New System.Drawing.Size(91, 35)
         Me.btnRetirer.TabIndex = 81
@@ -399,7 +399,7 @@ Partial Class frmInventaire
         Me.btnRetourner.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetourner.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRetourner.ForeColor = System.Drawing.Color.White
-        Me.btnRetourner.Location = New System.Drawing.Point(1030, 100)
+        Me.btnRetourner.Location = New System.Drawing.Point(1151, 100)
         Me.btnRetourner.Name = "btnRetourner"
         Me.btnRetourner.Size = New System.Drawing.Size(91, 35)
         Me.btnRetourner.TabIndex = 80

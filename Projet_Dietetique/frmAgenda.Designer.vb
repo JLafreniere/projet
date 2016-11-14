@@ -37,10 +37,17 @@ Partial Class frmAgenda
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnEnregistrerMessage = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.dpDebutAffichage = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dpFinAffichage = New System.Windows.Forms.DateTimePicker()
+        Me.cbPeriodeAffichage = New System.Windows.Forms.CheckBox()
+        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Panel1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAjouter
@@ -174,20 +181,12 @@ Partial Class frmAgenda
         '
         'btnEnregistrerMessage
         '
-        Me.btnEnregistrerMessage.Location = New System.Drawing.Point(785, 349)
+        Me.btnEnregistrerMessage.Location = New System.Drawing.Point(783, 375)
         Me.btnEnregistrerMessage.Name = "btnEnregistrerMessage"
         Me.btnEnregistrerMessage.Size = New System.Drawing.Size(75, 23)
         Me.btnEnregistrerMessage.TabIndex = 13
         Me.btnEnregistrerMessage.Text = "Enregistrer"
         Me.btnEnregistrerMessage.UseVisualStyleBackColor = True
-        '
-        'ListBox1
-        '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(930, 169)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
-        Me.ListBox1.TabIndex = 14
         '
         'Label4
         '
@@ -200,7 +199,7 @@ Partial Class frmAgenda
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(975, 270)
+        Me.Button2.Location = New System.Drawing.Point(976, 330)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 16
@@ -208,14 +207,81 @@ Partial Class frmAgenda
         Me.Button2.UseVisualStyleBackColor = True
         Me.Button2.Visible = False
         '
+        'dpDebutAffichage
+        '
+        Me.dpDebutAffichage.Location = New System.Drawing.Point(22, 35)
+        Me.dpDebutAffichage.Name = "dpDebutAffichage"
+        Me.dpDebutAffichage.Size = New System.Drawing.Size(200, 20)
+        Me.dpDebutAffichage.TabIndex = 17
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.dpFinAffichage)
+        Me.GroupBox1.Controls.Add(Me.dpDebutAffichage)
+        Me.GroupBox1.Location = New System.Drawing.Point(618, 372)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(240, 110)
+        Me.GroupBox1.TabIndex = 18
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Période"
+        Me.GroupBox1.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(22, 58)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(21, 13)
+        Me.Label6.TabIndex = 19
+        Me.Label6.Text = "Fin"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(22, 16)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(36, 13)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "Début"
+        '
+        'dpFinAffichage
+        '
+        Me.dpFinAffichage.Location = New System.Drawing.Point(22, 74)
+        Me.dpFinAffichage.Name = "dpFinAffichage"
+        Me.dpFinAffichage.Size = New System.Drawing.Size(200, 20)
+        Me.dpFinAffichage.TabIndex = 0
+        '
+        'cbPeriodeAffichage
+        '
+        Me.cbPeriodeAffichage.AutoSize = True
+        Me.cbPeriodeAffichage.Location = New System.Drawing.Point(640, 350)
+        Me.cbPeriodeAffichage.Name = "cbPeriodeAffichage"
+        Me.cbPeriodeAffichage.Size = New System.Drawing.Size(170, 17)
+        Me.cbPeriodeAffichage.TabIndex = 19
+        Me.cbPeriodeAffichage.Text = "Définir une période d'affichage"
+        Me.cbPeriodeAffichage.UseVisualStyleBackColor = True
+        '
+        'ListView1
+        '
+        Me.ListView1.Location = New System.Drawing.Point(930, 172)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(121, 97)
+        Me.ListView1.TabIndex = 20
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.List
+        '
         'frmAgenda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.cbPeriodeAffichage)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.btnEnregistrerMessage)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -227,6 +293,8 @@ Partial Class frmAgenda
         Me.Text = "Agenda"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -246,7 +314,13 @@ Partial Class frmAgenda
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnEnregistrerMessage As Button
-    Friend WithEvents ListBox1 As ListBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents dpDebutAffichage As DateTimePicker
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents dpFinAffichage As DateTimePicker
+    Friend WithEvents cbPeriodeAffichage As CheckBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ListView1 As ListView
 End Class

@@ -237,7 +237,7 @@ Public Class frmAjoutCommandes
     End Sub
 
     Private Sub btnEnvoyer_Click(sender As Object, e As EventArgs) Handles btnEnvoyer.Click
-
+        'Si la commande est dans la base de données on la modifie, si elle 
         envoyer()
 
     End Sub

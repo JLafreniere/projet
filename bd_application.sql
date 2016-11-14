@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 08 Novembre 2016 à 19:04
+-- Généré le :  Lun 07 Novembre 2016 à 21:56
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -50,23 +50,12 @@ INSERT INTO `categories` (`ID_Categorie`, `Nom_Categorie`, `Description`) VALUES
 CREATE TABLE IF NOT EXISTS `commandes` (
   `ID_Commande` int(11) NOT NULL AUTO_INCREMENT,
   `Date_Commande` date NOT NULL,
-  `fournisseur` int(12) NOT NULL,
+  `Total` double NOT NULL,
+  `Produits_Fournisseurs` int(12) NOT NULL,
   `No_Reference` varchar(25) DEFAULT NULL,
   `Note` text,
-  `envoye` tinyint(1) NOT NULL,
-  PRIMARY KEY (`ID_Commande`),
-  KEY `fournisseur` (`fournisseur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Contenu de la table `commandes`
---
-
-INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`) VALUES
-(1, '2016-11-24', 1, '5453', 'Livrée le matin', 0),
-(2, '2016-11-29', 1, '7654', 'Pas de lait dans la commande', 0),
-(3, '2016-11-24', 1, '745024', 'Allo', 1),
-(4, '2016-11-21', 1, '249064', '', 1);
+  PRIMARY KEY (`ID_Commande`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -75,19 +64,8 @@ INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Refe
 --
 
 CREATE TABLE IF NOT EXISTS `details_commande` (
-  `ID_COMMANDE` int(11) NOT NULL,
-  `produit` int(11) NOT NULL,
-  `total` double NOT NULL,
-  KEY `ID_COMMANDE` (`ID_COMMANDE`),
-  KEY `produit` (`produit`)
+  `ID_COMMANDE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `details_commande`
---
-
-INSERT INTO `details_commande` (`ID_COMMANDE`, `produit`, `total`) VALUES
-(2, 2, 50);
 
 -- --------------------------------------------------------
 
@@ -153,15 +131,7 @@ CREATE TABLE IF NOT EXISTS `fournisseurs` (
   `Frais_Livraison` double DEFAULT NULL,
   `Courriel` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID_Fournisseur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `fournisseurs`
---
-
-INSERT INTO `fournisseurs` (`ID_Fournisseur`, `Nom_Fournisseur`, `Note`, `Adresse`, `Ville`, `Province`, `Code_Postal`, `Telephone`, `Poste`, `Cell`, `Fax`, `Nom_Contact`, `Jour_Commande`, `Jour_Livraison`, `Delai_Commande`, `Cout_Minimum`, `Frais_Livraison`, `Courriel`) VALUES
-(1, 'IGA Marché Paquette', NULL, '2500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G5G 4F4', '(819)373-1234', '1234', '(819)692-1234', '(819)373-9841', 'John Doe', 'Lundi', 'Mardi', 1, 50, 10, 'igaTR@iga.ca'),
-(2, 'Métro Fournier', NULL, '2500 Aubuchon', 'Trois-Rivières', 'Québec', 'G6T 4D1', '(819)373-1234', '1234', '(819)609-0111', '(819)423-1234', 'Jean Fournier', 'Mardi', 'Vendredi', 3, 50, 5, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -205,8 +175,19 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
   `message` text NOT NULL,
+  `debut_affichage` date DEFAULT NULL,
+  `fin_affichage` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `titre`, `message`, `debut_affichage`, `fin_affichage`) VALUES
+(1, 'Message test', 'Test contenu lorem ipsumndaslkjfpaodkf aosfjsdapoifsfksafpj`k^sadfas`dfbtnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)', '2016-11-07', '2016-11-07'),
+(2, 'asdfasdf', 'sadfasdfasdfsadf', '2016-11-07', '2016-11-07'),
+(3, 'sadfsdafgahfdh', 'gdfhgdfhg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -250,17 +231,8 @@ CREATE TABLE IF NOT EXISTS `produits_fournisseurs` (
   `Prix` double DEFAULT NULL,
   `Format_Achat` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ID_Produit` (`ID_Produit`),
-  KEY `ID_Fournisseur` (`ID_Fournisseur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `produits_fournisseurs`
---
-
-INSERT INTO `produits_fournisseurs` (`id`, `ID_Produit`, `ID_Fournisseur`, `Prix`, `Format_Achat`) VALUES
-(1, 2, 1, 50, 'Sac de 500g'),
-(2, 3, 1, 25, 'Sac de 1kg');
+  KEY `ID_Produit` (`ID_Produit`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -293,19 +265,6 @@ CREATE TABLE IF NOT EXISTS `recettes` (
 --
 
 --
--- Contraintes pour la table `commandes`
---
-ALTER TABLE `commandes`
-  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`fournisseur`) REFERENCES `fournisseurs` (`ID_Fournisseur`);
-
---
--- Contraintes pour la table `details_commande`
---
-ALTER TABLE `details_commande`
-  ADD CONSTRAINT `details_commande_ibfk_2` FOREIGN KEY (`produit`) REFERENCES `produits` (`ID_Produit`),
-  ADD CONSTRAINT `details_commande_ibfk_1` FOREIGN KEY (`ID_COMMANDE`) REFERENCES `commandes` (`ID_Commande`);
-
---
 -- Contraintes pour la table `details_recette`
 --
 ALTER TABLE `details_recette`
@@ -328,7 +287,6 @@ ALTER TABLE `produits`
 -- Contraintes pour la table `produits_fournisseurs`
 --
 ALTER TABLE `produits_fournisseurs`
-  ADD CONSTRAINT `produits_fournisseurs_ibfk_2` FOREIGN KEY (`ID_Fournisseur`) REFERENCES `fournisseurs` (`ID_Fournisseur`),
   ADD CONSTRAINT `produits_fournisseurs_ibfk_1` FOREIGN KEY (`ID_Produit`) REFERENCES `produits` (`ID_Produit`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -380,6 +380,7 @@ Public Class frmProduits
     End Sub
 
 
+
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown
         'recherche sur "ENTER"'
         If e.KeyCode = Keys.Enter Then

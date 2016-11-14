@@ -13,6 +13,28 @@ Public Class frmAgenda
         Me.WindowState = FormWindowState.Maximized
         Dim messages = File.ReadAllText("index.html")
         MsgBox(messages)
+        dpFinAffichage.MinDate = Date.Today
+
+        remplirListViewMessage()
+
+
+    End Sub
+
+
+
+    Private Sub remplirListViewMessage()
+        ListView1.Items.Clear()
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter
+
+        bd.miseAjourDS(ds, da, "select * from messages", 0)
+
+
+        For Each r As DataRow In ds.Tables(0).Rows
+            ListView1.Items.Add(r.Item(1))
+            ListView1.Items(ListView1.Items.Count - 1).Tag = r.Item(0)
+        Next
+
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
@@ -53,8 +75,8 @@ Public Class frmAgenda
 
     End Sub
 
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
-        If ListBox1.SelectedItems.Count > 0 Then
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+        If ListView1.SelectedItems.Count > 0 Then
             Button2.Visible = True
         Else Button2.Visible = False
         End If
@@ -70,6 +92,18 @@ Public Class frmAgenda
             Dim dr As DataRow = ds.Tables(0).NewRow
             dr(1) = TxtTitreMessage.Text
             dr(2) = txtMessage.Text
+            If cbPeriodeAffichage.Checked Then
+                dr(3) = dpDebutAffichage.Value
+                dr(4) = dpFinAffichage.Value
+            Else
+                Dim d As DateTime = DateTime.Today
+                d.AddYears(2000)
+
+                Dim d1 = d
+                d.AddYears(-1000)
+                dr(3) = d1
+                dr(4) = d
+            End If
             ds.Tables(0).Rows.Add(dr)
 
             bd.miseAjourBD(ds, da, 0)
@@ -78,11 +112,47 @@ Public Class frmAgenda
             TxtTitreMessage.Text = ""
             frmAccueil.remplirIndexHtml()
 
+            MsgBox("Message enregistré")
+            remplirListViewMessage()
         ElseIf txtMessage.Text = "" Then
             MsgBox("Veuillez composer un message")
         Else
             MsgBox("Veuillez entrer un titre")
         End If
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles cbPeriodeAffichage.CheckedChanged
+
+        Dim cb As CheckBox = sender
+        GroupBox1.Visible = cb.Checked
+
+        If Not cb.Checked Then
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 25)
+        Else
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 150)
+        End If
+
+    End Sub
+
+    Private Sub dpDebutAffichage_ValueChanged(sender As Object, e As EventArgs) Handles dpDebutAffichage.ValueChanged
+        dpFinAffichage.MinDate = dpDebutAffichage.Value
+    End Sub
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        For Each i As ListViewItem In ListView1.SelectedItems
+            bd.nonQuery("delete from messages where id ='" & i.Tag & "'")
+        Next
+        remplirListViewMessage()
+        frmAccueil.remplirIndexHtml()
+
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
 End Class

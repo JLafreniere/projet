@@ -40,8 +40,21 @@ Public Class frmAjoutInventaire
         txtEquivalence.Visible = False
         cmbEquivalence.Visible = False
 
+        couleurBouton("D", btnAjouter)
 
+    End Sub
 
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
     End Sub
 
 
@@ -84,7 +97,7 @@ Public Class frmAjoutInventaire
 
         effacerText()
         Me.Close()
-        frmInventaire.init()
+        frmInventaire.plusDeFraicheurSubway6PouceA3et99()
         frmInventaire.Show()
     End Sub
 
@@ -143,6 +156,14 @@ Public Class frmAjoutInventaire
             End If
 
         Catch exc As Exception : End Try
+    End Sub
+
+    Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged
+        If txtNom.Text = "" Then
+            couleurBouton("D", btnAjouter)
+        Else
+            couleurBouton("E", btnAjouter)
+        End If
     End Sub
 End Class
 

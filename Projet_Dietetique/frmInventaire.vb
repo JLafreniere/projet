@@ -17,25 +17,7 @@
 
         'click
         AddHandler refresh.Click, Sub(sender2, eventargs2)
-                                      'Refresh pour la grille
-                                      If btnDGV.Text = "Grille" Then
-                                          gbInventaire.Visible = False
-                                          txtRechercher.ResetText()
-                                          bd.dsProduits.Clear()
-                                          remplircontroles()
-
-                                          'Refresh pour le treeview
-                                      Else
-                                          Dim dsTemp As New DataSet
-
-                                          dsTemp.Clear()
-                                          bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
-                                          dgvData.DataSource = dsTemp.Tables(0)
-                                          txtRechercher.ResetText()
-                                      End If
-
-                                      couleurBouton("D", btnRetirer)
-                                      couleurBouton("D", btnRetourner)
+                                      plusDeFraicheurSubway6PouceA3et99()
                                   End Sub
 
         'les différentes couleurs du bouton selon l'etat
@@ -54,6 +36,38 @@
         init()
     End Sub
 
+    Public Sub plusDeFraicheurSubway6PouceA3et99()
+        If btnDGV.Text = "Grille" Then
+            gbInventaire.Visible = False
+            txtRechercher.ResetText()
+            bd.dsProduits.Clear()
+            remplircontroles()
+
+            'Refresh pour le treeview
+        Else
+            Dim dsTemp As New DataSet
+
+            dsTemp.Clear()
+            bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
+            dgvData.DataSource = dsTemp.Tables(0)
+            txtRechercher.ResetText()
+        End If
+
+        couleurBouton("D", btnRetirer)
+        couleurBouton("D", btnRetourner)
+    End Sub
+
+    '#Region
+    '    Const PrixSixPouce = 3.99
+
+    '    Public Sub way()
+    '        sixPouces(PrixSixPouce)
+    '    End Sub
+
+    '    Public Sub sixPouces(ByVal prix)
+
+    '    End Sub
+    '#End Region
 
 
     Public Sub init()
@@ -433,18 +447,18 @@
 
             Else
                 'requete pour categorie
-                bd.Requete("select * from inventaire, categories, produits where upper(Nom_Categorie) like '%" & txtRechercher.Text.ToUpper & "%' and id_categorie = categorie and id_produit =  produit", bd.dsInventaire, bd.daInventaire, "inventaire")
+                bd.Requete("select * from inventaire, categories, produits where upper(Nom_Categorie) like '%" & Replace(txtRechercher.Text, "'", "''").ToUpper & "%' and id_categorie = categorie and id_produit =  produit", bd.dsInventaire, bd.daInventaire, "inventaire")
 
                 If bd.dsInventaire.Tables(0).Rows.Count = 0 Then
                     bd.dsInventaire.Clear()
 
                     'requete pour produits
-                    bd.Requete("select * from inventaire, produits where upper(Nom_produit) like '%" & txtRechercher.Text.ToUpper & "%' and id_produit =  produit", bd.dsInventaire, bd.daInventaire, "inventaire")
+                    bd.Requete("select * from inventaire, produits where upper(Nom_produit) like '%" & Replace(txtRechercher.Text, "'", "''").ToUpper & "%' and id_produit =  produit", bd.dsInventaire, bd.daInventaire, "inventaire")
 
                     If bd.dsInventaire.Tables(0).Rows.Count = 0 Then
                         bd.dsInventaire.Clear()
                         'requete pour inventaire
-                        bd.Requete("select * from inventaire where upper(nom) like '%" & txtRechercher.Text.ToUpper & "%'", bd.dsInventaire, bd.daInventaire, "inventaire")
+                        bd.Requete("select * from inventaire where upper(nom) like '%" & Replace(txtRechercher.Text, "'", "''").ToUpper & "%'", bd.dsInventaire, bd.daInventaire, "inventaire")
 
 
                     End If
@@ -488,6 +502,7 @@
         recherche()
     End Sub
 
+
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown
         'recherche quand "Enter"
         If e.KeyCode = Keys.Enter Then
@@ -505,10 +520,11 @@
             Dim dsTemp As New DataSet
             TreeView1.Hide()
             dsTemp.Clear()
-            bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
+            bd.Requete("select id_inventaire, nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption, upc from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
             dgvData.DataSource = dsTemp.Tables(0)
             dgvData.Visible = True
             dgvData.RowHeadersVisible = False
+            dgvData.Columns(0).Visible = False
 
 
         Else
@@ -526,5 +542,30 @@
 
     Private Sub btnRetourner_Click(sender As Object, e As EventArgs) Handles btnRetourner.Click
         frmRetourInventaire.Show()
+    End Sub
+
+
+    Private Sub dgvData_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dgvData.RowEnter
+        'Permet de prendre L'id du produit et de le garder dans une variable
+        Try
+            If dgvData.SelectedRows.Count = 1 Then
+                ' MsgBox(dgvData.SelectedRows(0).Cells(0).Value.ToString)
+                no = dgvData.SelectedRows(0).Cells(0).Value.ToString
+                couleurBouton("E", btnRetirer)
+                couleurBouton("E", btnRetourner)
+
+            Else
+                couleurBouton("D", btnRetirer)
+                couleurBouton("D", btnRetourner)
+            End If
+        Catch ex As Exception : End Try
+    End Sub
+
+    Private Sub frmInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

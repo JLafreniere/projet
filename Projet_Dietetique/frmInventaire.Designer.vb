@@ -152,6 +152,7 @@ Partial Class frmInventaire
         '
         Me.txtQuantite.Location = New System.Drawing.Point(144, 72)
         Me.txtQuantite.Name = "txtQuantite"
+        Me.txtQuantite.ShortcutsEnabled = False
         Me.txtQuantite.Size = New System.Drawing.Size(80, 22)
         Me.txtQuantite.TabIndex = 9
         '
@@ -180,6 +181,7 @@ Partial Class frmInventaire
         '
         Me.txtNom.Location = New System.Drawing.Point(144, 30)
         Me.txtNom.Name = "txtNom"
+        Me.txtNom.ShortcutsEnabled = False
         Me.txtNom.Size = New System.Drawing.Size(317, 22)
         Me.txtNom.TabIndex = 5
         '
@@ -235,6 +237,7 @@ Partial Class frmInventaire
         '
         Me.txtTotal.Location = New System.Drawing.Point(147, 356)
         Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.ShortcutsEnabled = False
         Me.txtTotal.Size = New System.Drawing.Size(80, 22)
         Me.txtTotal.TabIndex = 23
         '
@@ -253,6 +256,7 @@ Partial Class frmInventaire
         '
         Me.txtFormat.Location = New System.Drawing.Point(310, 72)
         Me.txtFormat.Name = "txtFormat"
+        Me.txtFormat.ShortcutsEnabled = False
         Me.txtFormat.Size = New System.Drawing.Size(80, 22)
         Me.txtFormat.TabIndex = 21
         '
@@ -281,6 +285,7 @@ Partial Class frmInventaire
         '
         Me.txtEquivalence.Location = New System.Drawing.Point(310, 108)
         Me.txtEquivalence.Name = "txtEquivalence"
+        Me.txtEquivalence.ShortcutsEnabled = False
         Me.txtEquivalence.Size = New System.Drawing.Size(80, 22)
         Me.txtEquivalence.TabIndex = 18
         '
@@ -315,9 +320,11 @@ Partial Class frmInventaire
         Me.dgvData.AllowUserToResizeColumns = False
         Me.dgvData.AllowUserToResizeRows = False
         Me.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.dgvData.BackgroundColor = System.Drawing.SystemColors.ControlDark
         Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvData.GridColor = System.Drawing.SystemColors.Control
-        Me.dgvData.Location = New System.Drawing.Point(223, 141)
+        Me.dgvData.Location = New System.Drawing.Point(222, 141)
+        Me.dgvData.MultiSelect = False
         Me.dgvData.Name = "dgvData"
         Me.dgvData.ReadOnly = True
         Me.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect

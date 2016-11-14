@@ -69,10 +69,10 @@ Public Class frmAjoutCommandes
         'On recherche le no du fournisseur qui correspond à l'élément sélectionné du comboBox des Founisseurs
         bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", ds5, bd.daFournisseurs, "fournisseurs")
 
-
-        drNouvel(2) = ds5.Tables(0).Rows(0).Item(0)
-
-
+        Try
+            drNouvel(2) = ds5.Tables(0).Rows(0).Item(0)
+        Catch exc As Exception
+        End Try
         'Le no de référence sera un nombre aléatoire
         Dim generator As New Random
 

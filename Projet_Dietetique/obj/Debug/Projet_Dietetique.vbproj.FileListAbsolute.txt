@@ -98,3 +98,8 @@ H:\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_D
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
+C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml

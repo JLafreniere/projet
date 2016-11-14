@@ -5,7 +5,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmAccueil
 
-    ' Par jonathan lafreniere
+    ' Par Jonathan Lafreniere
     ' Calendrier des évenements à venir
     ' Évènements à venir cette semaine
     Dim btn As PanelOptionsAccueil
@@ -50,10 +50,6 @@ Public Class frmAccueil
         panel1.Controls.Add(message)
 
 
-
-
-
-
         message.Navigate("file:///" & IO.Path.GetFullPath(".\index.html"))
         Controls.Add(panel1)
 
@@ -84,6 +80,7 @@ Public Class frmAccueil
         Dim da = New MySqlDataAdapter
         remplirIndexHtml()
 
+        
     End Sub
 
     Public Sub remplirIndexHtml()
@@ -196,9 +193,7 @@ Public Class frmAccueil
     Public Sub changerDateSelectionnee(ByVal d As Date)
         _date_selectionne = d
         lblSemaine.Text = "Semaine du " & GetPreviousSunday(_date_selectionne).Day & " " & MonthName(GetPreviousSunday(_date_selectionne).Month) & " au " & GetNextSaturday(_date_selectionne).Day & " " & MonthName(GetNextSaturday(_date_selectionne).Month)
-        ' Controls.Remove(cal)
-        cal.actualiserComposants() ' = New Calendrier(240, 340, 700, 612, _date_selectionne)
-        'Controls.Add(cal)
+        cal.actualiserComposants()
         p.remplirSemaine(_date_selectionne)
 
     End Sub
@@ -224,8 +219,8 @@ Public Class frmAccueil
         MsgBox(Me.WindowState)
     End Sub
 
+    Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
+    End Sub
 End Class
 

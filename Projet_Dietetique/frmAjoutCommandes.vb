@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data
+Imports NUnit.Framework
 'Jonathan Villeneuve
 Public Class frmAjoutCommandes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")

@@ -379,7 +379,9 @@ Public Class frmProduits
         remplircontroles()
     End Sub
 
+    Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown
         'recherche sur "ENTER"'

@@ -32,6 +32,7 @@ Public Class frmAjoutRecettes
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
         txtId.Visible = False
         lblId.Visible = False
+
         Dim ctl As Control
         For Each ctl In Me.Controls
             AddHandler ctl.KeyDown, AddressOf controleSuivant
@@ -100,7 +101,7 @@ Public Class frmAjoutRecettes
 
 
         Next
-
+        '); delete from recettes;
 
 
         drnouvel(12) = allergies

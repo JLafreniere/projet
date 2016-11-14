@@ -63,9 +63,10 @@ Partial Class frmProduits
         'ckPerissable
         '
         Me.ckPerissable.AutoSize = True
+        Me.ckPerissable.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckPerissable.Location = New System.Drawing.Point(97, 240)
         Me.ckPerissable.Name = "ckPerissable"
-        Me.ckPerissable.Size = New System.Drawing.Size(74, 17)
+        Me.ckPerissable.Size = New System.Drawing.Size(77, 17)
         Me.ckPerissable.TabIndex = 69
         Me.ckPerissable.Text = "Périssable"
         Me.ckPerissable.UseVisualStyleBackColor = True
@@ -73,9 +74,10 @@ Partial Class frmProduits
         'ckTaxeFederale
         '
         Me.ckTaxeFederale.AutoSize = True
+        Me.ckTaxeFederale.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckTaxeFederale.Location = New System.Drawing.Point(316, 240)
         Me.ckTaxeFederale.Name = "ckTaxeFederale"
-        Me.ckTaxeFederale.Size = New System.Drawing.Size(108, 17)
+        Me.ckTaxeFederale.Size = New System.Drawing.Size(111, 17)
         Me.ckTaxeFederale.TabIndex = 68
         Me.ckTaxeFederale.Text = "Taxable Federale"
         Me.ckTaxeFederale.UseVisualStyleBackColor = True
@@ -83,7 +85,7 @@ Partial Class frmProduits
         'lblCategorie
         '
         Me.lblCategorie.AutoSize = True
-        Me.lblCategorie.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCategorie.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.lblCategorie.Location = New System.Drawing.Point(71, 66)
         Me.lblCategorie.Name = "lblCategorie"
         Me.lblCategorie.Size = New System.Drawing.Size(63, 13)
@@ -93,15 +95,17 @@ Partial Class frmProduits
         'ckTaxeProvinciale
         '
         Me.ckTaxeProvinciale.AutoSize = True
+        Me.ckTaxeProvinciale.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckTaxeProvinciale.Location = New System.Drawing.Point(189, 240)
         Me.ckTaxeProvinciale.Name = "ckTaxeProvinciale"
-        Me.ckTaxeProvinciale.Size = New System.Drawing.Size(119, 17)
+        Me.ckTaxeProvinciale.Size = New System.Drawing.Size(122, 17)
         Me.ckTaxeProvinciale.TabIndex = 67
         Me.ckTaxeProvinciale.Text = "Taxable Provinciale"
         Me.ckTaxeProvinciale.UseVisualStyleBackColor = True
         '
         'cmbCategorie
         '
+        Me.cmbCategorie.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbCategorie.FormattingEnabled = True
         Me.cmbCategorie.Location = New System.Drawing.Point(153, 63)
         Me.cmbCategorie.Name = "cmbCategorie"
@@ -110,6 +114,7 @@ Partial Class frmProduits
         '
         'txtDescription2
         '
+        Me.txtDescription2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtDescription2.Location = New System.Drawing.Point(155, 103)
         Me.txtDescription2.Name = "txtDescription2"
         Me.txtDescription2.Size = New System.Drawing.Size(268, 85)
@@ -119,7 +124,7 @@ Partial Class frmProduits
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Label2.Location = New System.Drawing.Point(70, 103)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 13)
@@ -129,9 +134,10 @@ Partial Class frmProduits
         'ckPerissable2
         '
         Me.ckPerissable2.AutoSize = True
+        Me.ckPerissable2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckPerissable2.Location = New System.Drawing.Point(94, 240)
         Me.ckPerissable2.Name = "ckPerissable2"
-        Me.ckPerissable2.Size = New System.Drawing.Size(74, 17)
+        Me.ckPerissable2.Size = New System.Drawing.Size(77, 17)
         Me.ckPerissable2.TabIndex = 66
         Me.ckPerissable2.Text = "Périssable"
         Me.ckPerissable2.UseVisualStyleBackColor = True
@@ -139,9 +145,10 @@ Partial Class frmProduits
         'ckTaxeFederale2
         '
         Me.ckTaxeFederale2.AutoSize = True
+        Me.ckTaxeFederale2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckTaxeFederale2.Location = New System.Drawing.Point(316, 240)
         Me.ckTaxeFederale2.Name = "ckTaxeFederale2"
-        Me.ckTaxeFederale2.Size = New System.Drawing.Size(108, 17)
+        Me.ckTaxeFederale2.Size = New System.Drawing.Size(111, 17)
         Me.ckTaxeFederale2.TabIndex = 65
         Me.ckTaxeFederale2.Text = "Taxable Fédérale"
         Me.ckTaxeFederale2.UseVisualStyleBackColor = True
@@ -149,9 +156,10 @@ Partial Class frmProduits
         'ckTaxeProvinciale2
         '
         Me.ckTaxeProvinciale2.AutoSize = True
+        Me.ckTaxeProvinciale2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.ckTaxeProvinciale2.Location = New System.Drawing.Point(189, 240)
         Me.ckTaxeProvinciale2.Name = "ckTaxeProvinciale2"
-        Me.ckTaxeProvinciale2.Size = New System.Drawing.Size(119, 17)
+        Me.ckTaxeProvinciale2.Size = New System.Drawing.Size(122, 17)
         Me.ckTaxeProvinciale2.TabIndex = 64
         Me.ckTaxeProvinciale2.Text = "Taxable Provinciale"
         Me.ckTaxeProvinciale2.UseVisualStyleBackColor = True
@@ -159,7 +167,7 @@ Partial Class frmProduits
         'lblCategorie2
         '
         Me.lblCategorie2.AutoSize = True
-        Me.lblCategorie2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCategorie2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.lblCategorie2.Location = New System.Drawing.Point(79, 66)
         Me.lblCategorie2.Name = "lblCategorie2"
         Me.lblCategorie2.Size = New System.Drawing.Size(63, 13)
@@ -171,7 +179,7 @@ Partial Class frmProduits
         Me.btnSupprimer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnSupprimer.Enabled = False
         Me.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnSupprimer.ForeColor = System.Drawing.Color.White
         Me.btnSupprimer.Location = New System.Drawing.Point(290, 290)
         Me.btnSupprimer.Name = "btnSupprimer"
@@ -182,6 +190,7 @@ Partial Class frmProduits
         '
         'cmbCategorie2
         '
+        Me.cmbCategorie2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbCategorie2.FormattingEnabled = True
         Me.cmbCategorie2.Location = New System.Drawing.Point(155, 62)
         Me.cmbCategorie2.Name = "cmbCategorie2"
@@ -192,7 +201,7 @@ Partial Class frmProduits
         '
         Me.btnAnnulerModification.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnAnnulerModification.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnnulerModification.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnnulerModification.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAnnulerModification.ForeColor = System.Drawing.Color.White
         Me.btnAnnulerModification.Location = New System.Drawing.Point(386, 290)
         Me.btnAnnulerModification.Name = "btnAnnulerModification"
@@ -205,7 +214,7 @@ Partial Class frmProduits
         '
         Me.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEnregistrer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnregistrer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnEnregistrer.ForeColor = System.Drawing.Color.White
         Me.btnEnregistrer.Location = New System.Drawing.Point(195, 290)
         Me.btnEnregistrer.Name = "btnEnregistrer"
@@ -218,7 +227,7 @@ Partial Class frmProduits
         '
         Me.btnAnnulerAjout.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnAnnulerAjout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnnulerAjout.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnnulerAjout.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAnnulerAjout.ForeColor = System.Drawing.Color.White
         Me.btnAnnulerAjout.Location = New System.Drawing.Point(375, 288)
         Me.btnAnnulerAjout.Name = "btnAnnulerAjout"
@@ -231,7 +240,7 @@ Partial Class frmProduits
         '
         Me.btnAjouter.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
         Me.btnAjouter.Location = New System.Drawing.Point(283, 288)
         Me.btnAjouter.Name = "btnAjouter"
@@ -243,7 +252,7 @@ Partial Class frmProduits
         'lblAjouter
         '
         Me.lblAjouter.AutoSize = True
-        Me.lblAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.lblAjouter.Location = New System.Drawing.Point(39, 28)
         Me.lblAjouter.Name = "lblAjouter"
         Me.lblAjouter.Size = New System.Drawing.Size(96, 13)
@@ -252,9 +261,10 @@ Partial Class frmProduits
         '
         'txtAjouter
         '
+        Me.txtAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtAjouter.Location = New System.Drawing.Point(153, 25)
         Me.txtAjouter.Name = "txtAjouter"
-        Me.txtAjouter.Size = New System.Drawing.Size(268, 20)
+        Me.txtAjouter.Size = New System.Drawing.Size(268, 22)
         Me.txtAjouter.TabIndex = 52
         '
         'Panel1
@@ -275,7 +285,7 @@ Partial Class frmProduits
         Me.btnRechercher.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnRechercher.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRechercher.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRechercher.ForeColor = System.Drawing.Color.White
         Me.btnRechercher.Location = New System.Drawing.Point(314, 14)
         Me.btnRechercher.Name = "btnRechercher"
@@ -307,6 +317,7 @@ Partial Class frmProduits
         '
         'txtDescription
         '
+        Me.txtDescription.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtDescription.Location = New System.Drawing.Point(153, 100)
         Me.txtDescription.Name = "txtDescription"
         Me.txtDescription.Size = New System.Drawing.Size(268, 98)
@@ -316,7 +327,7 @@ Partial Class frmProduits
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Label1.Location = New System.Drawing.Point(62, 103)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 13)
@@ -328,7 +339,7 @@ Partial Class frmProduits
         Me.btnVoirAjouter.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnVoirAjouter.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnVoirAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnVoirAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVoirAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnVoirAjouter.ForeColor = System.Drawing.Color.White
         Me.btnVoirAjouter.Location = New System.Drawing.Point(409, 14)
         Me.btnVoirAjouter.Name = "btnVoirAjouter"
@@ -351,6 +362,7 @@ Partial Class frmProduits
         Me.gbModifier.Controls.Add(Me.btnEnregistrer)
         Me.gbModifier.Controls.Add(Me.lblModifier)
         Me.gbModifier.Controls.Add(Me.txtModifier)
+        Me.gbModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.gbModifier.Location = New System.Drawing.Point(593, 55)
         Me.gbModifier.Name = "gbModifier"
         Me.gbModifier.Size = New System.Drawing.Size(500, 350)
@@ -361,7 +373,7 @@ Partial Class frmProduits
         'lblModifier
         '
         Me.lblModifier.AutoSize = True
-        Me.lblModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.lblModifier.Location = New System.Drawing.Point(46, 32)
         Me.lblModifier.Name = "lblModifier"
         Me.lblModifier.Size = New System.Drawing.Size(99, 13)
@@ -370,9 +382,10 @@ Partial Class frmProduits
         '
         'txtModifier
         '
+        Me.txtModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtModifier.Location = New System.Drawing.Point(155, 29)
         Me.txtModifier.Name = "txtModifier"
-        Me.txtModifier.Size = New System.Drawing.Size(268, 20)
+        Me.txtModifier.Size = New System.Drawing.Size(268, 22)
         Me.txtModifier.TabIndex = 54
         '
         'lsvProduits
@@ -404,7 +417,7 @@ Partial Class frmProduits
         '
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtRechercher.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.txtRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtRechercher.Location = New System.Drawing.Point(2, 21)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(301, 22)

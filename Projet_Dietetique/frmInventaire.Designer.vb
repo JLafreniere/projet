@@ -52,6 +52,8 @@ Partial Class frmInventaire
         Me.gbInventaire = New System.Windows.Forms.GroupBox()
         Me.btnSupprimer = New System.Windows.Forms.Button()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.btnRetirer = New System.Windows.Forms.Button()
+        Me.btnRetourner = New System.Windows.Forms.Button()
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbInventaire.SuspendLayout()
         Me.SuspendLayout()
@@ -186,7 +188,7 @@ Partial Class frmInventaire
         Me.btnRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnRechercher.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRechercher.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRechercher.ForeColor = System.Drawing.Color.White
         Me.btnRechercher.Location = New System.Drawing.Point(482, 100)
         Me.btnRechercher.Name = "btnRechercher"
@@ -377,11 +379,40 @@ Partial Class frmInventaire
         Me.TreeView1.Size = New System.Drawing.Size(500, 449)
         Me.TreeView1.TabIndex = 73
         '
+        'btnRetirer
+        '
+        Me.btnRetirer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRetirer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRetirer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btnRetirer.ForeColor = System.Drawing.Color.White
+        Me.btnRetirer.Location = New System.Drawing.Point(1054, 100)
+        Me.btnRetirer.Name = "btnRetirer"
+        Me.btnRetirer.Size = New System.Drawing.Size(91, 35)
+        Me.btnRetirer.TabIndex = 81
+        Me.btnRetirer.Text = "Retirer"
+        Me.btnRetirer.UseVisualStyleBackColor = False
+        '
+        'btnRetourner
+        '
+        Me.btnRetourner.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnRetourner.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRetourner.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.btnRetourner.ForeColor = System.Drawing.Color.White
+        Me.btnRetourner.Location = New System.Drawing.Point(1151, 100)
+        Me.btnRetourner.Name = "btnRetourner"
+        Me.btnRetourner.Size = New System.Drawing.Size(91, 35)
+        Me.btnRetourner.TabIndex = 80
+        Me.btnRetourner.Text = "Retourner"
+        Me.btnRetourner.UseVisualStyleBackColor = False
+        '
         'frmInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.Controls.Add(Me.btnRetirer)
+        Me.Controls.Add(Me.btnRetourner)
         Me.Controls.Add(Me.btnDGV)
         Me.Controls.Add(Me.txtRechercher)
         Me.Controls.Add(Me.btnRechercher)
@@ -429,4 +460,6 @@ Partial Class frmInventaire
     Friend WithEvents Label4 As Label
     Friend WithEvents txtRechercher As TextBox
     Friend WithEvents btnDGV As Button
+    Friend WithEvents btnRetirer As Button
+    Friend WithEvents btnRetourner As Button
 End Class

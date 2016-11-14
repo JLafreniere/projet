@@ -5,7 +5,7 @@ Public Class frmAjoutCommandes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim ds As New DataSet
 
-    Dim col(2) As String
+    Dim col(3) As String
     Dim envoye As Integer = 0
     Dim ds1 As New DataSet
     Dim ds2 As New DataSet
@@ -193,7 +193,8 @@ Public Class frmAjoutCommandes
         'On recherche le produit pour calculer le total
         bd.Requete("Select * from `produits` where `nom_produit` = '" + cbProduits.Text + "'", ds3, bd.daProduits, "produits")
         bd.Requete("Select * from `produits_fournisseurs` where `id_fournisseur` = '" + (cbFournisseurs.SelectedIndex + 1).ToString + "' and `id_produit` = '" + ds3.Tables(0).Rows(0).Item(0).ToString + "'", ds4, bd.daProduitFourn, "produits_fournisseurs")
-        col(2) = CInt(nudQuantite.Value * ds4.Tables(0).Rows(0).Item(3))
+        col(2) = cbFormat.Text
+        col(3) = CInt(nudQuantite.Value * ds4.Tables(0).Rows(0).Item(3))
 
 
         Dim lvi As New ListViewItem(col)

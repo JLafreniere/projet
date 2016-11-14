@@ -10,7 +10,9 @@ Public Class frmAjoutCommandes
     Dim ds5 As New DataSet
     Dim ds6 As New DataSet
     Dim ds7 As New DataSet
+    Dim dss As New DataSet
     Dim col(2) As String
+    Dim envoye As Boolean = False
 
 
 
@@ -20,6 +22,7 @@ Public Class frmAjoutCommandes
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         chargerDataset()
         remplirComboBox()
+        'AutoCompletion des comboBox
         cbProduits.AutoCompleteMode = AutoCompleteMode.Append
         cbProduits.DropDownStyle = ComboBoxStyle.DropDown
         cbProduits.AutoCompleteSource = AutoCompleteSource.ListItems
@@ -38,7 +41,7 @@ Public Class frmAjoutCommandes
 
 
         bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")
-        bd.Requete("Select  * from fournisseurs", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+        bd.Requete("Select  * from fournisseurs order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
         bd.Requete("Select * from produits_fournisseurs", bd.dsProduitFourn, bd.daProduitFourn, "produits_fournisseurs")
         bd.Requete("Select * from details_commande", bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
 
@@ -54,7 +57,7 @@ Public Class frmAjoutCommandes
         Next
 
     End Sub
-    'Ajoute la commande dans la bd
+    'Ajoute la commande dans la bd (elle sera modifiable tant que l'utilisateur ne cliquera pas sur le bouton envoyer)
     Sub ajouter()
         Dim drNouvel As DataRow
 
@@ -77,6 +80,8 @@ Public Class frmAjoutCommandes
         drNouvel(3) = reference
         drNouvel(4) = txtNotes.Text
 
+        drNouvel(5) = envoye
+
         bd.dsCommandes.Tables(0).Rows.Add(drNouvel)
         bd.miseAjourBD(bd.dsCommandes, bd.daCommandes, "commandes")
 
@@ -90,6 +95,7 @@ Public Class frmAjoutCommandes
         'On ajoute les produits de la commande dans la table dÉtails_commandes
         For Each element As ListViewItem In lsvProduits.Items
             Dim ds8 As New DataSet
+            'On recherche le produit qui correspond au nom du produit dans le listView
             bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
             drNouvel = bd.dsDetailsCommandes.Tables(0).NewRow
             drNouvel(0) = bd.dsCommandes.Tables(0).Rows.Count + 1
@@ -107,6 +113,32 @@ Public Class frmAjoutCommandes
     End Sub
     'Modifie le contenu de la commande dans la bd
     Sub modifier()
+        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", dss, bd.daFournisseurs, "fournisseurs")
+        Dim drnouvel As DataRow
+        'On met à jour la table details_commandes
+        bd.nonQuery("Delete from details_commande where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
+        bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
+        For Each element As ListViewItem In lsvProduits.Items
+            Dim ds8 As New DataSet
+            'On recherche le produit qui correspond au nom du produit dans le listView
+            bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
+            drnouvel = bd.dsDetailsCommandes.Tables(0).NewRow
+            drnouvel(0) = frmCommandes.position + 1
+
+
+
+            drnouvel(1) = ds8.Tables(0).Rows(0).Item(0)
+            drnouvel(2) = element.SubItems(2).Text
+            bd.dsDetailsCommandes.Tables(0).Rows.Add(drnouvel)
+
+
+        Next
+
+        bd.nonQuery("UPDATE `commandes` set `date_commande` = '" + dtpDate.Value.Date.ToString + "' , `note` = '" + txtNotes.Text + "', `fournisseur` = '" + dss.Tables(0).Rows(0).Item(0).ToString + "' where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
+
+
+        bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
+        bd.miseAjourBD(bd.dsCommandes, bd.daCommandes, "commandes")
 
     End Sub
     'Modifie le contenu du combobox des produits en fonction du fournisseur sélectionné
@@ -130,7 +162,13 @@ Public Class frmAjoutCommandes
 
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
-        ajouter()
+        If btnEnregistrer.Text = "Enregistrer" Then
+            ajouter()
+        Else
+            modifier()
+
+        End If
+
     End Sub
 
     Sub viderChamp()
@@ -159,6 +197,48 @@ Public Class frmAjoutCommandes
 
     Private Sub btnAjouterProduit_Click(sender As Object, e As EventArgs) Handles btnAjouterProduit.Click
         remplirProduit()
+
+    End Sub
+    'Supprime le produit du listView
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSupprimerListiew.Click
+        For Each element As ListViewItem In lsvProduits.SelectedItems
+            lsvProduits.Items.Remove(element)
+        Next
+    End Sub
+    'Remplit le listView selon la commande
+    Sub remplirListView()
+        lsvProduits.Items.Clear()
+        bd.dsDetailsCommandes.Clear()
+        bd.Requete("Select * from details_commande where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'", bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
+
+        For i As Integer = 0 To bd.dsDetailsCommandes.Tables(0).Rows.Count - 1
+            Dim ds8 As New DataSet
+            Dim ds9 As New DataSet
+            'On recherche le produit pour afficher le nom du produit dans le listView 
+            bd.Requete("Select * from produits where `id_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds8, bd.daProduits, "produits")
+            'On recherche le produit pour pouvoir afficher le prix dans le listView
+            bd.Requete("Select * from produits_fournisseurs where `ID_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds9, bd.daProduitFourn, "produits_fournisseurs")
+
+            col(0) = ds8.Tables(0).Rows(0).Item(1)
+            col(1) = CInt(bd.dsDetailsCommandes.Tables(0).Rows(i).Item(2) / ds9.Tables(0).Rows(0).Item(3))
+            col(2) = bd.dsDetailsCommandes.Tables(0).Rows(i).Item(2)
+
+            Dim lvi As New ListViewItem(col)
+            lsvProduits.Items.Add(lvi)
+        Next
+
+    End Sub
+    'Envoie la commande (elle ne sera que consultable)
+    Sub envoyer()
+        envoye = True
+        ajouter()
+
+
+    End Sub
+
+    Private Sub btnEnvoyer_Click(sender As Object, e As EventArgs) Handles btnEnvoyer.Click
+        'Si la commande est dans la base de données on la modifie, si elle 
+        envoyer()
 
     End Sub
 End Class

@@ -28,7 +28,7 @@ Partial Class frmAjoutCommandes
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lsvProduits = New System.Windows.Forms.ListView()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnSupprimerListiew = New System.Windows.Forms.Button()
         Me.btnAjouterProduit = New System.Windows.Forms.Button()
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.btnEnregistrer = New System.Windows.Forms.Button()
@@ -40,6 +40,7 @@ Partial Class frmAjoutCommandes
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtpDate = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnEnvoyer = New System.Windows.Forms.Button()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -89,18 +90,18 @@ Partial Class frmAjoutCommandes
         Me.lsvProduits.UseCompatibleStateImageBehavior = False
         Me.lsvProduits.View = System.Windows.Forms.View.Details
         '
-        'Button1
+        'btnSupprimerListiew
         '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(885, 356)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(91, 35)
-        Me.Button1.TabIndex = 89
-        Me.Button1.Text = "Supprimer"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnSupprimerListiew.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnSupprimerListiew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSupprimerListiew.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSupprimerListiew.ForeColor = System.Drawing.Color.White
+        Me.btnSupprimerListiew.Location = New System.Drawing.Point(885, 356)
+        Me.btnSupprimerListiew.Name = "btnSupprimerListiew"
+        Me.btnSupprimerListiew.Size = New System.Drawing.Size(91, 35)
+        Me.btnSupprimerListiew.TabIndex = 89
+        Me.btnSupprimerListiew.Text = "Supprimer"
+        Me.btnSupprimerListiew.UseVisualStyleBackColor = False
         '
         'btnAjouterProduit
         '
@@ -208,15 +209,29 @@ Partial Class frmAjoutCommandes
         Me.Label1.TabIndex = 78
         Me.Label1.Text = "Date de la commande"
         '
+        'btnEnvoyer
+        '
+        Me.btnEnvoyer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnEnvoyer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEnvoyer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnvoyer.ForeColor = System.Drawing.Color.White
+        Me.btnEnvoyer.Location = New System.Drawing.Point(357, 445)
+        Me.btnEnvoyer.Name = "btnEnvoyer"
+        Me.btnEnvoyer.Size = New System.Drawing.Size(91, 35)
+        Me.btnEnvoyer.TabIndex = 93
+        Me.btnEnvoyer.Text = "Envoyer"
+        Me.btnEnvoyer.UseVisualStyleBackColor = False
+        '
         'frmAjoutCommandes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1138, 592)
+        Me.Controls.Add(Me.btnEnvoyer)
         Me.Controls.Add(Me.nudQuantite)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lsvProduits)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSupprimerListiew)
         Me.Controls.Add(Me.btnAjouterProduit)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.btnEnregistrer)
@@ -242,7 +257,7 @@ Partial Class frmAjoutCommandes
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Label4 As Label
     Friend WithEvents lsvProduits As ListView
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnSupprimerListiew As Button
     Friend WithEvents btnAjouterProduit As Button
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents btnEnregistrer As Button
@@ -254,4 +269,5 @@ Partial Class frmAjoutCommandes
     Friend WithEvents Label2 As Label
     Friend WithEvents dtpDate As DateTimePicker
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnEnvoyer As Button
 End Class

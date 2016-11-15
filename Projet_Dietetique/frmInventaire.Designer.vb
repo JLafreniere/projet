@@ -321,10 +321,9 @@ Partial Class frmInventaire
         Me.dgvData.AllowUserToDeleteRows = False
         Me.dgvData.AllowUserToResizeColumns = False
         Me.dgvData.AllowUserToResizeRows = False
-        Me.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvData.BackgroundColor = System.Drawing.Color.White
         Me.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvData.GridColor = System.Drawing.SystemColors.Control
         Me.dgvData.Location = New System.Drawing.Point(2, 42)
         Me.dgvData.MultiSelect = False
@@ -396,7 +395,7 @@ Partial Class frmInventaire
         Me.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetirer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRetirer.ForeColor = System.Drawing.Color.White
-        Me.btnRetirer.Location = New System.Drawing.Point(834, 1)
+        Me.btnRetirer.Location = New System.Drawing.Point(834, 3)
         Me.btnRetirer.Name = "btnRetirer"
         Me.btnRetirer.Size = New System.Drawing.Size(91, 35)
         Me.btnRetirer.TabIndex = 81
@@ -409,7 +408,7 @@ Partial Class frmInventaire
         Me.btnRetourner.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetourner.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRetourner.ForeColor = System.Drawing.Color.White
-        Me.btnRetourner.Location = New System.Drawing.Point(931, 1)
+        Me.btnRetourner.Location = New System.Drawing.Point(931, 3)
         Me.btnRetourner.Name = "btnRetourner"
         Me.btnRetourner.Size = New System.Drawing.Size(91, 35)
         Me.btnRetourner.TabIndex = 80

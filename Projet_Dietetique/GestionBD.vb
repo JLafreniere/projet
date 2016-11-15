@@ -161,8 +161,8 @@ Public Class GestionBD
         Try
             gestionOperation = New MySqlCommandBuilder(da)
             da.Update(ds, tbl)
-        Catch e As MySqlException
-            MessageBox.Show(e.Message.ToString())
+        Catch e As Exception
+
         End Try
         _conn.Close()
     End Sub

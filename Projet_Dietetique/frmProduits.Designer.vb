@@ -398,7 +398,7 @@ Partial Class frmProduits
         Me.lsvProduits.Location = New System.Drawing.Point(3, 42)
         Me.lsvProduits.MultiSelect = False
         Me.lsvProduits.Name = "lsvProduits"
-        Me.lsvProduits.Size = New System.Drawing.Size(504, 556)
+        Me.lsvProduits.Size = New System.Drawing.Size(501, 554)
         Me.lsvProduits.TabIndex = 63
         Me.lsvProduits.UseCompatibleStateImageBehavior = False
         Me.lsvProduits.View = System.Windows.Forms.View.Details

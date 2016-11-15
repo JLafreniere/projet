@@ -23,6 +23,7 @@ Partial Class frmFournisseurs
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.mainpanel = New System.Windows.Forms.Panel()
+        Me.txtRecherche = New System.Windows.Forms.TextBox()
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.btnModifier = New System.Windows.Forms.Button()
         Me.btnSupprimer = New System.Windows.Forms.Button()
@@ -31,22 +32,31 @@ Partial Class frmFournisseurs
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnRechercher = New System.Windows.Forms.Button()
-        Me.txtRecherche = New System.Windows.Forms.TextBox()
         Me.mainpanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainpanel
         '
+        Me.mainpanel.Controls.Add(Me.txtRecherche)
         Me.mainpanel.Controls.Add(Me.btnAjouter)
         Me.mainpanel.Controls.Add(Me.btnModifier)
         Me.mainpanel.Controls.Add(Me.btnSupprimer)
         Me.mainpanel.Controls.Add(Me.lsvFournisseurs)
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
-        Me.mainpanel.Controls.Add(Me.txtRecherche)
         Me.mainpanel.Location = New System.Drawing.Point(240, 80)
         Me.mainpanel.Name = "mainpanel"
         Me.mainpanel.Size = New System.Drawing.Size(702, 483)
         Me.mainpanel.TabIndex = 2
+        '
+        'txtRecherche
+        '
+        Me.txtRecherche.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.txtRecherche.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtRecherche.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtRecherche.Location = New System.Drawing.Point(3, 8)
+        Me.txtRecherche.Name = "txtRecherche"
+        Me.txtRecherche.Size = New System.Drawing.Size(301, 22)
+        Me.txtRecherche.TabIndex = 77
         '
         'btnAjouter
         '
@@ -97,7 +107,7 @@ Partial Class frmFournisseurs
         Me.lsvFournisseurs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lsvFournisseurs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvFournisseurs.HideSelection = False
-        Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 115)
+        Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 45)
         Me.lsvFournisseurs.MultiSelect = False
         Me.lsvFournisseurs.Name = "lsvFournisseurs"
         Me.lsvFournisseurs.Size = New System.Drawing.Size(697, 372)
@@ -127,19 +137,12 @@ Partial Class frmFournisseurs
         Me.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRechercher.ForeColor = System.Drawing.Color.White
-        Me.BtnRechercher.Location = New System.Drawing.Point(510, 11)
+        Me.BtnRechercher.Location = New System.Drawing.Point(317, 3)
         Me.BtnRechercher.Name = "BtnRechercher"
         Me.BtnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.BtnRechercher.TabIndex = 56
         Me.BtnRechercher.Text = "Rechercher"
         Me.BtnRechercher.UseVisualStyleBackColor = False
-        '
-        'txtRecherche
-        '
-        Me.txtRecherche.Location = New System.Drawing.Point(320, 19)
-        Me.txtRecherche.Name = "txtRecherche"
-        Me.txtRecherche.Size = New System.Drawing.Size(184, 20)
-        Me.txtRecherche.TabIndex = 0
         '
         'frmFournisseurs
         '

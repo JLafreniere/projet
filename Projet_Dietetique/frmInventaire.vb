@@ -10,10 +10,11 @@
 
         'Bouton refresh sur la recherche
         Dim refresh As New PictureBox()
-        refresh.SetBounds(btnAjouter.Location.X + btnAjouter.Width + 13, btnAjouter.Location.Y - 3, 40, 40)
+        refresh.SetBounds(513, 2, 35, 35)
+
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
-        Controls.Add(refresh)
+        Panel2.Controls.Add(refresh)
 
         'click
         AddHandler refresh.Click, Sub(sender2, eventargs2)
@@ -33,7 +34,9 @@
         AddHandler refresh.MouseUp, Sub(sender2, eventargs2)
                                         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
                                     End Sub
+
         init()
+        refresh.BringToFront()
     End Sub
 
     Public Sub plusDeFraicheurSubway6PouceA3et99()
@@ -566,6 +569,10 @@
     End Sub
 
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
     End Sub
 End Class

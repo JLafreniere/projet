@@ -13,7 +13,6 @@ Public Class frmFournisseurs
         Controls.Add(New Header(Me, True))
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
 
-        centerControl(mainpanel)
 
         chargerDataset()
         remplirListview()
@@ -28,9 +27,7 @@ Public Class frmFournisseurs
 
     End Sub
 
-    Private Sub centerControl(c As Control)
-        c.Left = (Me.ClientSize.Width / 2) - (c.Width / 2)
-    End Sub
+
     'Remplit le listView des Fournisseurs
     Sub remplirListview()
         lsvFournisseurs.Items.Clear()
@@ -143,6 +140,10 @@ Public Class frmFournisseurs
 
 
         End If
+
+    End Sub
+
+    Private Sub txtRecherche_TextChanged(sender As Object, e As EventArgs) Handles txtRecherche.TextChanged
 
     End Sub
 End Class

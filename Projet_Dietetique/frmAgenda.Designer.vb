@@ -124,9 +124,10 @@ Partial Class frmAgenda
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Label1.Location = New System.Drawing.Point(3, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(104, 13)
+        Me.Label1.Size = New System.Drawing.Size(112, 13)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Nom de l'évènement"
         '

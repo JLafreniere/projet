@@ -77,7 +77,7 @@ Partial Class frmInventaire
         '
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtRechercher.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.txtRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtRechercher.Location = New System.Drawing.Point(3, 8)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(301, 22)

@@ -58,7 +58,7 @@ Partial Class frmCommandes
         '
         'dtpDate
         '
-        Me.dtpDate.Location = New System.Drawing.Point(320, 18)
+        Me.dtpDate.Location = New System.Drawing.Point(411, 18)
         Me.dtpDate.Name = "dtpDate"
         Me.dtpDate.Size = New System.Drawing.Size(184, 20)
         Me.dtpDate.TabIndex = 65
@@ -67,7 +67,7 @@ Partial Class frmCommandes
         '
         Me.rdbFournisseur.AutoSize = True
         Me.rdbFournisseur.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbFournisseur.Location = New System.Drawing.Point(79, 55)
+        Me.rdbFournisseur.Location = New System.Drawing.Point(58, 22)
         Me.rdbFournisseur.Name = "rdbFournisseur"
         Me.rdbFournisseur.Size = New System.Drawing.Size(86, 17)
         Me.rdbFournisseur.TabIndex = 64
@@ -79,7 +79,7 @@ Partial Class frmCommandes
         '
         Me.rdbDate.AutoSize = True
         Me.rdbDate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbDate.Location = New System.Drawing.Point(24, 55)
+        Me.rdbDate.Location = New System.Drawing.Point(3, 22)
         Me.rdbDate.Name = "rdbDate"
         Me.rdbDate.Size = New System.Drawing.Size(49, 17)
         Me.rdbDate.TabIndex = 62
@@ -91,7 +91,7 @@ Partial Class frmCommandes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(21, 11)
+        Me.Label1.Location = New System.Drawing.Point(-3, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(98, 13)
         Me.Label1.TabIndex = 61
@@ -146,7 +146,7 @@ Partial Class frmCommandes
         Me.lsvCommandes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader3, Me.Total})
         Me.lsvCommandes.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvCommandes.HideSelection = False
-        Me.lsvCommandes.Location = New System.Drawing.Point(0, 115)
+        Me.lsvCommandes.Location = New System.Drawing.Point(2, 52)
         Me.lsvCommandes.MultiSelect = False
         Me.lsvCommandes.Name = "lsvCommandes"
         Me.lsvCommandes.Size = New System.Drawing.Size(697, 372)
@@ -176,7 +176,7 @@ Partial Class frmCommandes
         Me.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRechercher.ForeColor = System.Drawing.Color.White
-        Me.BtnRechercher.Location = New System.Drawing.Point(510, 11)
+        Me.BtnRechercher.Location = New System.Drawing.Point(601, 11)
         Me.BtnRechercher.Name = "BtnRechercher"
         Me.BtnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.BtnRechercher.TabIndex = 56
@@ -185,7 +185,7 @@ Partial Class frmCommandes
         '
         'txtRecherche
         '
-        Me.txtRecherche.Location = New System.Drawing.Point(320, 19)
+        Me.txtRecherche.Location = New System.Drawing.Point(411, 19)
         Me.txtRecherche.Name = "txtRecherche"
         Me.txtRecherche.Size = New System.Drawing.Size(184, 20)
         Me.txtRecherche.TabIndex = 0

@@ -592,12 +592,5 @@
         SnugUpGrid()
     End Sub
 
-<<<<<<< HEAD
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
-    End Sub
-=======
-
-
->>>>>>> 82fb1d05036baca99ca107e1661bcd487003c0f0
 End Class

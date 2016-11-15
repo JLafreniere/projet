@@ -33,7 +33,7 @@
         bd.dsInventaire.Tables(0).Rows(0).Item(11) = txtTotal.Text
         bd.miseAjourBD(bd.dsInventaire, bd.daInventaire, "inventaire")
         Me.Close()
-        frmInventaire.remplircontroles()
+        frmInventaire.plusDeFraicheurSubway6PouceA3et99()
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click

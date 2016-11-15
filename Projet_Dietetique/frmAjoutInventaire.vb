@@ -39,7 +39,6 @@ Public Class frmAjoutInventaire
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
         cmbEquivalence.Visible = False
-
         couleurBouton("D", btnAjouter)
 
     End Sub
@@ -165,5 +164,13 @@ Public Class frmAjoutInventaire
             couleurBouton("E", btnAjouter)
         End If
     End Sub
+
+    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtFormat.KeyPress, txtEquivalence.KeyPress
+        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
 End Class
 

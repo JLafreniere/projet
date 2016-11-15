@@ -42,7 +42,6 @@
             txtRechercher.ResetText()
             bd.dsProduits.Clear()
             remplircontroles()
-
             'Refresh pour le treeview
         Else
             Dim dsTemp As New DataSet
@@ -52,7 +51,7 @@
             dgvData.DataSource = dsTemp.Tables(0)
             txtRechercher.ResetText()
         End If
-
+        dgvData.ClearSelection()
         couleurBouton("D", btnRetirer)
         couleurBouton("D", btnRetourner)
     End Sub
@@ -337,7 +336,12 @@
 
     Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtEquivalence.TextChanged, txtQuantite.TextChanged, txtDescription.TextChanged, dtpPeremption.TextChanged, dtpReception.TextChanged, txtFormat.TextChanged, txtTotal.TextChanged
         'Permet l'enregistrement quand il y a une modification
-        couleurBouton("E", btnEnregistrer)
+        If txtNom.Text = "" Then
+            couleurBouton("D", btnEnregistrer)
+        Else
+            couleurBouton("E", btnEnregistrer)
+        End If
+
     End Sub
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
@@ -525,12 +529,14 @@
             dgvData.Visible = True
             dgvData.RowHeadersVisible = False
             dgvData.Columns(0).Visible = False
+            dgvData.ClearSelection()
 
 
         Else
             TreeView1.Show()
             btnDGV.Text = "Grille"
             dgvData.Visible = False
+            plusDeFraicheurSubway6PouceA3et99()
         End If
 
 
@@ -561,11 +567,10 @@
         Catch ex As Exception : End Try
     End Sub
 
-    Private Sub frmInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtFormat.KeyPress, txtEquivalence.KeyPress, txtTotal.KeyPress
+        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) AndAlso Not e.KeyChar = "," Then
+            e.Handled = True
+        End If
     End Sub
 
-    Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

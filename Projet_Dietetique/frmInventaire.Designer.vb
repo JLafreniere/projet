@@ -76,7 +76,7 @@ Partial Class frmInventaire
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRechercher.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.txtRechercher.Location = New System.Drawing.Point(227, 107)
+        Me.txtRechercher.Location = New System.Drawing.Point(219, 107)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(248, 22)
         Me.txtRechercher.TabIndex = 76
@@ -192,7 +192,7 @@ Partial Class frmInventaire
         Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRechercher.ForeColor = System.Drawing.Color.White
-        Me.btnRechercher.Location = New System.Drawing.Point(482, 100)
+        Me.btnRechercher.Location = New System.Drawing.Point(474, 100)
         Me.btnRechercher.Name = "btnRechercher"
         Me.btnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.btnRechercher.TabIndex = 77
@@ -393,7 +393,7 @@ Partial Class frmInventaire
         Me.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetirer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRetirer.ForeColor = System.Drawing.Color.White
-        Me.btnRetirer.Location = New System.Drawing.Point(1054, 100)
+        Me.btnRetirer.Location = New System.Drawing.Point(1046, 100)
         Me.btnRetirer.Name = "btnRetirer"
         Me.btnRetirer.Size = New System.Drawing.Size(91, 35)
         Me.btnRetirer.TabIndex = 81
@@ -417,7 +417,7 @@ Partial Class frmInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.ClientSize = New System.Drawing.Size(1676, 987)
         Me.Controls.Add(Me.btnRetirer)
         Me.Controls.Add(Me.btnRetourner)
         Me.Controls.Add(Me.btnDGV)

@@ -43,7 +43,7 @@ Partial Class frmFournisseurs
         Me.mainpanel.Controls.Add(Me.lsvFournisseurs)
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
         Me.mainpanel.Controls.Add(Me.txtRecherche)
-        Me.mainpanel.Location = New System.Drawing.Point(97, 135)
+        Me.mainpanel.Location = New System.Drawing.Point(240, 80)
         Me.mainpanel.Name = "mainpanel"
         Me.mainpanel.Size = New System.Drawing.Size(702, 483)
         Me.mainpanel.TabIndex = 2

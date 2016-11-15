@@ -164,7 +164,8 @@ Public Class frmAccueil
             .Font = New Font("Segoe UI", 14.25, FontStyle.Bold)
             .TextAlign = ContentAlignment.TopCenter
             .UseVisualStyleBackColor = True
-            .SetBounds(p.Location.X + (p.Width * percent) - 100, 80, 100, 40)
+            .SetBounds(p.Location.X + (p.Width * percent) - 101, 80, 100, 40)
+
         End With
 
         With lblSemaine

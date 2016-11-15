@@ -12,7 +12,7 @@ Public Class frmAgenda
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         Dim messages = File.ReadAllText("index.html")
-        MsgBox(messages)
+
         dpFinAffichage.MinDate = Date.Today
 
         remplirListViewMessage()

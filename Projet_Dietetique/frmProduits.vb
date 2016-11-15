@@ -267,7 +267,6 @@ Public Class frmProduits
         cacherComposantModification()
         btnSupprimer.Enabled = True
         couleurBouton("E", btnSupprimer)
-        ' btnVoirModifier.Enabled = True
         btnVoirAjouter.Enabled = True
         lsvProduits.SelectedItems.Clear()
     End Sub
@@ -278,7 +277,6 @@ Public Class frmProduits
         cacherComposantModification()
         btnSupprimer.Enabled = False
         couleurBouton("D", btnSupprimer)
-        ' btnVoirModifier.Enabled = False
         miseAjourBD()
         remplircontroles()
     End Sub

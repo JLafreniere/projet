@@ -12,7 +12,7 @@ Public Class frmAgenda
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         Dim messages = File.ReadAllText("index.html")
-        MsgBox(messages)
+
         dpFinAffichage.MinDate = Date.Today
 
         remplirListViewMessage()
@@ -28,7 +28,6 @@ Public Class frmAgenda
         Dim da As New MySqlDataAdapter
 
         bd.miseAjourDS(ds, da, "select * from messages", 0)
-
 
         For Each r As DataRow In ds.Tables(0).Rows
             ListView1.Items.Add(r.Item(1))

@@ -141,21 +141,21 @@ Partial Class frmAgenda
         Me.Panel1.Controls.Add(Me.rbtype2)
         Me.Panel1.Controls.Add(Me.rbtype4)
         Me.Panel1.Controls.Add(Me.rbtype3)
-        Me.Panel1.Location = New System.Drawing.Point(180, 126)
+        Me.Panel1.Location = New System.Drawing.Point(240, 80)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(214, 195)
         Me.Panel1.TabIndex = 8
         '
         'TxtTitreMessage
         '
-        Me.TxtTitreMessage.Location = New System.Drawing.Point(620, 145)
+        Me.TxtTitreMessage.Location = New System.Drawing.Point(680, 99)
         Me.TxtTitreMessage.Name = "TxtTitreMessage"
         Me.TxtTitreMessage.Size = New System.Drawing.Size(240, 20)
         Me.TxtTitreMessage.TabIndex = 9
         '
         'txtMessage
         '
-        Me.txtMessage.Location = New System.Drawing.Point(620, 175)
+        Me.txtMessage.Location = New System.Drawing.Point(680, 129)
         Me.txtMessage.Name = "txtMessage"
         Me.txtMessage.Size = New System.Drawing.Size(240, 157)
         Me.txtMessage.TabIndex = 10
@@ -164,7 +164,7 @@ Partial Class frmAgenda
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(557, 148)
+        Me.Label2.Location = New System.Drawing.Point(617, 102)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(28, 13)
         Me.Label2.TabIndex = 11
@@ -173,7 +173,7 @@ Partial Class frmAgenda
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(535, 179)
+        Me.Label3.Location = New System.Drawing.Point(595, 133)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 13)
         Me.Label3.TabIndex = 12
@@ -181,7 +181,7 @@ Partial Class frmAgenda
         '
         'btnEnregistrerMessage
         '
-        Me.btnEnregistrerMessage.Location = New System.Drawing.Point(783, 375)
+        Me.btnEnregistrerMessage.Location = New System.Drawing.Point(843, 329)
         Me.btnEnregistrerMessage.Name = "btnEnregistrerMessage"
         Me.btnEnregistrerMessage.Size = New System.Drawing.Size(75, 23)
         Me.btnEnregistrerMessage.TabIndex = 13
@@ -191,7 +191,7 @@ Partial Class frmAgenda
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(927, 148)
+        Me.Label4.Location = New System.Drawing.Point(987, 102)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(99, 13)
         Me.Label4.TabIndex = 15
@@ -199,7 +199,7 @@ Partial Class frmAgenda
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(976, 330)
+        Me.Button2.Location = New System.Drawing.Point(1036, 284)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 16
@@ -220,7 +220,7 @@ Partial Class frmAgenda
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.dpFinAffichage)
         Me.GroupBox1.Controls.Add(Me.dpDebutAffichage)
-        Me.GroupBox1.Location = New System.Drawing.Point(618, 372)
+        Me.GroupBox1.Location = New System.Drawing.Point(678, 326)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(240, 110)
         Me.GroupBox1.TabIndex = 18
@@ -256,7 +256,7 @@ Partial Class frmAgenda
         'cbPeriodeAffichage
         '
         Me.cbPeriodeAffichage.AutoSize = True
-        Me.cbPeriodeAffichage.Location = New System.Drawing.Point(640, 350)
+        Me.cbPeriodeAffichage.Location = New System.Drawing.Point(700, 304)
         Me.cbPeriodeAffichage.Name = "cbPeriodeAffichage"
         Me.cbPeriodeAffichage.Size = New System.Drawing.Size(170, 17)
         Me.cbPeriodeAffichage.TabIndex = 19
@@ -265,7 +265,7 @@ Partial Class frmAgenda
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(930, 172)
+        Me.ListView1.Location = New System.Drawing.Point(990, 126)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(121, 97)
         Me.ListView1.TabIndex = 20

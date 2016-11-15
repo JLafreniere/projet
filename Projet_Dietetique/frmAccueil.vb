@@ -14,7 +14,7 @@ Public Class frmAccueil
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim message As New WebBrowser()
     Public Property _date_selectionne As Date = Date.Today
-    Dim p As New PanelSemaine(210, 140, 750, 150)
+    Dim p As New PanelSemaine(240, 140, 700, 150)
 
 
     Public Sub refreshBrowser()
@@ -133,6 +133,10 @@ Public Class frmAccueil
                                         Controls.Add(cal)
                                     End Sub
         Controls.Add(refresh)
+
+
+
+
     End Sub
 
     Private Sub initialiserPanneauSemaine()
@@ -160,7 +164,8 @@ Public Class frmAccueil
             .Font = New Font("Segoe UI", 14.25, FontStyle.Bold)
             .TextAlign = ContentAlignment.TopCenter
             .UseVisualStyleBackColor = True
-            .SetBounds(p.Location.X + (p.Width * percent) - 100, 80, 100, 40)
+            .SetBounds(p.Location.X + (p.Width * percent) - 101, 80, 100, 40)
+
         End With
 
         With lblSemaine

@@ -39,7 +39,6 @@ Public Class frmAjoutInventaire
         lblEquivalence.Visible = False
         txtEquivalence.Visible = False
         cmbEquivalence.Visible = False
-
         couleurBouton("D", btnAjouter)
 
     End Sub
@@ -146,13 +145,9 @@ Public Class frmAjoutInventaire
     Private Sub txtFormat_TextChanged(sender As Object, e As EventArgs) Handles txtFormat.TextChanged, txtQuantite.TextChanged, txtEquivalence.TextChanged
         'calcul total
         Try
-            If cmbUnite.Text = "Unité" Then
-                txtTotal.Text = txtQuantite.Text * txtFormat.Text * txtEquivalence.Text
 
-            Else
-                If txtQuantite.Text >= 1 And txtFormat.Text >= 1 Then
-                    txtTotal.Text = txtQuantite.Text * txtFormat.Text
-                End If
+            If txtQuantite.Text >= 1 And txtFormat.Text >= 1 Then
+                txtTotal.Text = txtQuantite.Text * txtFormat.Text
             End If
 
         Catch exc As Exception : End Try
@@ -165,5 +160,13 @@ Public Class frmAjoutInventaire
             couleurBouton("E", btnAjouter)
         End If
     End Sub
+
+    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtFormat.KeyPress, txtEquivalence.KeyPress
+        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
 End Class
 

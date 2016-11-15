@@ -87,6 +87,7 @@ Partial Class frmAjoutInventaire
         '
         'cmbEquivalence
         '
+        Me.cmbEquivalence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEquivalence.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbEquivalence.FormattingEnabled = True
         Me.cmbEquivalence.Location = New System.Drawing.Point(297, 237)
@@ -236,6 +237,7 @@ Partial Class frmAjoutInventaire
         '
         'cmbUnite
         '
+        Me.cmbUnite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbUnite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbUnite.FormattingEnabled = True
         Me.cmbUnite.Location = New System.Drawing.Point(298, 194)

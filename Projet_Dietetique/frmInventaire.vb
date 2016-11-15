@@ -531,7 +531,6 @@
             dgvData.Columns(0).Visible = False
             dgvData.ClearSelection()
 
-
         Else
             TreeView1.Show()
             btnDGV.Text = "Grille"
@@ -551,7 +550,7 @@
     End Sub
 
 
-    Private Sub dgvData_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dgvData.RowEnter
+    Private Sub dgvData_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dgvData.CellClick
         'Permet de prendre L'id du produit et de le garder dans une variable
         Try
             If dgvData.SelectedRows.Count = 1 Then
@@ -572,5 +571,24 @@
             e.Handled = True
         End If
     End Sub
+
+    Private Sub SnugUpGrid()
+        'Assumes that MaximumSize has been set for the DataGridView.
+        dgvData.Height = (dgvData.ColumnHeadersHeight + (dgvData.Rows.GetRowsHeight(DataGridViewElementStates.None)) + 2)
+    End Sub
+
+    Private Sub DataGridView1_RowHeightChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowEventArgs) Handles dgvData.RowHeightChanged
+        SnugUpGrid()
+    End Sub
+
+    Private Sub DataGridView1_RowsAdded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles dgvData.RowsAdded
+        SnugUpGrid()
+    End Sub
+
+    Private Sub DataGridView1_RowsRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsRemovedEventArgs) Handles dgvData.RowsRemoved
+        SnugUpGrid()
+    End Sub
+
+
 
 End Class

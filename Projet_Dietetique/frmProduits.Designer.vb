@@ -427,7 +427,7 @@ Partial Class frmProduits
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.ClientSize = New System.Drawing.Size(1676, 987)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmProduits"

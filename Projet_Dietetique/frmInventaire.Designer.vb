@@ -322,7 +322,8 @@ Partial Class frmInventaire
         Me.dgvData.AllowUserToResizeColumns = False
         Me.dgvData.AllowUserToResizeRows = False
         Me.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.dgvData.BackgroundColor = System.Drawing.SystemColors.ControlDark
+        Me.dgvData.BackgroundColor = System.Drawing.Color.White
+        Me.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvData.GridColor = System.Drawing.SystemColors.Control
         Me.dgvData.Location = New System.Drawing.Point(2, 42)
@@ -435,7 +436,7 @@ Partial Class frmInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.ClientSize = New System.Drawing.Size(1676, 987)
         Me.Controls.Add(Me.Panel2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmInventaire"

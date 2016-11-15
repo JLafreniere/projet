@@ -58,7 +58,7 @@
             Else
                 lblQuantite.Font = New Font(lblQuantite.Font, FontStyle.Bold)
                 txtTotal.Text = bd.dsInventaire.Tables(0).Rows(0).Item(11)
-                couleurBouton("D", btnRetirer)
+                txtQuantite.Text = bd.dsInventaire.Tables(0).Rows(0).Item(11)
             End If
         Catch exc As Exception : End Try
     End Sub

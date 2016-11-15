@@ -73,11 +73,15 @@ Public Class frmAjoutInventaire
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
         'ajoute l'item en inventaire
         Dim drnouvel As DataRow
+
         drnouvel = bd.dsInventaire.Tables(0).NewRow()
-        drnouvel(1) = cmbProduit.SelectedValue
-        drnouvel(2) = txtNom.Text
-        drnouvel(3) = txtQuantite.Text
-        drnouvel(4) = txtFormat.Text
+
+            drnouvel(1) = cmbProduit.SelectedValue
+            drnouvel(2) = txtNom.Text
+            drnouvel(3) = txtQuantite.Text
+
+
+            drnouvel(4) = txtFormat.Text
         drnouvel(5) = txtDescription.Text
         drnouvel(6) = dtpPeremption.Value
         drnouvel(7) = dtpReception.Value

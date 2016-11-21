@@ -55,6 +55,7 @@ Partial Class frmInventaire
         Me.btnRetirer = New System.Windows.Forms.Button()
         Me.btnRetourner = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblAucun = New System.Windows.Forms.Label()
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbInventaire.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -117,9 +118,11 @@ Partial Class frmInventaire
         'dtpPeremption
         '
         Me.dtpPeremption.Location = New System.Drawing.Point(147, 316)
+        Me.dtpPeremption.MinDate = New Date(1754, 6, 12, 0, 0, 0, 0)
         Me.dtpPeremption.Name = "dtpPeremption"
         Me.dtpPeremption.Size = New System.Drawing.Size(200, 22)
         Me.dtpPeremption.TabIndex = 13
+        Me.dtpPeremption.Value = New Date(2016, 11, 21, 15, 45, 14, 0)
         '
         'txtDescription
         '
@@ -417,6 +420,7 @@ Partial Class frmInventaire
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.lblAucun)
         Me.Panel2.Controls.Add(Me.txtRechercher)
         Me.Panel2.Controls.Add(Me.btnRetirer)
         Me.Panel2.Controls.Add(Me.TreeView1)
@@ -430,6 +434,16 @@ Partial Class frmInventaire
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1297, 832)
         Me.Panel2.TabIndex = 83
+        '
+        'lblAucun
+        '
+        Me.lblAucun.AutoSize = True
+        Me.lblAucun.Location = New System.Drawing.Point(3, 72)
+        Me.lblAucun.Name = "lblAucun"
+        Me.lblAucun.Size = New System.Drawing.Size(80, 13)
+        Me.lblAucun.TabIndex = 82
+        Me.lblAucun.Text = "Aucun Résultat"
+        Me.lblAucun.Visible = False
         '
         'frmInventaire
         '
@@ -481,4 +495,5 @@ Partial Class frmInventaire
     Friend WithEvents btnRetirer As Button
     Friend WithEvents btnRetourner As Button
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents lblAucun As Label
 End Class

@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
+<<<<<<< HEAD
 -- Généré le :  Lun 21 Novembre 2016 à 22:10
+=======
+-- Généré le :  Mar 15 Novembre 2016 à 21:46
+>>>>>>> 560fb9b9e661df0a03fe9c6e1bb167d0c3e7ff3c
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -50,12 +54,27 @@ INSERT INTO `categories` (`ID_Categorie`, `Nom_Categorie`, `Description`) VALUES
 CREATE TABLE IF NOT EXISTS `commandes` (
   `ID_Commande` int(11) NOT NULL AUTO_INCREMENT,
   `Date_Commande` date NOT NULL,
-  `Total` double NOT NULL,
-  `Produits_Fournisseurs` int(12) NOT NULL,
+  `fournisseur` int(12) NOT NULL,
   `No_Reference` varchar(25) DEFAULT NULL,
   `Note` text,
-  PRIMARY KEY (`ID_Commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `envoye` tinyint(1) NOT NULL,
+  PRIMARY KEY (`ID_Commande`),
+  KEY `No_Reference` (`No_Reference`),
+  KEY `No_Reference_2` (`No_Reference`),
+  KEY `fournisseur` (`fournisseur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `commandes`
+--
+
+INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`) VALUES
+(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0),
+(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 0),
+(3, '2016-11-15', 2, '568468', '', 1),
+(4, '2016-11-18', 1, '125085', '', 1),
+(5, '2016-11-15', 2, '772181', '', 1),
+(6, '2016-11-15', 1, '642859', '', 1);
 
 -- --------------------------------------------------------
 
@@ -64,8 +83,26 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 --
 
 CREATE TABLE IF NOT EXISTS `details_commande` (
-  `ID_COMMANDE` int(11) NOT NULL
+  `ID_COMMANDE` int(11) NOT NULL,
+  `produit` int(11) NOT NULL,
+  `total` double NOT NULL,
+  `format` varchar(50) NOT NULL,
+  KEY `ID_COMMANDE` (`ID_COMMANDE`),
+  KEY `produit` (`produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `details_commande`
+--
+
+INSERT INTO `details_commande` (`ID_COMMANDE`, `produit`, `total`, `format`) VALUES
+(1, 8, 30, 'Sac de 2kg'),
+(1, 8, 15, 'Sac de 1kg'),
+(2, 7, 75, 'Paquet de 3 poitrines'),
+(4, 8, 22, 'Sac de 1kg'),
+(5, 7, 15, 'Paquet de 3 poitrines'),
+(6, 8, 60, 'Sac de 2kg'),
+(6, 8, 52, 'Sac de 1kg');
 
 -- --------------------------------------------------------
 
@@ -110,6 +147,30 @@ INSERT INTO `evenements` (`id_evenement`, `Nom_Evenement`, `Date_Evenement`, `im
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `format_produit`
+--
+
+CREATE TABLE IF NOT EXISTS `format_produit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `produit_fournisseur` int(11) NOT NULL,
+  `format` varchar(50) NOT NULL,
+  `prix` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `produit_fournisseur` (`produit_fournisseur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `format_produit`
+--
+
+INSERT INTO `format_produit` (`id`, `produit_fournisseur`, `format`, `prix`) VALUES
+(1, 1, 'Sac de 2kg', 15),
+(2, 1, 'Sac de 1kg', 7.5),
+(3, 3, 'Paquet de 3 poitrines', 15);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `fournisseurs`
 --
 
@@ -133,7 +194,17 @@ CREATE TABLE IF NOT EXISTS `fournisseurs` (
   `Frais_Livraison` double DEFAULT NULL,
   `Courriel` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID_Fournisseur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `fournisseurs`
+--
+
+INSERT INTO `fournisseurs` (`ID_Fournisseur`, `Nom_Fournisseur`, `Note`, `Adresse`, `Ville`, `Province`, `Code_Postal`, `Telephone`, `Poste`, `Cell`, `Fax`, `Nom_Contact`, `Jour_Commande`, `Jour_Livraison`, `Delai_Commande`, `Cout_Minimum`, `Frais_Livraison`, `Courriel`) VALUES
+(1, 'Provigo le Marché', NULL, '2500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9841', '4613', '(819)609-1234', '(819)376-9841', 'John Doe', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
+(2, 'Métro Des Forges', NULL, '2500 Aubuchon', 'Trois-Rivières', 'Québec', 'G8Y 5G7', '(819)376-1721', '6543', '(819)325-5654', '(819)363-3213', 'Marc Lavoie', 'Mardi', 'Jeudi', 2, 45, 10, NULL),
+(3, 'IGA Marché Paquette', NULL, '3500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9542', '4643', '(819)692-1234', '(819)376-9542', 'Jean Paquette', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
+(4, 'Marché Végétarien', NULL, '2502 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 6G5', '(819)376-1756', '6543', '(819)325-5443', '(819)363-3212', NULL, 'Mardi', 'Jeudi', 2, 45, 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -209,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `Description` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`ID_Produit`),
   KEY `Categorie` (`Categorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `produits`
@@ -218,7 +289,9 @@ CREATE TABLE IF NOT EXISTS `produits` (
 INSERT INTO `produits` (`ID_Produit`, `Nom_Produit`, `Categorie`, `Duree_Vie`, `Taxable_Federal`, `Taxable_Provincial`, `Code_UCP`, `Perissable`, `Description`) VALUES
 (2, 'Pomme', 2, NULL, 1, 0, NULL, 1, 'Ceci est un fruit'),
 (3, 'Poire', 1, NULL, 1, 0, NULL, 0, 'Ceci est une poire poireuse. Oui oui'),
-(4, 'Blé', 1, NULL, 0, 1, NULL, 0, ' ');
+(4, 'Blé', 1, NULL, 0, 1, NULL, 0, ' '),
+(7, 'Poulet', 2, 1, 1, 1, NULL, 1, 'Ceci est du poulet'),
+(8, 'Fromage En Crotte', 1, 2, 1, 1, NULL, 1, 'Il fait Sqwick Sqwick');
 
 -- --------------------------------------------------------
 
@@ -230,11 +303,19 @@ CREATE TABLE IF NOT EXISTS `produits_fournisseurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Produit` int(11) NOT NULL,
   `ID_Fournisseur` int(11) NOT NULL,
-  `Prix` double DEFAULT NULL,
-  `Format_Achat` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ID_Produit` (`ID_Produit`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `ID_Produit` (`ID_Produit`),
+  KEY `ID_Produit_2` (`ID_Produit`),
+  KEY `ID_Fournisseur` (`ID_Fournisseur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `produits_fournisseurs`
+--
+
+INSERT INTO `produits_fournisseurs` (`id`, `ID_Produit`, `ID_Fournisseur`) VALUES
+(1, 8, 1),
+(3, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -274,11 +355,30 @@ INSERT INTO `recettes` (`ID_Recette`, `Nom`, `Temps_Preparation`, `Temps_Cuisson
 --
 
 --
+-- Contraintes pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`fournisseur`) REFERENCES `fournisseurs` (`ID_Fournisseur`);
+
+--
+-- Contraintes pour la table `details_commande`
+--
+ALTER TABLE `details_commande`
+  ADD CONSTRAINT `details_commande_ibfk_1` FOREIGN KEY (`ID_COMMANDE`) REFERENCES `commandes` (`ID_Commande`),
+  ADD CONSTRAINT `details_commande_ibfk_2` FOREIGN KEY (`produit`) REFERENCES `produits` (`ID_Produit`);
+
+--
 -- Contraintes pour la table `details_recette`
 --
 ALTER TABLE `details_recette`
   ADD CONSTRAINT `details_recette_ibfk_2` FOREIGN KEY (`ID_Recette`) REFERENCES `recettes` (`ID_Recette`),
   ADD CONSTRAINT `details_recette_ibfk_1` FOREIGN KEY (`ID_Produit`) REFERENCES `produits` (`ID_Produit`);
+
+--
+-- Contraintes pour la table `format_produit`
+--
+ALTER TABLE `format_produit`
+  ADD CONSTRAINT `format_produit_ibfk_1` FOREIGN KEY (`produit_fournisseur`) REFERENCES `produits_fournisseurs` (`id`);
 
 --
 -- Contraintes pour la table `inventaire`
@@ -296,7 +396,8 @@ ALTER TABLE `produits`
 -- Contraintes pour la table `produits_fournisseurs`
 --
 ALTER TABLE `produits_fournisseurs`
-  ADD CONSTRAINT `produits_fournisseurs_ibfk_1` FOREIGN KEY (`ID_Produit`) REFERENCES `produits` (`ID_Produit`);
+  ADD CONSTRAINT `produits_fournisseurs_ibfk_1` FOREIGN KEY (`ID_Produit`) REFERENCES `produits` (`ID_Produit`),
+  ADD CONSTRAINT `produits_fournisseurs_ibfk_2` FOREIGN KEY (`ID_Fournisseur`) REFERENCES `fournisseurs` (`ID_Fournisseur`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

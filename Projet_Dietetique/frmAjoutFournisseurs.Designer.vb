@@ -432,6 +432,8 @@ Partial Class frmAjoutFournisseurs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(773, 618)
         Me.Controls.Add(Me.txtCodePostal)
         Me.Controls.Add(Me.txtFax)
@@ -474,7 +476,7 @@ Partial Class frmAjoutFournisseurs
         Me.Controls.Add(Me.txtNom)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmAjoutFournisseurs"
-        Me.Text = "frmAjoutFournisseurs"
+        Me.Text = "Ajouter un fournisseur"
         CType(Me.nudCommande, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

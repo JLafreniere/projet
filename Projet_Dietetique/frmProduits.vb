@@ -19,6 +19,7 @@ Public Class frmProduits
         couleurBouton("D", btnSupprimer)
 
         Dim refresh As New PictureBox()
+       
         refresh.SetBounds(513, 2, 35, 35)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage

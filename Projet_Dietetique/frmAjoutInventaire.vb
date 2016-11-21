@@ -23,7 +23,6 @@ Public Class frmAjoutInventaire
         cmbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cmbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
 
-
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cmbUnite.Items.Add(bd.uniteMesure(i))
         Next

@@ -19,6 +19,10 @@
             AddHandler currentForm.FormClosed, Sub()
                                                    Application.Exit()
                                                End Sub
+            AddHandler currentForm.Shown, Sub()
+                                              currentForm.TopMost = True
+                                          End Sub
+
 
 
 

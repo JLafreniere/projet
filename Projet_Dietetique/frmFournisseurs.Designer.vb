@@ -65,7 +65,7 @@ Partial Class frmFournisseurs
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(398, 430)
+        Me.btnAjouter.Location = New System.Drawing.Point(412, 423)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnAjouter.TabIndex = 58
@@ -80,7 +80,7 @@ Partial Class frmFournisseurs
         Me.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModifier.ForeColor = System.Drawing.Color.White
-        Me.btnModifier.Location = New System.Drawing.Point(495, 430)
+        Me.btnModifier.Location = New System.Drawing.Point(509, 423)
         Me.btnModifier.Name = "btnModifier"
         Me.btnModifier.Size = New System.Drawing.Size(91, 35)
         Me.btnModifier.TabIndex = 59
@@ -95,7 +95,7 @@ Partial Class frmFournisseurs
         Me.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSupprimer.ForeColor = System.Drawing.Color.White
-        Me.btnSupprimer.Location = New System.Drawing.Point(592, 430)
+        Me.btnSupprimer.Location = New System.Drawing.Point(606, 423)
         Me.btnSupprimer.Name = "btnSupprimer"
         Me.btnSupprimer.Size = New System.Drawing.Size(91, 35)
         Me.btnSupprimer.TabIndex = 60
@@ -148,7 +148,7 @@ Partial Class frmFournisseurs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(903, 630)
+        Me.ClientSize = New System.Drawing.Size(1085, 630)
         Me.Controls.Add(Me.mainpanel)
         Me.Name = "frmFournisseurs"
         Me.Text = "frmFournisseurs"

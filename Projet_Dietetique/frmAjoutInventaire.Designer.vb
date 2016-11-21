@@ -87,6 +87,7 @@ Partial Class frmAjoutInventaire
         '
         'cmbEquivalence
         '
+        Me.cmbEquivalence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEquivalence.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbEquivalence.FormattingEnabled = True
         Me.cmbEquivalence.Location = New System.Drawing.Point(297, 237)
@@ -212,7 +213,7 @@ Partial Class frmAjoutInventaire
         '
         Me.dtpPeremption.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.dtpPeremption.Location = New System.Drawing.Point(199, 382)
-        Me.dtpPeremption.MinDate = New Date(1988, 12, 26, 0, 0, 0, 0)
+        Me.dtpPeremption.MinDate = New Date(1753, 5, 16, 0, 0, 0, 0)
         Me.dtpPeremption.Name = "dtpPeremption"
         Me.dtpPeremption.Size = New System.Drawing.Size(200, 22)
         Me.dtpPeremption.TabIndex = 53
@@ -236,6 +237,7 @@ Partial Class frmAjoutInventaire
         '
         'cmbUnite
         '
+        Me.cmbUnite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbUnite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbUnite.FormattingEnabled = True
         Me.cmbUnite.Location = New System.Drawing.Point(298, 194)

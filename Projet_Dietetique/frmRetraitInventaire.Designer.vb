@@ -60,6 +60,7 @@ Partial Class frmRetraitInventaire
         Me.txtQuantite.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtQuantite.Location = New System.Drawing.Point(147, 107)
         Me.txtQuantite.Name = "txtQuantite"
+        Me.txtQuantite.ShortcutsEnabled = False
         Me.txtQuantite.Size = New System.Drawing.Size(100, 22)
         Me.txtQuantite.TabIndex = 2
         Me.txtQuantite.Text = "0"
@@ -130,11 +131,12 @@ Partial Class frmRetraitInventaire
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label5.Location = New System.Drawing.Point(27, 150)
+        Me.Label5.Location = New System.Drawing.Point(10, 150)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(108, 13)
+        Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label5.Size = New System.Drawing.Size(125, 13)
         Me.Label5.TabIndex = 80
-        Me.Label5.Text = "Total en inventaire :"
+        Me.Label5.Text = "Restant en inventaire : "
         '
         'frmRetraitInventaire
         '

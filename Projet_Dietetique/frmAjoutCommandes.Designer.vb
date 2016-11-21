@@ -53,7 +53,7 @@ Partial Class frmAjoutCommandes
         Me.nudQuantite.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudQuantite.Name = "nudQuantite"
         Me.nudQuantite.Size = New System.Drawing.Size(58, 20)
-        Me.nudQuantite.TabIndex = 92
+        Me.nudQuantite.TabIndex = 87
         Me.nudQuantite.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'ColumnHeader3
@@ -154,7 +154,7 @@ Partial Class frmAjoutCommandes
         Me.txtNotes.Location = New System.Drawing.Point(176, 179)
         Me.txtNotes.Name = "txtNotes"
         Me.txtNotes.Size = New System.Drawing.Size(200, 96)
-        Me.txtNotes.TabIndex = 85
+        Me.txtNotes.TabIndex = 83
         Me.txtNotes.Text = ""
         '
         'Label6
@@ -227,7 +227,7 @@ Partial Class frmAjoutCommandes
         Me.cbProduits.Location = New System.Drawing.Point(593, 318)
         Me.cbProduits.Name = "cbProduits"
         Me.cbProduits.Size = New System.Drawing.Size(200, 21)
-        Me.cbProduits.TabIndex = 83
+        Me.cbProduits.TabIndex = 85
         '
         'cbFormat
         '
@@ -235,7 +235,7 @@ Partial Class frmAjoutCommandes
         Me.cbFormat.Location = New System.Drawing.Point(1006, 318)
         Me.cbFormat.Name = "cbFormat"
         Me.cbFormat.Size = New System.Drawing.Size(101, 21)
-        Me.cbFormat.TabIndex = 95
+        Me.cbFormat.TabIndex = 89
         '
         'Label5
         '

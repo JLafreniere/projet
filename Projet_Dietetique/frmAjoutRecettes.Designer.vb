@@ -30,8 +30,6 @@ Partial Class frmAjoutRecettes
         Me.cbPortions = New System.Windows.Forms.ComboBox()
         Me.txtPortions = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtId = New System.Windows.Forms.TextBox()
-        Me.lblId = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtRemarques = New System.Windows.Forms.RichTextBox()
         Me.chkCongelable = New System.Windows.Forms.CheckBox()
@@ -76,6 +74,8 @@ Partial Class frmAjoutRecettes
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnEnregistrer = New System.Windows.Forms.Button()
         Me.btnAnnuler = New System.Windows.Forms.Button()
+        Me.lblId = New System.Windows.Forms.Label()
+        Me.txtId = New System.Windows.Forms.TextBox()
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -158,22 +158,6 @@ Partial Class frmAjoutRecettes
         Me.Label11.Size = New System.Drawing.Size(19, 13)
         Me.Label11.TabIndex = 167
         Me.Label11.Text = "de"
-        '
-        'txtId
-        '
-        Me.txtId.Location = New System.Drawing.Point(616, 114)
-        Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(24, 20)
-        Me.txtId.TabIndex = 166
-        '
-        'lblId
-        '
-        Me.lblId.AutoSize = True
-        Me.lblId.Location = New System.Drawing.Point(587, 114)
-        Me.lblId.Name = "lblId"
-        Me.lblId.Size = New System.Drawing.Size(22, 13)
-        Me.lblId.TabIndex = 165
-        Me.lblId.Text = "Id :"
         '
         'Label7
         '
@@ -584,6 +568,23 @@ Partial Class frmAjoutRecettes
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = False
         '
+        'lblId
+        '
+        Me.lblId.AutoSize = True
+        Me.lblId.Location = New System.Drawing.Point(587, 114)
+        Me.lblId.Name = "lblId"
+        Me.lblId.Size = New System.Drawing.Size(22, 13)
+        Me.lblId.TabIndex = 165
+        Me.lblId.Text = "Id :"
+        '
+        'txtId
+        '
+        Me.txtId.BackColor = System.Drawing.SystemColors.Window
+        Me.txtId.Location = New System.Drawing.Point(616, 114)
+        Me.txtId.Name = "txtId"
+        Me.txtId.Size = New System.Drawing.Size(24, 20)
+        Me.txtId.TabIndex = 166
+        '
         'frmAjoutRecettes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -655,8 +656,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents cbPortions As ComboBox
     Friend WithEvents txtPortions As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents txtId As TextBox
-    Friend WithEvents lblId As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents txtRemarques As RichTextBox
     Friend WithEvents chkCongelable As CheckBox
@@ -701,4 +700,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents btnEnregistrer As Button
     Friend WithEvents btnAnnuler As Button
+    Friend WithEvents txtId As TextBox
+    Friend WithEvents lblId As Label
 End Class

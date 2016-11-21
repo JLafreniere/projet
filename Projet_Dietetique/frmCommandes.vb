@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data
-'Jonathan Villeneuve
+'Jonathan VILLENEUVE
 Public Class frmCommandes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim coll(2) As String
@@ -36,6 +36,7 @@ Public Class frmCommandes
     End Sub
 
     'Charge le dataset des commandes
+
     Sub chargerDataset()
         bd.dsCommandes.Clear()
         bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")

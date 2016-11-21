@@ -1,5 +1,5 @@
-﻿Public Class PanelJour
-
+﻿
+Public Class PanelJour
     ''Jonathan Lafreniere
     ''Création de cases représentant les jours dans un calendrier
     Inherits Panel
@@ -117,7 +117,7 @@
                 linkLabel = True
                 ll = New LinkLabel
                 ll.Text = "Tous les évènements"
-                ll.SetBounds(30, 130, 115, 15)
+                ll.SetBounds(7, 130, 115, 15)
                 ll.AutoSize = False
                 Controls.Add(ll)
                 AddHandler ll.Click, Sub(sender2, eventargs2)

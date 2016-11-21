@@ -19,7 +19,8 @@ Public Class frmProduits
         couleurBouton("D", btnSupprimer)
 
         Dim refresh As New PictureBox()
-        refresh.SetBounds(510, 11, 40, 40)
+       
+        refresh.SetBounds(513, 2, 35, 35)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
 
@@ -267,7 +268,6 @@ Public Class frmProduits
         cacherComposantModification()
         btnSupprimer.Enabled = True
         couleurBouton("E", btnSupprimer)
-        ' btnVoirModifier.Enabled = True
         btnVoirAjouter.Enabled = True
         lsvProduits.SelectedItems.Clear()
     End Sub
@@ -278,7 +278,6 @@ Public Class frmProduits
         cacherComposantModification()
         btnSupprimer.Enabled = False
         couleurBouton("D", btnSupprimer)
-        ' btnVoirModifier.Enabled = False
         miseAjourBD()
         remplircontroles()
     End Sub
@@ -380,6 +379,10 @@ Public Class frmProduits
     End Sub
 
     Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 

@@ -275,7 +275,7 @@ Partial Class frmProduits
         Me.Panel1.Controls.Add(Me.gbModifier)
         Me.Panel1.Controls.Add(Me.lsvProduits)
         Me.Panel1.Controls.Add(Me.txtRechercher)
-        Me.Panel1.Location = New System.Drawing.Point(217, 85)
+        Me.Panel1.Location = New System.Drawing.Point(240, 80)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1141, 654)
         Me.Panel1.TabIndex = 68
@@ -287,7 +287,7 @@ Partial Class frmProduits
         Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnRechercher.ForeColor = System.Drawing.Color.White
-        Me.btnRechercher.Location = New System.Drawing.Point(314, 14)
+        Me.btnRechercher.Location = New System.Drawing.Point(317, 3)
         Me.btnRechercher.Name = "btnRechercher"
         Me.btnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.btnRechercher.TabIndex = 61
@@ -307,7 +307,7 @@ Partial Class frmProduits
         Me.gbAjouter.Controls.Add(Me.btnAjouter)
         Me.gbAjouter.Controls.Add(Me.lblAjouter)
         Me.gbAjouter.Controls.Add(Me.txtAjouter)
-        Me.gbAjouter.Location = New System.Drawing.Point(78, 115)
+        Me.gbAjouter.Location = New System.Drawing.Point(5, 69)
         Me.gbAjouter.Name = "gbAjouter"
         Me.gbAjouter.Size = New System.Drawing.Size(500, 350)
         Me.gbAjouter.TabIndex = 65
@@ -341,7 +341,7 @@ Partial Class frmProduits
         Me.btnVoirAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVoirAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnVoirAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnVoirAjouter.Location = New System.Drawing.Point(409, 14)
+        Me.btnVoirAjouter.Location = New System.Drawing.Point(414, 3)
         Me.btnVoirAjouter.Name = "btnVoirAjouter"
         Me.btnVoirAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnVoirAjouter.TabIndex = 57
@@ -363,7 +363,7 @@ Partial Class frmProduits
         Me.gbModifier.Controls.Add(Me.lblModifier)
         Me.gbModifier.Controls.Add(Me.txtModifier)
         Me.gbModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.gbModifier.Location = New System.Drawing.Point(593, 55)
+        Me.gbModifier.Location = New System.Drawing.Point(594, 37)
         Me.gbModifier.Name = "gbModifier"
         Me.gbModifier.Size = New System.Drawing.Size(500, 350)
         Me.gbModifier.TabIndex = 64
@@ -395,10 +395,10 @@ Partial Class frmProduits
         Me.lsvProduits.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvProduits.FullRowSelect = True
         Me.lsvProduits.HideSelection = False
-        Me.lsvProduits.Location = New System.Drawing.Point(0, 55)
+        Me.lsvProduits.Location = New System.Drawing.Point(3, 42)
         Me.lsvProduits.MultiSelect = False
         Me.lsvProduits.Name = "lsvProduits"
-        Me.lsvProduits.Size = New System.Drawing.Size(561, 556)
+        Me.lsvProduits.Size = New System.Drawing.Size(501, 554)
         Me.lsvProduits.TabIndex = 63
         Me.lsvProduits.UseCompatibleStateImageBehavior = False
         Me.lsvProduits.View = System.Windows.Forms.View.Details
@@ -418,7 +418,7 @@ Partial Class frmProduits
         Me.txtRechercher.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRechercher.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.txtRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtRechercher.Location = New System.Drawing.Point(2, 21)
+        Me.txtRechercher.Location = New System.Drawing.Point(3, 8)
         Me.txtRechercher.Name = "txtRechercher"
         Me.txtRechercher.Size = New System.Drawing.Size(301, 22)
         Me.txtRechercher.TabIndex = 60
@@ -427,7 +427,7 @@ Partial Class frmProduits
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.ClientSize = New System.Drawing.Size(1676, 987)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmProduits"

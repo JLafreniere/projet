@@ -31,9 +31,16 @@
 
     Private Sub btnRetirer_Click(sender As Object, e As EventArgs) Handles btnRetirer.Click
         bd.dsInventaire.Tables(0).Rows(0).Item(11) = txtTotal.Text
+
+        If txtTotal.Text = 0 Then
+            If MsgBox("Voulez-vous supprimer : " & lblItem.Text & " de l'inventaire ? (Quantité restante : 0)", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+                bd.nonQuery("delete from inventaire where id_inventaire = " & frmInventaire.no)
+            End If
+        End If
+
         bd.miseAjourBD(bd.dsInventaire, bd.daInventaire, "inventaire")
         Me.Close()
-        frmInventaire.remplircontroles()
+        frmInventaire.plusDeFraicheurSubway6PouceA3et99()
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
@@ -51,14 +58,14 @@
             Else
                 lblQuantite.Font = New Font(lblQuantite.Font, FontStyle.Bold)
                 txtTotal.Text = bd.dsInventaire.Tables(0).Rows(0).Item(11)
-                couleurBouton("D", btnRetirer)
+                txtQuantite.Text = bd.dsInventaire.Tables(0).Rows(0).Item(11)
             End If
         Catch exc As Exception : End Try
     End Sub
 
 
     Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
+        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) AndAlso Not e.KeyChar = "," Then
             e.Handled = True
         End If
     End Sub

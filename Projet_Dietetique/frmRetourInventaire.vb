@@ -37,7 +37,7 @@
         bd.dsInventaire.Tables(0).Rows(0).Item(11) = txtTotal.Text
         bd.miseAjourBD(bd.dsInventaire, bd.daInventaire, "inventaire")
         Me.Close()
-        frmInventaire.remplircontroles()
+        frmInventaire.plusDeFraicheurSubway6PouceA3et99()
     End Sub
 
     Private Sub txtQuantite_TextChanged(sender As Object, e As EventArgs) Handles txtQuantite.TextChanged

@@ -20,6 +20,7 @@ Public Class frmAjoutFournisseurs
         chargerDataset()
         txtId.Visible = False
         btnEnregistrer.Enabled = False
+
         Dim ctl As Control
         For Each ctl In Me.Controls
             AddHandler ctl.KeyDown, AddressOf controleSuivant
@@ -35,19 +36,19 @@ Public Class frmAjoutFournisseurs
         'Validation du courriel (le code postal et les numéros (téléphone cell et Télécopieur) sont des Masked TextBox)
         If email.IsMatch(txtCourriel.Text) Then
             drNouvel = bd.dsFournisseurs.Tables(0).NewRow
-            drNouvel(1) = txtNom.Text
-            drNouvel(2) = txtNotes.Text
-            drNouvel(3) = txtAdresse.Text
-            drNouvel(4) = txtVille.Text
-            drNouvel(5) = txtProvince.Text
+            drNouvel(1) = Replace(txtNom.Text, "'", "''")
+            drNouvel(2) = Replace(txtNotes.Text, "'", "''")
+            drNouvel(3) = Replace(txtAdresse.Text, "'", "''")
+            drNouvel(4) = Replace(txtVille.Text, "'", "''")
+            drNouvel(5) = Replace(txtProvince.Text, "'", "''")
             drNouvel(6) = txtCodePostal.Text
             drNouvel(7) = txtTel.Text
             drNouvel(8) = txtPoste.Text
             drNouvel(9) = txtCell.Text
             drNouvel(10) = txtFax.Text
-            drNouvel(11) = txtContact.Text
-            drNouvel(12) = cbCommande.Text
-            drNouvel(13) = cbLivraison.Text
+            drNouvel(11) = Replace(txtContact.Text, "'", "''")
+            drNouvel(12) = Replace(cbCommande.Text, "'", "''")
+            drNouvel(13) = Replace(cbLivraison.Text, "'", "''")
             drNouvel(14) = nudCommande.Value
             drNouvel(15) = txtPrix.Text
             drNouvel(16) = txtFrais.Text
@@ -86,6 +87,7 @@ Public Class frmAjoutFournisseurs
 
 
     End Sub
+
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         If btnEnregistrer.Text = "Enregistrer" Then
@@ -138,9 +140,9 @@ Public Class frmAjoutFournisseurs
     'Modifie le fournisseur
     Sub modifier()
 
-        bd.nonQuery("UPDATE `fournisseurs` set `nom_fournisseur` = '" + txtNom.Text + "' , `note` = '" + txtNotes.Text + "', `adresse` = '" + txtAdresse.Text + "' , `ville` = '" + txtVille.Text + "' , 
-`province` = '" + txtProvince.Text + "' , `code_postal` = '" + txtCodePostal.Text + "' , `telephone` = '" + txtTel.Text + "',`poste` = '" + txtPoste.Text + "' , `cell` = '" + txtCell.Text + "',
- `fax` = '" + txtFax.Text + "', `nom_contact` = '" + txtContact.Text + "', `jour_commande` = '" + cbCommande.Text + "' , `jour_livraison` = '" + cbLivraison.Text + "', `delai_commande` = '" + nudCommande.Value.ToString + "',
+        bd.nonQuery("UPDATE `fournisseurs` set `nom_fournisseur` = '" + Replace(txtNom.Text, "'", "''") + "' , `note` = '" + Replace(txtNotes.Text, "'", "''") + "', `adresse` = '" + Replace(txtAdresse.Text, "'", "''") + "' , `ville` = '" + Replace(txtVille.Text, "'", "''") + "' , 
+`province` = '" + Replace(txtProvince.Text, "'", "''") + "' , `code_postal` = '" + txtCodePostal.Text + "' , `telephone` = '" + txtTel.Text + "',`poste` = '" + txtPoste.Text + "' , `cell` = '" + txtCell.Text + "',
+ `fax` = '" + txtFax.Text + "', `nom_contact` = '" + Replace(txtContact.Text, "'", "''") + "', `jour_commande` = '" + Replace(cbCommande.Text, "'", "''") + "' , `jour_livraison` = '" + Replace(cbLivraison.Text, "'", "''") + "', `delai_commande` = '" + nudCommande.Value.ToString + "',
 `cout_minimum` = '" + txtPrix.Text + "' , `frais_livraison` = '" + txtFrais.Text + "' , `courriel` = '" + txtCourriel.Text + "' where `id_fournisseur` = '" + txtId.Text + "'")
 
         bd.miseAjourBD(bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
@@ -162,17 +164,8 @@ Public Class frmAjoutFournisseurs
     End Sub
 
 
-    Private Sub txtAdresse_TextChanged(sender As Object, e As EventArgs) Handles txtAdresse.TextChanged, txtContact.TextChanged _
-        , txtCourriel.TextChanged, txtFrais.TextChanged, txtId.TextChanged, txtNom.TextChanged, txtNotes.TextChanged, txtPoste.TextChanged, txtPrix.TextChanged, txtProvince.TextChanged _
-        , txtVille.TextChanged
-
-        If sender.text <> "" Then
-            btnEnregistrer.Enabled = True
 
 
-        End If
-
-    End Sub
 
     Private Sub txtCell_GotFocus(sender As Object, e As EventArgs) Handles txtCourriel.GotFocus
         sender.ForeColor = SystemColors.WindowText
@@ -193,5 +186,11 @@ Public Class frmAjoutFournisseurs
         Close()
         frmFournisseurs.Show()
 
+    End Sub
+    'Valide si les textbox sont vide ou non pour activer btnEnregistrer
+    Sub validerTextBox()
+        'If (txtAdresse.Text <> "") And (txtCell.Text <> "") And (txtCodePostal.Text <> "") And (txtContact.Text <> "") And (txtCourriel.Text <> "") And (txtFax.Text <> "") And (txtFrais.Text <> "") And (txtNom) Then
+
+        '.End If
     End Sub
 End Class

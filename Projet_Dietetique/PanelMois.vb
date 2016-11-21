@@ -110,7 +110,8 @@ Public Class PanelMois
 
             End Select
 
-            semaines(semaine).pnlJours(caseJour).ajouterEvenement(_date.Day)
+            semaines(semaine).pnlJours(caseJour).
+                ajouterEvenement(_date.Day)
             semaines(semaine).pnlJours(caseJour).Tag = _date.Day
             semaines(semaine).pnlJours(caseJour)._date = _date
 

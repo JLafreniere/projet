@@ -121,9 +121,9 @@ Public Class PanelJour
                 ll.AutoSize = False
                 Controls.Add(ll)
                 AddHandler ll.Click, Sub(sender2, eventargs2)
-
-                                         frmAccueil.bd.miseAjourDS(ds, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id=" & recette, 0)
-                                         MsgBox(ds.Tables(0).Rows(0).Item(0))
+                                         Dim ds1 As New DataSet()
+                                         frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id=" & recette, 0)
+                                         MsgBox(ds1.Tables(0).Rows(0).Item(0))
                                      End Sub
                 MsgBox(ds.Tables(0).Rows(0).Item(0))
             End If

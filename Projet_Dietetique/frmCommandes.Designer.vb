@@ -29,7 +29,6 @@ Partial Class frmCommandes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.btnModifier = New System.Windows.Forms.Button()
-        Me.btnSupprimer = New System.Windows.Forms.Button()
         Me.lsvCommandes = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -47,7 +46,6 @@ Partial Class frmCommandes
         Me.mainpanel.Controls.Add(Me.Label1)
         Me.mainpanel.Controls.Add(Me.btnAjouter)
         Me.mainpanel.Controls.Add(Me.btnModifier)
-        Me.mainpanel.Controls.Add(Me.btnSupprimer)
         Me.mainpanel.Controls.Add(Me.lsvCommandes)
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
         Me.mainpanel.Controls.Add(Me.txtRecherche)
@@ -126,27 +124,12 @@ Partial Class frmCommandes
         Me.btnModifier.Text = "Modifier"
         Me.btnModifier.UseVisualStyleBackColor = False
         '
-        'btnSupprimer
-        '
-        Me.btnSupprimer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSupprimer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.btnSupprimer.Enabled = False
-        Me.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSupprimer.ForeColor = System.Drawing.Color.White
-        Me.btnSupprimer.Location = New System.Drawing.Point(592, 430)
-        Me.btnSupprimer.Name = "btnSupprimer"
-        Me.btnSupprimer.Size = New System.Drawing.Size(91, 35)
-        Me.btnSupprimer.TabIndex = 60
-        Me.btnSupprimer.Text = "Supprimer"
-        Me.btnSupprimer.UseVisualStyleBackColor = False
-        '
         'lsvCommandes
         '
         Me.lsvCommandes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader3, Me.Total})
         Me.lsvCommandes.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvCommandes.HideSelection = False
-        Me.lsvCommandes.Location = New System.Drawing.Point(0, 115)
+        Me.lsvCommandes.Location = New System.Drawing.Point(2, 111)
         Me.lsvCommandes.MultiSelect = False
         Me.lsvCommandes.Name = "lsvCommandes"
         Me.lsvCommandes.Size = New System.Drawing.Size(697, 372)
@@ -210,7 +193,6 @@ Partial Class frmCommandes
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents lsvCommandes As ListView
-    Friend WithEvents btnSupprimer As Button
     Friend WithEvents btnModifier As Button
     Friend WithEvents btnAjouter As Button
     Friend WithEvents Label1 As Label

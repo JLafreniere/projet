@@ -68,11 +68,12 @@ Public Class frmFournisseurs
         frmAjoutFournisseurs.txtPrix.Text = bd.dsFournisseurs.Tables(0).Rows(position).Item(15).ToString
         frmAjoutFournisseurs.txtFrais.Text = bd.dsFournisseurs.Tables(0).Rows(position).Item(16).ToString
         frmAjoutFournisseurs.txtCourriel.Text = bd.dsFournisseurs.Tables(0).Rows(position).Item(17).ToString
+        frmAjoutFournisseurs.Text = "Modifier un fournisseur"
 
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
-        Hide()
+
         frmAjoutFournisseurs.Show()
 
     End Sub

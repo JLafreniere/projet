@@ -35,6 +35,9 @@ Public Class GestionBD
     Public dsDetailsCommandes As New DataSet
     Public daDetailsCommandes As New MySqlDataAdapter
 
+    Public dsFormat As New DataSet
+    Public daFormat As New MySqlDataAdapter
+
 
     Private _position As Integer = 0
     Public _Connectionstring As String

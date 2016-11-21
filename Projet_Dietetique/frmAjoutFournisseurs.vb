@@ -4,6 +4,7 @@ Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports System.Text.RegularExpressions
 Public Class frmAjoutFournisseurs
+
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim jours = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"}
 
@@ -14,6 +15,7 @@ Public Class frmAjoutFournisseurs
 
     End Sub
     Private Sub frmAjoutFournisseurs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Controls.Add(New Header(Me, False))
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         chargerDataset()
         txtId.Visible = False
@@ -58,7 +60,8 @@ Public Class frmAjoutFournisseurs
 
             chargerDataset()
             viderChamp()
-
+            frmFournisseurs.chargerDataset()
+            frmFournisseurs.remplirListview()
 
 
 
@@ -142,6 +145,8 @@ Public Class frmAjoutFournisseurs
 
         bd.miseAjourBD(bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
         viderChamp()
+        frmFournisseurs.chargerDataset()
+        frmFournisseurs.remplirListview()
 
     End Sub
 

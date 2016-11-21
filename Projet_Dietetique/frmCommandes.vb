@@ -9,6 +9,7 @@ Public Class frmCommandes
     Dim ds3 As New DataSet
     Dim ds4 As New DataSet
     Dim ds5 As New DataSet
+    Dim ds6 As New DataSet
     Public position As Integer = -1
 
 
@@ -53,7 +54,9 @@ Public Class frmCommandes
 
             coll(0) = FormatDateTime(bd.dsCommandes.Tables(0).Rows(i).Item(1).ToString(), DateFormat.ShortDate)
             coll(1) = ds2.Tables(0).Rows(i).Item(1).ToString
-            coll(2) = "50$"
+            'On fait un sum pour afficher le total de la commande
+            bd.Requete("Select Sum(total) from details_commande group by id_commande", ds6, bd.daDetailsCommandes, "details_commande")
+            coll(2) = ds6.Tables(0).Rows(i).Item(0) & "$"
 
 
 
@@ -96,14 +99,14 @@ Public Class frmCommandes
             bd.Requete("select * from commandes ", bd.dsCommandes, bd.daCommandes, "commandes")
         End If
 
-        btnSupprimer.Enabled = False
+
         btnModifier.Enabled = False
         txtRecherche.Text = ""
     End Sub
 
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
-        Hide()
+
         frmAjoutCommandes.Show()
 
     End Sub
@@ -142,7 +145,11 @@ Public Class frmCommandes
             frmAjoutCommandes.cbProduits.Enabled = False
             frmAjoutCommandes.nudQuantite.Enabled = False
             frmAjoutCommandes.lsvProduits.Enabled = False
+            frmAjoutCommandes.Text = "Consulter une commande"
 
+        Else
+
+            frmAjoutCommandes.Text = "Modifier une commande"
 
         End If
         frmAjoutCommandes.btnEnregistrer.Text = "Modifier"
@@ -161,17 +168,17 @@ Public Class frmCommandes
         'Renvoie l'Indice de l'élément sélectionné dans le ListView
         If lsvCommandes.SelectedItems.Count > 0 Then
             btnModifier.Enabled = True
-            btnSupprimer.Enabled = True
+
             position = lsvCommandes.SelectedIndices(0)
         Else
-            btnSupprimer.Enabled = False
+
             btnModifier.Enabled = False
         End If
     End Sub
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnModifier.Click
         rempliFormulaire()
-        Hide()
+
         frmAjoutCommandes.Show()
 
 

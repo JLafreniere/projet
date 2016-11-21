@@ -28,6 +28,7 @@ Partial Class frmAjoutCommandes
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lsvProduits = New System.Windows.Forms.ListView()
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnSupprimerListiew = New System.Windows.Forms.Button()
         Me.btnAjouterProduit = New System.Windows.Forms.Button()
         Me.btnAnnuler = New System.Windows.Forms.Button()
@@ -43,7 +44,6 @@ Partial Class frmAjoutCommandes
         Me.cbProduits = New System.Windows.Forms.ComboBox()
         Me.cbFormat = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,6 +92,10 @@ Partial Class frmAjoutCommandes
         Me.lsvProduits.TabIndex = 90
         Me.lsvProduits.UseCompatibleStateImageBehavior = False
         Me.lsvProduits.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Total"
         '
         'btnSupprimerListiew
         '
@@ -242,14 +246,11 @@ Partial Class frmAjoutCommandes
         Me.Label5.TabIndex = 94
         Me.Label5.Text = "Choisir le format"
         '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Total"
-        '
         'frmAjoutCommandes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1270, 592)
         Me.Controls.Add(Me.cbFormat)
         Me.Controls.Add(Me.Label5)
@@ -270,7 +271,7 @@ Partial Class frmAjoutCommandes
         Me.Controls.Add(Me.dtpDate)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmAjoutCommandes"
-        Me.Text = "frmAjoutCommandes"
+        Me.Text = "Faire une commande"
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

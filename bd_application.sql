@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 07 Novembre 2016 à 21:56
+-- Généré le :  Lun 21 Novembre 2016 à 22:10
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -93,17 +93,19 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `Nom_Evenement` varchar(250) NOT NULL,
   `Date_Evenement` date NOT NULL,
   `image` varchar(255) NOT NULL,
+  `id_recette` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_evenement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `evenements`
 --
 
-INSERT INTO `evenements` (`id_evenement`, `Nom_Evenement`, `Date_Evenement`, `image`) VALUES
-(1, 'Cours groupe 1', '2016-10-25', '1.png'),
-(2, 'sdf', '2016-10-25', '1.png'),
-(3, '', '2016-10-25', '1.png');
+INSERT INTO `evenements` (`id_evenement`, `Nom_Evenement`, `Date_Evenement`, `image`, `id_recette`) VALUES
+(1, 'Cours groupe 1', '2016-10-25', '1.png', 0),
+(2, 'sdf', '2016-10-25', '1.png', 0),
+(3, '', '2016-10-25', '1.png', 0),
+(4, 'Recette 123', '2016-11-21', '0.png', 1);
 
 -- --------------------------------------------------------
 
@@ -258,7 +260,14 @@ CREATE TABLE IF NOT EXISTS `recettes` (
   `Categorie` varchar(50) NOT NULL,
   `congelable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Recette`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `recettes`
+--
+
+INSERT INTO `recettes` (`ID_Recette`, `Nom`, `Temps_Preparation`, `Temps_Cuisson`, `Nb_Portions`, `Taille_Portion`, `Unite_Mesure`, `Temperature`, `Temps_Refroidissement`, `Etapes`, `Image`, `Remarque`, `Allergene`, `Duree_Conservation`, `Categorie`, `congelable`) VALUES
+(1, '123', 123, 123, '123', '123', '123', '123', 123, '123', NULL, '123', '123', 123, '123', 13);
 
 --
 -- Contraintes pour les tables exportées

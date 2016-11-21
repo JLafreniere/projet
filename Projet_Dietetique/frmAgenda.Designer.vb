@@ -46,13 +46,15 @@ Partial Class frmAgenda
         Me.dpFinAffichage = New System.Windows.Forms.DateTimePicker()
         Me.cbPeriodeAffichage = New System.Windows.Forms.CheckBox()
         Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.cbRecettes = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAjouter
         '
-        Me.btnAjouter.Location = New System.Drawing.Point(128, 170)
+        Me.btnAjouter.Location = New System.Drawing.Point(128, 188)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(75, 23)
         Me.btnAjouter.TabIndex = 0
@@ -134,6 +136,8 @@ Partial Class frmAgenda
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.Controls.Add(Me.cbRecettes)
+        Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAjouter)
         Me.Panel1.Controls.Add(Me.dt_date_evenement)
@@ -144,7 +148,7 @@ Partial Class frmAgenda
         Me.Panel1.Controls.Add(Me.rbtype3)
         Me.Panel1.Location = New System.Drawing.Point(240, 80)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(214, 195)
+        Me.Panel1.Size = New System.Drawing.Size(214, 272)
         Me.Panel1.TabIndex = 8
         '
         'TxtTitreMessage
@@ -273,6 +277,25 @@ Partial Class frmAgenda
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.List
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(3, 167)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(115, 17)
+        Me.CheckBox1.TabIndex = 8
+        Me.CheckBox1.Text = "Inclure une recette"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'cbRecettes
+        '
+        Me.cbRecettes.FormattingEnabled = True
+        Me.cbRecettes.Location = New System.Drawing.Point(3, 190)
+        Me.cbRecettes.Name = "cbRecettes"
+        Me.cbRecettes.Size = New System.Drawing.Size(181, 21)
+        Me.cbRecettes.TabIndex = 9
+        Me.cbRecettes.Visible = False
+        '
         'frmAgenda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -324,4 +347,6 @@ Partial Class frmAgenda
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents ListView1 As ListView
+    Friend WithEvents cbRecettes As ComboBox
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

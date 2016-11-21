@@ -7,6 +7,7 @@ Public Class frmAgenda
     Private Sub frmAgenda_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
         Controls.Add(New Header(Me, True))
         Me.BackColor = Color.White
+        chargerComboBox()
     End Sub
 
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -69,8 +70,27 @@ Public Class frmAgenda
         dr(1) = nom_evenement
         dr(2) = _date
         dr(3) = type & ".png"
+        If (CheckBox1.Checked) Then
+            dr(4) = cbRecettes.SelectedValue
+        End If
+
         ds.Tables(0).Rows.Add(dr)
         bd.miseAjourBD(ds, da, 0)
+
+    End Sub
+
+    Private Sub chargerComboBox()
+
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter()
+        bd.miseAjourDS(ds, da, "select id_recette, nom from recettes", 0)
+
+
+
+        Dim dt As DataTable = ds.Tables(0)
+        cbRecettes.DataSource = dt
+        cbRecettes.DisplayMember = "nom"
+        cbRecettes.ValueMember = "id_recette"
 
     End Sub
 
@@ -156,6 +176,18 @@ Public Class frmAgenda
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        Dim cb As CheckBox = sender
+        cbRecettes.Visible = cb.Checked
+        If cb.Checked Then
+            btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y + 30)
+        Else
+            btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y - 30)
+        End If
+
 
     End Sub
 End Class

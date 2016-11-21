@@ -5,6 +5,7 @@ set /p message="Message du commit: "
 git commit -m "%message%"
 git pull
 git push
+start /d "C:\Program Files\Internet Explorer" IEXPLORE.EXE http://dan-ball.jp/en/javagame/dust2/
 echo.   
 echo.   
 echo                        _. - ~ ~ ~ - .

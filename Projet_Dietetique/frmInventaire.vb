@@ -10,7 +10,7 @@
 
         'Bouton refresh sur la recherche
         Dim refresh As New PictureBox()
-        refresh.SetBounds(513, 2, 35, 35)
+        refresh.SetBounds(Integer.Parse(Integer.Parse(gbInventaire.Location.X.ToString).ToString), 2, 35, 35)
 
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
@@ -441,7 +441,7 @@
     End Sub
 
     Sub recherche()
-        'recherche pour la grille
+        'recherche pour le treeview
         If btnDGV.Text = "Grille" Then
 
             TreeView1.Nodes.Clear()
@@ -467,6 +467,9 @@
                         'requete pour inventaire
                         bd.Requete("select * from inventaire where upper(nom) like '%" & Replace(txtRechercher.Text, "'", "''").ToUpper & "%'", bd.dsInventaire, bd.daInventaire, "inventaire")
 
+                        If bd.dsInventaire.Tables(0).Rows.Count = 0 Then
+                            lblAucun.Visible = True
+                        End If
 
                     End If
                 End If
@@ -481,7 +484,7 @@
                 flag = True
             End If
 
-            'recherche sur le treeview
+            'recherche sur le dgv
         Else
             'refresh
             If txtRechercher.Text = "" Then

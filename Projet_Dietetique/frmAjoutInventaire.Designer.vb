@@ -213,7 +213,7 @@ Partial Class frmAjoutInventaire
         '
         Me.dtpPeremption.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.dtpPeremption.Location = New System.Drawing.Point(199, 382)
-        Me.dtpPeremption.MinDate = New Date(1988, 12, 26, 0, 0, 0, 0)
+        Me.dtpPeremption.MinDate = New Date(1753, 5, 16, 0, 0, 0, 0)
         Me.dtpPeremption.Name = "dtpPeremption"
         Me.dtpPeremption.Size = New System.Drawing.Size(200, 22)
         Me.dtpPeremption.TabIndex = 53

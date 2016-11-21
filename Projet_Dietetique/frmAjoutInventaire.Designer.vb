@@ -70,11 +70,11 @@ Partial Class frmAjoutInventaire
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label8.Location = New System.Drawing.Point(68, 287)
+        Me.Label8.Location = New System.Drawing.Point(140, 287)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(108, 13)
+        Me.Label8.Size = New System.Drawing.Size(38, 13)
         Me.Label8.TabIndex = 67
-        Me.Label8.Text = "Total en inventaire :"
+        Me.Label8.Text = "Total :"
         '
         'txtFormat
         '
@@ -107,11 +107,11 @@ Partial Class frmAjoutInventaire
         '
         Me.lblEquivalence.AutoSize = True
         Me.lblEquivalence.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblEquivalence.Location = New System.Drawing.Point(59, 240)
+        Me.lblEquivalence.Location = New System.Drawing.Point(54, 240)
         Me.lblEquivalence.Name = "lblEquivalence"
-        Me.lblEquivalence.Size = New System.Drawing.Size(121, 13)
+        Me.lblEquivalence.Size = New System.Drawing.Size(124, 13)
         Me.lblEquivalence.TabIndex = 63
-        Me.lblEquivalence.Text = "Equivalence par unité:"
+        Me.lblEquivalence.Text = "Equivalence par unité :"
         '
         'btnAnnuler
         '

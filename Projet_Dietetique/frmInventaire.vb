@@ -45,14 +45,16 @@
             txtRechercher.ResetText()
             bd.dsProduits.Clear()
             remplircontroles()
+            lblAucun.Visible = False
             'Refresh pour le treeview
         Else
             Dim dsTemp As New DataSet
-
+            lblAucun.Visible = False
             dsTemp.Clear()
             bd.Requete("select id_inventaire, nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
             dgvData.DataSource = dsTemp.Tables(0)
             txtRechercher.ResetText()
+            dgvData.Visible = True
         End If
         dgvData.ClearSelection()
         couleurBouton("D", btnRetirer)
@@ -442,8 +444,8 @@
 
     Sub recherche()
         'recherche pour le treeview
+        lblAucun.Visible = False
         If btnDGV.Text = "Grille" Then
-
             TreeView1.Nodes.Clear()
             bd.dsCategories.Clear()
             bd.dsInventaire.Clear()
@@ -488,6 +490,7 @@
         Else
             'refresh
             If txtRechercher.Text = "" Then
+                dgvData.Visible = True
                 Dim dsTemp As New DataSet
                 dsTemp.Clear()
                 bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie order by nom", dsTemp, bd.daInventaire, "inventaire")
@@ -499,8 +502,19 @@
                 Dim dsTemp As New DataSet
                 dsTemp.Clear()
                 bd.Requete("select nom, inventaire.quantite, concat(inventaire.format, ' ' , inventaire.unite) as Format, concat(inventaire.Equivalence, ' ' , inventaire.unite_Equivalence) as 'Equivalence/unite', concat(inventaire.total, ' ', inventaire.unite) as 'Total Restant' ,inventaire.description, nom_produit as Produit, nom_categorie as Categorie, date_reception as Reception, peremption as Peremption from inventaire, produits, categories where inventaire.produit = produits.id_produit and produits.categorie = categories.id_categorie and upper(inventaire.nom) like '%" & Replace(txtRechercher.Text, "'", "''").ToUpper.ToLower().ToUpper() & "%' order by nom", dsTemp, bd.daInventaire, "inventaire")
-                dgvData.DataSource = Nothing
-                dgvData.DataSource = dsTemp.Tables(0)
+
+                If dsTemp.Tables(0).Rows.Count = 0 Then
+                    lblAucun.Visible = True
+                    dgvData.Visible = False
+
+
+                Else
+                    dgvData.DataSource = Nothing
+                    dgvData.DataSource = dsTemp.Tables(0)
+                    dgvData.Visible = True
+                End If
+
+
             End If
         End If
         couleurBouton("D", btnRetirer)
@@ -603,6 +617,5 @@
     Private Sub DataGridView1_RowsRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsRemovedEventArgs) Handles dgvData.RowsRemoved
         SnugUpGrid()
     End Sub
-
 
 End Class

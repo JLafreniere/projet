@@ -71,7 +71,14 @@ Public Class frmAjoutInventaire
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
         'ajoute l'item en inventaire
-        Dim drnouvel As DataRow
+        Dim dstemp As New DataSet
+        bd.Requete("select * from produits where upper(nom_produit) = '" & Replace(cmbProduit.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "produits")
+
+        If dstemp.Tables(0).Rows.Count = 0 Then
+            MsgBox("Nom de produit inexistant")
+        Else
+
+            Dim drnouvel As DataRow
 
         drnouvel = bd.dsInventaire.Tables(0).NewRow()
 
@@ -101,6 +108,7 @@ Public Class frmAjoutInventaire
         Me.Close()
         frmInventaire.plusDeFraicheurSubway6PouceA3et99()
         frmInventaire.Show()
+        End If
     End Sub
 
     Sub effacerText()

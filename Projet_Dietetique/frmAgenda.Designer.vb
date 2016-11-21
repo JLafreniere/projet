@@ -64,6 +64,7 @@ Partial Class frmAgenda
         'rbtype1
         '
         Me.rbtype1.AutoSize = True
+        Me.rbtype1.Checked = True
         Me.rbtype1.Location = New System.Drawing.Point(3, 75)
         Me.rbtype1.Name = "rbtype1"
         Me.rbtype1.Size = New System.Drawing.Size(58, 17)
@@ -80,7 +81,6 @@ Partial Class frmAgenda
         Me.rbtype2.Name = "rbtype2"
         Me.rbtype2.Size = New System.Drawing.Size(58, 17)
         Me.rbtype2.TabIndex = 2
-        Me.rbtype2.TabStop = True
         Me.rbtype2.Tag = "2"
         Me.rbtype2.Text = "Type 2"
         Me.rbtype2.UseVisualStyleBackColor = True
@@ -92,7 +92,6 @@ Partial Class frmAgenda
         Me.rbtype3.Name = "rbtype3"
         Me.rbtype3.Size = New System.Drawing.Size(58, 17)
         Me.rbtype3.TabIndex = 3
-        Me.rbtype3.TabStop = True
         Me.rbtype3.Tag = "3"
         Me.rbtype3.Text = "Type 3"
         Me.rbtype3.UseVisualStyleBackColor = True
@@ -104,7 +103,6 @@ Partial Class frmAgenda
         Me.rbtype4.Name = "rbtype4"
         Me.rbtype4.Size = New System.Drawing.Size(58, 17)
         Me.rbtype4.TabIndex = 4
-        Me.rbtype4.TabStop = True
         Me.rbtype4.Tag = "4"
         Me.rbtype4.Text = "Type 4"
         Me.rbtype4.UseVisualStyleBackColor = True

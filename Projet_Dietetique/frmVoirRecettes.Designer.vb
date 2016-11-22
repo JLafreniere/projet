@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmVoirRecettes
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmVoirRecettes
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVoirRecettes))
         Me.mainpanel = New System.Windows.Forms.Panel()
@@ -44,9 +44,9 @@ Partial Class frmVoirRecettes
         Me.mainpanel.Controls.Add(Me.lsvRecette)
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
         Me.mainpanel.Controls.Add(Me.txtRecherche)
-        Me.mainpanel.Location = New System.Drawing.Point(240, 80)
+        Me.mainpanel.Location = New System.Drawing.Point(330, 62)
         Me.mainpanel.Name = "mainpanel"
-        Me.mainpanel.Size = New System.Drawing.Size(702, 483)
+        Me.mainpanel.Size = New System.Drawing.Size(700, 483)
         Me.mainpanel.TabIndex = 1
         '
         'btnAjouter
@@ -56,7 +56,7 @@ Partial Class frmVoirRecettes
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(398, 430)
+        Me.btnAjouter.Location = New System.Drawing.Point(414, 430)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnAjouter.TabIndex = 58
@@ -71,7 +71,7 @@ Partial Class frmVoirRecettes
         Me.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModifier.ForeColor = System.Drawing.Color.White
-        Me.btnModifier.Location = New System.Drawing.Point(495, 430)
+        Me.btnModifier.Location = New System.Drawing.Point(511, 430)
         Me.btnModifier.Name = "btnModifier"
         Me.btnModifier.Size = New System.Drawing.Size(91, 35)
         Me.btnModifier.TabIndex = 59
@@ -86,7 +86,7 @@ Partial Class frmVoirRecettes
         Me.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSupprimer.ForeColor = System.Drawing.Color.White
-        Me.btnSupprimer.Location = New System.Drawing.Point(592, 430)
+        Me.btnSupprimer.Location = New System.Drawing.Point(608, 430)
         Me.btnSupprimer.Name = "btnSupprimer"
         Me.btnSupprimer.Size = New System.Drawing.Size(91, 35)
         Me.btnSupprimer.TabIndex = 60
@@ -97,11 +97,12 @@ Partial Class frmVoirRecettes
         '
         Me.lsvRecette.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lsvRecette.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvRecette.FullRowSelect = True
         Me.lsvRecette.HideSelection = False
-        Me.lsvRecette.Location = New System.Drawing.Point(5, 52)
+        Me.lsvRecette.Location = New System.Drawing.Point(3, 52)
         Me.lsvRecette.MultiSelect = False
         Me.lsvRecette.Name = "lsvRecette"
-        Me.lsvRecette.Size = New System.Drawing.Size(697, 372)
+        Me.lsvRecette.Size = New System.Drawing.Size(694, 372)
         Me.lsvRecette.TabIndex = 57
         Me.lsvRecette.UseCompatibleStateImageBehavior = False
         Me.lsvRecette.View = System.Windows.Forms.View.Details
@@ -109,7 +110,7 @@ Partial Class frmVoirRecettes
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Nom Recette"
-        Me.ColumnHeader1.Width = 305
+        Me.ColumnHeader1.Width = 325
         '
         'ColumnHeader2
         '
@@ -118,8 +119,8 @@ Partial Class frmVoirRecettes
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Temps de refroidissement"
-        Me.ColumnHeader3.Width = 197
+        Me.ColumnHeader3.Text = "Temps de cuisson"
+        Me.ColumnHeader3.Width = 207
         '
         'BtnRechercher
         '
@@ -128,18 +129,18 @@ Partial Class frmVoirRecettes
         Me.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRechercher.ForeColor = System.Drawing.Color.White
-        Me.BtnRechercher.Location = New System.Drawing.Point(510, 11)
+        Me.BtnRechercher.Location = New System.Drawing.Point(566, 11)
         Me.BtnRechercher.Name = "BtnRechercher"
-        Me.BtnRechercher.Size = New System.Drawing.Size(91, 35)
+        Me.BtnRechercher.Size = New System.Drawing.Size(90, 35)
         Me.BtnRechercher.TabIndex = 56
         Me.BtnRechercher.Text = "Rechercher"
         Me.BtnRechercher.UseVisualStyleBackColor = False
         '
         'txtRecherche
         '
-        Me.txtRecherche.Location = New System.Drawing.Point(320, 19)
+        Me.txtRecherche.Location = New System.Drawing.Point(212, 19)
         Me.txtRecherche.Name = "txtRecherche"
-        Me.txtRecherche.Size = New System.Drawing.Size(184, 20)
+        Me.txtRecherche.Size = New System.Drawing.Size(350, 20)
         Me.txtRecherche.TabIndex = 0
         '
         'frmVoirRecettes

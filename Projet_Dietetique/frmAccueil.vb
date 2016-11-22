@@ -80,7 +80,9 @@ Public Class frmAccueil
         Dim da = New MySqlDataAdapter
         remplirIndexHtml()
 
-        
+
+
+
     End Sub
 
     Public Sub remplirIndexHtml()
@@ -127,13 +129,11 @@ Public Class frmAccueil
                                       End Sub
         AddHandler refresh.MouseUp, Sub(sender2, eventargs2)
                                         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
-                                        _date_selectionne = Date.Today
-                                        Controls.Remove(cal)
-                                        cal = New Calendrier(240, 340, 700, 612, _date_selectionne)
-                                        Controls.Add(cal)
+                                        changerDateSelectionnee(Date.Today)
                                     End Sub
         Controls.Add(refresh)
 
+        changerDateSelectionnee(Date.Today)
 
 
 
@@ -224,8 +224,8 @@ Public Class frmAccueil
         MsgBox(Me.WindowState)
     End Sub
 
-    Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 End Class
 

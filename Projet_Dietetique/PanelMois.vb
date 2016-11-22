@@ -183,7 +183,7 @@ Public Class PanelMois
 
                     'Essaie de récupérer l'image localement
                     Try
-                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone))
+                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), 1)
 
                     Catch exc As Exception
                         icone = "1.png"

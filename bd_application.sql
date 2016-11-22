@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 07 Novembre 2016 à 21:56
+-- Généré le :  Lun 21 Novembre 2016 à 23:29
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   `UPC` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`ID_Inventaire`),
   KEY `Produit` (`Produit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `inventaire`

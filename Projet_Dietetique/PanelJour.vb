@@ -91,6 +91,49 @@ Public Class PanelJour
 
     End Sub
 
+    Public Sub ajouterEvenement(ByVal evenement As String, recette As Integer)
+
+        ''Ajoute le texte de l'évènement dans la case
+
+        hasEvent = True
+        evenements.Add(evenement)
+        Dim str As String
+        If (yPos < Height - 30) Then
+
+            If (evenement.Length > 22) Then
+                str = evenement.Substring(0, 22)
+                str = str & "..."
+            Else str = evenement
+            End If
+            Dim ds As New DataSet()
+            Dim lblEvenement As New Label
+            lblEvenement.Text = str
+            lblEvenement.Top = yPos
+            lblEvenement.Left = 5
+            lblEvenement.AutoSize = True
+            Me.Controls.Add(lblEvenement)
+            yPos += 15
+            If (Not linkLabel And Not monthComponent) Then
+                linkLabel = True
+                ll = New LinkLabel
+                ll.Text = "Tous les évènements"
+                ll.SetBounds(7, 130, 115, 15)
+                ll.AutoSize = False
+                Controls.Add(ll)
+                AddHandler ll.Click, Sub(sender2, eventargs2)
+                                         Dim ds1 As New DataSet()
+                                         frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id=" & recette, 0)
+                                         MsgBox(ds1.Tables(0).Rows(0).Item(0))
+                                     End Sub
+                MsgBox(ds.Tables(0).Rows(0).Item(0))
+            End If
+        End If
+
+
+    End Sub
+
+
+
     Public Sub ajouterEvenement(ByVal evenement As String)
 
         ''Ajoute le texte de l'évènement dans la case
@@ -123,7 +166,6 @@ Public Class PanelJour
                 AddHandler ll.Click, Sub(sender2, eventargs2)
                                          MsgBox("PLACEHOLDER")
                                      End Sub
-
             End If
         End If
 

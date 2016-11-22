@@ -11,7 +11,7 @@ Public Class frmAccueil
     Dim btn As PanelOptionsAccueil
     Dim cal
     Dim lblSemaine As New Label
-    Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
+    Public bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim message As New WebBrowser()
     Public Property _date_selectionne As Date = Date.Today
     Dim p As New PanelSemaine(240, 140, 700, 150)

@@ -63,7 +63,7 @@ Public Class PanelJour
 
     End Sub
 
-    Public Sub ajouterAlerte(alerte As String, img As Image)
+    Public Sub ajouterAlerte(alerte As String, img As Image, Optional ByVal id_recette As Integer = -1)
 
         ''Ajoute une alerte dans la case selon l'image spécifiée
 
@@ -76,10 +76,14 @@ Public Class PanelJour
         alerteX += Width * 0.3
 
         AddHandler pb.Click, Sub()
-
-                                 MsgBox(alerte)
-
-
+                                 If (id_recette = -1) Then
+                                     MsgBox(alerte & "SALUT")
+                                 Else
+                                     Dim ds1 As New DataSet
+                                     frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id_recette=" & id_recette, 0)
+                                     Dim recettes As String = ds1.Tables(0).Rows(0).Item(0)
+                                     MsgBox(recettes)
+                                 End If
                              End Sub
 
         If (alerteX + (Width * 0.3) > Width) Then
@@ -120,12 +124,13 @@ Public Class PanelJour
                 ll.SetBounds(7, 130, 115, 15)
                 ll.AutoSize = False
                 Controls.Add(ll)
+
+
                 AddHandler ll.Click, Sub(sender2, eventargs2)
-                                         Dim ds1 As New DataSet()
-                                         frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id=" & recette, 0)
-                                         MsgBox(ds1.Tables(0).Rows(0).Item(0))
+
+                                         MsgBox(" PlaceHolder ")
                                      End Sub
-                MsgBox(ds.Tables(0).Rows(0).Item(0))
+                MsgBox(ds.Tables(0).Rows(0).Item(0) & "salut")
             End If
         End If
 

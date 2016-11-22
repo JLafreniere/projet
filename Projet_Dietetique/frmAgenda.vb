@@ -8,6 +8,11 @@ Public Class frmAgenda
         Controls.Add(New Header(Me, True))
         Me.BackColor = Color.White
         chargerComboBox()
+
+        DateTimePicker1.Value = New DateTime(Today.Year, Today.Month, 1)
+        DateTimePicker2.Value = DateTimePicker1.Value.AddMonths(1).AddDays(-1)
+
+        updateList(DateTimePicker1.Value, DateTimePicker2.Value)
     End Sub
 
     Private Sub frmInventaire_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,6 +26,16 @@ Public Class frmAgenda
 
     End Sub
 
+    Private Sub ListView1_ColumnWidthChanging(ByVal Sender As Object _
+, ByVal E As System.Windows.Forms.ColumnWidthChangingEventArgs) Handles ListView2.ColumnWidthChanging
+        Try
+            Dim DisableColumn As Integer = 0
+            If E.ColumnIndex = DisableColumn Then
+                E.Cancel = True
+                E.NewWidth = ListView2.Columns(DisableColumn).Width
+            End If
+        Catch exc As Exception : End Try
+    End Sub
 
 
     Private Sub remplirListViewMessage()
@@ -52,14 +67,20 @@ Public Class frmAgenda
             End If
         Next
 
-        ajouterEvenement(type, dt_date_evenement.Value, txtNomEvenement.Text)
 
-        dt_date_evenement.Value = Date.Today
-        txtNomEvenement.Text = ""
+        If Not (txtNomEvenement.Text = "" Or type = 0) Then
+            ajouterEvenement(type, dt_date_evenement.Value, txtNomEvenement.Text)
 
-
+            dt_date_evenement.Value = Date.Today
+            txtNomEvenement.Text = ""
+        Else
+            MsgBox("Veuillez remplir tous les champs correctement")
+        End If
+        updateList(DateTimePicker1.Value, DateTimePicker2.Value)
     End Sub
 
+    'Cette méthode a été créée dans le but d'être réutilisée par les différentes parties de l'application dans le but d'ajouter des évènements
+    'dans la base de données
     Public Sub ajouterEvenement(type As Integer, _date As Date, nom_evenement As String)
 
         Dim ds = New DataSet
@@ -147,9 +168,14 @@ Public Class frmAgenda
         GroupBox1.Visible = cb.Checked
 
         If Not cb.Checked Then
-            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 25)
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, 214)
+            GroupBox5.Height = 255
+            GroupBox4.Height = 290
         Else
-            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 150)
+            btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 135)
+            GroupBox5.Height = 370
+            GroupBox4.Height = 408
+
         End If
 
     End Sub
@@ -184,10 +210,83 @@ Public Class frmAgenda
         cbRecettes.Visible = cb.Checked
         If cb.Checked Then
             btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y + 30)
+
         Else
             btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y - 30)
+
         End If
 
+
+    End Sub
+
+
+    Public Function getTextFieldSafeValue(ByVal txt As TextBox) As String
+
+        Return txt.Text.Replace("'", "''")
+    End Function
+
+    Private Sub cbRecettes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRecettes.SelectedIndexChanged
+
+    End Sub
+
+
+    Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged, DateTimePicker2.ValueChanged
+        updateList(DateTimePicker1.Value, DateTimePicker2.Value)
+    End Sub
+
+    Private Sub aa(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        DateTimePicker2.MinDate = DateTimePicker1.Value
+
+    End Sub
+
+    Private Sub a(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
+        DateTimePicker1.MaxDate = DateTimePicker2.Value
+
+    End Sub
+    Private Sub updateList(debut As Date, fin As Date)
+
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter
+        Dim strDebut As String = debut.ToShortDateString
+        Dim strFin As String = fin.ToShortDateString
+
+        bd.miseAjourDS(ds, da, "select id_evenement, nom_evenement from evenements where '" & strDebut & "'<=date_evenement and '" & strFin & "'>=date_evenement", 0)
+        ListView2.Items.Clear()
+
+
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim lvi As New ListViewItem(dr.Item(0).ToString)
+
+            lvi.SubItems.Add(dr.Item(1))
+
+            ListView2.Items.Add(lvi)
+        Next
+
+
+
+
+
+    End Sub
+
+    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
+        If ListView2.SelectedItems.Count >= 1 Then
+            btnSupprimerEvemement.Visible = True
+        Else
+            btnSupprimerEvemement.Visible = False
+        End If
+    End Sub
+
+    Private Sub btnSupprimerEvemement_Click(sender As Object, e As EventArgs) Handles btnSupprimerEvemement.Click
+        For Each i As ListViewItem In ListView2.SelectedItems
+
+            bd.nonQuery("delete from evenements where id_evenement = " & i.SubItems(0).Text)
+
+        Next
+        updateList(DateTimePicker1.Value, DateTimePicker2.Value)
+    End Sub
+
+    Private Sub GroupBox5_Enter(sender As Object, e As EventArgs) Handles GroupBox5.Enter
 
     End Sub
 End Class

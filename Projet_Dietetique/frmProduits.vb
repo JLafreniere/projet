@@ -165,6 +165,7 @@ Public Class frmProduits
     End Sub
 
     Private Sub btnVoirAjouter_Click(sender As Object, e As EventArgs) Handles btnVoirAjouter.Click
+        couleurBouton("D", btnAjouter)
         'Affiche les options pour l'ajout
         lsvProduits.SelectedItems.Clear()
         gbAjouter.Visible = True
@@ -197,8 +198,15 @@ Public Class frmProduits
             End If
         Next
 
-        If flag Then
+        Dim dstemp As New DataSet
+        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
+
+        If dstemp.Tables(0).Rows.Count = 0 Then
+            MsgBox("Nom de categorie inexistant")
+
+        ElseIf flag Then
             MsgBox("Ce produit existe déjà")
+
 
         Else
             Ajouter()
@@ -274,12 +282,21 @@ Public Class frmProduits
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         'Modification d'un produit appelant la méthode Modifier
-        Modifier()
-        cacherComposantModification()
-        btnSupprimer.Enabled = False
-        couleurBouton("D", btnSupprimer)
-        miseAjourBD()
-        remplircontroles()
+
+        Dim dstemp As New DataSet
+        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie2.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
+
+        If dstemp.Tables(0).Rows.Count = 0 Then
+            MsgBox("Nom de categorie inexistant")
+        Else
+            Modifier()
+
+            cacherComposantModification()
+            btnSupprimer.Enabled = False
+            couleurBouton("D", btnSupprimer)
+            miseAjourBD()
+            remplircontroles()
+        End If
     End Sub
 
 
@@ -378,12 +395,12 @@ Public Class frmProduits
         remplircontroles()
     End Sub
 
-    Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
+    Private Sub txtAjouter_TextChanged(sender As Object, e As EventArgs) Handles txtAjouter.TextChanged
+        If txtAjouter.Text = "" Then
+            couleurBouton("D", btnAjouter)
+        Else
+            couleurBouton("E", btnAjouter)
+        End If
     End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown

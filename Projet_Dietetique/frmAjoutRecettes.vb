@@ -1,25 +1,26 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 'Jonathan Villeneuve
+
+'CATEGORIE = DÉSSERT DÉJEUNER SOUPER.......
+'LISTVIEW, ENLEVER COLONNE UNITÉ PIS FAIRE UNE CONCAC DE COL 2 et 3
+'CMB UNITÉ POUR LES INGRÉDIENTS AK VALEURS FIXE
+'IMAGE
+'ALERGIE, FAIRE UN SPLIT DANS LA BD AVEC UN CARACTERE BIZARRE.
+
 Public Class frmAjoutRecettes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim coll(2) As String
     Dim allergies As String
     Dim portion As Integer
+    Public id As Integer
 
 
-
-    Sub chargerDataset()
-        bd.dsRecettes.Clear()
-        bd.dsProduits.Clear()
-        bd.dsDetails.Clear()
-        bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
-        bd.Requete("select * from details_recette", bd.dsDetails, bd.daDetails, "details_recette")
-        bd.Requete("select * from recettes", bd.dsRecettes, bd.daRecettes, "recettes")
-    End Sub
 
     Private Sub frmAjoutRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
+        Me.TopMost = True
+        Controls.Add(New Header(Me, True))
         remplirCombo()
         chargerDataset()
         Dim ds As New DataSet
@@ -30,16 +31,22 @@ Public Class frmAjoutRecettes
         cbProduit.AutoCompleteMode = AutoCompleteMode.Append
         cbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
-        txtId.Visible = False
-        lblId.Visible = False
+
 
         Dim ctl As Control
         For Each ctl In Me.Controls
             AddHandler ctl.KeyDown, AddressOf controleSuivant
         Next
 
+    End Sub
 
-
+    Sub chargerDataset()
+        bd.dsRecettes.Clear()
+        bd.dsProduits.Clear()
+        bd.dsDetails.Clear()
+        bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("select * from details_recette", bd.dsDetails, bd.daDetails, "details_recette")
+        bd.Requete("select * from recettes", bd.dsRecettes, bd.daRecettes, "recettes")
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
@@ -107,9 +114,9 @@ Public Class frmAjoutRecettes
         drnouvel(12) = allergies
         drnouvel(15) = congelable
         drnouvel(14) = txtCategorie.Text
-        drnouvel(13) = txtConservation.Text & " " & cbConservation.Text
+        drnouvel(13) = txtConservation.Text
         drnouvel(11) = txtRemarques.Text
-        drnouvel(8) = txtRefroid.Text & " " & cbRefroid.Text
+        drnouvel(8) = txtRefroid.Text
         drnouvel(5) = txtPortions.Text & " " & cbPortions.Text
 
 
@@ -165,7 +172,7 @@ Public Class frmAjoutRecettes
     Sub remplirListView()
         lsvProduit.Items.Clear()
         bd.dsDetails.Clear()
-        bd.Requete("select * from details_recette where id_recette = " & txtId.Text, bd.dsDetails, bd.daDetails, "details_recette")
+        bd.Requete("select * from details_recette where id_recette = " & id, bd.dsDetails, bd.daDetails, "details_recette")
 
         For i As Integer = 0 To bd.dsDetails.Tables(0).Rows.Count - 1
             Dim ds As New DataSet
@@ -197,8 +204,8 @@ Public Class frmAjoutRecettes
         Dim preparation As String = txtPreparation.Text
         Dim cuisson As String = txtCuisson.Text
         Dim port As String = nudPortions.Value
-        Dim porti As String = txtPortions.Text & " " & cbConservation.Text
-        Dim refroid As String = txtRefroid.Text & " " & cbRefroid.Text
+        Dim porti As String = txtPortions.Text
+        Dim refroid As String = txtRefroid.Text
 
         For i As Integer = 0 To lstAllergies.Items.Count - 1
 
@@ -212,7 +219,7 @@ Public Class frmAjoutRecettes
         End If
         bd.nonQuery("UPDATE `recettes` set `nom` = '" + txtNom.Text + "', `temps_preparation` = '" + preparation + "' , `temps_cuisson` = '" + cuisson + "' , `nb_portions` = '" + port.ToString + "' , `taille_portion` = '" + porti + "' , 
          `temps_refroidissement` = '" + refroid + "', `etapes` = '" + txtEtapes.Text + "', `remarque` = '" + txtRemarques.Text + "' , `allergies` = '" + allergies + "' 
-         , `duree_conservation` = '" + txtConservation.Text + " " + cbConservation.Text + "' , `categorie` = '" + txtCategorie.Text + "', `congelable` = '" + congelable.ToString + "' where `id_recette` = '" + txtId.Text + "'")
+         , `duree_conservation` = '" + txtConservation.Text + " " + "' , `categorie` = '" + txtCategorie.Text + "', `congelable` = '" + congelable.ToString + "' where `id_recette` = '")
         bd.miseAjourBD(bd.dsRecettes, bd.daRecettes, "recettes")
 
     End Sub
@@ -225,7 +232,6 @@ Public Class frmAjoutRecettes
         txtCuisson.Text = ""
         txtEtapes.Text = ""
         txtFaraneith.Text = ""
-        txtId.Text = ""
         txtPortions.Text = ""
         txtRefroid.Text = ""
         txtRemarques.Text = ""
@@ -280,4 +286,13 @@ Public Class frmAjoutRecettes
 
 
     End Sub
+
+    Private Sub lstAllergies_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstAllergies.SelectedIndexChanged
+        If lstAllergies.SelectedItems.Count > 0 Then
+            btnSupprimerAllergies.Visible = True
+        Else btnSupprimerAllergies.Visible = False
+
+        End If
+    End Sub
+
 End Class

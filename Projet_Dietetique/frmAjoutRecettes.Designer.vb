@@ -22,11 +22,9 @@ Partial Class frmAjoutRecettes
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAjoutRecettes))
         Me.cbUnite = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.btnSupprimerAllergies = New System.Windows.Forms.Button()
-        Me.cbRefroid = New System.Windows.Forms.ComboBox()
-        Me.cbConservation = New System.Windows.Forms.ComboBox()
         Me.cbPortions = New System.Windows.Forms.ComboBox()
         Me.txtPortions = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -40,7 +38,6 @@ Partial Class frmAjoutRecettes
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtConservation = New System.Windows.Forms.TextBox()
         Me.btnAllergies = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtAllergies = New System.Windows.Forms.TextBox()
         Me.lstAllergies = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -48,7 +45,7 @@ Partial Class frmAjoutRecettes
         Me.txtQuantite = New System.Windows.Forms.TextBox()
         Me.Supprimer = New System.Windows.Forms.Button()
         Me.lblUnite = New System.Windows.Forms.Label()
-        Me.lblAliments = New System.Windows.Forms.Label()
+        Me.lblIngredients = New System.Windows.Forms.Label()
         Me.lsvProduit = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Quantité = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -74,10 +71,11 @@ Partial Class frmAjoutRecettes
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnEnregistrer = New System.Windows.Forms.Button()
         Me.btnAnnuler = New System.Windows.Forms.Button()
-        Me.lblId = New System.Windows.Forms.Label()
-        Me.txtId = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbUnite
@@ -85,20 +83,10 @@ Partial Class frmAjoutRecettes
         Me.cbUnite.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbUnite.FormattingEnabled = True
         Me.cbUnite.Items.AddRange(New Object() {"ml", "g", "unite"})
-        Me.cbUnite.Location = New System.Drawing.Point(1527, 386)
+        Me.cbUnite.Location = New System.Drawing.Point(1306, 362)
         Me.cbUnite.Name = "cbUnite"
-        Me.cbUnite.Size = New System.Drawing.Size(59, 21)
+        Me.cbUnite.Size = New System.Drawing.Size(90, 21)
         Me.cbUnite.TabIndex = 173
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1486, 389)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 172
-        Me.Label2.Text = "Unité : "
         '
         'btnSupprimerAllergies
         '
@@ -106,46 +94,26 @@ Partial Class frmAjoutRecettes
         Me.btnSupprimerAllergies.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSupprimerAllergies.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSupprimerAllergies.ForeColor = System.Drawing.Color.White
-        Me.btnSupprimerAllergies.Location = New System.Drawing.Point(717, 548)
+        Me.btnSupprimerAllergies.Location = New System.Drawing.Point(284, 52)
         Me.btnSupprimerAllergies.Name = "btnSupprimerAllergies"
         Me.btnSupprimerAllergies.Size = New System.Drawing.Size(90, 35)
         Me.btnSupprimerAllergies.TabIndex = 171
         Me.btnSupprimerAllergies.Text = "Supprimer"
         Me.btnSupprimerAllergies.UseVisualStyleBackColor = False
         '
-        'cbRefroid
-        '
-        Me.cbRefroid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbRefroid.FormattingEnabled = True
-        Me.cbRefroid.Items.AddRange(New Object() {"min", "heures"})
-        Me.cbRefroid.Location = New System.Drawing.Point(1013, 354)
-        Me.cbRefroid.Name = "cbRefroid"
-        Me.cbRefroid.Size = New System.Drawing.Size(62, 21)
-        Me.cbRefroid.TabIndex = 170
-        '
-        'cbConservation
-        '
-        Me.cbConservation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbConservation.FormattingEnabled = True
-        Me.cbConservation.Items.AddRange(New Object() {"heures", "jours", "semaines", "mois"})
-        Me.cbConservation.Location = New System.Drawing.Point(708, 355)
-        Me.cbConservation.Name = "cbConservation"
-        Me.cbConservation.Size = New System.Drawing.Size(59, 21)
-        Me.cbConservation.TabIndex = 169
-        '
         'cbPortions
         '
         Me.cbPortions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPortions.FormattingEnabled = True
         Me.cbPortions.Items.AddRange(New Object() {"ml", "g", "unités"})
-        Me.cbPortions.Location = New System.Drawing.Point(773, 274)
+        Me.cbPortions.Location = New System.Drawing.Point(520, 338)
         Me.cbPortions.Name = "cbPortions"
-        Me.cbPortions.Size = New System.Drawing.Size(47, 21)
+        Me.cbPortions.Size = New System.Drawing.Size(71, 21)
         Me.cbPortions.TabIndex = 168
         '
         'txtPortions
         '
-        Me.txtPortions.Location = New System.Drawing.Point(717, 274)
+        Me.txtPortions.Location = New System.Drawing.Point(461, 338)
         Me.txtPortions.Name = "txtPortions"
         Me.txtPortions.Size = New System.Drawing.Size(50, 20)
         Me.txtPortions.TabIndex = 129
@@ -153,7 +121,7 @@ Partial Class frmAjoutRecettes
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(692, 277)
+        Me.Label11.Location = New System.Drawing.Point(433, 343)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(19, 13)
         Me.Label11.TabIndex = 167
@@ -162,26 +130,26 @@ Partial Class frmAjoutRecettes
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(1018, 417)
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.Label7.Location = New System.Drawing.Point(277, 408)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(109, 28)
+        Me.Label7.Size = New System.Drawing.Size(70, 13)
         Me.Label7.TabIndex = 164
-        Me.Label7.Text = "Remarques"
+        Me.Label7.Text = "Remarques :"
         '
         'txtRemarques
         '
         Me.txtRemarques.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRemarques.Location = New System.Drawing.Point(961, 447)
+        Me.txtRemarques.Location = New System.Drawing.Point(370, 405)
         Me.txtRemarques.Name = "txtRemarques"
-        Me.txtRemarques.Size = New System.Drawing.Size(222, 157)
+        Me.txtRemarques.Size = New System.Drawing.Size(387, 104)
         Me.txtRemarques.TabIndex = 162
         Me.txtRemarques.Text = ""
         '
         'chkCongelable
         '
         Me.chkCongelable.AutoSize = True
-        Me.chkCongelable.Location = New System.Drawing.Point(633, 315)
+        Me.chkCongelable.Location = New System.Drawing.Point(370, 374)
         Me.chkCongelable.Name = "chkCongelable"
         Me.chkCongelable.Size = New System.Drawing.Size(79, 17)
         Me.chkCongelable.TabIndex = 161
@@ -192,7 +160,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(776, 357)
+        Me.Label10.Location = New System.Drawing.Point(199, 267)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(152, 13)
         Me.Label10.TabIndex = 160
@@ -201,16 +169,16 @@ Partial Class frmAjoutRecettes
         'txtRefroid
         '
         Me.txtRefroid.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRefroid.Location = New System.Drawing.Point(947, 354)
+        Me.txtRefroid.Location = New System.Drawing.Point(370, 264)
         Me.txtRefroid.Name = "txtRefroid"
-        Me.txtRefroid.Size = New System.Drawing.Size(60, 21)
+        Me.txtRefroid.Size = New System.Drawing.Size(82, 21)
         Me.txtRefroid.TabIndex = 131
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(563, 389)
+        Me.Label9.Location = New System.Drawing.Point(286, 138)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(66, 13)
         Me.Label9.TabIndex = 159
@@ -219,7 +187,7 @@ Partial Class frmAjoutRecettes
         'txtCategorie
         '
         Me.txtCategorie.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCategorie.Location = New System.Drawing.Point(635, 386)
+        Me.txtCategorie.Location = New System.Drawing.Point(372, 135)
         Me.txtCategorie.Name = "txtCategorie"
         Me.txtCategorie.Size = New System.Drawing.Size(208, 21)
         Me.txtCategorie.TabIndex = 158
@@ -228,7 +196,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(491, 358)
+        Me.Label8.Location = New System.Drawing.Point(219, 306)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(133, 13)
         Me.Label8.TabIndex = 157
@@ -237,9 +205,9 @@ Partial Class frmAjoutRecettes
         'txtConservation
         '
         Me.txtConservation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtConservation.Location = New System.Drawing.Point(642, 354)
+        Me.txtConservation.Location = New System.Drawing.Point(370, 303)
         Me.txtConservation.Name = "txtConservation"
-        Me.txtConservation.Size = New System.Drawing.Size(60, 21)
+        Me.txtConservation.Size = New System.Drawing.Size(82, 21)
         Me.txtConservation.TabIndex = 130
         '
         'btnAllergies
@@ -248,27 +216,17 @@ Partial Class frmAjoutRecettes
         Me.btnAllergies.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAllergies.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAllergies.ForeColor = System.Drawing.Color.White
-        Me.btnAllergies.Location = New System.Drawing.Point(892, 406)
+        Me.btnAllergies.Location = New System.Drawing.Point(284, 11)
         Me.btnAllergies.Name = "btnAllergies"
         Me.btnAllergies.Size = New System.Drawing.Size(90, 35)
         Me.btnAllergies.TabIndex = 156
         Me.btnAllergies.Text = "Ajouter"
         Me.btnAllergies.UseVisualStyleBackColor = False
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(564, 417)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 13)
-        Me.Label3.TabIndex = 155
-        Me.Label3.Text = "Allergène :"
-        '
         'txtAllergies
         '
         Me.txtAllergies.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAllergies.Location = New System.Drawing.Point(632, 414)
+        Me.txtAllergies.Location = New System.Drawing.Point(11, 19)
         Me.txtAllergies.Name = "txtAllergies"
         Me.txtAllergies.Size = New System.Drawing.Size(254, 21)
         Me.txtAllergies.TabIndex = 154
@@ -276,7 +234,7 @@ Partial Class frmAjoutRecettes
         'lstAllergies
         '
         Me.lstAllergies.FormattingEnabled = True
-        Me.lstAllergies.Location = New System.Drawing.Point(632, 447)
+        Me.lstAllergies.Location = New System.Drawing.Point(11, 52)
         Me.lstAllergies.Name = "lstAllergies"
         Me.lstAllergies.Size = New System.Drawing.Size(254, 95)
         Me.lstAllergies.TabIndex = 153
@@ -285,7 +243,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(902, 234)
+        Me.Label1.Location = New System.Drawing.Point(651, 228)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(22, 13)
         Me.Label1.TabIndex = 152
@@ -294,7 +252,7 @@ Partial Class frmAjoutRecettes
         'txtCelcius
         '
         Me.txtCelcius.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCelcius.Location = New System.Drawing.Point(839, 231)
+        Me.txtCelcius.Location = New System.Drawing.Point(588, 225)
         Me.txtCelcius.Name = "txtCelcius"
         Me.txtCelcius.Size = New System.Drawing.Size(50, 21)
         Me.txtCelcius.TabIndex = 127
@@ -302,7 +260,7 @@ Partial Class frmAjoutRecettes
         'txtQuantite
         '
         Me.txtQuantite.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQuantite.Location = New System.Drawing.Point(1420, 386)
+        Me.txtQuantite.Location = New System.Drawing.Point(1226, 362)
         Me.txtQuantite.Name = "txtQuantite"
         Me.txtQuantite.Size = New System.Drawing.Size(60, 21)
         Me.txtQuantite.TabIndex = 151
@@ -313,7 +271,7 @@ Partial Class frmAjoutRecettes
         Me.Supprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Supprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Supprimer.ForeColor = System.Drawing.Color.White
-        Me.Supprimer.Location = New System.Drawing.Point(1441, 429)
+        Me.Supprimer.Location = New System.Drawing.Point(1305, 389)
         Me.Supprimer.Name = "Supprimer"
         Me.Supprimer.Size = New System.Drawing.Size(90, 35)
         Me.Supprimer.TabIndex = 150
@@ -323,21 +281,21 @@ Partial Class frmAjoutRecettes
         'lblUnite
         '
         Me.lblUnite.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.lblUnite.Location = New System.Drawing.Point(1857, 911)
+        Me.lblUnite.Location = New System.Drawing.Point(1989, 882)
         Me.lblUnite.Name = "lblUnite"
         Me.lblUnite.Size = New System.Drawing.Size(100, 23)
         Me.lblUnite.TabIndex = 149
         Me.lblUnite.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblAliments
+        'lblIngredients
         '
-        Me.lblAliments.AutoSize = True
-        Me.lblAliments.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAliments.Location = New System.Drawing.Point(857, 89)
-        Me.lblAliments.Name = "lblAliments"
-        Me.lblAliments.Size = New System.Drawing.Size(88, 28)
-        Me.lblAliments.TabIndex = 148
-        Me.lblAliments.Text = "Aliments"
+        Me.lblIngredients.AutoSize = True
+        Me.lblIngredients.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIngredients.Location = New System.Drawing.Point(844, 66)
+        Me.lblIngredients.Name = "lblIngredients"
+        Me.lblIngredients.Size = New System.Drawing.Size(110, 28)
+        Me.lblIngredients.TabIndex = 148
+        Me.lblIngredients.Text = "Ingrédients"
         '
         'lsvProduit
         '
@@ -345,9 +303,9 @@ Partial Class frmAjoutRecettes
         Me.lsvProduit.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvProduit.FullRowSelect = True
         Me.lsvProduit.HideSelection = False
-        Me.lsvProduit.Location = New System.Drawing.Point(1095, 115)
+        Me.lsvProduit.Location = New System.Drawing.Point(845, 97)
         Me.lsvProduit.Name = "lsvProduit"
-        Me.lsvProduit.Size = New System.Drawing.Size(437, 256)
+        Me.lsvProduit.Size = New System.Drawing.Size(551, 256)
         Me.lsvProduit.TabIndex = 147
         Me.lsvProduit.UseCompatibleStateImageBehavior = False
         Me.lsvProduit.View = System.Windows.Forms.View.Details
@@ -355,12 +313,12 @@ Partial Class frmAjoutRecettes
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Ingrédients"
-        Me.ColumnHeader1.Width = 297
+        Me.ColumnHeader1.Width = 341
         '
         'Quantité
         '
         Me.Quantité.Text = "Quantité"
-        Me.Quantité.Width = 76
+        Me.Quantité.Width = 140
         '
         'ColumnHeader3
         '
@@ -372,7 +330,7 @@ Partial Class frmAjoutRecettes
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(1344, 429)
+        Me.btnAjouter.Location = New System.Drawing.Point(1208, 389)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(90, 35)
         Me.btnAjouter.TabIndex = 146
@@ -383,7 +341,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblQuantite.AutoSize = True
         Me.lblQuantite.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblQuantite.Location = New System.Drawing.Point(1350, 389)
+        Me.lblQuantite.Location = New System.Drawing.Point(1156, 365)
         Me.lblQuantite.Name = "lblQuantite"
         Me.lblQuantite.Size = New System.Drawing.Size(59, 13)
         Me.lblQuantite.TabIndex = 145
@@ -393,7 +351,7 @@ Partial Class frmAjoutRecettes
         '
         Me.cbProduit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbProduit.FormattingEnabled = True
-        Me.cbProduit.Location = New System.Drawing.Point(1189, 386)
+        Me.cbProduit.Location = New System.Drawing.Point(982, 362)
         Me.cbProduit.Name = "cbProduit"
         Me.cbProduit.Size = New System.Drawing.Size(155, 21)
         Me.cbProduit.TabIndex = 144
@@ -402,18 +360,18 @@ Partial Class frmAjoutRecettes
         '
         Me.lblAjouter.AutoSize = True
         Me.lblAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAjouter.Location = New System.Drawing.Point(1074, 389)
+        Me.lblAjouter.Location = New System.Drawing.Point(846, 365)
         Me.lblAjouter.Name = "lblAjouter"
-        Me.lblAjouter.Size = New System.Drawing.Size(109, 13)
+        Me.lblAjouter.Size = New System.Drawing.Size(130, 13)
         Me.lblAjouter.TabIndex = 143
-        Me.lblAjouter.Text = "Ajouter un aliment :"
+        Me.lblAjouter.Text = "Ajouter un ingrédients :"
         '
         'nudPortions
         '
-        Me.nudPortions.Location = New System.Drawing.Point(636, 270)
+        Me.nudPortions.Location = New System.Drawing.Point(370, 338)
         Me.nudPortions.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudPortions.Name = "nudPortions"
-        Me.nudPortions.Size = New System.Drawing.Size(50, 20)
+        Me.nudPortions.Size = New System.Drawing.Size(56, 20)
         Me.nudPortions.TabIndex = 128
         Me.nudPortions.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -421,7 +379,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblPortions.AutoSize = True
         Me.lblPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPortions.Location = New System.Drawing.Point(567, 273)
+        Me.lblPortions.Location = New System.Drawing.Point(291, 341)
         Me.lblPortions.Name = "lblPortions"
         Me.lblPortions.Size = New System.Drawing.Size(56, 13)
         Me.lblPortions.TabIndex = 142
@@ -431,7 +389,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(217, 113)
+        Me.Label6.Location = New System.Drawing.Point(840, 444)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(191, 28)
         Me.Label6.TabIndex = 141
@@ -440,9 +398,9 @@ Partial Class frmAjoutRecettes
         'txtEtapes
         '
         Me.txtEtapes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEtapes.Location = New System.Drawing.Point(194, 144)
+        Me.txtEtapes.Location = New System.Drawing.Point(845, 475)
         Me.txtEtapes.Name = "txtEtapes"
-        Me.txtEtapes.Size = New System.Drawing.Size(280, 342)
+        Me.txtEtapes.Size = New System.Drawing.Size(551, 225)
         Me.txtEtapes.TabIndex = 140
         Me.txtEtapes.Text = ""
         '
@@ -450,7 +408,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(705, 234)
+        Me.Label5.Location = New System.Drawing.Point(471, 228)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(14, 13)
         Me.Label5.TabIndex = 139
@@ -459,7 +417,7 @@ Partial Class frmAjoutRecettes
         'txtFaraneith
         '
         Me.txtFaraneith.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFaraneith.Location = New System.Drawing.Point(745, 231)
+        Me.txtFaraneith.Location = New System.Drawing.Point(499, 225)
         Me.txtFaraneith.Name = "txtFaraneith"
         Me.txtFaraneith.Size = New System.Drawing.Size(50, 21)
         Me.txtFaraneith.TabIndex = 126
@@ -468,7 +426,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(801, 234)
+        Me.Label4.Location = New System.Drawing.Point(555, 228)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(19, 13)
         Me.Label4.TabIndex = 138
@@ -478,7 +436,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblCuisson.AutoSize = True
         Me.lblCuisson.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCuisson.Location = New System.Drawing.Point(511, 234)
+        Me.lblCuisson.Location = New System.Drawing.Point(246, 228)
         Me.lblCuisson.Name = "lblCuisson"
         Me.lblCuisson.Size = New System.Drawing.Size(103, 13)
         Me.lblCuisson.TabIndex = 137
@@ -487,16 +445,16 @@ Partial Class frmAjoutRecettes
         'txtCuisson
         '
         Me.txtCuisson.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuisson.Location = New System.Drawing.Point(635, 231)
+        Me.txtCuisson.Location = New System.Drawing.Point(370, 225)
         Me.txtCuisson.Name = "txtCuisson"
-        Me.txtCuisson.Size = New System.Drawing.Size(50, 21)
+        Me.txtCuisson.Size = New System.Drawing.Size(82, 21)
         Me.txtCuisson.TabIndex = 125
         '
         'lblPreparation
         '
         Me.lblPreparation.AutoSize = True
         Me.lblPreparation.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPreparation.Location = New System.Drawing.Point(489, 191)
+        Me.lblPreparation.Location = New System.Drawing.Point(224, 189)
         Me.lblPreparation.Name = "lblPreparation"
         Me.lblPreparation.Size = New System.Drawing.Size(128, 13)
         Me.lblPreparation.TabIndex = 136
@@ -505,16 +463,16 @@ Partial Class frmAjoutRecettes
         'txtPreparation
         '
         Me.txtPreparation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPreparation.Location = New System.Drawing.Point(635, 187)
+        Me.txtPreparation.Location = New System.Drawing.Point(370, 185)
         Me.txtPreparation.Name = "txtPreparation"
-        Me.txtPreparation.Size = New System.Drawing.Size(60, 21)
+        Me.txtPreparation.Size = New System.Drawing.Size(82, 21)
         Me.txtPreparation.TabIndex = 124
         '
         'lblNom
         '
         Me.lblNom.AutoSize = True
         Me.lblNom.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNom.Location = New System.Drawing.Point(491, 147)
+        Me.lblNom.Location = New System.Drawing.Point(249, 100)
         Me.lblNom.Name = "lblNom"
         Me.lblNom.Size = New System.Drawing.Size(103, 13)
         Me.lblNom.TabIndex = 135
@@ -523,7 +481,7 @@ Partial Class frmAjoutRecettes
         'txtNom
         '
         Me.txtNom.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNom.Location = New System.Drawing.Point(615, 144)
+        Me.txtNom.Location = New System.Drawing.Point(372, 97)
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(254, 21)
         Me.txtNom.TabIndex = 123
@@ -532,9 +490,9 @@ Partial Class frmAjoutRecettes
         '
         Me.picRecette.BackColor = System.Drawing.SystemColors.Control
         Me.picRecette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.picRecette.Location = New System.Drawing.Point(39, 130)
+        Me.picRecette.Location = New System.Drawing.Point(12, 97)
         Me.picRecette.Name = "picRecette"
-        Me.picRecette.Size = New System.Drawing.Size(149, 147)
+        Me.picRecette.Size = New System.Drawing.Size(171, 163)
         Me.picRecette.TabIndex = 134
         Me.picRecette.TabStop = False
         '
@@ -546,9 +504,9 @@ Partial Class frmAjoutRecettes
         '
         Me.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEnregistrer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnregistrer.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnEnregistrer.ForeColor = System.Drawing.Color.White
-        Me.btnEnregistrer.Location = New System.Drawing.Point(676, 606)
+        Me.btnEnregistrer.Location = New System.Drawing.Point(1208, 706)
         Me.btnEnregistrer.Name = "btnEnregistrer"
         Me.btnEnregistrer.Size = New System.Drawing.Size(91, 35)
         Me.btnEnregistrer.TabIndex = 132
@@ -559,47 +517,49 @@ Partial Class frmAjoutRecettes
         '
         Me.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnnuler.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnnuler.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.btnAnnuler.ForeColor = System.Drawing.Color.White
-        Me.btnAnnuler.Location = New System.Drawing.Point(773, 606)
+        Me.btnAnnuler.Location = New System.Drawing.Point(1306, 706)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(91, 35)
+        Me.btnAnnuler.Size = New System.Drawing.Size(90, 35)
         Me.btnAnnuler.TabIndex = 133
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = False
         '
-        'lblId
+        'GroupBox1
         '
-        Me.lblId.AutoSize = True
-        Me.lblId.Location = New System.Drawing.Point(587, 114)
-        Me.lblId.Name = "lblId"
-        Me.lblId.Size = New System.Drawing.Size(22, 13)
-        Me.lblId.TabIndex = 165
-        Me.lblId.Text = "Id :"
+        Me.GroupBox1.Controls.Add(Me.txtAllergies)
+        Me.GroupBox1.Controls.Add(Me.btnAllergies)
+        Me.GroupBox1.Controls.Add(Me.btnSupprimerAllergies)
+        Me.GroupBox1.Controls.Add(Me.lstAllergies)
+        Me.GroupBox1.Location = New System.Drawing.Point(370, 536)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(387, 164)
+        Me.GroupBox1.TabIndex = 174
+        Me.GroupBox1.TabStop = False
         '
-        'txtId
+        'Label2
         '
-        Me.txtId.BackColor = System.Drawing.SystemColors.Window
-        Me.txtId.Location = New System.Drawing.Point(616, 114)
-        Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(24, 20)
-        Me.txtId.TabIndex = 166
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.Label2.Location = New System.Drawing.Point(280, 544)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(67, 13)
+        Me.Label2.TabIndex = 175
+        Me.Label2.Text = "Allergènes :"
         '
         'frmAjoutRecettes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1472, 939)
-        Me.Controls.Add(Me.cbUnite)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(1604, 880)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.btnSupprimerAllergies)
-        Me.Controls.Add(Me.cbRefroid)
-        Me.Controls.Add(Me.cbConservation)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.cbUnite)
         Me.Controls.Add(Me.cbPortions)
         Me.Controls.Add(Me.txtPortions)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.txtId)
-        Me.Controls.Add(Me.lblId)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtRemarques)
         Me.Controls.Add(Me.chkCongelable)
@@ -609,16 +569,12 @@ Partial Class frmAjoutRecettes
         Me.Controls.Add(Me.txtCategorie)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtConservation)
-        Me.Controls.Add(Me.btnAllergies)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtAllergies)
-        Me.Controls.Add(Me.lstAllergies)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtCelcius)
         Me.Controls.Add(Me.txtQuantite)
         Me.Controls.Add(Me.Supprimer)
         Me.Controls.Add(Me.lblUnite)
-        Me.Controls.Add(Me.lblAliments)
+        Me.Controls.Add(Me.lblIngredients)
         Me.Controls.Add(Me.lsvProduit)
         Me.Controls.Add(Me.btnAjouter)
         Me.Controls.Add(Me.lblQuantite)
@@ -640,19 +596,20 @@ Partial Class frmAjoutRecettes
         Me.Controls.Add(Me.picRecette)
         Me.Controls.Add(Me.btnEnregistrer)
         Me.Controls.Add(Me.btnAnnuler)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAjoutRecettes"
-        Me.Text = "frmAjoutRecettes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Recette"
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents cbUnite As ComboBox
-    Friend WithEvents Label2 As Label
     Friend WithEvents btnSupprimerAllergies As Button
-    Friend WithEvents cbRefroid As ComboBox
-    Friend WithEvents cbConservation As ComboBox
     Friend WithEvents cbPortions As ComboBox
     Friend WithEvents txtPortions As TextBox
     Friend WithEvents Label11 As Label
@@ -666,7 +623,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents Label8 As Label
     Friend WithEvents txtConservation As TextBox
     Friend WithEvents btnAllergies As Button
-    Friend WithEvents Label3 As Label
     Friend WithEvents txtAllergies As TextBox
     Friend WithEvents lstAllergies As ListBox
     Friend WithEvents Label1 As Label
@@ -674,7 +630,7 @@ Partial Class frmAjoutRecettes
     Friend WithEvents txtQuantite As TextBox
     Friend WithEvents Supprimer As Button
     Friend WithEvents lblUnite As Label
-    Friend WithEvents lblAliments As Label
+    Friend WithEvents lblIngredients As Label
     Friend WithEvents lsvProduit As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Quantité As ColumnHeader
@@ -700,6 +656,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents btnEnregistrer As Button
     Friend WithEvents btnAnnuler As Button
-    Friend WithEvents txtId As TextBox
-    Friend WithEvents lblId As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label2 As Label
 End Class

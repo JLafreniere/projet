@@ -169,6 +169,8 @@ Public Class GestionBD
         End Try
         _conn.Close()
     End Sub
+
+
     ' Met à jour un dataset avec les informations de la bd.
     Sub miseAjourDS(ByRef ds As DataSet, ByRef da As MySqlDataAdapter, req As String, table As String)
         ds = New DataSet

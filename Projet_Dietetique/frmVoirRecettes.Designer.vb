@@ -119,7 +119,7 @@ Partial Class frmVoirRecettes
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Temps de cuisson"
+        Me.ColumnHeader3.Text = "Catégorie"
         Me.ColumnHeader3.Width = 207
         '
         'BtnRechercher

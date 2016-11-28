@@ -100,7 +100,7 @@ Public Class frmVoirRecettes
         For i = 0 To bd.dsRecettes.Tables(0).Rows.Count - 1
             itemcoll(0) = bd.dsRecettes.Tables(0).Rows(i)(1).ToString
             itemcoll(1) = bd.dsRecettes.Tables(0).Rows(i)(2).ToString
-            itemcoll(2) = bd.dsRecettes.Tables(0).Rows(i)(3).ToString
+            itemcoll(2) = bd.dsRecettes.Tables(0).Rows(i)(14).ToString
 
             Dim lvi As New ListViewItem(itemcoll)
             lsvRecette.Items.Add(lvi)
@@ -128,37 +128,35 @@ Public Class frmVoirRecettes
     Sub remplirFormulaire()
         Try
             frmAjoutRecettes.Show()
-            frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+            frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
+            frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
             frmAjoutRecettes.txtCuisson.Text = bd.dsRecettes.Tables(0).Rows(position).Item(3).ToString
             frmAjoutRecettes.txtFaraneith.Text = bd.dsRecettes.Tables(0).Rows(position).Item(7).ToString
+            frmAjoutRecettes.txtConservation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString
+            frmAjoutRecettes.txtRefroid.Text = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString
             frmAjoutRecettes.nudPortions.Value = bd.dsRecettes.Tables(0).Rows(position).Item(4).ToString
-            frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
+            frmAjoutRecettes.txtPortions.Text = bd.dsRecettes.Tables(0).Rows(position).Item(5).ToString
+            frmAjoutRecettes.cbPortions.Text = bd.dsRecettes.Tables(0).Rows(position).Item(6).ToString
             ' On coche ou  le checkBox si la recette est congelable
             If bd.dsRecettes.Tables(0).Rows(position).Item(15).ToString = True Then
                 frmAjoutRecettes.chkCongelable.Checked = True
             Else
                 frmAjoutRecettes.chkCongelable.Checked = False
             End If
-            frmAjoutRecettes.txtEtapes.Text = bd.dsRecettes.Tables(0).Rows(position).Item(9).ToString
+
             frmAjoutRecettes.txtRemarques.Text = bd.dsRecettes.Tables(0).Rows(position).Item(11).ToString
+
+            frmAjoutRecettes.txtEtapes.Text = bd.dsRecettes.Tables(0).Rows(position).Item(9).ToString
+
             'On ajoute les allergies dans le listbox
             allergies = bd.dsRecettes.Tables(0).Rows(position).Item(12).ToString.Split(vbCrLf)
             For i As Integer = 0 To allergies.Length - 1
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
 
-            portions = bd.dsRecettes.Tables(0).Rows(position).Item(5).ToString.Split(" ")
 
-            frmAjoutRecettes.txtPortions.Text = portions(0)
-            frmAjoutRecettes.cbPortions.Text = portions(1)
-            conservation = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString.Split(" ")
-            frmAjoutRecettes.txtConservation.Text = conservation(0)
-            'frmAjoutRecettes.cbConservation.Text = conservation(1)
-            refroidissement = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString.Split(" ")
-            frmAjoutRecettes.txtRefroid.Text = refroidissement(0)
-            'frmAjoutRecettes.cbRefroid.Text = refroidissement(1)
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
 
             frmAjoutRecettes.remplirListView()
@@ -168,28 +166,18 @@ Public Class frmVoirRecettes
 
     Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click 'Supprime la recette sélectionée et les données de la table détails_recettes liées à cette recette
         If MsgBox("Voulez-vous supprimer la recette : " & bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString & " ?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-            For Each element As ListViewItem In lsvRecette.SelectedItems
-                bd.dsDetails.Clear()
-                bd.Requete("Select * from details_recette where id_recette =  " & bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString, bd.dsDetails, bd.daDetails, "details_recette")
 
-                For i As Integer = 0 To bd.dsDetails.Tables(0).Rows.Count - 1
-                    bd.dsDetails.Tables(0).Rows(i).Delete()
-
-                Next
-                bd.miseAjourBD(bd.dsDetails, bd.daDetails, "details_recette")
-            Next
-
-            bd.dsRecettes.Tables(0).Rows(0).Delete()
-
-
+            bd.nonQuery("delete from details_recette where ID_Recette =  " & bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString)
+            bd.nonQuery("delete from recettes where ID_Recette =  " & bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString)
 
         End If
         couleurBouton("D", btnModifier)
         couleurBouton("D", btnSupprimer)
 
 
-        bd.miseAjourBD(bd.dsRecettes, bd.daRecettes, "recettes")
 
+        bd.dsRecettes.Clear()
+        bd.Requete("select * from recettes " & ordre, bd.dsRecettes, bd.daRecettes, "recettes")
         remplirListView()
 
 
@@ -247,10 +235,11 @@ Public Class frmVoirRecettes
             End If
 
         ElseIf e.Column = 2 Then
-            If ordre = "order by temps_cuisson" Then
-                ordre = "order by temps_cuisson desc"
+            If ordre = "order by categorie" Then
+                ordre = "order by categorie desc"
             Else
-                ordre = "order by temps_cuisson"
+
+                ordre = "order by categorie"
             End If
 
         End If

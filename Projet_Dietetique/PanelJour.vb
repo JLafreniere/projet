@@ -77,12 +77,13 @@ Public Class PanelJour
 
         AddHandler pb.Click, Sub()
                                  If (id_recette = -1) Then
-                                     MsgBox(alerte & "SALUT")
+                                     Dim b As Object = Nothing
+
                                  Else
                                      Dim ds1 As New DataSet
                                      frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id_recette=" & id_recette, 0)
                                      Dim recettes As String = ds1.Tables(0).Rows(0).Item(0)
-                                     MsgBox(recettes)
+                                     MsgBox(alerte & Environment.NewLine & "Recette: " & recettes)
                                  End If
                              End Sub
 

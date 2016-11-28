@@ -128,7 +128,11 @@ Public Class frmVoirRecettes
     Sub remplirFormulaire()
         Try
             frmAjoutRecettes.Show()
+<<<<<<< HEAD
             frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+=======
+            ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+>>>>>>> 86c7ea7cf6b9c410ce1ca073ddaf906e974e2856
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
             frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
@@ -179,7 +183,6 @@ Public Class frmVoirRecettes
         bd.dsRecettes.Clear()
         bd.Requete("select * from recettes " & ordre, bd.dsRecettes, bd.daRecettes, "recettes")
         remplirListView()
-
 
 
     End Sub

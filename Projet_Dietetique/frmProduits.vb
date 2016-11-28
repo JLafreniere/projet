@@ -19,7 +19,7 @@ Public Class frmProduits
         couleurBouton("D", btnSupprimer)
 
         Dim refresh As New PictureBox()
-       
+
         refresh.SetBounds(513, 2, 35, 35)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
@@ -165,7 +165,6 @@ Public Class frmProduits
     End Sub
 
     Private Sub btnVoirAjouter_Click(sender As Object, e As EventArgs) Handles btnVoirAjouter.Click
-        couleurBouton("D", btnAjouter)
         'Affiche les options pour l'ajout
         lsvProduits.SelectedItems.Clear()
         gbAjouter.Visible = True
@@ -231,7 +230,7 @@ Public Class frmProduits
         cmbCategorie2.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
 
 
-        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & txtModifier.Text & "';")
+        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & Replace(txtModifier.Text, "'", "''") & "';")
 
         Dim dsRequete As New DataSet
         bd.Requete("select * from produits where nom_produit = '" & txtModifier.Text & "';", dsRequete, bd.daProduits, "produits")
@@ -282,7 +281,6 @@ Public Class frmProduits
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         'Modification d'un produit appelant la méthode Modifier
-
         Dim dstemp As New DataSet
         bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie2.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
 
@@ -290,7 +288,6 @@ Public Class frmProduits
             MsgBox("Nom de categorie inexistant")
         Else
             Modifier()
-
             cacherComposantModification()
             btnSupprimer.Enabled = False
             couleurBouton("D", btnSupprimer)
@@ -395,12 +392,12 @@ Public Class frmProduits
         remplircontroles()
     End Sub
 
-    Private Sub txtAjouter_TextChanged(sender As Object, e As EventArgs) Handles txtAjouter.TextChanged
-        If txtAjouter.Text = "" Then
-            couleurBouton("D", btnAjouter)
-        Else
-            couleurBouton("E", btnAjouter)
-        End If
+    Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown

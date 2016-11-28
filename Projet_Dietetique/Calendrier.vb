@@ -65,8 +65,8 @@ Public Class Calendrier
         actualiserComposants()
     End Sub
 
-    Public Sub ajouterEvenementJour(ByVal evenement As String, ByVal jourEvenement As Integer, icone As String, Optional id_recette As Integer = -1)
-        mc.ajouterEvenement(jourEvenement, evenement, icone)
+    Public Sub ajouterEvenementJour(ByVal evenement As String, ByVal jourEvenement As Integer, icone As String, ByVal id_recette As Integer)
+        mc.ajouterEvenement(jourEvenement, evenement, icone, id_recette)
     End Sub
 
     Public Sub actualiserComposants()
@@ -147,9 +147,9 @@ Public Class Calendrier
 
             Try
                 ajouterEvenementJour(dr(1), Split(str, "-")(2), dr(3), id_recette)
-            Catch exc As Exception
-                ajouterEvenementJour(dr(1), Split(str, "-")(2), dr(3), id_recette)
-            End Try
+            Catch exc As Exception : End Try
+
+
         Next
 
 

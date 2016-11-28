@@ -184,9 +184,6 @@ Public Class frmAgenda
         dpFinAffichage.MinDate = dpDebutAffichage.Value
     End Sub
 
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         For Each i As ListViewItem In ListView1.SelectedItems
@@ -197,20 +194,12 @@ Public Class frmAgenda
 
     End Sub
 
-    Private Sub refresh_click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 
     Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         Dim cb As CheckBox = sender
         cbRecettes.Visible = cb.Checked
         If cb.Checked Then
             btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y + 30)
-
         Else
             btnAjouter.Location = New Point(btnAjouter.Location.X, btnAjouter.Location.Y - 30)
 
@@ -221,13 +210,9 @@ Public Class frmAgenda
 
 
     Public Function getTextFieldSafeValue(ByVal txt As TextBox) As String
-
         Return txt.Text.Replace("'", "''")
     End Function
 
-    Private Sub cbRecettes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRecettes.SelectedIndexChanged
-
-    End Sub
 
 
     Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged, DateTimePicker2.ValueChanged
@@ -263,10 +248,6 @@ Public Class frmAgenda
             ListView2.Items.Add(lvi)
         Next
 
-
-
-
-
     End Sub
 
     Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
@@ -286,7 +267,4 @@ Public Class frmAgenda
         updateList(DateTimePicker1.Value, DateTimePicker2.Value)
     End Sub
 
-    Private Sub GroupBox5_Enter(sender As Object, e As EventArgs) Handles GroupBox5.Enter
-
-    End Sub
 End Class

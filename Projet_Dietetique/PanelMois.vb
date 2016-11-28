@@ -166,7 +166,7 @@ Public Class PanelMois
 
 
 
-    Public Sub ajouterEvenement(jour As Integer, evenement As String, icone As String)
+    Public Sub ajouterEvenement(jour As Integer, evenement As String, icone As String, id_recette As Integer)
 
         For i As Integer = 0 To nbSemaines
             For ii As Integer = 0 To 6
@@ -183,11 +183,11 @@ Public Class PanelMois
 
                     'Essaie de récupérer l'image localement
                     Try
-                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), 1)
+                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), id_recette)
 
                     Catch exc As Exception
                         icone = "1.png"
-                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone))
+                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), id_recette)
                     End Try
 
 

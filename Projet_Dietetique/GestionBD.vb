@@ -159,8 +159,6 @@ Public Class GestionBD
             MessageBox.Show(ae.Message.ToString())
         End Try
 
-
-
         Try
             gestionOperation = New MySqlCommandBuilder(da)
             da.Update(ds, tbl)

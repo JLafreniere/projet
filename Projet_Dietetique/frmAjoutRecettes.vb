@@ -129,7 +129,7 @@ Public Class frmAjoutRecettes
         'Ajoute les produits de la recettes dans la table détail_recettes
         For Each i As ListViewItem In lsvProduit.Items
             Dim ds As New DataSet
-            bd.Requete("select * from produits where nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
+            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
             MsgBox(bd.dsRecettes.Tables(0).Rows(bd.dsRecettes.Tables(0).Rows.Count - 1).Item(0).ToString)
             drnouvel = bd.dsDetails.Tables(0).NewRow()
             drnouvel(0) = ds.Tables(0).Rows(0).Item(0)
@@ -176,7 +176,7 @@ Public Class frmAjoutRecettes
 
         For i As Integer = 0 To bd.dsDetails.Tables(0).Rows.Count - 1
             Dim ds As New DataSet
-            bd.Requete("select * from produits where id_produit = " & bd.dsDetails.Tables(0).Rows(i).Item(0), ds, bd.daProduits, "produits")
+            bd.Requete("select * from produits where hidden = 0  and id_produit = " & bd.dsDetails.Tables(0).Rows(i).Item(0), ds, bd.daProduits, "produits")
 
             coll(0) = ds.Tables(0).Rows(0)(1).ToString
             coll(1) = bd.dsDetails.Tables(0).Rows(i)(2).ToString

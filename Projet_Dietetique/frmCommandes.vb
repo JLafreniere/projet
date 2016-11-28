@@ -10,6 +10,7 @@ Public Class frmCommandes
     Dim ds4 As New DataSet
     Dim ds5 As New DataSet
     Dim ds6 As New DataSet
+    Dim dss As New DataSet
     Public position As Integer = -1
 
 
@@ -20,20 +21,21 @@ Public Class frmCommandes
     Private Sub frmCommandes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Controls.Add(New Header(Me, True))
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-        chargerDataset()
-        remplirListView()
+        btnReception.Enabled = True
+
+
+
         dtpDate.Visible = False
         txtRecherche.Enabled = False
 
+        chargerDataset()
+        remplirListView()
 
-        Me.WindowState = FormWindowState.Maximized
+
+
 
     End Sub
-    Private Sub centrer() Handles MyBase.GotFocus
-        Me.Location = New Point(CInt((Screen.PrimaryScreen.WorkingArea.Width / 2) - (Me.Width / 2)), CInt((Screen.PrimaryScreen.WorkingArea.Height / 2) - (Me.Height / 2)))
-        AutoScroll = True
-        Text = "Commandes"
-    End Sub
+
 
     'Charge le dataset des commandes
 
@@ -44,6 +46,7 @@ Public Class frmCommandes
 
     'Remplit le listView des Commandes
     Sub remplirListView()
+
         lsvCommandes.Items.Clear()
         ds2.Clear()
 
@@ -146,6 +149,11 @@ Public Class frmCommandes
             frmAjoutCommandes.cbProduits.Enabled = False
             frmAjoutCommandes.nudQuantite.Enabled = False
             frmAjoutCommandes.lsvProduits.Enabled = False
+            If bd.dsCommandes.Tables(0).Rows(position).Item(5) = True Then
+                frmAjoutCommandes.rdbRecue.Checked = True
+            Else
+                frmAjoutCommandes.rdbRecue.Checked = False
+            End If
             frmAjoutCommandes.Text = "Consulter une commande"
 
         Else
@@ -182,6 +190,11 @@ Public Class frmCommandes
 
         frmAjoutCommandes.Show()
 
+
+    End Sub
+
+    Private Sub btnReception_Click(sender As Object, e As EventArgs) Handles btnReception.Click
+        frmReceptionCommande.Show()
 
     End Sub
 End Class

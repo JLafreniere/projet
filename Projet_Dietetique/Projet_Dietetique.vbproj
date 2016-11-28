@@ -150,6 +150,12 @@
     <Compile Include="frmProduits.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReceptionCommande.Designer.vb">
+      <DependentUpon>frmReceptionCommande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReceptionCommande.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmRetourInventaire.Designer.vb">
       <DependentUpon>frmRetourInventaire.vb</DependentUpon>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProduits.resx">
       <DependentUpon>frmProduits.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReceptionCommande.resx">
+      <DependentUpon>frmReceptionCommande.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRetourInventaire.resx">
       <DependentUpon>frmRetourInventaire.vb</DependentUpon>

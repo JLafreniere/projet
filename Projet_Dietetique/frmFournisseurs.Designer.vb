@@ -22,6 +22,7 @@ Partial Class frmFournisseurs
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFournisseurs))
         Me.mainpanel = New System.Windows.Forms.Panel()
         Me.txtRecherche = New System.Windows.Forms.TextBox()
         Me.btnAjouter = New System.Windows.Forms.Button()
@@ -32,11 +33,17 @@ Partial Class frmFournisseurs
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnRechercher = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.rdbNom = New System.Windows.Forms.RadioButton()
+        Me.rdbVille = New System.Windows.Forms.RadioButton()
         Me.mainpanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainpanel
         '
+        Me.mainpanel.Controls.Add(Me.rdbVille)
+        Me.mainpanel.Controls.Add(Me.rdbNom)
+        Me.mainpanel.Controls.Add(Me.Label1)
         Me.mainpanel.Controls.Add(Me.txtRecherche)
         Me.mainpanel.Controls.Add(Me.btnAjouter)
         Me.mainpanel.Controls.Add(Me.btnModifier)
@@ -45,7 +52,7 @@ Partial Class frmFournisseurs
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
         Me.mainpanel.Location = New System.Drawing.Point(240, 80)
         Me.mainpanel.Name = "mainpanel"
-        Me.mainpanel.Size = New System.Drawing.Size(702, 483)
+        Me.mainpanel.Size = New System.Drawing.Size(702, 528)
         Me.mainpanel.TabIndex = 2
         '
         'txtRecherche
@@ -53,7 +60,7 @@ Partial Class frmFournisseurs
         Me.txtRecherche.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.txtRecherche.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtRecherche.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtRecherche.Location = New System.Drawing.Point(3, 8)
+        Me.txtRecherche.Location = New System.Drawing.Point(142, 12)
         Me.txtRecherche.Name = "txtRecherche"
         Me.txtRecherche.Size = New System.Drawing.Size(301, 22)
         Me.txtRecherche.TabIndex = 77
@@ -65,7 +72,7 @@ Partial Class frmFournisseurs
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(412, 423)
+        Me.btnAjouter.Location = New System.Drawing.Point(412, 468)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnAjouter.TabIndex = 58
@@ -80,7 +87,7 @@ Partial Class frmFournisseurs
         Me.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModifier.ForeColor = System.Drawing.Color.White
-        Me.btnModifier.Location = New System.Drawing.Point(509, 423)
+        Me.btnModifier.Location = New System.Drawing.Point(509, 468)
         Me.btnModifier.Name = "btnModifier"
         Me.btnModifier.Size = New System.Drawing.Size(91, 35)
         Me.btnModifier.TabIndex = 59
@@ -95,7 +102,7 @@ Partial Class frmFournisseurs
         Me.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSupprimer.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSupprimer.ForeColor = System.Drawing.Color.White
-        Me.btnSupprimer.Location = New System.Drawing.Point(606, 423)
+        Me.btnSupprimer.Location = New System.Drawing.Point(606, 468)
         Me.btnSupprimer.Name = "btnSupprimer"
         Me.btnSupprimer.Size = New System.Drawing.Size(91, 35)
         Me.btnSupprimer.TabIndex = 60
@@ -107,7 +114,7 @@ Partial Class frmFournisseurs
         Me.lsvFournisseurs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lsvFournisseurs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvFournisseurs.HideSelection = False
-        Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 45)
+        Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 90)
         Me.lsvFournisseurs.MultiSelect = False
         Me.lsvFournisseurs.Name = "lsvFournisseurs"
         Me.lsvFournisseurs.Size = New System.Drawing.Size(697, 372)
@@ -137,12 +144,44 @@ Partial Class frmFournisseurs
         Me.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRechercher.ForeColor = System.Drawing.Color.White
-        Me.BtnRechercher.Location = New System.Drawing.Point(317, 3)
+        Me.BtnRechercher.Location = New System.Drawing.Point(456, 7)
         Me.BtnRechercher.Name = "BtnRechercher"
         Me.BtnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.BtnRechercher.TabIndex = 56
         Me.BtnRechercher.Text = "Rechercher"
         Me.BtnRechercher.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(22, 59)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(98, 13)
+        Me.Label1.TabIndex = 78
+        Me.Label1.Text = "Rechercher selon:"
+        '
+        'rdbNom
+        '
+        Me.rdbNom.AutoSize = True
+        Me.rdbNom.Location = New System.Drawing.Point(142, 55)
+        Me.rdbNom.Name = "rdbNom"
+        Me.rdbNom.Size = New System.Drawing.Size(47, 17)
+        Me.rdbNom.TabIndex = 79
+        Me.rdbNom.TabStop = True
+        Me.rdbNom.Text = "Nom"
+        Me.rdbNom.UseVisualStyleBackColor = True
+        '
+        'rdbVille
+        '
+        Me.rdbVille.AutoSize = True
+        Me.rdbVille.Location = New System.Drawing.Point(212, 55)
+        Me.rdbVille.Name = "rdbVille"
+        Me.rdbVille.Size = New System.Drawing.Size(44, 17)
+        Me.rdbVille.TabIndex = 80
+        Me.rdbVille.TabStop = True
+        Me.rdbVille.Text = "Ville"
+        Me.rdbVille.UseVisualStyleBackColor = True
         '
         'frmFournisseurs
         '
@@ -150,8 +189,9 @@ Partial Class frmFournisseurs
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1085, 630)
         Me.Controls.Add(Me.mainpanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmFournisseurs"
-        Me.Text = "frmFournisseurs"
+        Me.Text = "Fournisseurs"
         Me.mainpanel.ResumeLayout(False)
         Me.mainpanel.PerformLayout()
         Me.ResumeLayout(False)
@@ -168,4 +208,7 @@ Partial Class frmFournisseurs
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents BtnRechercher As Button
     Friend WithEvents txtRecherche As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents rdbVille As RadioButton
+    Friend WithEvents rdbNom As RadioButton
 End Class

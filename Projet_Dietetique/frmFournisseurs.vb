@@ -111,8 +111,11 @@ Public Class frmFournisseurs
         bd.dsFournisseurs.Clear()
         If (txtRecherche.Text = "") Then
             bd.Requete("select * from fournisseurs order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
-        Else
+        ElseIf rdbNom.Checked Then
             bd.Requete("Select * from fournisseurs where lower(nom_fournisseur) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+        ElseIf rdbVille.Checked Then
+            bd.Requete("Select * from fournisseurs where lower(ville) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+
         End If
 
         remplirListview()

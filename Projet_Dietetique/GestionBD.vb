@@ -89,6 +89,8 @@ Public Class GestionBD
             '_cmd.ExecuteNonQuery()
             da = New MySqlDataAdapter(_cmd)
             da.Fill(ds, table)
+
+
         Catch ae As MySqlException
             MessageBox.Show(ae.Message.ToString())
 

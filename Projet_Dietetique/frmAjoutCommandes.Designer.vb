@@ -44,6 +44,7 @@ Partial Class frmAjoutCommandes
         Me.cbProduits = New System.Windows.Forms.ComboBox()
         Me.cbFormat = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.rdbRecue = New System.Windows.Forms.RadioButton()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -246,12 +247,24 @@ Partial Class frmAjoutCommandes
         Me.Label5.TabIndex = 94
         Me.Label5.Text = "Choisir le format"
         '
+        'rdbRecue
+        '
+        Me.rdbRecue.AutoSize = True
+        Me.rdbRecue.Location = New System.Drawing.Point(176, 322)
+        Me.rdbRecue.Name = "rdbRecue"
+        Me.rdbRecue.Size = New System.Drawing.Size(57, 17)
+        Me.rdbRecue.TabIndex = 95
+        Me.rdbRecue.TabStop = True
+        Me.rdbRecue.Text = "Reçue"
+        Me.rdbRecue.UseVisualStyleBackColor = True
+        '
         'frmAjoutCommandes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1270, 592)
+        Me.Controls.Add(Me.rdbRecue)
         Me.Controls.Add(Me.cbFormat)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnEnvoyer)
@@ -300,4 +313,5 @@ Partial Class frmAjoutCommandes
     Friend WithEvents Label5 As Label
     Friend WithEvents cbProduits As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents rdbRecue As RadioButton
 End Class

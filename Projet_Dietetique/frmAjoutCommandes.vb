@@ -21,6 +21,7 @@ Public Class frmAjoutCommandes
     Dim ds11 As New DataSet
     Dim ds12 As New DataSet
     Dim ds13 As New DataSet
+    Dim dsCommandes As New DataSet
 
     Dim format As Integer = 0
 
@@ -39,16 +40,31 @@ Public Class frmAjoutCommandes
         cbFournisseurs.AutoCompleteMode = AutoCompleteMode.Append
         cbFournisseurs.DropDownStyle = ComboBoxStyle.DropDown
         cbFournisseurs.AutoCompleteSource = AutoCompleteSource.ListItems
+        setBtnEnregistrer()
+        Dim ctl As Control
+        For Each ctl In Me.Controls
+            AddHandler ctl.KeyDown, AddressOf controleSuivant
+        Next
+
+        If Me.Text = "Faire une commande" Then
+            rdbRecue.Visible = False
+        Else
+            rdbRecue.Visible = True
+            rdbRecue.Enabled = False
+
+        End If
+
 
     End Sub
     'Remplit les Dataset
     Sub chargerDataset()
-        bd.dsCommandes.Clear()
+
+
         bd.dsFournisseurs.Clear()
         bd.dsProduitFourn.Clear()
         bd.dsProduits.Clear()
         bd.dsDetailsCommandes.Clear()
-
+        bd.dsCommandes.Clear()
 
         bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")
         bd.Requete("Select  * from fournisseurs", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
@@ -125,14 +141,12 @@ Public Class frmAjoutCommandes
     End Sub
     'Modifie le contenu de la commande dans la bd
     Sub modifier()
-        ds = New DataSet
-        bd.Requete("Select * from `fournisseurs` where `nom_fournisseur` = '" + cbFournisseurs.Text + "'", ds2, bd.daFournisseurs, "fournisseurs")
         Dim drnouvel As DataRow
         'On met à jour la table details_commandes
         bd.nonQuery("Delete from details_commande where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
         bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
         For Each element As ListViewItem In lsvProduits.Items
-            ds2 = New DataSet
+
             'On recherche le produit qui correspond au nom du produit dans le listView
             bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds, bd.daProduits, "produits")
             drnouvel = bd.dsDetailsCommandes.Tables(0).NewRow
@@ -148,7 +162,7 @@ Public Class frmAjoutCommandes
 
         Next
 
-        bd.nonQuery("UPDATE `commandes` set `date_commande` = '" + dtpDate.Value.Date.ToString + "' , `note` = '" + Replace(txtNotes.Text, "'", "''") + "', `fournisseur` = '" + ds2.Tables(0).Rows(0).Item(0).ToString + "' , `envoye` = '" + envoye.ToString + "' where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
+        bd.nonQuery("UPDATE `commandes` set `date_commande` = '" + dtpDate.Value.Date.ToString + "' , `note` = '" + Replace(txtNotes.Text, "'", "''") + "', `fournisseur` = '" + cbFournisseurs.SelectedIndex.ToString + "' , `envoye` = '" + envoye.ToString + "' where `id_commande` = '" + (frmCommandes.position + 1).ToString + "'")
 
 
         bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
@@ -268,16 +282,22 @@ Public Class frmAjoutCommandes
     Private Sub btnEnvoyer_Click(sender As Object, e As EventArgs) Handles btnEnvoyer.Click
         'Si la commande est dans la base de données on la modifie, si elle n'y est pas on l'ajoute
         envoye = 1
-        If frmCommandes.position = -1 Then
-            envoyer()
-        Else
+        If lsvProduits.Items.Count = 0 Then
+            MsgBox("Veuillez ajouter des produits pour envoyer la commande")
 
-            modifier()
+        ElseIf frmCommandes.position = -1 Then
+            If MsgBox("Voulez-vous evoyer cette commande?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+                envoyer()
+                MsgBox("Votre commande a été envoyée")
 
+            Else
+
+                modifier()
+            End If
 
         End If
 
-        MsgBox("Votre commande a été envoyée")
+
 
     End Sub
     'Modifie le contenu du comboBox des formats en fonction du produit sélectionné
@@ -296,4 +316,33 @@ Public Class frmAjoutCommandes
         Next
 
     End Sub
+
+    'Regarde si les textBox sont vide ou non
+    Sub setBtnEnregistrer()
+        btnEnregistrer.Enabled = True
+
+
+        For Each control As Control In Me.Controls
+            If control.GetType Is GetType(TextBox) Then
+
+
+                If CType(control, TextBox).Text = "" Then
+                    btnEnregistrer.Enabled = False
+                    Exit For
+                End If
+            End If
+
+        Next
+    End Sub
+
+    Sub controleSuivant(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Enter Then
+
+            e.SuppressKeyPress = True
+            Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+        End If
+
+
+    End Sub
+
 End Class

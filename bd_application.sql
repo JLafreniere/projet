@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 15 Novembre 2016 à 21:46
+-- Généré le :  Mar 22 Novembre 2016 à 21:50
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -52,9 +52,13 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `Date_Commande` date NOT NULL,
   `fournisseur` int(12) NOT NULL,
   `No_Reference` varchar(25) DEFAULT NULL,
-  `Note` text,
+  `Note` text NOT NULL,
   `envoye` tinyint(1) NOT NULL,
+  `date_reception` date NOT NULL,
+  `recue` tinyint(1) NOT NULL,
+  `note_reception` text NOT NULL,
   PRIMARY KEY (`ID_Commande`),
+  UNIQUE KEY `No_Reference_3` (`No_Reference`),
   KEY `No_Reference` (`No_Reference`),
   KEY `No_Reference_2` (`No_Reference`),
   KEY `fournisseur` (`fournisseur`)
@@ -64,13 +68,13 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 -- Contenu de la table `commandes`
 --
 
-INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`) VALUES
-(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0),
-(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 0),
-(3, '2016-11-15', 2, '568468', '', 1),
-(4, '2016-11-18', 1, '125085', '', 1),
-(5, '2016-11-15', 2, '772181', '', 1),
-(6, '2016-11-15', 1, '642859', '', 1);
+INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`, `date_reception`, `recue`, `note_reception`) VALUES
+(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0, '0000-00-00', 0, ''),
+(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 1, '2016-11-30', 1, ''),
+(3, '2016-11-15', 2, '568468', '', 1, '0000-00-00', 0, ''),
+(4, '2016-11-18', 1, '125085', '', 1, '0000-00-00', 0, ''),
+(5, '2016-11-15', 2, '772181', '', 1, '0000-00-00', 0, ''),
+(6, '2016-11-15', 1, '642859', '', 1, '0000-00-00', 0, '');
 
 -- --------------------------------------------------------
 

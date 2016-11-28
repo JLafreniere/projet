@@ -187,10 +187,16 @@ Public Class frmAjoutFournisseurs
         frmFournisseurs.Show()
 
     End Sub
-    'Valide si les textbox sont vide ou non pour activer btnEnregistrer
-    Sub validerTextBox()
-        'If (txtAdresse.Text <> "") And (txtCell.Text <> "") And (txtCodePostal.Text <> "") And (txtContact.Text <> "") And (txtCourriel.Text <> "") And (txtFax.Text <> "") And (txtFrais.Text <> "") And (txtNom) Then
 
-        '.End If
+    'Bloque les chiffres dans les textBox qui ne contiendront que des lettres
+    Private Sub txtProvince_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtProvince.KeyPress, txtVille.KeyPress, txtContact.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+
+
+            e.Handled = True
+
+        End If
+
+
     End Sub
 End Class

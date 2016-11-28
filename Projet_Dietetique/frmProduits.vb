@@ -10,7 +10,7 @@ Public Class frmProduits
     Private Sub frmCategories_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
         'connection bd + charger dataset
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-        bd.Requete("Select * from produits  where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
         remplircontroles()
         Controls.Add(New Header(Me, True))
 
@@ -19,7 +19,7 @@ Public Class frmProduits
         couleurBouton("D", btnSupprimer)
 
         Dim refresh As New PictureBox()
-       
+
         refresh.SetBounds(513, 2, 35, 35)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
@@ -30,7 +30,7 @@ Public Class frmProduits
                                       CacherComposantAjout()
                                       lsvProduits.Enabled = True
                                       bd.dsProduits.Clear()
-                                      bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
+                                      bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
                                       remplircontroles()
 
                                       btnSupprimer.Enabled = False
@@ -165,7 +165,6 @@ Public Class frmProduits
     End Sub
 
     Private Sub btnVoirAjouter_Click(sender As Object, e As EventArgs) Handles btnVoirAjouter.Click
-        couleurBouton("D", btnAjouter)
         'Affiche les options pour l'ajout
         lsvProduits.SelectedItems.Clear()
         gbAjouter.Visible = True
@@ -211,12 +210,9 @@ Public Class frmProduits
         Else
             Ajouter()
             CacherComposantAjout()
-
             miseAjourBD()
-
             bd.dsProduits.Clear()
-            bd.Requete("Select * from produits where hidden = 0" & ordre, bd.dsProduits, bd.daProduits, "produits")
-            MsgBox("ajout2")
+            bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
             remplircontroles()
         End If
     End Sub
@@ -234,35 +230,33 @@ Public Class frmProduits
         cmbCategorie2.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
 
 
-        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & txtModifier.Text & "';")
-        Try
-            Dim dsRequete As New DataSet
-            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" & txtModifier.Text & "';", dsRequete, bd.daProduits, "produits")
+        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & Replace(txtModifier.Text, "'", "''") & "';")
+
+        Dim dsRequete As New DataSet
+        bd.Requete("select * from produits where nom_produit = '" & txtModifier.Text & "';", dsRequete, bd.daProduits, "produits")
 
 
-            If dsRequete.Tables(0).Rows(0).Item(4) = True Then
-                ckTaxeFederale2.Checked = True
-            Else
-                ckTaxeFederale2.Checked = False
-            End If
+        If dsRequete.Tables(0).Rows(0).Item(4) = True Then
+            ckTaxeFederale2.Checked = True
+        Else
+            ckTaxeFederale2.Checked = False
+        End If
 
-            If dsRequete.Tables(0).Rows(0).Item(5) = True Then
-                ckTaxeProvinciale2.Checked = True
-            Else
-                ckTaxeProvinciale2.Checked = False
-            End If
+        If dsRequete.Tables(0).Rows(0).Item(5) = True Then
+            ckTaxeProvinciale2.Checked = True
+        Else
+            ckTaxeProvinciale2.Checked = False
+        End If
 
-            If dsRequete.Tables(0).Rows(0).Item(7) = True Then
-                ckPerissable2.Checked = True
-            Else
-                ckPerissable2.Checked = False
-            End If
+        If dsRequete.Tables(0).Rows(0).Item(7) = True Then
+            ckPerissable2.Checked = True
+        Else
+            ckPerissable2.Checked = False
+        End If
 
+        txtDescription2.Text = dsRequete.Tables(0).Rows(0).Item(8).ToString
 
-
-            txtDescription2.Text = dsRequete.Tables(0).Rows(0).Item(8).ToString
-            couleurBouton("D", btnEnregistrer)
-        Catch exc As Exception : End Try
+        couleurBouton("D", btnEnregistrer)
     End Sub
 
     Private Sub btnVoirModifier_Click(sender As Object, e As EventArgs)
@@ -287,7 +281,6 @@ Public Class frmProduits
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         'Modification d'un produit appelant la méthode Modifier
-
         Dim dstemp As New DataSet
         bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie2.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
 
@@ -295,13 +288,10 @@ Public Class frmProduits
             MsgBox("Nom de categorie inexistant")
         Else
             Modifier()
-
             cacherComposantModification()
             btnSupprimer.Enabled = False
             couleurBouton("D", btnSupprimer)
-
             miseAjourBD()
-            MsgBox("ajout2")
             remplircontroles()
         End If
     End Sub
@@ -311,8 +301,8 @@ Public Class frmProduits
         'Suppression d'un produit
         Try
             If MsgBox("Voulez-vous supprimer : " & lsvProduits.FocusedItem.SubItems(0).Text & "?" & vbNewLine & "La mention au produit sera supprimée dans toutes les recettes", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-                MsgBox("delete from produits where id_produit = " & bd.dsProduits.Tables(0).Rows(intPosition).Item(0))
-                bd.nonQuery("update produits set hidden=true where id_produit = " & bd.dsProduits.Tables(0).Rows(intPosition).Item(0))
+                bd.dsProduits.Tables(0).Rows(intPosition).Delete()
+
                 btnSupprimer.Enabled = False
                 couleurBouton("D", btnSupprimer)
                 ' btnVoirModifier.Enabled = False
@@ -321,12 +311,7 @@ Public Class frmProduits
             End If
 
             gbModifier.Visible = False
-        Catch exc As Exception : MsgBox(exc.Message) : End Try
-
-        bd.dsProduits.Clear()
-        bd.Requete("Select * from produits where hidden = 0  " & ordre, bd.dsProduits, bd.daProduits, "produits")
-        remplircontroles()
-
+        Catch exc As Exception : MsgBox("Veuillez supprimer tous les produits en inventaire avant de procéder à l'opération ") : End Try
     End Sub
 
     Private Sub BtnRechercher_Click(sender As Object, e As EventArgs) Handles btnRechercher.Click
@@ -337,10 +322,10 @@ Public Class frmProduits
         lsvProduits.Enabled = True
         bd.dsProduits.Clear()
         If (txtRechercher.Text = "") Then
-            bd.Requete("Select * from produits where hidden = 0 order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
             btnVoirAjouter.Enabled = True
         Else
-            bd.Requete("select * from produits where hidden = 0 and lower(nom_produit) like lower('" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where lower(nom_produit) like lower('" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
         End If
 
         remplircontroles()
@@ -350,7 +335,7 @@ Public Class frmProduits
             ' ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
             lsvProduits.Enabled = False
 
-            bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
         End If
 
         btnSupprimer.Enabled = False
@@ -403,16 +388,16 @@ Public Class frmProduits
         End If
 
         bd.dsProduits.Clear()
-        bd.Requete("Select * from produits where hidden = 0  " & ordre, bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
         remplircontroles()
     End Sub
 
-    Private Sub txtAjouter_TextChanged(sender As Object, e As EventArgs) Handles txtAjouter.TextChanged
-        If txtAjouter.Text = "" Then
-            couleurBouton("D", btnAjouter)
-        Else
-            couleurBouton("E", btnAjouter)
-        End If
+    Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown

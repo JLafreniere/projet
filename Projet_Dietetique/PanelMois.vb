@@ -110,7 +110,8 @@ Public Class PanelMois
 
             End Select
 
-            semaines(semaine).pnlJours(caseJour).ajouterEvenement(_date.Day)
+            semaines(semaine).pnlJours(caseJour).
+                ajouterEvenement(_date.Day)
             semaines(semaine).pnlJours(caseJour).Tag = _date.Day
             semaines(semaine).pnlJours(caseJour)._date = _date
 
@@ -165,7 +166,7 @@ Public Class PanelMois
 
 
 
-    Public Sub ajouterEvenement(jour As Integer, evenement As String, icone As String)
+    Public Sub ajouterEvenement(jour As Integer, evenement As String, icone As String, id_recette As Integer)
 
         For i As Integer = 0 To nbSemaines
             For ii As Integer = 0 To 6
@@ -180,14 +181,15 @@ Public Class PanelMois
                     End If
 
 
-                    Try 'Essaie de récupérer l'image localement
-                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "\imagesboutons\" & icone))
-                    Catch exc As Exception 'Essaie de récupérer l'image sur le web
-                        Dim tClient As WebClient = New WebClient
-                        MsgBox(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone)
-                        Dim tImage As Image = Bitmap.FromStream(New MemoryStream(tClient.DownloadData(icone)))
-                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, tImage)
+                    'Essaie de récupérer l'image localement
+                    Try
+                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), id_recette)
+
+                    Catch exc As Exception
+                        icone = "1.png"
+                        semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesboutons\" & icone), id_recette)
                     End Try
+
 
                 End If
             Next

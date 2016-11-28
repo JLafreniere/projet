@@ -19,7 +19,7 @@ Public Class frmProduits
         couleurBouton("D", btnSupprimer)
 
         Dim refresh As New PictureBox()
-       
+
         refresh.SetBounds(513, 2, 35, 35)
         refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
         refresh.SizeMode = PictureBoxSizeMode.StretchImage
@@ -197,8 +197,15 @@ Public Class frmProduits
             End If
         Next
 
-        If flag Then
+        Dim dstemp As New DataSet
+        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
+
+        If dstemp.Tables(0).Rows.Count = 0 Then
+            MsgBox("Nom de categorie inexistant")
+
+        ElseIf flag Then
             MsgBox("Ce produit existe déjà")
+
 
         Else
             Ajouter()
@@ -223,7 +230,7 @@ Public Class frmProduits
         cmbCategorie2.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
 
 
-        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & txtModifier.Text & "';")
+        cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & Replace(txtModifier.Text, "'", "''") & "';")
 
         Dim dsRequete As New DataSet
         bd.Requete("select * from produits where nom_produit = '" & txtModifier.Text & "';", dsRequete, bd.daProduits, "produits")
@@ -274,12 +281,19 @@ Public Class frmProduits
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         'Modification d'un produit appelant la méthode Modifier
-        Modifier()
-        cacherComposantModification()
-        btnSupprimer.Enabled = False
-        couleurBouton("D", btnSupprimer)
-        miseAjourBD()
-        remplircontroles()
+        Dim dstemp As New DataSet
+        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie2.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
+
+        If dstemp.Tables(0).Rows.Count = 0 Then
+            MsgBox("Nom de categorie inexistant")
+        Else
+            Modifier()
+            cacherComposantModification()
+            btnSupprimer.Enabled = False
+            couleurBouton("D", btnSupprimer)
+            miseAjourBD()
+            remplircontroles()
+        End If
     End Sub
 
 

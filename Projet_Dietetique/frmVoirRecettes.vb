@@ -13,6 +13,7 @@ Public Class frmVoirRecettes
     Dim portions(2) As String
     Dim conservation() As String
     Dim refroidissement() As String
+    Dim ordre As String = "order by Nom"
 
     Private Sub frmVoirRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Ajoute l'entête avec les onglets
@@ -22,6 +23,56 @@ Public Class frmVoirRecettes
         centerControl(mainpanel)
         chargerdataset()
         remplirListView()
+
+        Dim refresh As New PictureBox()
+        refresh.SetBounds(556 + 110, 11, 35, 35)
+
+        refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
+        refresh.SizeMode = PictureBoxSizeMode.StretchImage
+        mainpanel.Controls.Add(refresh)
+
+        'click
+        AddHandler refresh.Click, Sub(sender2, eventargs2)
+                                      bd.dsRecettes.Clear()
+                                      bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+                                      remplirListView()
+                                      lsvRecette.Enabled = True
+                                      txtRecherche.Text = ""
+                                      couleurBouton("D", btnModifier)
+                                      couleurBouton("D", btnSupprimer)
+
+                                  End Sub
+
+        'les différentes couleurs du bouton selon l'etat 
+        AddHandler refresh.MouseEnter, Sub(sender2, eventargs2)
+                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
+                                       End Sub
+        AddHandler refresh.MouseLeave, Sub(sender2, eventargs2)
+                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
+                                       End Sub
+        AddHandler refresh.MouseDown, Sub(sender2, eventargs2)
+                                          refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshDown.png")
+                                      End Sub
+        AddHandler refresh.MouseUp, Sub(sender2, eventargs2)
+                                        refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
+                                    End Sub
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
+
+        refresh.BringToFront()
+    End Sub
+
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
     End Sub
 
     'Centre le panel au centre de la page
@@ -39,9 +90,9 @@ Public Class frmVoirRecettes
         bd.dsRecettes.Clear()
         bd.dsProduits.Clear()
         bd.dsDetails.Clear()
-        bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+        bd.Requete("select * from recettes order by nom ", bd.dsRecettes, bd.daRecettes, "recettes")
         bd.Requete("select * from produits ", bd.dsProduits, bd.daProduits, "produits")
-        bd.Requete("select * from details_recette", bd.dsDetails, bd.daDetails, "details_recette")
+        bd.Requete("select * from details_recette ", bd.dsDetails, bd.daDetails, "details_recette")
     End Sub
     'Rempli le listview avec les données de la table recettes
     Sub remplirListView()
@@ -49,8 +100,7 @@ Public Class frmVoirRecettes
         For i = 0 To bd.dsRecettes.Tables(0).Rows.Count - 1
             itemcoll(0) = bd.dsRecettes.Tables(0).Rows(i)(1).ToString
             itemcoll(1) = bd.dsRecettes.Tables(0).Rows(i)(2).ToString
-            itemcoll(2) = bd.dsRecettes.Tables(0).Rows(i)(8).ToString
-            itemcoll(3) = bd.dsRecettes.Tables(0).Rows(i)(12).ToString
+            itemcoll(2) = bd.dsRecettes.Tables(0).Rows(i)(14).ToString
 
             Dim lvi As New ListViewItem(itemcoll)
             lsvRecette.Items.Add(lvi)
@@ -65,85 +115,74 @@ Public Class frmVoirRecettes
     Private Sub lsvRecette_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvRecette.SelectedIndexChanged
         'Renvoie l'Indice de l'élément sélectionné dans le ListView
         If lsvRecette.SelectedItems.Count > 0 Then
-            btnModifier.Enabled = True
-            btnSupprimer.Enabled = True
+            couleurBouton("E", btnModifier)
+            couleurBouton("E", btnSupprimer)
             position = lsvRecette.SelectedIndices(0)
         Else
-            btnSupprimer.Enabled = False
-            btnModifier.Enabled = False
+            couleurBouton("D", btnModifier)
+            couleurBouton("D", btnSupprimer)
         End If
     End Sub
 
     'Affecte aux controles de la form frmRecettes les données de l'élément du ListView Sélectionné
     Sub remplirFormulaire()
-        frmAjoutRecettes.Show()
-        frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
-        frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
-        frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
-        frmAjoutRecettes.txtCuisson.Text = bd.dsRecettes.Tables(0).Rows(position).Item(3).ToString
-        frmAjoutRecettes.txtFaraneith.Text = bd.dsRecettes.Tables(0).Rows(position).Item(7).ToString
-        frmAjoutRecettes.nudPortions.Value = bd.dsRecettes.Tables(0).Rows(position).Item(4).ToString
-        frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
-        ' On coche ou  le checkBox si la recette est congelable
-        If bd.dsRecettes.Tables(0).Rows(position).Item(15).ToString = True Then
-            frmAjoutRecettes.chkCongelable.Checked = True
-        Else
-            frmAjoutRecettes.chkCongelable.Checked = False
-        End If
-        frmAjoutRecettes.txtEtapes.Text = bd.dsRecettes.Tables(0).Rows(position).Item(9).ToString
-        frmAjoutRecettes.txtRemarques.Text = bd.dsRecettes.Tables(0).Rows(position).Item(11).ToString
-        'On ajoute les allergies dans le listbox
-        allergies = bd.dsRecettes.Tables(0).Rows(position).Item(12).ToString.Split(vbCrLf)
-        For i As Integer = 0 To allergies.Length - 1
-            frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
-        Next
+        Try
+            frmAjoutRecettes.Show()
+<<<<<<< HEAD
+            frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+=======
+            ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+>>>>>>> 86c7ea7cf6b9c410ce1ca073ddaf906e974e2856
+            frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
+            frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
+            frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
+            frmAjoutRecettes.txtCuisson.Text = bd.dsRecettes.Tables(0).Rows(position).Item(3).ToString
+            frmAjoutRecettes.txtFaraneith.Text = bd.dsRecettes.Tables(0).Rows(position).Item(7).ToString
+            frmAjoutRecettes.txtConservation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString
+            frmAjoutRecettes.txtRefroid.Text = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString
+            frmAjoutRecettes.nudPortions.Value = bd.dsRecettes.Tables(0).Rows(position).Item(4).ToString
+            frmAjoutRecettes.txtPortions.Text = bd.dsRecettes.Tables(0).Rows(position).Item(5).ToString
+            frmAjoutRecettes.cbPortions.Text = bd.dsRecettes.Tables(0).Rows(position).Item(6).ToString
+            ' On coche ou  le checkBox si la recette est congelable
+            If bd.dsRecettes.Tables(0).Rows(position).Item(15).ToString = True Then
+                frmAjoutRecettes.chkCongelable.Checked = True
+            Else
+                frmAjoutRecettes.chkCongelable.Checked = False
+            End If
 
-        portions = bd.dsRecettes.Tables(0).Rows(position).Item(5).ToString.Split(" ")
+            frmAjoutRecettes.txtRemarques.Text = bd.dsRecettes.Tables(0).Rows(position).Item(11).ToString
 
-        frmAjoutRecettes.txtPortions.Text = portions(0)
-        frmAjoutRecettes.cbPortions.Text = portions(1)
-        conservation = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString.Split(" ")
-        frmAjoutRecettes.txtConservation.Text = conservation(0)
-        frmAjoutRecettes.cbConservation.Text = conservation(1)
-        refroidissement = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString.Split(" ")
-        frmAjoutRecettes.txtRefroid.Text = refroidissement(0)
-        frmAjoutRecettes.cbRefroid.Text = refroidissement(1)
-        frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
+            frmAjoutRecettes.txtEtapes.Text = bd.dsRecettes.Tables(0).Rows(position).Item(9).ToString
 
-        frmAjoutRecettes.remplirListView()
+            'On ajoute les allergies dans le listbox
+            allergies = bd.dsRecettes.Tables(0).Rows(position).Item(12).ToString.Split(vbCrLf)
+            For i As Integer = 0 To allergies.Length - 1
+                frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
+            Next
+
+
+            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
+
+            frmAjoutRecettes.remplirListView()
+        Catch e As Exception : End Try
 
     End Sub
 
     Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click 'Supprime la recette sélectionée et les données de la table détails_recettes liées à cette recette
-        Dim ds As New DataSet
-        Dim ds2 As New DataSet
-        If MsgBox("Voulez-vous supprimer cette recette?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-            For Each element As ListViewItem In lsvRecette.SelectedItems
+        If MsgBox("Voulez-vous supprimer la recette : " & bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString & " ?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
 
-                bd.Requete("Select * from recettes where nom = '" & element.SubItems(0).Text & "'", ds, bd.daRecettes, "recettes")
-
-                bd.Requete("Select * from details_recette where id_recette =  " & ds.Tables(0).Rows(0).Item(0).ToString & " ", ds2, bd.daDetails, "details_recette")
-
-                For i As Integer = 0 To ds2.Tables(0).Rows.Count - 1
-                    ds2.Tables(0).Rows(i).Delete()
-
-                Next
-                bd.miseAjourBD(bd.dsDetails, bd.daDetails, "details_recette")
-            Next
-
-            ds.Tables(0).Rows(0).Delete()
-
-
+            bd.nonQuery("delete from details_recette where ID_Recette =  " & bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString)
+            bd.nonQuery("delete from recettes where ID_Recette =  " & bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString)
 
         End If
-        btnSupprimer.Enabled = False
-        btnModifier.Enabled = False
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
 
 
-        bd.miseAjourBD(bd.dsRecettes, bd.daRecettes, "recettes")
 
+        bd.dsRecettes.Clear()
+        bd.Requete("select * from recettes " & ordre, bd.dsRecettes, bd.daRecettes, "recettes")
         remplirListView()
-
 
 
     End Sub
@@ -152,9 +191,9 @@ Public Class frmVoirRecettes
         lsvRecette.Enabled = True
         bd.dsRecettes.Clear()
         If (txtRecherche.Text = "") Then
-            bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+            bd.Requete("select * from recettes order by Nom ", bd.dsRecettes, bd.daRecettes, "recettes")
         Else
-            bd.Requete("Select * from recettes where lower(nom) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+            bd.Requete("Select * from recettes where lower(Nom) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%') order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
         End If
 
         remplirListView()
@@ -166,9 +205,9 @@ Public Class frmVoirRecettes
             bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
         End If
 
-        btnSupprimer.Enabled = False
-        btnModifier.Enabled = False
-        txtRecherche.Text = ""
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
+
     End Sub
 
     Private Sub BtnRechercher_Click(sender As Object, e As EventArgs) Handles BtnRechercher.Click
@@ -181,4 +220,37 @@ Public Class frmVoirRecettes
 
         End If
     End Sub
+
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lsvRecette.ColumnClick
+        'Permet de trier la liste par colonne
+        If e.Column = 0 Then
+            If ordre = "order by Nom" Then
+                ordre = "order by Nom desc"
+            Else
+                ordre = "order by Nom"
+            End If
+
+        ElseIf e.Column = 1 Then
+            If ordre = "order by Temps_Preparation" Then
+                ordre = "order by Temps_Preparation desc"
+            Else
+                ordre = "order by Temps_Preparation"
+            End If
+
+        ElseIf e.Column = 2 Then
+            If ordre = "order by categorie" Then
+                ordre = "order by categorie desc"
+            Else
+
+                ordre = "order by categorie"
+            End If
+
+        End If
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
+        bd.dsRecettes.Clear()
+        bd.Requete("Select * from recettes " & ordre, bd.dsRecettes, bd.daRecettes, "recettes")
+        remplirListView()
+    End Sub
+
 End Class

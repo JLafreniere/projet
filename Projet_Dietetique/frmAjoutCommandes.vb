@@ -122,7 +122,7 @@ Public Class frmAjoutCommandes
         For Each element As ListViewItem In lsvProduits.Items
             Dim ds8 As New DataSet
             'On recherche le produit qui correspond au nom du produit dans le listView
-            bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
+            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
             drNouvel = bd.dsDetailsCommandes.Tables(0).NewRow
             drNouvel(0) = bd.dsCommandes.Tables(0).Rows.Count
 
@@ -148,7 +148,7 @@ Public Class frmAjoutCommandes
         For Each element As ListViewItem In lsvProduits.Items
 
             'On recherche le produit qui correspond au nom du produit dans le listView
-            bd.Requete("Select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds, bd.daProduits, "produits")
+            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds, bd.daProduits, "produits")
             drnouvel = bd.dsDetailsCommandes.Tables(0).NewRow
             drnouvel(0) = frmCommandes.position + 1
 
@@ -256,7 +256,7 @@ Public Class frmAjoutCommandes
             Dim ds8 As New DataSet
             Dim ds9 As New DataSet
             'On recherche le produit pour afficher le nom du produit dans le listView 
-            bd.Requete("Select * from produits where `id_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds8, bd.daProduits, "produits")
+            bd.Requete("select * from produits where hidden = 0  and `id_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds8, bd.daProduits, "produits")
             'On recherche le produit pour pouvoir afficher le prix dans le listView
             bd.Requete("Select * from produits_fournisseurs where `ID_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds9, bd.daProduitFourn, "produits_fournisseurs")
             bd.Requete("Select * from format_produit where produit_fournisseur = '" + ds9.Tables(0).Rows(0).Item(0).ToString + "'", ds13, bd.daFormat, "format_produit")

@@ -83,7 +83,7 @@ Public Class PanelSemaine
         bd.miseAjourDS(ds, da, "select * from evenements where date_evenement between '" & GetPreviousSunday(d) & "' and '" & GetNextSaturday(d) & "'", 0)
         For Each dr As DataRow In ds.Tables(0).Rows
             Try
-                pnlJours(DateDiff(DateInterval.Day, GetPreviousSunday(d), dr.Item(2)) - 1).ajouterEvenement(dr.Item(1))
+                pnlJours(DateDiff(DateInterval.Day, GetPreviousSunday(d), dr.Item(2)) - 1).ajouterEvenement(dr.Item(1), dr.Item(4))
             Catch exc As Exception : End Try
         Next
 

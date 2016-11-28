@@ -65,8 +65,8 @@ Public Class Calendrier
         actualiserComposants()
     End Sub
 
-    Public Sub ajouterEvenementJour(ByVal evenement As String, ByVal jourEvenement As Integer, icone As String)
-        mc.ajouterEvenement(jourEvenement, evenement, icone)
+    Public Sub ajouterEvenementJour(ByVal evenement As String, ByVal jourEvenement As Integer, icone As String, ByVal id_recette As Integer)
+        mc.ajouterEvenement(jourEvenement, evenement, icone, id_recette)
     End Sub
 
     Public Sub actualiserComposants()
@@ -138,12 +138,18 @@ Public Class Calendrier
 
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim str As String = dr(2)
+            Dim id_recette As Integer
+            Try
+                id_recette = dr(4)
+            Catch exc2 As Exception
+                id_recette = -1
+            End Try
 
             Try
-                ajouterEvenementJour(dr(1), Split(str, "-")(2), dr(3))
-            Catch exc As Exception
-                ajouterEvenementJour(dr(1), Split(str, "-")(2), dr(3))
-            End Try
+                ajouterEvenementJour(dr(1), Split(str, "-")(2), dr(3), id_recette)
+            Catch exc As Exception : End Try
+
+
         Next
 
 

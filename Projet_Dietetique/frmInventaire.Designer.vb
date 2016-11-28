@@ -438,9 +438,10 @@ Partial Class frmInventaire
         'lblAucun
         '
         Me.lblAucun.AutoSize = True
-        Me.lblAucun.Location = New System.Drawing.Point(3, 72)
+        Me.lblAucun.Font = New System.Drawing.Font("Segoe UI", 10.25!)
+        Me.lblAucun.Location = New System.Drawing.Point(3, 44)
         Me.lblAucun.Name = "lblAucun"
-        Me.lblAucun.Size = New System.Drawing.Size(80, 13)
+        Me.lblAucun.Size = New System.Drawing.Size(101, 19)
         Me.lblAucun.TabIndex = 82
         Me.lblAucun.Text = "Aucun Résultat"
         Me.lblAucun.Visible = False

@@ -50,7 +50,7 @@ Partial Class frmAccueil
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAccueil"
-        Me.Text = "frmAccueil"
+        Me.Text = "Accueil"
         Me.ResumeLayout(False)
 
     End Sub

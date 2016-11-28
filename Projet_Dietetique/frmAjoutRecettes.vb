@@ -32,6 +32,10 @@ Public Class frmAjoutRecettes
         cbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
 
+        For i As Integer = 0 To bd.uniteMesure.length - 1
+            cbPortions.Items.Add(bd.uniteMesure(i))
+        Next
+
 
         Dim ctl As Control
         For Each ctl In Me.Controls
@@ -108,7 +112,6 @@ Public Class frmAjoutRecettes
 
 
         Next
-        '); delete from recettes;
 
 
         drnouvel(12) = allergies

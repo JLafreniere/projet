@@ -72,6 +72,7 @@ Partial Class frmAjoutRecettes
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -296,7 +297,7 @@ Partial Class frmAjoutRecettes
         '
         'lsvProduit
         '
-        Me.lsvProduit.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.Quantité})
+        Me.lsvProduit.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.Quantité, Me.ColumnHeader2})
         Me.lsvProduit.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvProduit.FullRowSelect = True
         Me.lsvProduit.HideSelection = False
@@ -310,12 +311,12 @@ Partial Class frmAjoutRecettes
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Ingrédients"
-        Me.ColumnHeader1.Width = 372
+        Me.ColumnHeader1.Width = 312
         '
         'Quantité
         '
         Me.Quantité.Text = "Quantité"
-        Me.Quantité.Width = 175
+        Me.Quantité.Width = 153
         '
         'btnAjouter
         '
@@ -541,6 +542,11 @@ Partial Class frmAjoutRecettes
         Me.Label2.TabIndex = 175
         Me.Label2.Text = "Allergènes :"
         '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Format"
+        Me.ColumnHeader2.Width = 82
+        '
         'frmAjoutRecettes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -650,4 +656,5 @@ Partial Class frmAjoutRecettes
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents ColumnHeader2 As ColumnHeader
 End Class

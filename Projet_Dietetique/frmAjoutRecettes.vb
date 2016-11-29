@@ -179,7 +179,8 @@ Public Class frmAjoutRecettes
     'Ajoute le texte de txtAllergies au ListBox des Allergies
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
         coll(0) = cbProduit.Text
-        coll(1) = txtQuantite.Text & " " & cbUnite.Text
+        coll(1) = txtQuantite.Text
+        coll(1) = cbUnite.Text
 
         Dim lvi As New ListViewItem(coll)
         lsvProduit.Items.Add(lvi)
@@ -194,7 +195,7 @@ Public Class frmAjoutRecettes
 
         For i As Integer = 0 To bd.dsDetails.Tables(0).Rows.Count - 1
             Dim ds As New DataSet
-            bd.Requete("select * from produits where hidden = 0  and id_produit = " & bd.dsDetails.Tables(0).Rows(i).Item(0), ds, bd.daProduits, "produits")
+            bd.Requete("select * from produits where id_produit = " & bd.dsDetails.Tables(0).Rows(i).Item(0), ds, bd.daProduits, "produits")
 
             coll(0) = ds.Tables(0).Rows(0)(1).ToString
             coll(1) = bd.dsDetails.Tables(0).Rows(i)(2).ToString

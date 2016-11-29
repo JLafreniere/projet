@@ -134,7 +134,7 @@ Public Class frmVoirRecettes
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
             frmAjoutRecettes.txtCuisson.Text = bd.dsRecettes.Tables(0).Rows(position).Item(3).ToString
             frmAjoutRecettes.txtFaraneith.Text = bd.dsRecettes.Tables(0).Rows(position).Item(7).ToString
-            frmAjoutRecettes.txtCelcius.Text = (CInt(frmAjoutRecettes.txtFaraneith.Text) - 32) / 1.8
+            frmAjoutRecettes.txtCelcius.Text = Math.Round(((CDbl(frmAjoutRecettes.txtFaraneith.Text) - 32) / 1.8), 0, MidpointRounding.AwayFromZero)
             frmAjoutRecettes.txtConservation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString
             frmAjoutRecettes.txtRefroid.Text = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString
             frmAjoutRecettes.nudPortions.Value = bd.dsRecettes.Tables(0).Rows(position).Item(4).ToString

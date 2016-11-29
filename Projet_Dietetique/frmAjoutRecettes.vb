@@ -223,12 +223,12 @@ Public Class frmAjoutRecettes
     Dim congelable As Boolean
 
     Sub modifier()
-        Dim nom As String = txtNom.Text
-        Dim preparation As String = txtPreparation.Text
-        Dim cuisson As String = txtCuisson.Text
-        Dim port As String = nudPortions.Value
-        Dim porti As String = txtPortions.Text
-        Dim refroid As String = txtRefroid.Text
+        ''Dim nom As String = txtNom.Text
+        'Dim preparation As String = txtPreparation.Text
+        'Dim cuisson As String = txtCuisson.Text
+        'Dim port As String = nudPortions.Value
+        'Dim porti As String = txtPortions.Text
+        'Dim refroid As String = txtRefroid.Text
 
         For i As Integer = 0 To lstAllergies.Items.Count - 1
 
@@ -240,9 +240,10 @@ Public Class frmAjoutRecettes
             congelable = False
 
         End If
-        bd.nonQuery("UPDATE `recettes` set `nom` = '" + txtNom.Text + "', `temps_preparation` = '" + preparation + "' , `temps_cuisson` = '" + cuisson + "' , `nb_portions` = '" + port.ToString + "' , `taille_portion` = '" + porti + "' , 
-         `temps_refroidissement` = '" + refroid + "', `etapes` = '" + txtEtapes.Text + "', `remarque` = '" + txtRemarques.Text + "' , `allergies` = '" + allergies + "' 
-         , `duree_conservation` = '" + txtConservation.Text + " " + "' , `categorie` = '" + txtCategorie.Text + "', `congelable` = '" + congelable.ToString + "' where `id_recette` = '")
+        bd.nonQuery("UPDATE `recettes` set `nom` = '" & txtNom.Text & "', `temps_preparation` = '" & txtPreparation.Text & "' , `temps_cuisson` = '" & txtCuisson.Text & "' , `nb_portions` = '" & nudPortions.Value & "' , `taille_portion` = '" & txtPortions.Text & "' , 
+         `temps_refroidissement` = '" & txtRefroid.Text & "', `etapes` = '" & txtEtapes.Text & "', `remarque` = '" & txtRemarques.Text & "' , `allergies` = '" & allergies & "' 
+         , `duree_conservation` = '" & txtConservation.Text & " " & "' , `categorie` = '" & txtCategorie.Text & "', `congelable` = '" & congelable.ToString & "' where `id_recette` = '" & id)
+
         bd.miseAjourBD(bd.dsRecettes, bd.daRecettes, "recettes")
 
     End Sub
@@ -264,15 +265,15 @@ Public Class frmAjoutRecettes
 
     End Sub
     'Bloque les lettres dans les Zones de textes qui auront des valeurs numériques
-    Private Sub txtConservation_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtConservation.KeyPress, txtCuisson.KeyPress, txtPreparation.KeyPress, txtFaraneith.KeyPress,
-            txtPortions.KeyPress, txtRefroid.KeyPress
-        If Asc(e.KeyChar) <> 8 Then
-            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
-                e.Handled = True
-            End If
-        End If
+    'Private Sub txtConservation_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtConservation.KeyPress, txtCuisson.KeyPress, txtPreparation.KeyPress, txtFaraneith.KeyPress,
+    '        txtPortions.KeyPress, txtRefroid.KeyPress
+    '    If Asc(e.KeyChar) <> 8 Then
+    '        If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+    '            e.Handled = True
+    '        End If
+    '    End If
 
-    End Sub
+    'End Sub
     'Met à jour les données dans le listView en fonction de de la valeur de nudPortions
     Private Sub nudPortions_ValueChanged(sender As Object, e As EventArgs) Handles nudPortions.ValueChanged
         For Each element As ListViewItem In lsvProduit.Items

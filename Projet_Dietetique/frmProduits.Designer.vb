@@ -105,6 +105,7 @@ Partial Class frmProduits
         '
         'cmbCategorie
         '
+        Me.cmbCategorie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCategorie.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbCategorie.FormattingEnabled = True
         Me.cmbCategorie.Location = New System.Drawing.Point(153, 63)
@@ -190,6 +191,7 @@ Partial Class frmProduits
         '
         'cmbCategorie2
         '
+        Me.cmbCategorie2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCategorie2.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cmbCategorie2.FormattingEnabled = True
         Me.cmbCategorie2.Location = New System.Drawing.Point(155, 62)

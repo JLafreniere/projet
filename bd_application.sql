@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
-
+-- Généré le :  Mar 29 Novembre 2016 à 21:27
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -31,15 +31,23 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `Nom_Categorie` varchar(100) NOT NULL,
   `Description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`ID_Categorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `categories`
 --
 
 INSERT INTO `categories` (`ID_Categorie`, `Nom_Categorie`, `Description`) VALUES
-(1, 'A', 'AAA'),
-(2, 'B', 'BBB');
+(1, 'Fruits  et Légumes', 'AAA'),
+(3, 'Viandes et substituts', NULL),
+(4, 'Produits laitiers', NULL),
+(5, 'Matières grasses', NULL),
+(6, 'Légumes et fruits', NULL),
+(7, 'Produits céréaliers', NULL),
+(8, 'Sucres et produits sucrés', NULL),
+(9, 'Boissons', NULL),
+(10, 'Épices', NULL),
+(11, 'Divers', NULL);
 
 -- --------------------------------------------------------
 
@@ -93,19 +101,6 @@ CREATE TABLE IF NOT EXISTS `details_commande` (
   KEY `produit` (`produit`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
---
--- Contenu de la table `details_commande`
---
-
-INSERT INTO `details_commande` (`ID_COMMANDE`, `produit`, `total`, `format`, `id_detail`) VALUES
-(1, 8, 30, 'Sac de 2kg', 1),
-(1, 8, 15, 'Sac de 1kg', 2),
-(2, 7, 75, 'Paquet de 3 poitrines', 3),
-(4, 8, 22, 'Sac de 1kg', 4),
-(5, 7, 15, 'Paquet de 3 poitrines', 5),
-(6, 8, 60, 'Sac de 2kg', 6),
-(6, 8, 52, 'Sac de 1kg', 7);
-
 -- --------------------------------------------------------
 
 --
@@ -121,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `details_recette` (
   PRIMARY KEY (`id_detail`),
   KEY `ID_Produit` (`ID_Produit`),
   KEY `ID_Recette` (`ID_Recette`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -136,7 +131,14 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `image` varchar(255) NOT NULL,
   `id_recette` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_evenement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Contenu de la table `evenements`
+--
+
+INSERT INTO `evenements` (`id_evenement`, `Nom_Evenement`, `Date_Evenement`, `image`, `id_recette`) VALUES
+(11, 'Cours recette poulet frit', '2016-11-30', '2.png', 3);
 
 -- --------------------------------------------------------
 
@@ -152,15 +154,6 @@ CREATE TABLE IF NOT EXISTS `format_produit` (
   PRIMARY KEY (`id`),
   KEY `produit_fournisseur` (`produit_fournisseur`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Contenu de la table `format_produit`
---
-
-INSERT INTO `format_produit` (`id`, `produit_fournisseur`, `format`, `prix`) VALUES
-(1, 1, 'Sac de 2kg', 15),
-(2, 1, 'Sac de 1kg', 7.5),
-(3, 3, 'Paquet de 3 poitrines', 15);
 
 -- --------------------------------------------------------
 
@@ -222,7 +215,15 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   `UPC` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`ID_Inventaire`),
   KEY `Produit` (`Produit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Contenu de la table `inventaire`
+--
+
+INSERT INTO `inventaire` (`ID_Inventaire`, `Produit`, `Nom`, `Quantite`, `Format`, `Description`, `Peremption`, `Date_Reception`, `Equivalence`, `Unite_Equivalence`, `Unite`, `Total`, `UPC`) VALUES
+(12, 14, 'Primex', 1, '10', '123', '2016-11-29', '2016-11-29', NULL, '', 'ml', 10, NULL),
+(13, 14, 'Dualex', 4, '7', '', '2016-11-29', '2016-11-08', NULL, NULL, 'kg', 28, NULL);
 
 -- --------------------------------------------------------
 
@@ -237,16 +238,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `debut_affichage` date DEFAULT NULL,
   `fin_affichage` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `messages`
 --
 
 INSERT INTO `messages` (`id`, `titre`, `message`, `debut_affichage`, `fin_affichage`) VALUES
-(1, 'Message test', 'Test contenu lorem ipsumndaslkjfpaodkf aosfjsdapoifsfksafpj`k^sadfas`dfbtnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)btnEnregistrerMessage.Location = New Point(btnEnregistrerMessage.Location.X, cbPeriodeAffichage.Location.Y + 20)', '2016-11-07', '2016-11-07'),
-(2, 'asdfasdf', 'sadfasdfasdfsadf', '2016-11-07', '2016-11-07'),
-(3, 'sadfsdafgahfdh', 'gdfhgdfhg', NULL, NULL);
+(5, 'Message du jour', 'Lorem ipsum dolor sit red neque', '2016-11-29', '2016-11-29');
 
 -- --------------------------------------------------------
 
@@ -267,16 +266,17 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `hidden` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID_Produit`),
   KEY `Categorie` (`Categorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `produits`
 --
 
 INSERT INTO `produits` (`ID_Produit`, `Nom_Produit`, `Categorie`, `Duree_Vie`, `Taxable_Federal`, `Taxable_Provincial`, `Code_UCP`, `Perissable`, `Description`, `hidden`) VALUES
-(7, 'Poulet', 2, 1, 1, 1, NULL, 1, 'Ceci est du poulet', 1),
 (8, 'Fromage En Crotte', 1, 2, 1, 1, NULL, 1, 'Il fait Sqwick Sqwick', 1),
-(11, 'fasdfsd''); drop table kek', 2, NULL, 0, 0, NULL, 0, 'fasd', 0);
+(12, 'Pomme1', 1, NULL, 0, 0, NULL, 0, '', 0),
+(13, 'gfds', 1, NULL, 0, 0, NULL, 0, '', 0),
+(14, 'Methadone', 1, NULL, 0, 0, NULL, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -294,14 +294,6 @@ CREATE TABLE IF NOT EXISTS `produits_fournisseurs` (
   KEY `ID_Fournisseur` (`ID_Fournisseur`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Contenu de la table `produits_fournisseurs`
---
-
-INSERT INTO `produits_fournisseurs` (`id`, `ID_Produit`, `ID_Fournisseur`) VALUES
-(1, 8, 1),
-(3, 7, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -311,22 +303,22 @@ INSERT INTO `produits_fournisseurs` (`id`, `ID_Produit`, `ID_Fournisseur`) VALUE
 CREATE TABLE IF NOT EXISTS `recettes` (
   `ID_Recette` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(50) NOT NULL,
-  `Temps_Preparation` double DEFAULT NULL,
-  `Temps_Cuisson` double DEFAULT NULL,
+  `Temps_Preparation` varchar(15) DEFAULT NULL,
+  `Temps_Cuisson` varchar(15) DEFAULT NULL,
   `Nb_Portions` varchar(15) DEFAULT NULL,
   `Taille_Portion` varchar(15) DEFAULT NULL,
   `Unite_Mesure` varchar(15) DEFAULT NULL,
   `Temperature` varchar(10) DEFAULT NULL,
-  `Temps_Refroidissement` double DEFAULT NULL,
+  `Temps_Refroidissement` varchar(15) DEFAULT NULL,
   `Etapes` text,
   `Image` varchar(255) DEFAULT NULL,
   `Remarque` text,
   `Allergene` varchar(250) DEFAULT NULL,
-  `Duree_Conservation` int(4) DEFAULT NULL,
+  `Duree_Conservation` varchar(15) DEFAULT NULL,
   `Categorie` varchar(50) NOT NULL,
   `congelable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Recette`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contraintes pour les tables exportées

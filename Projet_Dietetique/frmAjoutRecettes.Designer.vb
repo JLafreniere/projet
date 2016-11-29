@@ -49,6 +49,7 @@ Partial Class frmAjoutRecettes
         Me.lsvProduit = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Quantité = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.lblQuantite = New System.Windows.Forms.Label()
         Me.cbProduit = New System.Windows.Forms.ComboBox()
@@ -72,7 +73,6 @@ Partial Class frmAjoutRecettes
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -85,7 +85,7 @@ Partial Class frmAjoutRecettes
         Me.cbUnite.Location = New System.Drawing.Point(1306, 362)
         Me.cbUnite.Name = "cbUnite"
         Me.cbUnite.Size = New System.Drawing.Size(90, 21)
-        Me.cbUnite.TabIndex = 173
+        Me.cbUnite.TabIndex = 17
         '
         'btnSupprimerAllergies
         '
@@ -107,14 +107,14 @@ Partial Class frmAjoutRecettes
         Me.cbPortions.Location = New System.Drawing.Point(520, 338)
         Me.cbPortions.Name = "cbPortions"
         Me.cbPortions.Size = New System.Drawing.Size(71, 21)
-        Me.cbPortions.TabIndex = 168
+        Me.cbPortions.TabIndex = 11
         '
         'txtPortions
         '
         Me.txtPortions.Location = New System.Drawing.Point(461, 338)
         Me.txtPortions.Name = "txtPortions"
         Me.txtPortions.Size = New System.Drawing.Size(50, 20)
-        Me.txtPortions.TabIndex = 129
+        Me.txtPortions.TabIndex = 10
         '
         'Label11
         '
@@ -141,7 +141,7 @@ Partial Class frmAjoutRecettes
         Me.txtRemarques.Location = New System.Drawing.Point(370, 405)
         Me.txtRemarques.Name = "txtRemarques"
         Me.txtRemarques.Size = New System.Drawing.Size(387, 104)
-        Me.txtRemarques.TabIndex = 162
+        Me.txtRemarques.TabIndex = 13
         Me.txtRemarques.Text = ""
         '
         'chkCongelable
@@ -150,7 +150,7 @@ Partial Class frmAjoutRecettes
         Me.chkCongelable.Location = New System.Drawing.Point(370, 374)
         Me.chkCongelable.Name = "chkCongelable"
         Me.chkCongelable.Size = New System.Drawing.Size(79, 17)
-        Me.chkCongelable.TabIndex = 161
+        Me.chkCongelable.TabIndex = 12
         Me.chkCongelable.Text = "Congelable"
         Me.chkCongelable.UseVisualStyleBackColor = True
         '
@@ -170,7 +170,7 @@ Partial Class frmAjoutRecettes
         Me.txtRefroid.Location = New System.Drawing.Point(370, 264)
         Me.txtRefroid.Name = "txtRefroid"
         Me.txtRefroid.Size = New System.Drawing.Size(82, 21)
-        Me.txtRefroid.TabIndex = 131
+        Me.txtRefroid.TabIndex = 7
         '
         'Label9
         '
@@ -188,7 +188,7 @@ Partial Class frmAjoutRecettes
         Me.txtCategorie.Location = New System.Drawing.Point(372, 135)
         Me.txtCategorie.Name = "txtCategorie"
         Me.txtCategorie.Size = New System.Drawing.Size(208, 21)
-        Me.txtCategorie.TabIndex = 158
+        Me.txtCategorie.TabIndex = 2
         '
         'Label8
         '
@@ -206,7 +206,7 @@ Partial Class frmAjoutRecettes
         Me.txtConservation.Location = New System.Drawing.Point(370, 303)
         Me.txtConservation.Name = "txtConservation"
         Me.txtConservation.Size = New System.Drawing.Size(82, 21)
-        Me.txtConservation.TabIndex = 130
+        Me.txtConservation.TabIndex = 8
         '
         'btnAllergies
         '
@@ -227,7 +227,7 @@ Partial Class frmAjoutRecettes
         Me.txtAllergies.Location = New System.Drawing.Point(11, 19)
         Me.txtAllergies.Name = "txtAllergies"
         Me.txtAllergies.Size = New System.Drawing.Size(254, 21)
-        Me.txtAllergies.TabIndex = 154
+        Me.txtAllergies.TabIndex = 14
         '
         'lstAllergies
         '
@@ -253,7 +253,8 @@ Partial Class frmAjoutRecettes
         Me.txtCelcius.Location = New System.Drawing.Point(588, 225)
         Me.txtCelcius.Name = "txtCelcius"
         Me.txtCelcius.Size = New System.Drawing.Size(50, 21)
-        Me.txtCelcius.TabIndex = 127
+        Me.txtCelcius.TabIndex = 6
+        Me.txtCelcius.Tag = "c"
         '
         'txtQuantite
         '
@@ -261,7 +262,7 @@ Partial Class frmAjoutRecettes
         Me.txtQuantite.Location = New System.Drawing.Point(1226, 362)
         Me.txtQuantite.Name = "txtQuantite"
         Me.txtQuantite.Size = New System.Drawing.Size(60, 21)
-        Me.txtQuantite.TabIndex = 151
+        Me.txtQuantite.TabIndex = 16
         '
         'Supprimer
         '
@@ -318,6 +319,11 @@ Partial Class frmAjoutRecettes
         Me.Quantité.Text = "Quantité"
         Me.Quantité.Width = 153
         '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Format"
+        Me.ColumnHeader2.Width = 82
+        '
         'btnAjouter
         '
         Me.btnAjouter.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
@@ -348,7 +354,7 @@ Partial Class frmAjoutRecettes
         Me.cbProduit.Location = New System.Drawing.Point(982, 362)
         Me.cbProduit.Name = "cbProduit"
         Me.cbProduit.Size = New System.Drawing.Size(155, 21)
-        Me.cbProduit.TabIndex = 144
+        Me.cbProduit.TabIndex = 15
         '
         'lblAjouter
         '
@@ -366,7 +372,7 @@ Partial Class frmAjoutRecettes
         Me.nudPortions.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudPortions.Name = "nudPortions"
         Me.nudPortions.Size = New System.Drawing.Size(56, 20)
-        Me.nudPortions.TabIndex = 128
+        Me.nudPortions.TabIndex = 9
         Me.nudPortions.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'lblPortions
@@ -395,7 +401,7 @@ Partial Class frmAjoutRecettes
         Me.txtEtapes.Location = New System.Drawing.Point(845, 475)
         Me.txtEtapes.Name = "txtEtapes"
         Me.txtEtapes.Size = New System.Drawing.Size(551, 225)
-        Me.txtEtapes.TabIndex = 140
+        Me.txtEtapes.TabIndex = 18
         Me.txtEtapes.Text = ""
         '
         'Label5
@@ -414,7 +420,8 @@ Partial Class frmAjoutRecettes
         Me.txtFaraneith.Location = New System.Drawing.Point(499, 225)
         Me.txtFaraneith.Name = "txtFaraneith"
         Me.txtFaraneith.Size = New System.Drawing.Size(50, 21)
-        Me.txtFaraneith.TabIndex = 126
+        Me.txtFaraneith.TabIndex = 5
+        Me.txtFaraneith.Tag = "f"
         '
         'Label4
         '
@@ -442,7 +449,7 @@ Partial Class frmAjoutRecettes
         Me.txtCuisson.Location = New System.Drawing.Point(370, 225)
         Me.txtCuisson.Name = "txtCuisson"
         Me.txtCuisson.Size = New System.Drawing.Size(82, 21)
-        Me.txtCuisson.TabIndex = 125
+        Me.txtCuisson.TabIndex = 4
         '
         'lblPreparation
         '
@@ -460,7 +467,7 @@ Partial Class frmAjoutRecettes
         Me.txtPreparation.Location = New System.Drawing.Point(370, 185)
         Me.txtPreparation.Name = "txtPreparation"
         Me.txtPreparation.Size = New System.Drawing.Size(82, 21)
-        Me.txtPreparation.TabIndex = 124
+        Me.txtPreparation.TabIndex = 3
         '
         'lblNom
         '
@@ -478,7 +485,7 @@ Partial Class frmAjoutRecettes
         Me.txtNom.Location = New System.Drawing.Point(372, 97)
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(254, 21)
-        Me.txtNom.TabIndex = 123
+        Me.txtNom.TabIndex = 1
         '
         'picRecette
         '
@@ -541,11 +548,6 @@ Partial Class frmAjoutRecettes
         Me.Label2.Size = New System.Drawing.Size(67, 13)
         Me.Label2.TabIndex = 175
         Me.Label2.Text = "Allergènes :"
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Format"
-        Me.ColumnHeader2.Width = 82
         '
         'frmAjoutRecettes
         '

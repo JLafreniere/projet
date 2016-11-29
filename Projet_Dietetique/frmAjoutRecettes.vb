@@ -19,7 +19,7 @@ Public Class frmAjoutRecettes
 
     Private Sub frmAjoutRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-        Me.TopMost = True
+
         Controls.Add(New Header(Me, True))
         chargerDataset()
 
@@ -71,14 +71,21 @@ Public Class frmAjoutRecettes
     End Sub
 
 
-    Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.TextChanged
-        ' Converti le texte de txtFaraneith en celcius (txtCelcius)
-        txtCelcius.Text = (CInt(txtFaraneith.Text) - 32) / 1.8
+    Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.KeyUp, txtCelcius.KeyUp
+        Try
+            If sender.tag = "f" Then
+                ' Converti le texte de txtFaraneith en celcius (txtCelcius)
+                txtCelcius.Text =
+                Math.Round(((CDbl(txtFaraneith.Text) - 32) / 1.8), 0, MidpointRounding.AwayFromZero)
+
+            Else
+                'celsius * 9/5 + 32 
+                txtFaraneith.Text = Math.Round((CDbl(txtCelcius.Text) * 1.8) + 32, 0, MidpointRounding.AwayFromZero)
+            End If
+        Catch exc As Exception : End Try
+
     End Sub
 
-    Private Sub txtCelcius_TextChanged(sender As Object, e As EventArgs) Handles txtCelcius.TextChanged
-
-    End Sub
     'Rempli le Combobox des Produits
     'Sub remplirCombo()
     '    bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
@@ -177,7 +184,7 @@ Public Class frmAjoutRecettes
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
         coll(0) = cbProduit.Text
         coll(1) = txtQuantite.Text
-        coll(1) = cbUnite.Text
+        coll(2) = cbUnite.Text
 
         Dim lvi As New ListViewItem(coll)
         lsvProduit.Items.Add(lvi)
@@ -325,5 +332,11 @@ Public Class frmAjoutRecettes
 
 
 
+    End Sub
+
+    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtPortions.KeyPress
+        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
+            e.Handled = True
+        End If
     End Sub
 End Class

@@ -4,7 +4,7 @@ Public Class frmAjoutInventaire
 
     Private Sub frmAjoutInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.TopMost = True
+
 
         Controls.Add(New Header(Me, False))
         'connection bd + charger ds

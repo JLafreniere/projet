@@ -23,7 +23,7 @@
 
                                                End Sub
             AddHandler currentForm.Shown, Sub()
-                                              currentForm.TopMost = True
+                                              ' Dead Oubie c sik
                                           End Sub
 
 

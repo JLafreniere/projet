@@ -297,7 +297,5 @@ Public Class PanelJour
         End If
     End Sub
 
-
-
 End Class
 

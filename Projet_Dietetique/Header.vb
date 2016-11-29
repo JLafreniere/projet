@@ -7,7 +7,7 @@
     Dim f As New Font("Segoe UI", 14.25, FontStyle.Bold)
     Dim nomOnglets() As String = {"Accueil", "Agenda", "Inventaire", "Produits", "Recettes", "Fournisseurs", "Commandes"}
     Dim formulairesOnglets() As Form = {frmAccueil, frmAgenda, frmInventaire, frmProduits, frmVoirRecettes, frmFournisseurs, frmCommandes}
-
+    Public Property exitOnClose As Boolean = True
     'Par Jonathan Lafrenière
     'En tête de tous les formulaires, gestion de la transition entre les onglets
     Public Sub New(currentForm As Form, tabs As Boolean)
@@ -17,7 +17,10 @@
             currentForm.WindowState = 2
             currentForm.BackColor = Color.White
             AddHandler currentForm.FormClosed, Sub()
-                                                   Application.Exit()
+                                                   If (exitOnClose) Then
+                                                       Application.Exit()
+                                                   End If
+
                                                End Sub
             AddHandler currentForm.Shown, Sub()
                                               currentForm.TopMost = True
@@ -81,6 +84,9 @@
         Controls.Add(pbLogo)
     End Sub
 
+    Public Overridable Sub fermerFormulaire()
+        Application.Exit()
+    End Sub
 
     Private Sub ajouterOnglet(btnText As String, form As Form, currentTab As Boolean)
 

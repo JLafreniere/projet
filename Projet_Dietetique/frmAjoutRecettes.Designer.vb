@@ -49,7 +49,6 @@ Partial Class frmAjoutRecettes
         Me.lsvProduit = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Quantité = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.lblQuantite = New System.Windows.Forms.Label()
         Me.cbProduit = New System.Windows.Forms.ComboBox()
@@ -82,7 +81,6 @@ Partial Class frmAjoutRecettes
         '
         Me.cbUnite.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbUnite.FormattingEnabled = True
-        Me.cbUnite.Items.AddRange(New Object() {"ml", "g", "unite"})
         Me.cbUnite.Location = New System.Drawing.Point(1306, 362)
         Me.cbUnite.Name = "cbUnite"
         Me.cbUnite.Size = New System.Drawing.Size(90, 21)
@@ -105,7 +103,6 @@ Partial Class frmAjoutRecettes
         '
         Me.cbPortions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPortions.FormattingEnabled = True
-        Me.cbPortions.Items.AddRange(New Object() {"ml", "g", "unités"})
         Me.cbPortions.Location = New System.Drawing.Point(520, 338)
         Me.cbPortions.Name = "cbPortions"
         Me.cbPortions.Size = New System.Drawing.Size(71, 21)
@@ -299,7 +296,7 @@ Partial Class frmAjoutRecettes
         '
         'lsvProduit
         '
-        Me.lsvProduit.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.Quantité, Me.ColumnHeader3})
+        Me.lsvProduit.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.Quantité})
         Me.lsvProduit.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvProduit.FullRowSelect = True
         Me.lsvProduit.HideSelection = False
@@ -313,16 +310,12 @@ Partial Class frmAjoutRecettes
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Ingrédients"
-        Me.ColumnHeader1.Width = 341
+        Me.ColumnHeader1.Width = 372
         '
         'Quantité
         '
         Me.Quantité.Text = "Quantité"
-        Me.Quantité.Width = 140
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Unité"
+        Me.Quantité.Width = 175
         '
         'btnAjouter
         '
@@ -634,7 +627,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents lsvProduit As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Quantité As ColumnHeader
-    Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents btnAjouter As Button
     Friend WithEvents lblQuantite As Label
     Friend WithEvents cbProduit As ComboBox

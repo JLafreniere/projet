@@ -21,8 +21,8 @@ Public Class frmAjoutRecettes
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         Me.TopMost = True
         Controls.Add(New Header(Me, True))
-        remplirCombo()
         chargerDataset()
+
         Dim ds As New DataSet
         bd.Requete("select * from produits order by nom_produit", ds, bd.daProduits, "produits")
         cbProduit.DataSource = ds.Tables(0)
@@ -34,6 +34,10 @@ Public Class frmAjoutRecettes
 
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbPortions.Items.Add(bd.uniteMesure(i))
+        Next
+
+        For i As Integer = 0 To bd.uniteMesure.length - 1
+            cbUnite.Items.Add(bd.uniteMesure(i))
         Next
 
 
@@ -53,9 +57,19 @@ Public Class frmAjoutRecettes
         bd.Requete("select * from recettes", bd.dsRecettes, bd.daRecettes, "recettes")
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
 
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
     End Sub
+
 
     Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.TextChanged
         ' Converti le texte de txtFaraneith en celcius (txtCelcius)
@@ -66,15 +80,15 @@ Public Class frmAjoutRecettes
 
     End Sub
     'Rempli le Combobox des Produits
-    Sub remplirCombo()
-        bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
+    'Sub remplirCombo()
+    '    bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
 
-        For i As Integer = 0 To bd.dsProduits.Tables(0).Rows.Count - 1
-            cbProduit.Items.Add(bd.dsProduits.Tables(0).Rows(i)(1))
-            cbProduit.AutoCompleteMode = AutoCompleteMode.Append
+    '    For i As Integer = 0 To bd.dsProduits.Tables(0).Rows.Count - 1
+    '        cbProduit.Items.Add(bd.dsProduits.Tables(0).Rows(i)(1))
+    '        cbProduit.AutoCompleteMode = AutoCompleteMode.Append
 
-        Next
-    End Sub
+    '    Next
+    'End Sub
 
     Private Sub btnAllergies_Click(sender As Object, e As EventArgs) Handles btnAllergies.Click
         'Ajoute le contenu de txtAllergies à la ListBox des Allergies
@@ -120,7 +134,7 @@ Public Class frmAjoutRecettes
         drnouvel(13) = txtConservation.Text
         drnouvel(11) = txtRemarques.Text
         drnouvel(8) = txtRefroid.Text
-        drnouvel(5) = txtPortions.Text & " " & cbPortions.Text
+        drnouvel(5) = cbPortions.Text
 
 
 
@@ -162,9 +176,7 @@ Public Class frmAjoutRecettes
     'Ajoute le texte de txtAllergies au ListBox des Allergies
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
         coll(0) = cbProduit.Text
-        coll(1) = txtQuantite.Text
-        coll(2) = cbUnite.Text
-
+        coll(1) = txtQuantite.Text & " " & cbUnite.Text
 
         Dim lvi As New ListViewItem(coll)
         lsvProduit.Items.Add(lvi)
@@ -239,7 +251,6 @@ Public Class frmAjoutRecettes
         txtRefroid.Text = ""
         txtRemarques.Text = ""
         nudPortions.Value = 1
-        cbPortions.Text = ""
         lstAllergies.Items.Clear()
 
 
@@ -298,4 +309,20 @@ Public Class frmAjoutRecettes
         End If
     End Sub
 
+    Private Sub cbProduit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProduit.TextChanged, cbProduit.KeyUp, txtQuantite.TextChanged, cbUnite.TextChanged
+        Dim dsTemp As New DataSet
+
+        bd.Requete("select * from produits where upper(nom_produit) = upper('" & Replace(cbProduit.Text, "'", "''") & "')", dsTemp, bd.daProduits, "produits")
+
+        If dsTemp.Tables(0).Rows.Count = 0 Or txtQuantite.Text = "" Or cbUnite.Text = "" Then
+            couleurBouton("D", btnAjouter)
+
+        Else
+            couleurBouton("E", btnAjouter)
+
+        End If
+
+
+
+    End Sub
 End Class

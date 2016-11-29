@@ -19,10 +19,12 @@ Public Class frmAjoutRecettes
 
     Private Sub frmAjoutRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
+
         Me.TopMost = True
         Dim h As New Header(Me, True)
         h.exitOnClose = False
         Controls.Add(h)
+
         chargerDataset()
 
         Dim ds As New DataSet

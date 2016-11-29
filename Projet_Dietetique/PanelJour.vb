@@ -119,24 +119,28 @@ Public Class PanelJour
             frmAjoutRecettes.txtPreparation.Text = dsRecettes.Tables(0).Rows(0).Item(2).ToString
             frmAjoutRecettes.txtCuisson.Text = dsRecettes.Tables(0).Rows(0).Item(3).ToString
             frmAjoutRecettes.txtFaraneith.Text = dsRecettes.Tables(0).Rows(0).Item(7).ToString
+            frmAjoutRecettes.txtCelcius.Text = Math.Round(((CDbl(frmAjoutRecettes.txtFaraneith.Text) - 32) / 1.8), 0, MidpointRounding.AwayFromZero)
             frmAjoutRecettes.txtConservation.Text = dsRecettes.Tables(0).Rows(0).Item(13).ToString
             frmAjoutRecettes.txtRefroid.Text = dsRecettes.Tables(0).Rows(0).Item(8).ToString
             frmAjoutRecettes.nudPortions.Value = dsRecettes.Tables(0).Rows(0).Item(4).ToString
             frmAjoutRecettes.txtPortions.Text = dsRecettes.Tables(0).Rows(0).Item(5).ToString
             frmAjoutRecettes.cbPortions.Text = dsRecettes.Tables(0).Rows(0).Item(6).ToString
             ' On coche ou  le checkBox si la recette est congelable
-            If bd.dsRecettes.Tables(0).Rows(0).Item(15).ToString = True Then
+
+            If dsRecettes.Tables(0).Rows(0).Item(15).ToString = True Then
+                MsgBox("nigeria")
                 frmAjoutRecettes.chkCongelable.Checked = True
             Else
                 frmAjoutRecettes.chkCongelable.Checked = False
+                MsgBox("nigeria")
             End If
 
             frmAjoutRecettes.txtRemarques.Text = dsRecettes.Tables(0).Rows(0).Item(11).ToString
-
+            MsgBox("nigeria")
             frmAjoutRecettes.txtEtapes.Text = dsRecettes.Tables(0).Rows(0).Item(9).ToString
-
+            MsgBox("nigeria")
             'On ajoute les allergies dans le listbox
-            Dim allergies = dsRecettes.Tables(0).Rows(0).Item(12).ToString.Split(vbCrLf)
+            Dim allergies() As String = dsRecettes.Tables(0).Rows(0).Item(12).ToString.Split(vbCrLf)
             For i As Integer = 0 To allergies.Length - 1
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
@@ -145,7 +149,9 @@ Public Class PanelJour
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
 
             frmAjoutRecettes.remplirListView()
-        Catch e As Exception : End Try
+        Catch e As Exception
+            MsgBox(e.Message)
+        End Try
 
     End Sub
     Public Sub ajouterEvenement(ByVal evenement As String, recette As Integer)
@@ -290,8 +296,6 @@ Public Class PanelJour
             frmAccueil.changerDateSelectionnee(_date)
         End If
     End Sub
-
-
 
 End Class
 

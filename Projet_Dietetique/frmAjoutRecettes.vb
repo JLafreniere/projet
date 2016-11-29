@@ -22,11 +22,9 @@ Public Class frmAjoutRecettes
         Me.TopMost = True
         Dim h As New Header(Me, True)
         h.exitOnClose = False
-<<<<<<< HEAD
+
         Controls.Add(h)
-=======
-        Controls.Add(h)
->>>>>>> 07dff9a97b1b8b518528718cbaef0f9fe3dad63c
+
         chargerDataset()
 
         Dim ds As New DataSet

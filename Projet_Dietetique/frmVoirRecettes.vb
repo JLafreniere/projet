@@ -33,14 +33,7 @@ Public Class frmVoirRecettes
 
         'click
         AddHandler refresh.Click, Sub(sender2, eventargs2)
-                                      bd.dsRecettes.Clear()
-                                      bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
-                                      remplirListView()
-                                      lsvRecette.Enabled = True
-                                      txtRecherche.Text = ""
-                                      couleurBouton("D", btnModifier)
-                                      couleurBouton("D", btnSupprimer)
-
+                                      refreshPage()
                                   End Sub
 
         'les différentes couleurs du bouton selon l'etat 
@@ -50,6 +43,7 @@ Public Class frmVoirRecettes
         AddHandler refresh.MouseLeave, Sub(sender2, eventargs2)
                                            refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
                                        End Sub
+
         AddHandler refresh.MouseDown, Sub(sender2, eventargs2)
                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshDown.png")
                                       End Sub
@@ -60,6 +54,20 @@ Public Class frmVoirRecettes
         couleurBouton("D", btnSupprimer)
 
         refresh.BringToFront()
+    End Sub
+
+    Private Sub frmVoirRecettes_shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        refreshPage()
+    End Sub
+
+    Sub refreshPage()
+        bd.dsRecettes.Clear()
+        bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+        remplirListView()
+        lsvRecette.Enabled = True
+        txtRecherche.Text = ""
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
     End Sub
 
     Sub couleurBouton(etat As String, b As Button)

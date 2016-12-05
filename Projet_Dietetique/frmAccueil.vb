@@ -94,7 +94,7 @@ Public Class frmAccueil
 
 
         System.IO.File.WriteAllText("Index.html", "")
-        File.AppendAllText("Index.html", "<!DOCTYPE html><html><head><link rel = ""stylesheet"" type=""text/css"" href=""style.css""></head><body>")
+        File.AppendAllText("Index.html", "<!DOCTYPE html><html><head><meta charset=""utf-8""><link rel = ""stylesheet"" type=""text/css"" href=""style.css""></head><body>")
 
 
         For Each dr As DataRow In ds.Tables(0).Rows

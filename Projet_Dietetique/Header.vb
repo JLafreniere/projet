@@ -13,6 +13,8 @@
     Public Sub New(currentForm As Form, tabs As Boolean)
 
         Me.currentForm = currentForm
+        currentForm.AutoScroll = True
+
         If tabs Then
             currentForm.WindowState = 2
             currentForm.BackColor = Color.White

@@ -255,12 +255,14 @@ Public Class frmAjoutRecettes
 
         bd.nonQuery("Delete from details_recette where id_recette = " & id)
 
+        chargerDataset()
+        Dim drnouvel As DataRow
         For Each i As ListViewItem In lsvProduit.Items
             Dim ds As New DataSet
             bd.Requete("select * from produits where nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
             drnouvel = bd.dsDetails.Tables(0).NewRow()
             drnouvel(0) = ds.Tables(0).Rows(0).Item(0)
-            drnouvel(1) = bd.dsRecettes.Tables(0).Rows(bd.dsRecettes.Tables(0).Rows.Count - 1).Item(0)
+            drnouvel(1) = id
             drnouvel(2) = i.SubItems(1).Text
             drnouvel(3) = i.SubItems(2).Text
             bd.dsDetails.Tables(0).Rows.Add(drnouvel)

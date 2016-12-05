@@ -105,7 +105,6 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
 C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\Projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
-<<<<<<< HEAD
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
@@ -136,12 +135,10 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
-=======
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
->>>>>>> e2a05c867ba067a334f3d3da2f084e3bc275b28f
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
 C:\Users\1425165\Desktop\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources

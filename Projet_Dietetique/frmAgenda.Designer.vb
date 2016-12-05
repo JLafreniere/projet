@@ -176,6 +176,7 @@ Partial Class frmAgenda
         '
         'cbRecettes
         '
+        Me.cbRecettes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbRecettes.FormattingEnabled = True
         Me.cbRecettes.Location = New System.Drawing.Point(3, 190)
         Me.cbRecettes.Name = "cbRecettes"

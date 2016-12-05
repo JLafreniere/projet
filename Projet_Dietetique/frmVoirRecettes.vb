@@ -165,6 +165,14 @@ Public Class frmVoirRecettes
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
 
+            'Image
+            If bd.dsRecettes.Tables(0).Rows(position).Item(10) <> "" Then
+                Try
+                    frmAjoutRecettes.picRecette.SizeMode = PictureBoxSizeMode.StretchImage
+                    frmAjoutRecettes.picRecette.Image = Image.FromFile(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString)
+                Catch exc As Exception : End Try
+            End If
+
 
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
 

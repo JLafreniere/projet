@@ -73,6 +73,17 @@ Public Class frmAjoutRecettes
         End If
     End Sub
 
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles picRecette.Click 'Permet d'importer une image 
+        'Jonathan Lafreniere
+        Try
+            OpenFileDialog1.Filter = "Images (*.bmp, *.jpg, *.png, *.JLC)|*.bmp;*.jpg;*.png; *.JLC"
+            OpenFileDialog1.ShowDialog()
+            picRecette.Image = Image.FromFile(OpenFileDialog1.FileName)
+            Me.picRecette.SizeMode = PictureBoxSizeMode.StretchImage
+        Catch exc As Exception
+        End Try
+    End Sub
+
 
     Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.KeyUp, txtCelcius.KeyUp
         Try
@@ -146,6 +157,20 @@ Public Class frmAjoutRecettes
         drnouvel(8) = txtRefroid.Text
         drnouvel(6) = cbPortions.Text
         drnouvel(5) = txtPortions.Text
+
+        'Image
+        If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
+            Try
+                Dim str As String = bd.executeScalar("select coalesce(max(id_recette), 1) from recettes")
+                id = str
+                FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & str & ".JLC")
+                drnouvel(10) = "JLC" &
+               str & ".JLC"
+            Catch exc As Exception
+
+                drnouvel(10) = bd.executeScalar("select image from recettes where id_recette = " & id)
+            End Try
+        End If
 
 
 

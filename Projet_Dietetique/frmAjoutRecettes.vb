@@ -1,12 +1,8 @@
-﻿Imports System.Data
+﻿Imports System.ComponentModel
+Imports System.Data
 Imports MySql.Data.MySqlClient
 'Jonathan Villeneuve
 
-'CATEGORIE = DÉSSERT DÉJEUNER SOUPER.......
-'LISTVIEW, ENLEVER COLONNE UNITÉ PIS FAIRE UNE CONCAC DE COL 2 et 3
-'CMB UNITÉ POUR LES INGRÉDIENTS AK VALEURS FIXE
-'IMAGE
-'ALERGIE, FAIRE UN SPLIT DANS LA BD AVEC UN CARACTERE BIZARRE.
 
 Public Class frmAjoutRecettes
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
@@ -20,7 +16,8 @@ Public Class frmAjoutRecettes
     Private Sub frmAjoutRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
 
-        Me.TopMost = True
+
+
         Dim h As New Header(Me, True)
         h.exitOnClose = False
 
@@ -39,17 +36,18 @@ Public Class frmAjoutRecettes
 
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbPortions.Items.Add(bd.uniteMesure(i))
-        Next
 
+        Next
+        cbPortions.SelectedIndex = 2
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbUnite.Items.Add(bd.uniteMesure(i))
         Next
 
 
-        Dim ctl As Control
-        For Each ctl In Me.Controls
-            AddHandler ctl.KeyDown, AddressOf controleSuivant
-        Next
+        'Dim ctl As Control
+        'For Each ctl In Me.Controls
+        '    AddHandler ctl.KeyDown, AddressOf controleSuivant
+        'Next
 
     End Sub
 
@@ -146,7 +144,8 @@ Public Class frmAjoutRecettes
         drnouvel(13) = txtConservation.Text
         drnouvel(11) = txtRemarques.Text
         drnouvel(8) = txtRefroid.Text
-        drnouvel(5) = cbPortions.Text
+        drnouvel(6) = cbPortions.Text
+        drnouvel(5) = txtPortions.Text
 
 
 
@@ -158,12 +157,12 @@ Public Class frmAjoutRecettes
         'Ajoute les produits de la recettes dans la table détail_recettes
         For Each i As ListViewItem In lsvProduit.Items
             Dim ds As New DataSet
-            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
-            MsgBox(bd.dsRecettes.Tables(0).Rows(bd.dsRecettes.Tables(0).Rows.Count - 1).Item(0).ToString)
+            bd.Requete("select * from produits where nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
             drnouvel = bd.dsDetails.Tables(0).NewRow()
             drnouvel(0) = ds.Tables(0).Rows(0).Item(0)
             drnouvel(1) = bd.dsRecettes.Tables(0).Rows(bd.dsRecettes.Tables(0).Rows.Count - 1).Item(0)
             drnouvel(2) = i.SubItems(1).Text
+            drnouvel(3) = i.SubItems(2).Text
             bd.dsDetails.Tables(0).Rows.Add(drnouvel)
         Next
         bd.miseAjourBD(bd.dsDetails, bd.daDetails, "details_recette")
@@ -181,7 +180,9 @@ Public Class frmAjoutRecettes
         End If
         chargerDataset()
         Me.Close()
-        frmAccueil.Show()
+        frmVoirRecettes.Hide()
+        frmVoirRecettes.refreshPage()
+        frmVoirRecettes.Show()
         viderChamps()
 
     End Sub
@@ -238,7 +239,8 @@ Public Class frmAjoutRecettes
 
         For i As Integer = 0 To lstAllergies.Items.Count - 1
 
-            allergies += lstAllergies.Items(i).ToString & vbCrLf
+            allergies += Replace(lstAllergies.Items(i).ToString, "'", "''") & vbCrLf
+
         Next
         If chkCongelable.Checked Then
             congelable = True
@@ -246,11 +248,25 @@ Public Class frmAjoutRecettes
             congelable = False
 
         End If
-        bd.nonQuery("UPDATE `recettes` set `nom` = '" & txtNom.Text & "', `temps_preparation` = '" & txtPreparation.Text & "' , `temps_cuisson` = '" & txtCuisson.Text & "' , `nb_portions` = '" & nudPortions.Value & "' , `taille_portion` = '" & txtPortions.Text & "' , 
-         `temps_refroidissement` = '" & txtRefroid.Text & "', `etapes` = '" & txtEtapes.Text & "', `remarque` = '" & txtRemarques.Text & "' , `allergies` = '" & allergies & "' 
-         , `duree_conservation` = '" & txtConservation.Text & " " & "' , `categorie` = '" & txtCategorie.Text & "', `congelable` = '" & congelable.ToString & "' where `id_recette` = '" & id)
+        bd.nonQuery("UPDATE recettes set nom = '" & Replace(txtNom.Text, "'", "''") & "', temps_preparation = '" & Replace(txtPreparation.Text, "'", "''") & "' , temps_cuisson = '" & Replace(txtCuisson.Text, "'", "''") & "' , nb_portions = " & nudPortions.Value & " , taille_portion = " & Replace(txtPortions.Text, "'", "''") & " , 
+         unite_mesure = '" & Replace(cbPortions.Text, "'", "''") & "' , temps_refroidissement = '" & Replace(txtRefroid.Text, "'", "''") & "', etapes = '" & Replace(txtEtapes.Text, "'", "''") & "', remarque = '" & Replace(txtRemarques.Text, "'", "''") & "' , Allergene = '" & allergies & "' 
+         , duree_conservation = '" & Replace(txtConservation.Text, "'", "''") & "' , categorie = '" & Replace(txtCategorie.Text, "'", "''") & "' , congelable = '" & congelable.ToString & "' where id_recette = " & id)
 
-        bd.miseAjourBD(bd.dsRecettes, bd.daRecettes, "recettes")
+
+        bd.nonQuery("Delete from details_recette where id_recette = " & id)
+
+        For Each i As ListViewItem In lsvProduit.Items
+            Dim ds As New DataSet
+            bd.Requete("select * from produits where nom_produit = '" & Replace(i.SubItems(0).Text, "'", "''") & "'", ds, bd.daProduits, "produits")
+            drnouvel = bd.dsDetails.Tables(0).NewRow()
+            drnouvel(0) = ds.Tables(0).Rows(0).Item(0)
+            drnouvel(1) = bd.dsRecettes.Tables(0).Rows(bd.dsRecettes.Tables(0).Rows.Count - 1).Item(0)
+            drnouvel(2) = i.SubItems(1).Text
+            drnouvel(3) = i.SubItems(2).Text
+            bd.dsDetails.Tables(0).Rows.Add(drnouvel)
+        Next
+        bd.miseAjourBD(bd.dsDetails, bd.daDetails, "details_recette")
+
 
     End Sub
     'Vide les champs du formulaire
@@ -306,15 +322,15 @@ Public Class frmAjoutRecettes
     End Sub
 
     'Quand l'utilisateur pèse sur enter, le focus est mis sur le contrôle suivant
-    Sub controleSuivant(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.Enter Then
+    'Sub controleSuivant(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+    '    If e.KeyCode = Keys.Enter Then
 
-            e.SuppressKeyPress = True
-            Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
-        End If
+    '        e.SuppressKeyPress = True
+    '        Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+    '    End If
 
 
-    End Sub
+    'End Sub
 
     Private Sub lstAllergies_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstAllergies.SelectedIndexChanged
         If lstAllergies.SelectedItems.Count > 0 Then
@@ -345,5 +361,14 @@ Public Class frmAjoutRecettes
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
+        Me.Close()
+        frmVoirRecettes.Show()
+    End Sub
+
+    Private Sub frmAjoutRecettes_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        frmVoirRecettes.Show()
     End Sub
 End Class

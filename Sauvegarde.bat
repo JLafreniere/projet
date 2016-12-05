@@ -1,3 +1,4 @@
+:debut
 @echo off
 pushd %~dp0
 git add .
@@ -23,6 +24,6 @@ echo                .k___.'         .k___/
 echo.   
 echo.   
 echo.                   
-pause
+goto debut
 exit
 pause

@@ -178,7 +178,7 @@ Public Class frmProduits
 
         'Popule le combo box des categories
         dsCategorie.Clear()
-        bd.Requete("Select * from categories", dsCategorie, daCategorie, "produits")
+        bd.Requete("Select * from categories order by Nom_Categorie ", dsCategorie, daCategorie, "produits")
         cmbCategorie.DataSource = dsCategorie.Tables(0)
         cmbCategorie.ValueMember = dsCategorie.Tables(0).Columns(0).ToString
         cmbCategorie.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
@@ -209,6 +209,12 @@ Public Class frmProduits
             bd.dsProduits.Clear()
             bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
             remplircontroles()
+
+            txtAjouter.ResetText()
+            txtDescription.ResetText()
+            ckPerissable.Checked = False
+            ckTaxeFederale.Checked = False
+            ckTaxeProvinciale.Checked = False
         End If
     End Sub
 
@@ -219,7 +225,7 @@ Public Class frmProduits
         txtModifier.Text = lsvProduits.FocusedItem.SubItems(0).Text
 
         dsCategorie.Clear()
-        bd.Requete("Select * from categories", dsCategorie, daCategorie, "produits")
+        bd.Requete("Select * from categories order by Nom_Categorie ", dsCategorie, daCategorie, "produits")
         cmbCategorie2.DataSource = dsCategorie.Tables(0)
         cmbCategorie2.ValueMember = dsCategorie.Tables(0).Columns(0).ToString
         cmbCategorie2.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString

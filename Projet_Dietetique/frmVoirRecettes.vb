@@ -137,15 +137,12 @@ Public Class frmVoirRecettes
     Sub remplirFormulaire()
         Try
             frmAjoutRecettes.Show()
-<<<<<<< HEAD
+
 
             frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
             ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
-=======
-            frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
->>>>>>> a1ab02442d0b6737a13a13fd979e64ef17b67601
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
             frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString

@@ -24,6 +24,9 @@ Partial Class frmFournisseurs
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFournisseurs))
         Me.mainpanel = New System.Windows.Forms.Panel()
+        Me.rdbVille = New System.Windows.Forms.RadioButton()
+        Me.rdbNom = New System.Windows.Forms.RadioButton()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txtRecherche = New System.Windows.Forms.TextBox()
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.btnModifier = New System.Windows.Forms.Button()
@@ -32,15 +35,15 @@ Partial Class frmFournisseurs
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnRechercher = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.rdbNom = New System.Windows.Forms.RadioButton()
-        Me.rdbVille = New System.Windows.Forms.RadioButton()
+        Me.rdbDefaut = New System.Windows.Forms.RadioButton()
         Me.mainpanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainpanel
         '
+        Me.mainpanel.Controls.Add(Me.rdbDefaut)
         Me.mainpanel.Controls.Add(Me.rdbVille)
         Me.mainpanel.Controls.Add(Me.rdbNom)
         Me.mainpanel.Controls.Add(Me.Label1)
@@ -54,6 +57,38 @@ Partial Class frmFournisseurs
         Me.mainpanel.Name = "mainpanel"
         Me.mainpanel.Size = New System.Drawing.Size(702, 528)
         Me.mainpanel.TabIndex = 2
+        '
+        'rdbVille
+        '
+        Me.rdbVille.AutoSize = True
+        Me.rdbVille.Location = New System.Drawing.Point(212, 55)
+        Me.rdbVille.Name = "rdbVille"
+        Me.rdbVille.Size = New System.Drawing.Size(44, 17)
+        Me.rdbVille.TabIndex = 80
+        Me.rdbVille.TabStop = True
+        Me.rdbVille.Text = "Ville"
+        Me.rdbVille.UseVisualStyleBackColor = True
+        '
+        'rdbNom
+        '
+        Me.rdbNom.AutoSize = True
+        Me.rdbNom.Location = New System.Drawing.Point(142, 55)
+        Me.rdbNom.Name = "rdbNom"
+        Me.rdbNom.Size = New System.Drawing.Size(47, 17)
+        Me.rdbNom.TabIndex = 79
+        Me.rdbNom.TabStop = True
+        Me.rdbNom.Text = "Nom"
+        Me.rdbNom.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(22, 59)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(98, 13)
+        Me.Label1.TabIndex = 78
+        Me.Label1.Text = "Rechercher selon:"
         '
         'txtRecherche
         '
@@ -111,7 +146,7 @@ Partial Class frmFournisseurs
         '
         'lsvFournisseurs
         '
-        Me.lsvFournisseurs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.lsvFournisseurs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lsvFournisseurs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lsvFournisseurs.HideSelection = False
         Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 90)
@@ -134,8 +169,12 @@ Partial Class frmFournisseurs
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Personne contact"
+        Me.ColumnHeader3.Text = "Ville"
         Me.ColumnHeader3.Width = 197
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Personne Contact"
         '
         'BtnRechercher
         '
@@ -151,37 +190,16 @@ Partial Class frmFournisseurs
         Me.BtnRechercher.Text = "Rechercher"
         Me.BtnRechercher.UseVisualStyleBackColor = False
         '
-        'Label1
+        'rdbDefaut
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(22, 59)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 13)
-        Me.Label1.TabIndex = 78
-        Me.Label1.Text = "Rechercher selon:"
-        '
-        'rdbNom
-        '
-        Me.rdbNom.AutoSize = True
-        Me.rdbNom.Location = New System.Drawing.Point(142, 55)
-        Me.rdbNom.Name = "rdbNom"
-        Me.rdbNom.Size = New System.Drawing.Size(47, 17)
-        Me.rdbNom.TabIndex = 79
-        Me.rdbNom.TabStop = True
-        Me.rdbNom.Text = "Nom"
-        Me.rdbNom.UseVisualStyleBackColor = True
-        '
-        'rdbVille
-        '
-        Me.rdbVille.AutoSize = True
-        Me.rdbVille.Location = New System.Drawing.Point(212, 55)
-        Me.rdbVille.Name = "rdbVille"
-        Me.rdbVille.Size = New System.Drawing.Size(44, 17)
-        Me.rdbVille.TabIndex = 80
-        Me.rdbVille.TabStop = True
-        Me.rdbVille.Text = "Ville"
-        Me.rdbVille.UseVisualStyleBackColor = True
+        Me.rdbDefaut.AutoSize = True
+        Me.rdbDefaut.Location = New System.Drawing.Point(456, 59)
+        Me.rdbDefaut.Name = "rdbDefaut"
+        Me.rdbDefaut.Size = New System.Drawing.Size(121, 17)
+        Me.rdbDefaut.TabIndex = 81
+        Me.rdbDefaut.TabStop = True
+        Me.rdbDefaut.Text = "Affichage par défaut"
+        Me.rdbDefaut.UseVisualStyleBackColor = True
         '
         'frmFournisseurs
         '
@@ -211,4 +229,6 @@ Partial Class frmFournisseurs
     Friend WithEvents Label1 As Label
     Friend WithEvents rdbVille As RadioButton
     Friend WithEvents rdbNom As RadioButton
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents rdbDefaut As RadioButton
 End Class

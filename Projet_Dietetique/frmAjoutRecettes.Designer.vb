@@ -106,7 +106,7 @@ Partial Class frmAjoutRecettes
         Me.cbPortions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.cbPortions.FormattingEnabled = True
-        Me.cbPortions.Location = New System.Drawing.Point(520, 338)
+        Me.cbPortions.Location = New System.Drawing.Point(520, 337)
         Me.cbPortions.Name = "cbPortions"
         Me.cbPortions.Size = New System.Drawing.Size(71, 21)
         Me.cbPortions.TabIndex = 11
@@ -114,7 +114,7 @@ Partial Class frmAjoutRecettes
         'txtPortions
         '
         Me.txtPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtPortions.Location = New System.Drawing.Point(461, 338)
+        Me.txtPortions.Location = New System.Drawing.Point(461, 337)
         Me.txtPortions.Name = "txtPortions"
         Me.txtPortions.Size = New System.Drawing.Size(50, 22)
         Me.txtPortions.TabIndex = 10
@@ -123,7 +123,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label11.Location = New System.Drawing.Point(433, 343)
+        Me.Label11.Location = New System.Drawing.Point(433, 342)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(20, 13)
         Me.Label11.TabIndex = 167
@@ -152,7 +152,7 @@ Partial Class frmAjoutRecettes
         '
         Me.chkCongelable.AutoSize = True
         Me.chkCongelable.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.chkCongelable.Location = New System.Drawing.Point(370, 374)
+        Me.chkCongelable.Location = New System.Drawing.Point(370, 373)
         Me.chkCongelable.Name = "chkCongelable"
         Me.chkCongelable.Size = New System.Drawing.Size(85, 17)
         Me.chkCongelable.TabIndex = 12
@@ -163,7 +163,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label10.Location = New System.Drawing.Point(199, 267)
+        Me.Label10.Location = New System.Drawing.Point(364, 264)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(152, 13)
         Me.Label10.TabIndex = 160
@@ -172,7 +172,7 @@ Partial Class frmAjoutRecettes
         'txtRefroid
         '
         Me.txtRefroid.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtRefroid.Location = New System.Drawing.Point(370, 264)
+        Me.txtRefroid.Location = New System.Drawing.Point(535, 261)
         Me.txtRefroid.Name = "txtRefroid"
         Me.txtRefroid.Size = New System.Drawing.Size(82, 22)
         Me.txtRefroid.TabIndex = 7
@@ -181,7 +181,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label9.Location = New System.Drawing.Point(286, 138)
+        Me.Label9.Location = New System.Drawing.Point(451, 135)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(66, 13)
         Me.Label9.TabIndex = 159
@@ -190,7 +190,7 @@ Partial Class frmAjoutRecettes
         'txtCategorie
         '
         Me.txtCategorie.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtCategorie.Location = New System.Drawing.Point(372, 135)
+        Me.txtCategorie.Location = New System.Drawing.Point(537, 132)
         Me.txtCategorie.Name = "txtCategorie"
         Me.txtCategorie.Size = New System.Drawing.Size(208, 22)
         Me.txtCategorie.TabIndex = 2
@@ -199,7 +199,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label8.Location = New System.Drawing.Point(219, 306)
+        Me.Label8.Location = New System.Drawing.Point(384, 303)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(133, 13)
         Me.Label8.TabIndex = 157
@@ -208,7 +208,7 @@ Partial Class frmAjoutRecettes
         'txtConservation
         '
         Me.txtConservation.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtConservation.Location = New System.Drawing.Point(370, 303)
+        Me.txtConservation.Location = New System.Drawing.Point(535, 300)
         Me.txtConservation.Name = "txtConservation"
         Me.txtConservation.Size = New System.Drawing.Size(82, 22)
         Me.txtConservation.TabIndex = 8
@@ -246,7 +246,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label1.Location = New System.Drawing.Point(651, 228)
+        Me.Label1.Location = New System.Drawing.Point(807, 225)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(19, 13)
         Me.Label1.TabIndex = 152
@@ -255,7 +255,7 @@ Partial Class frmAjoutRecettes
         'txtCelcius
         '
         Me.txtCelcius.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtCelcius.Location = New System.Drawing.Point(588, 225)
+        Me.txtCelcius.Location = New System.Drawing.Point(744, 222)
         Me.txtCelcius.Name = "txtCelcius"
         Me.txtCelcius.Size = New System.Drawing.Size(50, 22)
         Me.txtCelcius.TabIndex = 6
@@ -374,7 +374,7 @@ Partial Class frmAjoutRecettes
         'nudPortions
         '
         Me.nudPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.nudPortions.Location = New System.Drawing.Point(370, 338)
+        Me.nudPortions.Location = New System.Drawing.Point(370, 337)
         Me.nudPortions.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudPortions.Name = "nudPortions"
         Me.nudPortions.Size = New System.Drawing.Size(56, 22)
@@ -385,7 +385,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblPortions.AutoSize = True
         Me.lblPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblPortions.Location = New System.Drawing.Point(291, 341)
+        Me.lblPortions.Location = New System.Drawing.Point(291, 340)
         Me.lblPortions.Name = "lblPortions"
         Me.lblPortions.Size = New System.Drawing.Size(56, 13)
         Me.lblPortions.TabIndex = 142
@@ -414,7 +414,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label5.Location = New System.Drawing.Point(471, 228)
+        Me.Label5.Location = New System.Drawing.Point(636, 225)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(13, 13)
         Me.Label5.TabIndex = 139
@@ -423,7 +423,7 @@ Partial Class frmAjoutRecettes
         'txtFaraneith
         '
         Me.txtFaraneith.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtFaraneith.Location = New System.Drawing.Point(499, 225)
+        Me.txtFaraneith.Location = New System.Drawing.Point(664, 222)
         Me.txtFaraneith.Name = "txtFaraneith"
         Me.txtFaraneith.Size = New System.Drawing.Size(50, 22)
         Me.txtFaraneith.TabIndex = 5
@@ -433,7 +433,7 @@ Partial Class frmAjoutRecettes
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label4.Location = New System.Drawing.Point(555, 228)
+        Me.Label4.Location = New System.Drawing.Point(720, 225)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(18, 13)
         Me.Label4.TabIndex = 138
@@ -443,7 +443,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblCuisson.AutoSize = True
         Me.lblCuisson.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblCuisson.Location = New System.Drawing.Point(246, 228)
+        Me.lblCuisson.Location = New System.Drawing.Point(411, 225)
         Me.lblCuisson.Name = "lblCuisson"
         Me.lblCuisson.Size = New System.Drawing.Size(103, 13)
         Me.lblCuisson.TabIndex = 137
@@ -452,7 +452,7 @@ Partial Class frmAjoutRecettes
         'txtCuisson
         '
         Me.txtCuisson.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtCuisson.Location = New System.Drawing.Point(370, 225)
+        Me.txtCuisson.Location = New System.Drawing.Point(535, 222)
         Me.txtCuisson.Name = "txtCuisson"
         Me.txtCuisson.Size = New System.Drawing.Size(82, 22)
         Me.txtCuisson.TabIndex = 4
@@ -461,7 +461,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblPreparation.AutoSize = True
         Me.lblPreparation.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblPreparation.Location = New System.Drawing.Point(224, 189)
+        Me.lblPreparation.Location = New System.Drawing.Point(389, 186)
         Me.lblPreparation.Name = "lblPreparation"
         Me.lblPreparation.Size = New System.Drawing.Size(128, 13)
         Me.lblPreparation.TabIndex = 136
@@ -470,7 +470,7 @@ Partial Class frmAjoutRecettes
         'txtPreparation
         '
         Me.txtPreparation.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtPreparation.Location = New System.Drawing.Point(370, 185)
+        Me.txtPreparation.Location = New System.Drawing.Point(535, 182)
         Me.txtPreparation.Name = "txtPreparation"
         Me.txtPreparation.Size = New System.Drawing.Size(82, 22)
         Me.txtPreparation.TabIndex = 3
@@ -479,7 +479,7 @@ Partial Class frmAjoutRecettes
         '
         Me.lblNom.AutoSize = True
         Me.lblNom.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.lblNom.Location = New System.Drawing.Point(249, 100)
+        Me.lblNom.Location = New System.Drawing.Point(414, 97)
         Me.lblNom.Name = "lblNom"
         Me.lblNom.Size = New System.Drawing.Size(103, 13)
         Me.lblNom.TabIndex = 135
@@ -488,7 +488,7 @@ Partial Class frmAjoutRecettes
         'txtNom
         '
         Me.txtNom.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtNom.Location = New System.Drawing.Point(372, 97)
+        Me.txtNom.Location = New System.Drawing.Point(537, 94)
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(254, 22)
         Me.txtNom.TabIndex = 1
@@ -497,7 +497,7 @@ Partial Class frmAjoutRecettes
         '
         Me.picRecette.BackColor = System.Drawing.SystemColors.Control
         Me.picRecette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.picRecette.Location = New System.Drawing.Point(21, 97)
+        Me.picRecette.Location = New System.Drawing.Point(195, 94)
         Me.picRecette.Name = "picRecette"
         Me.picRecette.Size = New System.Drawing.Size(171, 163)
         Me.picRecette.TabIndex = 134

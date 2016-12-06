@@ -24,6 +24,7 @@ Partial Class frmCommandes
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCommandes))
         Me.mainpanel = New System.Windows.Forms.Panel()
+        Me.rdbDefaut = New System.Windows.Forms.RadioButton()
         Me.dtpDate = New System.Windows.Forms.DateTimePicker()
         Me.rdbFournisseur = New System.Windows.Forms.RadioButton()
         Me.rdbDate = New System.Windows.Forms.RadioButton()
@@ -36,15 +37,12 @@ Partial Class frmCommandes
         Me.Total = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnRechercher = New System.Windows.Forms.Button()
         Me.txtRecherche = New System.Windows.Forms.TextBox()
-        Me.btnReception = New System.Windows.Forms.Button()
-        Me.rdbDefaut = New System.Windows.Forms.RadioButton()
         Me.mainpanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainpanel
         '
         Me.mainpanel.Controls.Add(Me.rdbDefaut)
-        Me.mainpanel.Controls.Add(Me.btnReception)
         Me.mainpanel.Controls.Add(Me.dtpDate)
         Me.mainpanel.Controls.Add(Me.rdbFournisseur)
         Me.mainpanel.Controls.Add(Me.rdbDate)
@@ -58,6 +56,17 @@ Partial Class frmCommandes
         Me.mainpanel.Name = "mainpanel"
         Me.mainpanel.Size = New System.Drawing.Size(702, 483)
         Me.mainpanel.TabIndex = 3
+        '
+        'rdbDefaut
+        '
+        Me.rdbDefaut.AutoSize = True
+        Me.rdbDefaut.Location = New System.Drawing.Point(291, 55)
+        Me.rdbDefaut.Name = "rdbDefaut"
+        Me.rdbDefaut.Size = New System.Drawing.Size(121, 17)
+        Me.rdbDefaut.TabIndex = 67
+        Me.rdbDefaut.TabStop = True
+        Me.rdbDefaut.Text = "Affichage par défaut"
+        Me.rdbDefaut.UseVisualStyleBackColor = True
         '
         'dtpDate
         '
@@ -178,32 +187,6 @@ Partial Class frmCommandes
         Me.txtRecherche.Size = New System.Drawing.Size(184, 20)
         Me.txtRecherche.TabIndex = 0
         '
-        'btnReception
-        '
-        Me.btnReception.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnReception.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.btnReception.Enabled = False
-        Me.btnReception.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReception.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReception.ForeColor = System.Drawing.Color.White
-        Me.btnReception.Location = New System.Drawing.Point(592, 430)
-        Me.btnReception.Name = "btnReception"
-        Me.btnReception.Size = New System.Drawing.Size(91, 35)
-        Me.btnReception.TabIndex = 66
-        Me.btnReception.Text = "Réception"
-        Me.btnReception.UseVisualStyleBackColor = False
-        '
-        'rdbDefaut
-        '
-        Me.rdbDefaut.AutoSize = True
-        Me.rdbDefaut.Location = New System.Drawing.Point(291, 55)
-        Me.rdbDefaut.Name = "rdbDefaut"
-        Me.rdbDefaut.Size = New System.Drawing.Size(121, 17)
-        Me.rdbDefaut.TabIndex = 67
-        Me.rdbDefaut.TabStop = True
-        Me.rdbDefaut.Text = "Affichage par défaut"
-        Me.rdbDefaut.UseVisualStyleBackColor = True
-        '
         'frmCommandes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -232,6 +215,5 @@ Partial Class frmCommandes
     Friend WithEvents rdbFournisseur As RadioButton
     Friend WithEvents dtpDate As DateTimePicker
     Friend WithEvents mainpanel As Panel
-    Friend WithEvents btnReception As Button
     Friend WithEvents rdbDefaut As RadioButton
 End Class

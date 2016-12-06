@@ -218,8 +218,6 @@ Public Class frmAccueil
 
 
 
-
-
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         MsgBox(Me.WindowState)
     End Sub
@@ -228,6 +226,12 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
+    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub frmAccueil_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+
+    End Sub
 End Class
 

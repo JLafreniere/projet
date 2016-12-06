@@ -54,6 +54,11 @@ Public Class frmAjoutCommandes
 
         End If
 
+        couleurBouton("D", btnAjouterProduit)
+        couleurBouton("D", btnSupprimerListiew)
+        cbProduits.Enabled = False
+        cbFormat.Enabled = False
+        nudQuantite.Enabled = False
 
     End Sub
     'Remplit les Dataset
@@ -67,13 +72,26 @@ Public Class frmAjoutCommandes
         bd.dsCommandes.Clear()
 
         bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")
-        bd.Requete("Select  * from fournisseurs", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+        bd.Requete("Select  * from fournisseurs where inactif = '0'", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
         bd.Requete("Select * from produits_fournisseurs", bd.dsProduitFourn, bd.daProduitFourn, "produits_fournisseurs")
         bd.Requete("Select * from details_commande", bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
 
 
     End Sub
 
+
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
+    End Sub
 
     'Remplit le combobox des Fournisseurs
     Sub remplirComboBox()
@@ -122,7 +140,7 @@ Public Class frmAjoutCommandes
         For Each element As ListViewItem In lsvProduits.Items
             Dim ds8 As New DataSet
             'On recherche le produit qui correspond au nom du produit dans le listView
-            bd.Requete("select * from produits where hidden = 0  and nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
+            bd.Requete("select * from produits where nom_produit = '" + Replace(element.SubItems(0).Text, "'", "''") + "'", ds8, bd.daProduits, "produits")
             drNouvel = bd.dsDetailsCommandes.Tables(0).NewRow
             drNouvel(0) = bd.dsCommandes.Tables(0).Rows.Count
 
@@ -137,6 +155,10 @@ Public Class frmAjoutCommandes
 
         bd.miseAjourBD(bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
         viderChamp()
+        frmCommandes.chargerDataset()
+
+        frmCommandes.remplirListView()
+
 
     End Sub
     'Modifie le contenu de la commande dans la bd
@@ -175,7 +197,9 @@ Public Class frmAjoutCommandes
     End Sub
     'Modifie le contenu du combobox des produits en fonction du fournisseur sélectionné
     Private Sub cbFournisseurs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFournisseurs.SelectedIndexChanged
+        cbProduits.Enabled = True
         cbProduits.Items.Clear()
+
         ds.Clear()
         ds = New DataSet
         ds2 = New DataSet
@@ -256,7 +280,7 @@ Public Class frmAjoutCommandes
             Dim ds8 As New DataSet
             Dim ds9 As New DataSet
             'On recherche le produit pour afficher le nom du produit dans le listView 
-            bd.Requete("select * from produits where hidden = 0  and `id_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds8, bd.daProduits, "produits")
+            bd.Requete("select * from produits where `id_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds8, bd.daProduits, "produits")
             'On recherche le produit pour pouvoir afficher le prix dans le listView
             bd.Requete("Select * from produits_fournisseurs where `ID_produit` = '" + bd.dsDetailsCommandes.Tables(0).Rows(i).Item(1).ToString + "'", ds9, bd.daProduitFourn, "produits_fournisseurs")
             bd.Requete("Select * from format_produit where produit_fournisseur = '" + ds9.Tables(0).Rows(0).Item(0).ToString + "'", ds13, bd.daFormat, "format_produit")
@@ -302,7 +326,11 @@ Public Class frmAjoutCommandes
     End Sub
     'Modifie le contenu du comboBox des formats en fonction du produit sélectionné
     Private Sub cbProduits_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProduits.SelectedIndexChanged
+        cbFormat.Enabled = True
+
         cbFormat.Items.Clear()
+        nudQuantite.Enabled = True
+
         ds9.Clear()
         ds10.Clear()
         bd.Requete("Select  * from produits where `nom_produit` = '" + cbProduits.Text + "'", ds9, bd.daProduits, "produits")
@@ -345,4 +373,7 @@ Public Class frmAjoutCommandes
 
     End Sub
 
+    Private Sub cbFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFormat.SelectedIndexChanged
+        couleurBouton("E", btnAjouterProduit)
+    End Sub
 End Class

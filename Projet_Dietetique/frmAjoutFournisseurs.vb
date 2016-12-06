@@ -65,7 +65,7 @@ Public Class frmAjoutFournisseurs
             frmFournisseurs.remplirListview()
 
 
-
+            'Affiche une MsgBox si le courriel n'Est pas du bon format
         ElseIf email.IsMatch(txtCourriel.Text) = False Then
             txtCourriel.ForeColor = Color.Red
             MsgBox("Le courriel doit être du format suivant: exemple123@monsite.com")
@@ -129,7 +129,7 @@ Public Class frmAjoutFournisseurs
 
     End Sub
     'Bloque les lettres dans les champs qui recevront des chiffres
-    Private Sub txtPrix_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrix.KeyPress, txtFrais.KeyPress
+    Private Sub txtPrix_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrix.KeyPress, txtFrais.KeyPress, txtPoste.KeyPress
         If Asc(e.KeyChar) <> 8 Then
             If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
                 e.Handled = True
@@ -183,6 +183,7 @@ Public Class frmAjoutFournisseurs
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
+        viderChamp()
         Close()
         frmFournisseurs.Show()
 
@@ -199,4 +200,18 @@ Public Class frmAjoutFournisseurs
 
 
     End Sub
+
+
+    Sub enableBouton()
+        For Each controle In Me.Controls
+            If controle.Text = "" Then
+                btnEnregistrer.Enabled = False
+            Else
+                btnEnregistrer.Enabled = True
+            End If
+
+        Next
+    End Sub
+
+
 End Class

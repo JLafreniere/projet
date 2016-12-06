@@ -227,5 +227,9 @@ Public Class frmAccueil
     Private Sub frmAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
+
+    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
 

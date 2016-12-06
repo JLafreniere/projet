@@ -3,27 +3,48 @@ Imports System.Data
 Imports MySql.Data.MySqlClient
 Public Class frmFournisseurs
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
-    Dim coll(2) As String
+    Dim coll(3) As String
     Public position As Integer
+    Dim ds As New DataSet
 
 
     Private Sub frmFournisseurs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        txtRecherche.Enabled = False
+        rdbDefaut.Enabled = False
+
 
         Controls.Add(New Header(Me, True))
+        'Connexion à la bd et Chargement des Dataset
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-
-
         chargerDataset()
         remplirListview()
-        Me.WindowState = FormWindowState.Maximized
+
+        couleurBouton("D", btnSupprimer)
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", BtnRechercher)
 
     End Sub
 
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
+    End Sub
+
+
+
     Sub chargerDataset()
         bd.dsFournisseurs.Clear()
-        bd.Requete("select * from fournisseurs order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
-
+        bd.Requete("select * from fournisseurs  order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+        bd.Requete("Select distinct ville from fournisseurs", ds, bd.daFournisseurs, "fournisseurs")
 
     End Sub
 
@@ -34,8 +55,9 @@ Public Class frmFournisseurs
 
         For i = 0 To bd.dsFournisseurs.Tables(0).Rows.Count - 1
             coll(0) = bd.dsFournisseurs.Tables(0).Rows(i)(1).ToString
-            coll(1) = bd.dsFournisseurs.Tables(0).Rows(i)(3).ToString & " " & bd.dsFournisseurs.Tables(0).Rows(i)(4).ToString
-            coll(2) = bd.dsFournisseurs.Tables(0).Rows(i)(11).ToString
+            coll(1) = bd.dsFournisseurs.Tables(0).Rows(i)(3).ToString
+            coll(2) = bd.dsFournisseurs.Tables(0).Rows(i)(4).ToString
+            coll(3) = bd.dsFournisseurs.Tables(0).Rows(i)(11).ToString
 
             Dim lvi As New ListViewItem(coll)
 
@@ -66,6 +88,7 @@ Public Class frmFournisseurs
         frmAjoutFournisseurs.txtFrais.Text = bd.dsFournisseurs.Tables(0).Rows(position).Item(16).ToString
         frmAjoutFournisseurs.txtCourriel.Text = bd.dsFournisseurs.Tables(0).Rows(position).Item(17).ToString
         frmAjoutFournisseurs.Text = "Modifier un fournisseur"
+        frmAjoutFournisseurs.btnEnregistrer.Enabled = True
 
     End Sub
 
@@ -78,8 +101,8 @@ Public Class frmFournisseurs
     Private Sub lsvFournisseurs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvFournisseurs.SelectedIndexChanged
         'Renvoie l'Indice de l'élément sélectionné dans le ListView
         If lsvFournisseurs.SelectedItems.Count > 0 Then
-            btnModifier.Enabled = True
-            btnSupprimer.Enabled = True
+            couleurBouton("E", btnSupprimer)
+            couleurBouton("E", btnModifier)
             position = lsvFournisseurs.SelectedIndices(0)
         Else
             btnSupprimer.Enabled = False
@@ -90,7 +113,7 @@ Public Class frmFournisseurs
     'Supprime le fournisseur dans la bd
     Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click
         If MsgBox("Voulez-vous supprimer le fournisseur " & lsvFournisseurs.FocusedItem.SubItems(0).Text & "?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-            bd.dsFournisseurs.Tables(0).Rows(position).Delete()
+            bd.nonQuery("Update fournisseurs set inactif = '1' where no_fournisseur = '" + position + "'")
             btnSupprimer.Enabled = False
             btnModifier.Enabled = False
 
@@ -111,11 +134,15 @@ Public Class frmFournisseurs
         bd.dsFournisseurs.Clear()
         If (txtRecherche.Text = "") Then
             bd.Requete("select * from fournisseurs order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+            'Si le radioBouton Nom est Coché on recherche par nom
         ElseIf rdbNom.Checked Then
             bd.Requete("Select * from fournisseurs where lower(nom_fournisseur) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+            'Si le radioBouton Ville est Coché on recherche par ville
         ElseIf rdbVille.Checked Then
             bd.Requete("Select * from fournisseurs where lower(ville) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
-
+            'Retour à l'affichage par défaut
+        ElseIf rdbDefaut.Checked Then
+            bd.Requete("Select * from fournisseurs order by nom_fournisseur", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
         End If
 
         remplirListview()
@@ -147,7 +174,18 @@ Public Class frmFournisseurs
 
     End Sub
 
-    Private Sub txtRecherche_TextChanged(sender As Object, e As EventArgs) Handles txtRecherche.TextChanged
+    Private Sub txtRecherche_GotFocus(sender As Object, e As EventArgs) Handles txtRecherche.GotFocus
+        couleurBouton("D", btnSupprimer)
+        couleurBouton("D", btnModifier)
+    End Sub
+
+    Private Sub rdbNom_CheckedChanged(sender As Object, e As EventArgs) Handles rdbNom.CheckedChanged, rdbVille.CheckedChanged
+        If sender.Checked Then
+            txtRecherche.Enabled = True
+            rdbDefaut.Enabled = True
+            couleurBouton("E", BtnRechercher)
+        End If
+
 
     End Sub
 End Class

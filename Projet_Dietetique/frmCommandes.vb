@@ -13,20 +13,15 @@ Public Class frmCommandes
     Dim dss As New DataSet
     Public position As Integer = -1
 
-
-
-
-
-
     Private Sub frmCommandes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Controls.Add(New Header(Me, True))
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-        btnReception.Enabled = True
 
-
-
+        rdbDefaut.Enabled = False
         dtpDate.Visible = False
         txtRecherche.Enabled = False
+        couleurBouton("D", BtnRechercher)
+        couleurBouton("D", btnModifier)
 
         chargerDataset()
         remplirListView()
@@ -72,13 +67,28 @@ Public Class frmCommandes
 
     End Sub
 
+
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
+    End Sub
+
     Sub recherche()
         lsvCommandes.Enabled = True
+        'On recherche par date si le radioButton date est coché
         If rdbDate.Checked Then
 
             bd.dsCommandes.Clear()
             bd.Requete("Select * from commandes where `date_commande` = '" + dtpDate.Value.Date + "'", bd.dsCommandes, bd.daCommandes, "commandes")
-
+            'On recherche par nom du fournisseur si le radioButton fournisseur est coché
         ElseIf rdbFournisseur.Checked Then
             bd.dsCommandes.Clear()
             'On parcours la table fournisseur pour rechercher selon le nom du fournisseur
@@ -89,6 +99,10 @@ Public Class frmCommandes
                 bd.Requete("Select * from fournisseurs where lower(nom_fournisseur) like lower('" & Replace(txtRecherche.Text, "'", "''") & "%')  order by nom_fournisseur", ds4, bd.daFournisseurs, "fournisseurs")
                 bd.Requete("Select * from commandes where `fournisseur` = '" + ds4.Tables(0).Rows(0).Item(0).ToString + "' ", bd.dsCommandes, bd.daCommandes, "commandes")
             End If
+
+        ElseIf rdbDefaut.Checked Then
+            bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")
+
 
         End If
 
@@ -122,19 +136,21 @@ Public Class frmCommandes
 
     Private Sub rdbDate_CheckedChanged(sender As Object, e As EventArgs) Handles rdbDate.CheckedChanged
         If rdbDate.Checked Then
+            rdbDefaut.Enabled = True
             dtpDate.Visible = True
             txtRecherche.Visible = False
-
+            couleurBouton("E", BtnRechercher)
 
 
         End If
     End Sub
 
     Private Sub rdbFournisseur_CheckedChanged(sender As Object, e As EventArgs) Handles rdbFournisseur.CheckedChanged
-
+        rdbDefaut.Enabled = True
         dtpDate.Visible = False
         txtRecherche.Visible = True
         txtRecherche.Enabled = True
+        couleurBouton("E", BtnRechercher)
     End Sub
 
 
@@ -176,12 +192,12 @@ Public Class frmCommandes
     Private Sub lsvCommandes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvCommandes.SelectedIndexChanged
         'Renvoie l'Indice de l'élément sélectionné dans le ListView
         If lsvCommandes.SelectedItems.Count > 0 Then
-            btnModifier.Enabled = True
+            couleurBouton("E", btnModifier)
 
             position = lsvCommandes.SelectedIndices(0)
         Else
 
-            btnModifier.Enabled = False
+            couleurBouton("D", btnModifier)
         End If
     End Sub
 
@@ -193,8 +209,5 @@ Public Class frmCommandes
 
     End Sub
 
-    Private Sub btnReception_Click(sender As Object, e As EventArgs) Handles btnReception.Click
-        frmReceptionCommande.Show()
 
-    End Sub
 End Class

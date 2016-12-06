@@ -1,3 +1,4 @@
+:debut
 @echo off
 pushd %~dp0
 git add .
@@ -5,7 +6,6 @@ set /p message="Message du commit: "
 git commit -m "%message%"
 git pull
 git push
-start /d "C:\Program Files\Internet Explorer" IEXPLORE.EXE http://dan-ball.jp/en/javagame/dust2/
 echo.   
 echo.   
 echo                        _. - ~ ~ ~ - .
@@ -23,6 +23,6 @@ echo                .k___.'         .k___/
 echo.   
 echo.   
 echo.                   
-pause
+goto debut
 exit
 pause

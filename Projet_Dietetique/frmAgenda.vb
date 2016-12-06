@@ -189,8 +189,9 @@ Public Class frmAgenda
         For Each i As ListViewItem In ListView1.SelectedItems
             bd.nonQuery("delete from messages where id ='" & i.Tag & "'")
         Next
-        remplirListViewMessage()
         frmAccueil.remplirIndexHtml()
+        remplirListViewMessage()
+
 
     End Sub
 

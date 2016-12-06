@@ -33,14 +33,7 @@ Public Class frmVoirRecettes
 
         'click
         AddHandler refresh.Click, Sub(sender2, eventargs2)
-                                      bd.dsRecettes.Clear()
-                                      bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
-                                      remplirListView()
-                                      lsvRecette.Enabled = True
-                                      txtRecherche.Text = ""
-                                      couleurBouton("D", btnModifier)
-                                      couleurBouton("D", btnSupprimer)
-
+                                      refreshPage()
                                   End Sub
 
         'les différentes couleurs du bouton selon l'etat 
@@ -50,6 +43,7 @@ Public Class frmVoirRecettes
         AddHandler refresh.MouseLeave, Sub(sender2, eventargs2)
                                            refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
                                        End Sub
+
         AddHandler refresh.MouseDown, Sub(sender2, eventargs2)
                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshDown.png")
                                       End Sub
@@ -60,6 +54,20 @@ Public Class frmVoirRecettes
         couleurBouton("D", btnSupprimer)
 
         refresh.BringToFront()
+    End Sub
+
+    Private Sub frmVoirRecettes_shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        refreshPage()
+    End Sub
+
+    Sub refreshPage()
+        bd.dsRecettes.Clear()
+        bd.Requete("select * from recettes order by nom", bd.dsRecettes, bd.daRecettes, "recettes")
+        remplirListView()
+        lsvRecette.Enabled = True
+        txtRecherche.Text = ""
+        couleurBouton("D", btnModifier)
+        couleurBouton("D", btnSupprimer)
     End Sub
 
     Sub couleurBouton(etat As String, b As Button)
@@ -128,16 +136,21 @@ Public Class frmVoirRecettes
     Sub remplirFormulaire()
         Try
             frmAjoutRecettes.Show()
+<<<<<<< HEAD
 
             frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
             ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
+=======
+            frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
+>>>>>>> a1ab02442d0b6737a13a13fd979e64ef17b67601
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
             frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
             frmAjoutRecettes.txtCuisson.Text = bd.dsRecettes.Tables(0).Rows(position).Item(3).ToString
             frmAjoutRecettes.txtFaraneith.Text = bd.dsRecettes.Tables(0).Rows(position).Item(7).ToString
+            frmAjoutRecettes.txtCelcius.Text = Math.Round(((CDbl(frmAjoutRecettes.txtFaraneith.Text) - 32) / 1.8), 0, MidpointRounding.AwayFromZero)
             frmAjoutRecettes.txtConservation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(13).ToString
             frmAjoutRecettes.txtRefroid.Text = bd.dsRecettes.Tables(0).Rows(position).Item(8).ToString
             frmAjoutRecettes.nudPortions.Value = bd.dsRecettes.Tables(0).Rows(position).Item(4).ToString
@@ -159,6 +172,14 @@ Public Class frmVoirRecettes
             For i As Integer = 0 To allergies.Length - 1
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
+
+            'Image
+            If bd.dsRecettes.Tables(0).Rows(position).Item(10) <> "" Then
+                Try
+                    frmAjoutRecettes.picRecette.SizeMode = PictureBoxSizeMode.StretchImage
+                    frmAjoutRecettes.picRecette.Image = Image.FromFile(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString)
+                Catch exc As Exception : End Try
+            End If
 
 
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"

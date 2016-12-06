@@ -94,7 +94,7 @@ Public Class frmAccueil
 
 
         System.IO.File.WriteAllText("Index.html", "")
-        File.AppendAllText("Index.html", "<!DOCTYPE html><html><head><link rel = ""stylesheet"" type=""text/css"" href=""style.css""></head><body>")
+        File.AppendAllText("Index.html", "<!DOCTYPE html><html><head><meta charset=""utf-8""><link rel = ""stylesheet"" type=""text/css"" href=""style.css""></head><body>")
 
 
         For Each dr As DataRow In ds.Tables(0).Rows
@@ -228,8 +228,12 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
+<<<<<<< HEAD
     Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+=======
+
+>>>>>>> a1ab02442d0b6737a13a13fd979e64ef17b67601
 End Class
 

@@ -157,6 +157,8 @@ Public Class frmProduits
         bd.dsProduits.Tables(0).Rows(intPosition).Item(8) = txtDescription2.Text
 
         bd.dsProduits.Tables(0).Rows(intPosition).Item(2) = cmbCategorie2.SelectedValue
+
+
     End Sub
 
     Sub CacherComposantAjout() 'Cache les composants de l'option ajout
@@ -176,7 +178,7 @@ Public Class frmProduits
 
         'Popule le combo box des categories
         dsCategorie.Clear()
-        bd.Requete("Select * from categories", dsCategorie, daCategorie, "produits")
+        bd.Requete("Select * from categories order by Nom_Categorie ", dsCategorie, daCategorie, "produits")
         cmbCategorie.DataSource = dsCategorie.Tables(0)
         cmbCategorie.ValueMember = dsCategorie.Tables(0).Columns(0).ToString
         cmbCategorie.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
@@ -197,15 +199,8 @@ Public Class frmProduits
             End If
         Next
 
-        Dim dstemp As New DataSet
-        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
-
-        If dstemp.Tables(0).Rows.Count = 0 Then
-            MsgBox("Nom de categorie inexistant")
-
-        ElseIf flag Then
+        If flag Then
             MsgBox("Ce produit existe déjà")
-
 
         Else
             Ajouter()
@@ -214,6 +209,12 @@ Public Class frmProduits
             bd.dsProduits.Clear()
             bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
             remplircontroles()
+
+            txtAjouter.ResetText()
+            txtDescription.ResetText()
+            ckPerissable.Checked = False
+            ckTaxeFederale.Checked = False
+            ckTaxeProvinciale.Checked = False
         End If
     End Sub
 
@@ -224,7 +225,7 @@ Public Class frmProduits
         txtModifier.Text = lsvProduits.FocusedItem.SubItems(0).Text
 
         dsCategorie.Clear()
-        bd.Requete("Select * from categories", dsCategorie, daCategorie, "produits")
+        bd.Requete("Select * from categories order by Nom_Categorie ", dsCategorie, daCategorie, "produits")
         cmbCategorie2.DataSource = dsCategorie.Tables(0)
         cmbCategorie2.ValueMember = dsCategorie.Tables(0).Columns(0).ToString
         cmbCategorie2.DisplayMember = dsCategorie.Tables(0).Columns(1).ToString
@@ -233,7 +234,7 @@ Public Class frmProduits
         cmbCategorie2.Text = bd.executeScalar("select nom_categorie from categories, produits where id_categorie = produits.categorie and produits.nom_produit = '" & Replace(txtModifier.Text, "'", "''") & "';")
 
         Dim dsRequete As New DataSet
-        bd.Requete("select * from produits where nom_produit = '" & txtModifier.Text & "';", dsRequete, bd.daProduits, "produits")
+        bd.Requete("select * from produits where nom_produit = '" & Replace(txtModifier.Text, "'", "''") & "';", dsRequete, bd.daProduits, "produits")
 
 
         If dsRequete.Tables(0).Rows(0).Item(4) = True Then
@@ -281,19 +282,12 @@ Public Class frmProduits
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
         'Modification d'un produit appelant la méthode Modifier
-        Dim dstemp As New DataSet
-        bd.Requete("select * from categories where upper(nom_categorie) = '" & Replace(cmbCategorie2.Text.ToUpper, "'", "''") & "'", dstemp, bd.daProduits, "categories")
-
-        If dstemp.Tables(0).Rows.Count = 0 Then
-            MsgBox("Nom de categorie inexistant")
-        Else
-            Modifier()
-            cacherComposantModification()
-            btnSupprimer.Enabled = False
-            couleurBouton("D", btnSupprimer)
-            miseAjourBD()
-            remplircontroles()
-        End If
+        Modifier()
+        cacherComposantModification()
+        btnSupprimer.Enabled = False
+        couleurBouton("D", btnSupprimer)
+        miseAjourBD()
+        remplircontroles()
     End Sub
 
 
@@ -393,10 +387,6 @@ Public Class frmProduits
     End Sub
 
     Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 

@@ -226,19 +226,5 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 764ab2c1db8c49a684fa5cd22f7f931676cfec07
-    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-<<<<<<< HEAD
-=======
-    Private Sub frmAccueil_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-
-    End Sub
->>>>>>> 764ab2c1db8c49a684fa5cd22f7f931676cfec07
 End Class
 

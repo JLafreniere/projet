@@ -2,7 +2,8 @@
 Imports System.IO
 Imports MySql.Data.MySqlClient
 Public Class frmVoirRecettes
-    'Jonathan Villeneuve
+    'Francis Audet 80%
+    'Jonathan Villeneuve 20%
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim dsRecettes As DataSet
     Dim daRecettes As New MySqlDataAdapter
@@ -90,7 +91,6 @@ Public Class frmVoirRecettes
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
-        Hide()
         frmAjoutRecettes.Show()
 
 
@@ -133,6 +133,8 @@ Public Class frmVoirRecettes
         End If
     End Sub
 
+
+
     'Affecte aux controles de la form frmRecettes les données de l'élément du ListView Sélectionné
     Sub remplirFormulaire()
         Try
@@ -143,12 +145,7 @@ Public Class frmVoirRecettes
 
             ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 764ab2c1db8c49a684fa5cd22f7f931676cfec07
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
             frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString
@@ -212,7 +209,7 @@ Public Class frmVoirRecettes
 
 
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
-
+            couleurBouton("D", frmAjoutRecettes.btnEnregistrer)
             frmAjoutRecettes.remplirListView()
         Catch e As Exception : End Try
 
@@ -308,4 +305,9 @@ Public Class frmVoirRecettes
         remplirListView()
     End Sub
 
+    Private Sub lsvRecette_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lsvRecette.MouseDoubleClick
+        If lsvRecette.SelectedItems.Count > 0 Then
+            remplirFormulaire()
+        End If
+    End Sub
 End Class

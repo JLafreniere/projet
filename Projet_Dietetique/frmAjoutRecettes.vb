@@ -2,7 +2,8 @@
 Imports System.Data
 Imports System.IO
 Imports MySql.Data.MySqlClient
-'Jonathan Villeneuve
+'Francis Audet 90%
+'Jonathan Villeneuve 10%
 
 
 Public Class frmAjoutRecettes
@@ -38,6 +39,7 @@ Public Class frmAjoutRecettes
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
         couleurBouton("D", btnAllergies)
         couleurBouton("D", btnSupprimerAllergies)
+        couleurBouton("D", btnEnregistrer)
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbPortions.Items.Add(bd.uniteMesure(i))
 
@@ -408,4 +410,14 @@ Public Class frmAjoutRecettes
         End If
     End Sub
 
+    Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtCategorie.TextChanged, txtPreparation.TextChanged, txtCuisson.TextChanged, txtFaraneith.TextChanged, txtCelcius.TextChanged, txtRefroid.TextChanged,
+        txtConservation.TextChanged, nudPortions.ValueChanged, txtPortions.TextChanged, cbPortions.TextChanged, chkCongelable.CheckStateChanged, txtRemarques.TextChanged, txtAllergies.TextChanged, cbProduit.TextChanged, txtQuantite.TextChanged, cbUnite.TextChanged,
+        txtEtapes.TextChanged, picRecette.Click
+
+        If txtNom.Text = "" Then
+            couleurBouton("D", btnEnregistrer)
+        Else
+            couleurBouton("E", btnEnregistrer)
+        End If
+    End Sub
 End Class

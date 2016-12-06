@@ -422,18 +422,6 @@ Partial Class frmAjoutRecettes
         Me.Label5.TabIndex = 139
         Me.Label5.Text = "à"
         '
-<<<<<<< HEAD
-=======
-        'txtFaraneith
-        '
-        Me.txtFaraneith.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtFaraneith.Location = New System.Drawing.Point(664, 222)
-        Me.txtFaraneith.Name = "txtFaraneith"
-        Me.txtFaraneith.Size = New System.Drawing.Size(50, 22)
-        Me.txtFaraneith.TabIndex = 5
-        Me.txtFaraneith.Tag = "f"
-        '
->>>>>>> 764ab2c1db8c49a684fa5cd22f7f931676cfec07
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -564,7 +552,7 @@ Partial Class frmAjoutRecettes
         'txtFaraneith
         '
         Me.txtFaraneith.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtFaraneith.Location = New System.Drawing.Point(499, 225)
+        Me.txtFaraneith.Location = New System.Drawing.Point(662, 221)
         Me.txtFaraneith.Name = "txtFaraneith"
         Me.txtFaraneith.ShortcutsEnabled = False
         Me.txtFaraneith.Size = New System.Drawing.Size(50, 22)

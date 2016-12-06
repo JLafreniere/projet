@@ -1,4 +1,5 @@
 ﻿
+Imports System.IO
 Imports MySql.Data.MySqlClient
 
 Public Class PanelJour
@@ -79,14 +80,14 @@ Public Class PanelJour
 
         AddHandler pb.Click, Sub()
                                  If (id_recette = -1) Then
-                                     Dim b As Object = Nothing
+                                     MsgBox(alerte, MsgBoxStyle.OkOnly, "Évènement")
 
                                  Else
                                      Dim ds1 As New DataSet
                                      frmAccueil.bd.miseAjourDS(ds1, New MySql.Data.MySqlClient.MySqlDataAdapter, "select nom from recettes where id_recette=" & id_recette, 0)
                                      Dim recettes As String = ds1.Tables(0).Rows(0).Item(0)
                                      Dim ans As String
-                                     ans = MsgBox(alerte & Environment.NewLine & "Recette: " & recettes & Environment.NewLine & "Voulez-vous voir la recette associée?", vbYesNo)
+                                     ans = MsgBox(alerte & Environment.NewLine & "Recette: " & recettes & Environment.NewLine & "Voulez-vous voir la recette associée?", vbYesNo, "Évènement")
                                      If ans = vbYes Then
                                          ouvrirFrmRecette(id_recette)
                                      End If
@@ -128,23 +129,58 @@ Public Class PanelJour
             ' On coche ou  le checkBox si la recette est congelable
 
             If dsRecettes.Tables(0).Rows(0).Item(15).ToString = True Then
-                MsgBox("nigeria")
+
                 frmAjoutRecettes.chkCongelable.Checked = True
             Else
                 frmAjoutRecettes.chkCongelable.Checked = False
-                MsgBox("nigeria")
+
             End If
 
             frmAjoutRecettes.txtRemarques.Text = dsRecettes.Tables(0).Rows(0).Item(11).ToString
-            MsgBox("nigeria")
+
             frmAjoutRecettes.txtEtapes.Text = dsRecettes.Tables(0).Rows(0).Item(9).ToString
-            MsgBox("nigeria")
+
             'On ajoute les allergies dans le listbox
             Dim allergies() As String = dsRecettes.Tables(0).Rows(0).Item(12).ToString.Split(vbCrLf)
             For i As Integer = 0 To allergies.Length - 1
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
 
+            'Image
+            If dsRecettes.Tables(0).Rows(0).Item(10) <> "" Then
+
+
+                Try
+                    frmAjoutRecettes.picRecette.SizeMode = PictureBoxSizeMode.StretchImage
+
+
+
+
+                    Dim Fs As FileStream = New FileStream(My.Application.Info.DirectoryPath & "\Images\" & dsRecettes.Tables(0).Rows(0).Item(10).ToString, FileMode.Open, FileAccess.Read)
+                    Dim Value() As Byte = New Byte(Fs.Length) {}
+                    Fs.Read(Value, 0, Fs.Length)
+
+                    frmAjoutRecettes.picRecette.Image = Image.FromStream(Fs)
+                    Fs.Close()
+
+
+                    Delete()
+                    File.Copy(My.Application.Info.DirectoryPath & "\Images\" & dsRecettes.Tables(0).Rows(0).Item(10).ToString, "avatar.png", True)
+
+                    frmAjoutRecettes.picRecette.Image = Image.FromFile("avatar.png")
+
+
+
+
+
+
+                    'frmAjoutRecettes.picRecette.Image = Image.FromFile(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString)
+
+                Catch exc As Exception
+
+                End Try
+
+            End If
 
             frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
 
@@ -153,6 +189,10 @@ Public Class PanelJour
             MsgBox(e.Message)
         End Try
 
+    End Sub
+
+    Private Sub Delete()
+        File.Delete("avatar.png")
     End Sub
     Public Sub ajouterEvenement(ByVal evenement As String, recette As Integer)
 
@@ -187,12 +227,13 @@ Public Class PanelJour
 
                 AddHandler ll.Click, Sub(sender2, eventargs2)
 
-                                         MsgBox(" PlaceHolder ")
+                                         MsgBox(evenement)
                                      End Sub
-                MsgBox(ds.Tables(0).Rows(0).Item(0) & "salut")
+                If Not (recette = -1) Then
+                    MsgBox(ds.Tables(0).Rows(0).Item(0))
+                End If
             End If
         End If
-
 
     End Sub
 

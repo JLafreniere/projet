@@ -143,6 +143,12 @@ Public Class frmVoirRecettes
 
             ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 764ab2c1db8c49a684fa5cd22f7f931676cfec07
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
             frmAjoutRecettes.txtCategorie.Text = bd.dsRecettes.Tables(0).Rows(position).Item(14).ToString
             frmAjoutRecettes.txtPreparation.Text = bd.dsRecettes.Tables(0).Rows(position).Item(2).ToString

@@ -86,6 +86,7 @@ Partial Class frmAjoutRecettes
         Me.cbUnite.Name = "cbUnite"
         Me.cbUnite.Size = New System.Drawing.Size(90, 21)
         Me.cbUnite.TabIndex = 17
+        Me.cbUnite.Text = "g"
         '
         'btnSupprimerAllergies
         '
@@ -496,7 +497,7 @@ Partial Class frmAjoutRecettes
         '
         Me.picRecette.BackColor = System.Drawing.SystemColors.Control
         Me.picRecette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.picRecette.Location = New System.Drawing.Point(12, 97)
+        Me.picRecette.Location = New System.Drawing.Point(21, 97)
         Me.picRecette.Name = "picRecette"
         Me.picRecette.Size = New System.Drawing.Size(171, 163)
         Me.picRecette.TabIndex = 134

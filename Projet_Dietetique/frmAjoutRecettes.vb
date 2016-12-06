@@ -140,11 +140,11 @@ Public Class frmAjoutRecettes
         End If
         'Transfère les données du ListBox Allergies dans la variable allergies
         For i As Integer = 0 To lstAllergies.Items.Count - 1
-
-
-            allergies += lstAllergies.Items(i).ToString & vbCrLf
-
-
+            If i = 0 Then
+                allergies += lstAllergies.Items(i).ToString
+            Else
+                allergies += vbCrLf & lstAllergies.Items(i).ToString
+            End If
 
         Next
 
@@ -167,7 +167,6 @@ Public Class frmAjoutRecettes
                 drnouvel(10) = "JLC" &
                str & ".JLC"
             Catch exc As Exception
-
                 drnouvel(10) = bd.executeScalar("select image from recettes where id_recette = " & id)
             End Try
         End If
@@ -271,10 +270,22 @@ Public Class frmAjoutRecettes
             congelable = True
         Else
             congelable = False
-
         End If
+
+        Dim dsTemp As New DataSet
+        bd.Requete("select * from recettes where id_recette = " & id, dsTemp, bd.daRecettes, "recettes")
+        Dim strImage As String = dsTemp.Tables(0).Rows(0).Item(10).ToString
+        If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
+            Try
+                FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & id & ".JLC")
+                strImage = "JLC" & id & ".JLC"
+            Catch exc As Exception
+            End Try
+        End If
+
+
         bd.nonQuery("UPDATE recettes set nom = '" & Replace(txtNom.Text, "'", "''") & "', temps_preparation = '" & Replace(txtPreparation.Text, "'", "''") & "' , temps_cuisson = '" & Replace(txtCuisson.Text, "'", "''") & "' , nb_portions = " & nudPortions.Value & " , taille_portion = " & Replace(txtPortions.Text, "'", "''") & " , 
-         unite_mesure = '" & Replace(cbPortions.Text, "'", "''") & "' , temps_refroidissement = '" & Replace(txtRefroid.Text, "'", "''") & "', etapes = '" & Replace(txtEtapes.Text, "'", "''") & "', remarque = '" & Replace(txtRemarques.Text, "'", "''") & "' , Allergene = '" & allergies & "' 
+         unite_mesure = '" & Replace(cbPortions.Text, "'", "''") & "' , temps_refroidissement = '" & Replace(txtRefroid.Text, "'", "''") & "', etapes = '" & Replace(txtEtapes.Text, "'", "''") & "' , Image = '" & strImage & "', remarque = '" & Replace(txtRemarques.Text, "'", "''") & "' , Allergene = '" & allergies & "' 
          , duree_conservation = '" & Replace(txtConservation.Text, "'", "''") & "' , categorie = '" & Replace(txtCategorie.Text, "'", "''") & "' , congelable = '" & congelable.ToString & "' where id_recette = " & id)
 
 

@@ -228,16 +228,6 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
-    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-        MessageBox.Show(
-    "test message",
-    "caption",
-    MessageBoxButtons.YesNo,
-    MessageBoxIcon.Information,
-    MessageBoxDefaultButton.Button1,
-    0, '0 is default otherwise use MessageBoxOptions Enum
-    "http://google.com",
-    "keyword")
-    End Sub
+
 End Class
 

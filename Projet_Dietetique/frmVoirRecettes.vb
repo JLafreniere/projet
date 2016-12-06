@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+Imports System.IO
 Imports MySql.Data.MySqlClient
 Public Class frmVoirRecettes
     'Jonathan Villeneuve
@@ -169,8 +170,33 @@ Public Class frmVoirRecettes
             If bd.dsRecettes.Tables(0).Rows(position).Item(10) <> "" Then
                 Try
                     frmAjoutRecettes.picRecette.SizeMode = PictureBoxSizeMode.StretchImage
-                    frmAjoutRecettes.picRecette.Image = Image.FromFile(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString)
-                Catch exc As Exception : End Try
+
+
+
+
+                    Dim Fs As FileStream = New FileStream(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString, FileMode.Open, FileAccess.Read)
+                    Dim Value() As Byte = New Byte(Fs.Length) {}
+                    Fs.Read(Value, 0, Fs.Length)
+
+                    frmAjoutRecettes.picRecette.Image = Image.FromStream(Fs)
+                    Fs.Close()
+
+
+                    Delete()
+                    File.Copy(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString, "avatar.png", True)
+
+                    frmAjoutRecettes.picRecette.Image = Image.FromFile("avatar.png")
+
+
+
+
+
+
+                    'frmAjoutRecettes.picRecette.Image = Image.FromFile(My.Application.Info.DirectoryPath & "\Images\" & bd.dsRecettes.Tables(0).Rows(position).Item(10).ToString)
+
+                Catch exc As Exception
+
+                End Try
             End If
 
 
@@ -198,6 +224,11 @@ Public Class frmVoirRecettes
         remplirListView()
 
 
+    End Sub
+
+
+    Private Sub Delete()
+        File.Delete("avatar.png")
     End Sub
     'Recherche dans la BD les recettes selon le contenu du Textbox
     Sub recherche()

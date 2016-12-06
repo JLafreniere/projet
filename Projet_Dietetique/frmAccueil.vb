@@ -218,8 +218,6 @@ Public Class frmAccueil
 
 
 
-
-
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         MsgBox(Me.WindowState)
     End Sub

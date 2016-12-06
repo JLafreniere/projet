@@ -71,17 +71,17 @@
         Else
 
             Dim lblTitreForm As New Label
+            AddHandler currentForm.Shown, Sub()
+                                              With lblTitreForm
+                                                  .Font = New Font("Segoe UI", 20.25, FontStyle.Bold)
+                                                  .ForeColor = Color.White
+                                                  .AutoSize = True
+                                                  .SetBounds(60, 5, 0, 0)
+                                                  .Text = currentForm.Text
+                                              End With
 
-            With lblTitreForm
-                .Font = New Font("Segoe UI", 20.25, FontStyle.Bold)
-                .ForeColor = Color.White
-                .AutoSize = True
-                .SetBounds(60, 5, 0, 0)
-                .Text = currentForm.Text
-            End With
-
-            Controls.Add(lblTitreForm)
-
+                                              Controls.Add(lblTitreForm)
+                                          End Sub
         End If
         Controls.Add(pbLogo)
     End Sub

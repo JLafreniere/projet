@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Data
+Imports System.IO
 Imports MySql.Data.MySqlClient
 'Jonathan Villeneuve
 
@@ -33,7 +34,8 @@ Public Class frmAjoutRecettes
         cbProduit.AutoCompleteMode = AutoCompleteMode.Append
         cbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
-
+        couleurBouton("D", btnAllergies)
+        couleurBouton("D", btnSupprimerAllergies)
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbPortions.Items.Add(bd.uniteMesure(i))
 
@@ -85,7 +87,7 @@ Public Class frmAjoutRecettes
     End Sub
 
 
-    Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.KeyUp, txtCelcius.KeyUp
+    Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.KeyUp, txtCelcius.KeyUp, txtCelcius.TextChanged, txtFaraneith.TextChanged
         Try
             If sender.tag = "f" Then
                 ' Converti le texte de txtFaraneith en celcius (txtCelcius)
@@ -162,7 +164,7 @@ Public Class frmAjoutRecettes
         If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
             Try
                 Dim str As String = bd.executeScalar("select coalesce(max(id_recette), 1) from recettes")
-                id = str
+                id = (str + 1)
                 FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & str & ".JLC")
                 drnouvel(10) = "JLC" &
                str & ".JLC"
@@ -262,8 +264,12 @@ Public Class frmAjoutRecettes
         'Dim refroid As String = txtRefroid.Text
 
         For i As Integer = 0 To lstAllergies.Items.Count - 1
+            If i = 0 Then
+                allergies += Replace(lstAllergies.Items(i).ToString, "'", "''")
+            Else
+                allergies += vbCrLf & Replace(lstAllergies.Items(i).ToString, "'", "''")
+            End If
 
-            allergies += Replace(lstAllergies.Items(i).ToString, "'", "''") & vbCrLf
 
         Next
         If chkCongelable.Checked Then
@@ -277,9 +283,12 @@ Public Class frmAjoutRecettes
         Dim strImage As String = dsTemp.Tables(0).Rows(0).Item(10).ToString
         If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
             Try
-                FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & id & ".JLC")
+                picRecette.Image = Nothing
+                picRecette.Dispose()
+                File.Copy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & id & ".JLC", True)
                 strImage = "JLC" & id & ".JLC"
             Catch exc As Exception
+
             End Try
         End If
 
@@ -372,8 +381,9 @@ Public Class frmAjoutRecettes
 
     Private Sub lstAllergies_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstAllergies.SelectedIndexChanged
         If lstAllergies.SelectedItems.Count > 0 Then
-            btnSupprimerAllergies.Visible = True
-        Else btnSupprimerAllergies.Visible = False
+            couleurBouton("E", btnSupprimerAllergies)
+        Else
+            couleurBouton("D", btnSupprimerAllergies)
 
         End If
     End Sub
@@ -395,7 +405,7 @@ Public Class frmAjoutRecettes
 
     End Sub
 
-    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtPortions.KeyPress
+    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtPortions.KeyPress, txtCelcius.KeyPress, txtFaraneith.KeyPress
         If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
             e.Handled = True
         End If
@@ -408,5 +418,13 @@ Public Class frmAjoutRecettes
 
     Private Sub frmAjoutRecettes_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         frmVoirRecettes.Show()
+    End Sub
+
+    Private Sub txtAllergies_TextChanged(sender As Object, e As EventArgs) Handles txtAllergies.TextChanged
+        If txtAllergies.Text = "" Then
+            couleurBouton("D", btnAllergies)
+        Else
+            couleurBouton("E", btnAllergies)
+        End If
     End Sub
 End Class

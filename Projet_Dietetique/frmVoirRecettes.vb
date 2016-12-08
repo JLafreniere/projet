@@ -174,6 +174,11 @@ Public Class frmVoirRecettes
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
 
+
+            frmAjoutRecettes.remplirListView()
+            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
+            couleurBouton("D", frmAjoutRecettes.btnEnregistrer)
+
             'Image
             If bd.dsRecettes.Tables(0).Rows(position).Item(10) <> "" Then
                 Try
@@ -207,10 +212,6 @@ Public Class frmVoirRecettes
                 End Try
             End If
 
-
-            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
-            couleurBouton("D", frmAjoutRecettes.btnEnregistrer)
-            frmAjoutRecettes.remplirListView()
         Catch e As Exception : End Try
 
     End Sub

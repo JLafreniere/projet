@@ -2,6 +2,10 @@
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Public no As Integer = 0
     Dim flag As Boolean = False
+
+
+    'Francis Audet
+
     Private Sub frmInventaire_load2(sender As Object, e As EventArgs) Handles MyBase.Load
         'connection bd
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"

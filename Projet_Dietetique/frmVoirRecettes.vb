@@ -2,7 +2,8 @@
 Imports System.IO
 Imports MySql.Data.MySqlClient
 Public Class frmVoirRecettes
-    'Jonathan Villeneuve
+    'Francis Audet 80%
+    'Jonathan Villeneuve 20%
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim dsRecettes As DataSet
     Dim daRecettes As New MySqlDataAdapter
@@ -90,7 +91,6 @@ Public Class frmVoirRecettes
     End Sub
 
     Private Sub btnAjouter_Click(sender As Object, e As EventArgs) Handles btnAjouter.Click
-        Hide()
         frmAjoutRecettes.Show()
 
 
@@ -133,6 +133,8 @@ Public Class frmVoirRecettes
         End If
     End Sub
 
+
+
     'Affecte aux controles de la form frmRecettes les données de l'élément du ListView Sélectionné
     Sub remplirFormulaire()
         Try
@@ -142,8 +144,6 @@ Public Class frmVoirRecettes
             frmAjoutRecettes.id = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
 
             ''frmAjoutRecettes.txtId.Text = bd.dsRecettes.Tables(0).Rows(position).Item(0).ToString
-
-
 
 
             frmAjoutRecettes.txtNom.Text = bd.dsRecettes.Tables(0).Rows(position).Item(1).ToString
@@ -173,6 +173,11 @@ Public Class frmVoirRecettes
             For i As Integer = 0 To allergies.Length - 1
                 frmAjoutRecettes.lstAllergies.Items.Add(allergies(i))
             Next
+
+
+            frmAjoutRecettes.remplirListView()
+            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
+            couleurBouton("D", frmAjoutRecettes.btnEnregistrer)
 
             'Image
             If bd.dsRecettes.Tables(0).Rows(position).Item(10) <> "" Then
@@ -207,10 +212,6 @@ Public Class frmVoirRecettes
                 End Try
             End If
 
-
-            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
-
-            frmAjoutRecettes.remplirListView()
         Catch e As Exception : End Try
 
     End Sub
@@ -305,4 +306,9 @@ Public Class frmVoirRecettes
         remplirListView()
     End Sub
 
+    Private Sub lsvRecette_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lsvRecette.MouseDoubleClick
+        If lsvRecette.SelectedItems.Count > 0 Then
+            remplirFormulaire()
+        End If
+    End Sub
 End Class

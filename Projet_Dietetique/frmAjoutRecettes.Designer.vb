@@ -59,7 +59,6 @@ Partial Class frmAjoutRecettes
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtEtapes = New System.Windows.Forms.RichTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtFaraneith = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblCuisson = New System.Windows.Forms.Label()
         Me.txtCuisson = New System.Windows.Forms.TextBox()
@@ -73,6 +72,7 @@ Partial Class frmAjoutRecettes
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtFaraneith = New System.Windows.Forms.TextBox()
         CType(Me.nudPortions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picRecette, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -116,6 +116,7 @@ Partial Class frmAjoutRecettes
         Me.txtPortions.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.txtPortions.Location = New System.Drawing.Point(461, 337)
         Me.txtPortions.Name = "txtPortions"
+        Me.txtPortions.ShortcutsEnabled = False
         Me.txtPortions.Size = New System.Drawing.Size(50, 22)
         Me.txtPortions.TabIndex = 10
         '
@@ -266,6 +267,7 @@ Partial Class frmAjoutRecettes
         Me.txtQuantite.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQuantite.Location = New System.Drawing.Point(1226, 362)
         Me.txtQuantite.Name = "txtQuantite"
+        Me.txtQuantite.ShortcutsEnabled = False
         Me.txtQuantite.Size = New System.Drawing.Size(60, 21)
         Me.txtQuantite.TabIndex = 16
         '
@@ -420,15 +422,6 @@ Partial Class frmAjoutRecettes
         Me.Label5.TabIndex = 139
         Me.Label5.Text = "à"
         '
-        'txtFaraneith
-        '
-        Me.txtFaraneith.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.txtFaraneith.Location = New System.Drawing.Point(664, 222)
-        Me.txtFaraneith.Name = "txtFaraneith"
-        Me.txtFaraneith.Size = New System.Drawing.Size(50, 22)
-        Me.txtFaraneith.TabIndex = 5
-        Me.txtFaraneith.Tag = "f"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -556,6 +549,17 @@ Partial Class frmAjoutRecettes
         Me.Label2.TabIndex = 175
         Me.Label2.Text = "Allergènes :"
         '
+        'txtFaraneith
+        '
+        Me.txtFaraneith.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.txtFaraneith.Location = New System.Drawing.Point(662, 221)
+        Me.txtFaraneith.Name = "txtFaraneith"
+        Me.txtFaraneith.ShortcutsEnabled = False
+        Me.txtFaraneith.Size = New System.Drawing.Size(50, 22)
+        Me.txtFaraneith.TabIndex = 5
+        Me.txtFaraneith.Tag = "f"
+        Me.txtFaraneith.WordWrap = False
+        '
         'frmAjoutRecettes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -651,7 +655,6 @@ Partial Class frmAjoutRecettes
     Friend WithEvents Label6 As Label
     Friend WithEvents txtEtapes As RichTextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtFaraneith As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents lblCuisson As Label
     Friend WithEvents txtCuisson As TextBox
@@ -666,4 +669,5 @@ Partial Class frmAjoutRecettes
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents txtFaraneith As TextBox
 End Class

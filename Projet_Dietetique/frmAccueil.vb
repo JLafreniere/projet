@@ -233,5 +233,9 @@ Public Class frmAccueil
     Private Sub frmAccueil_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 
     End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        MsgBox(ListBox1.SelectedItem)
+    End Sub
 End Class
 

@@ -226,5 +226,19 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
+<<<<<<< HEAD
+=======
+    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub frmAccueil_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+
+    End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        MsgBox(ListBox1.SelectedItem)
+    End Sub
+>>>>>>> dfc6941280dddd9af20e10a5ded476a130cac75d
 End Class
 

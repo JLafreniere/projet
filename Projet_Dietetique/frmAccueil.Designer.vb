@@ -24,6 +24,7 @@ Partial Class frmAccueil
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccueil))
         Me.btnOmnivox = New System.Windows.Forms.Button()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'btnOmnivox
@@ -39,6 +40,15 @@ Partial Class frmAccueil
         Me.btnOmnivox.Text = "Ajouter"
         Me.btnOmnivox.UseVisualStyleBackColor = False
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Items.AddRange(New Object() {"Salut", "Bonjour", "Blob", "Vincent", "Poulet", "Frite", "Saucisse"})
+        Me.ListBox1.Location = New System.Drawing.Point(732, 148)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(189, 69)
+        Me.ListBox1.TabIndex = 40
+        '
         'frmAccueil
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -46,6 +56,7 @@ Partial Class frmAccueil
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1684, 987)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.btnOmnivox)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -56,4 +67,5 @@ Partial Class frmAccueil
     End Sub
 
     Friend WithEvents btnOmnivox As Button
+    Friend WithEvents ListBox1 As ListBox
 End Class

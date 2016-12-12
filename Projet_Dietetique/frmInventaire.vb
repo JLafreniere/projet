@@ -258,7 +258,14 @@
 
         txtDescription.Text = dsRequete.Tables(0).Rows(0).Item(5).ToString
 
-        dtpPeremption.Value = dsRequete.Tables(0).Rows(0).Item(6)
+        If IsDBNull(dsRequete.Tables(0).Rows(0).Item(6)) Then
+            dtpPeremption.Visible = False
+            lblPeremption.Visible = False
+        Else
+            dtpPeremption.Value = dsRequete.Tables(0).Rows(0).Item(6)
+            dtpPeremption.Visible = True
+            lblPeremption.Visible = True
+        End If
 
         dtpReception.Value = dsRequete.Tables(0).Rows(0).Item(7)
 

@@ -32,7 +32,7 @@ Partial Class frmAjoutInventaire
         Me.lblEquivalence = New System.Windows.Forms.Label()
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.btnAjouter = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblPeremption = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -139,15 +139,15 @@ Partial Class frmAjoutInventaire
         Me.btnAjouter.Text = "Ajouter"
         Me.btnAjouter.UseVisualStyleBackColor = False
         '
-        'Label7
+        'lblPeremption
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.Label7.Location = New System.Drawing.Point(65, 384)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(116, 13)
-        Me.Label7.TabIndex = 60
-        Me.Label7.Text = "Date de péremption :"
+        Me.lblPeremption.AutoSize = True
+        Me.lblPeremption.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.lblPeremption.Location = New System.Drawing.Point(65, 384)
+        Me.lblPeremption.Name = "lblPeremption"
+        Me.lblPeremption.Size = New System.Drawing.Size(116, 13)
+        Me.lblPeremption.TabIndex = 60
+        Me.lblPeremption.Text = "Date de péremption :"
         '
         'Label6
         '
@@ -185,7 +185,7 @@ Partial Class frmAjoutInventaire
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.Label3.Location = New System.Drawing.Point(116, 158)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 13)
+        Me.Label3.Size = New System.Drawing.Size(61, 13)
         Me.Label3.TabIndex = 56
         Me.Label3.Text = "Quantité : "
         '
@@ -276,7 +276,7 @@ Partial Class frmAjoutInventaire
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(579, 615)
+        Me.ClientSize = New System.Drawing.Size(579, 609)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.Label8)
@@ -286,7 +286,7 @@ Partial Class frmAjoutInventaire
         Me.Controls.Add(Me.lblEquivalence)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.btnAjouter)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.lblPeremption)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -325,7 +325,7 @@ Partial Class frmAjoutInventaire
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents lblPeremption As Label
     Friend WithEvents btnAjouter As Button
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents lblEquivalence As Label

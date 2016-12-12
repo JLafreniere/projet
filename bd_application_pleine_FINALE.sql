@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 05 Décembre 2016 à 23:38
+-- Généré le :  Lun 12 Décembre 2016 à 20:25
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -61,9 +61,6 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `No_Reference` varchar(25) DEFAULT NULL,
   `Note` text NOT NULL,
   `envoye` tinyint(1) NOT NULL,
-  `date_reception` date NOT NULL,
-  `recue` tinyint(1) NOT NULL,
-  `note_reception` text NOT NULL,
   PRIMARY KEY (`ID_Commande`),
   UNIQUE KEY `No_Reference_3` (`No_Reference`),
   KEY `No_Reference` (`No_Reference`),
@@ -75,13 +72,13 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 -- Contenu de la table `commandes`
 --
 
-INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`, `date_reception`, `recue`, `note_reception`) VALUES
-(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0, '0000-00-00', 0, ''),
-(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 1, '2016-11-30', 1, ''),
-(3, '2016-11-15', 2, '568468', '', 1, '0000-00-00', 0, ''),
-(4, '2016-11-18', 1, '125085', '', 1, '0000-00-00', 0, ''),
-(5, '2016-11-15', 2, '772181', '', 1, '0000-00-00', 0, ''),
-(6, '2016-11-15', 1, '642859', '', 1, '0000-00-00', 0, '');
+INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`) VALUES
+(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0),
+(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 1),
+(3, '2016-11-15', 2, '568468', '', 1),
+(4, '2016-11-18', 1, '125085', '', 1),
+(5, '2016-11-15', 2, '772181', '', 1),
+(6, '2016-11-15', 1, '642859', '', 1);
 
 -- --------------------------------------------------------
 
@@ -115,31 +112,33 @@ CREATE TABLE IF NOT EXISTS `details_recette` (
   PRIMARY KEY (`id_detail`),
   KEY `ID_Produit` (`ID_Produit`),
   KEY `ID_Recette` (`ID_Recette`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Contenu de la table `details_recette`
 --
 
 INSERT INTO `details_recette` (`ID_Produit`, `ID_Recette`, `Quantite`, `Unite_Mesure`, `id_detail`) VALUES
-(21, 6, 8, 'Unité', 4),
-(22, 6, 8, 'Unité', 5),
-(23, 6, 750, 'g', 6),
-(15, 6, 500, 'ml', 7),
-(20, 6, 3, 'ml', 8),
-(19, 6, 5, 'ml', 9),
-(18, 6, 8, 'ml', 10),
-(17, 6, 8, 'ml', 11),
-(16, 6, 8, 'ml', 12),
-(24, 6, 8, 'ml', 13),
-(19, 6, 8, 'ml', 14),
-(18, 6, 8, 'ml', 15),
-(17, 6, 8, 'ml', 16),
-(25, 6, 8, 'ml', 17),
-(16, 6, 8, 'ml', 18),
-(26, 6, 250, 'ml', 19),
-(28, 6, 15, 'ml', 20),
-(27, 6, 5, 'ml', 21);
+(35, 7, 3, 'L', 42),
+(31, 7, 12, 'Unité', 43),
+(21, 6, 8, 'Unité', 44),
+(22, 6, 8, 'Unité', 45),
+(23, 6, 750, 'g', 46),
+(15, 6, 500, 'ml', 47),
+(20, 6, 3, 'ml', 48),
+(19, 6, 5, 'ml', 49),
+(18, 6, 8, 'ml', 50),
+(17, 6, 8, 'ml', 51),
+(16, 6, 8, 'ml', 52),
+(24, 6, 8, 'ml', 53),
+(19, 6, 8, 'ml', 54),
+(18, 6, 8, 'ml', 55),
+(17, 6, 8, 'ml', 56),
+(25, 6, 8, 'ml', 57),
+(16, 6, 8, 'ml', 58),
+(26, 6, 250, 'ml', 59),
+(28, 6, 15, 'ml', 60),
+(27, 6, 5, 'ml', 61);
 
 -- --------------------------------------------------------
 
@@ -216,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `fournisseurs` (
 INSERT INTO `fournisseurs` (`ID_Fournisseur`, `Nom_Fournisseur`, `Note`, `Adresse`, `Ville`, `Province`, `Code_Postal`, `Telephone`, `Poste`, `Cell`, `Fax`, `Nom_Contact`, `Jour_Commande`, `Jour_Livraison`, `Delai_Commande`, `Cout_Minimum`, `Frais_Livraison`, `Courriel`) VALUES
 (1, 'Provigo le Marché', NULL, '2500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9841', '4613', '(819)609-1234', '(819)376-9841', 'John Doe', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
 (2, 'Métro Des Forges', NULL, '2500 Aubuchon', 'Trois-Rivières', 'Québec', 'G8Y 5G7', '(819)376-1721', '6543', '(819)325-5654', '(819)363-3213', 'Marc Lavoie', 'Mardi', 'Jeudi', 2, 45, 10, NULL),
-(3, 'IGA Marché Paquette', NULL, '3500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9542', '4643', '(819)692-1234', '(819)376-9542', 'Jean Paquette', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
+(3, 'IGA Marché Paquette', '    ', '3500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9542', '4643', '(819)692-1234', '(819)376-9542', 'Jean Paquette', 'Lundi', 'Mercredi', 2, 50, 15, ''),
 (4, 'Marché Végétarien', NULL, '2502 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 6G5', '(819)376-1756', '6543', '(819)325-5443', '(819)363-3212', NULL, 'Mardi', 'Jeudi', 2, 45, 10, NULL);
 
 -- --------------------------------------------------------
@@ -241,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   `UPC` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`ID_Inventaire`),
   KEY `Produit` (`Produit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Contenu de la table `inventaire`
@@ -250,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
 INSERT INTO `inventaire` (`ID_Inventaire`, `Produit`, `Nom`, `Quantite`, `Format`, `Description`, `Peremption`, `Date_Reception`, `Equivalence`, `Unite_Equivalence`, `Unite`, `Total`, `UPC`) VALUES
 (14, 22, 'Caisse de cuisse de poulets', 2, '5', 'Reçu dans une caisse en bois', '2016-12-29', '2016-12-14', 350, 'g', 'Unité', 10, NULL),
 (15, 23, 'Farine Robin Hood All Purpose 10kg', 5, '10', ' ', '2019-08-23', '2016-12-05', NULL, NULL, 'kg', 50, NULL),
-(16, 15, 'Lait de beurre 0.25% Québon', 17, '1', '', '2016-12-05', '2016-12-05', NULL, NULL, 'L', 17, NULL),
+(16, 15, 'Lait de beurre 0.25% Québon', 17, '1', '', '2016-12-30', '2016-12-05', NULL, '', 'L', 17, NULL),
 (17, 26, 'Mayonnaise Sunpic', 1, '10', '', '2016-12-05', '2016-12-05', 450, 'ml', 'Unité', 10, NULL),
 (18, 28, 'Miel Labonté Pure and Natural', 5, '500', '', '2016-12-05', '2016-12-05', NULL, NULL, 'ml', 2500, NULL),
 (19, 28, 'Miel Billy Bee', 10, '10', '', '2016-12-05', '2016-12-05', 100, 'ml', 'Unité', 100, NULL),
@@ -265,7 +264,14 @@ INSERT INTO `inventaire` (`ID_Inventaire`, `Produit`, `Nom`, `Quantite`, `Format
 (28, 18, 'Splendor Garden Organic Garlic Powder', 4, '4', '', '2016-12-05', '2016-12-05', 454, 'g', 'Unité', 16, NULL),
 (29, 17, 'Onion Powder President''s Choice', 2, '1', '', '2016-12-05', '2016-12-05', NULL, NULL, 'kg', 2, NULL),
 (30, 27, 'Chung Jung One Sunchang GochuJang', 3, '345', '', '2016-12-05', '2016-12-05', NULL, NULL, 'ml', 1035, NULL),
-(31, 16, 'Sel No Name', 15, '160', '', '2016-12-05', '2016-12-05', NULL, NULL, 'g', 2390, NULL);
+(31, 16, 'Sel No Name', 15, '160', '', '2016-12-05', '2016-12-05', NULL, NULL, 'g', 2390, NULL),
+(32, 32, 'Sucre RedPath', 1, '10', '', '2016-12-30', '2016-12-12', NULL, NULL, 'kg', 10, NULL),
+(33, 31, 'Caisse de pommes vertes', 2, '16', '', '2016-12-28', '2016-12-12', 450, 'g', 'Unité', 32, NULL),
+(34, 33, 'Boîte de Frosted Flakes', 1, '450', '', NULL, '2016-12-12', 1, 'g', 'g', 450, NULL),
+(35, 29, 'Jus d''orange Tropicana', 1, '2500', '', '2016-12-29', '2016-12-12', NULL, NULL, 'ml', 2500, NULL),
+(36, 34, 'Huile d''olive Terra Denyssa', 6, '750', '', NULL, '2016-12-12', NULL, NULL, 'ml', 4500, NULL),
+(37, 30, 'Caisse d''oranges', 2, '12', '', '2016-12-31', '2016-12-12', 396, 'g', 'Unité', 24, NULL),
+(38, 35, 'Boite de caramels sucrés', 1, '10', '', NULL, '2016-12-12', NULL, NULL, 'kg', 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -309,27 +315,34 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `hidden` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID_Produit`),
   KEY `Categorie` (`Categorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Contenu de la table `produits`
 --
 
 INSERT INTO `produits` (`ID_Produit`, `Nom_Produit`, `Categorie`, `Duree_Vie`, `Taxable_Federal`, `Taxable_Provincial`, `Code_UCP`, `Perissable`, `Description`, `hidden`) VALUES
-(15, 'Lait de beurre 0.25%', 4, NULL, 1, 1, NULL, 0, 'Lait de beurre 0.25% de matières grasses', 0),
+(15, 'Lait de beurre 0.25%', 4, NULL, 1, 1, NULL, 1, 'Lait de beurre 0.25% de matières grasses', 0),
 (16, 'Sel', 10, NULL, 1, 1, NULL, 0, '', 0),
 (17, 'Poudre d''oignons', 10, NULL, 1, 0, NULL, 1, 'Oignons en poudre', 0),
-(18, 'Poudre d''ail', 10, NULL, 1, 0, NULL, 1, 'Ail en poudre', 0),
-(19, 'Poivre de Cayenne', 10, NULL, 1, 0, NULL, 1, 'Poivre de Cayenne', 0),
+(18, 'Poudre d''ail', 10, NULL, 1, 0, NULL, 0, 'Ail en poudre', 0),
+(19, 'Poivre de Cayenne', 10, NULL, 1, 0, NULL, 0, 'Poivre de Cayenne', 0),
 (20, 'Piment de Jamaïque', 10, NULL, 1, 0, NULL, 1, 'Piments forts provenant de la Jamaïque', 0),
 (21, 'Pilons de poulet', 3, NULL, 1, 0, NULL, 1, 'Jambe de poulet (Ne consommer que la viande)', 0),
 (22, 'Cuisse de poulet', 3, NULL, 1, 0, NULL, 1, '', 0),
-(23, 'Farine tout usage', 7, NULL, 1, 1, NULL, 1, 'Farine blanchie tout usage', 0),
-(24, 'Paprika fumé doux', 10, NULL, 0, 1, NULL, 1, 'Paprika', 0),
+(23, 'Farine tout usage', 7, NULL, 1, 1, NULL, 0, 'Farine blanchie tout usage', 0),
+(24, 'Paprika fumé doux', 10, NULL, 0, 1, NULL, 0, 'Paprika', 0),
 (25, 'Moutarde en poudre', 10, NULL, 1, 1, NULL, 0, 'Moutarde concassée pour en faire de la poudre', 0),
-(26, 'Mayonnaise', 5, NULL, 1, 1, NULL, 0, '', 0),
+(26, 'Mayonnaise', 5, NULL, 1, 1, NULL, 1, '', 0),
 (27, 'Sambal Oelek', 10, NULL, 1, 1, NULL, 0, 'Épice', 0),
-(28, 'Miel', 8, NULL, 1, 1, NULL, 0, 'Miel d''abeille', 0);
+(28, 'Miel', 8, NULL, 1, 1, NULL, 0, 'Miel d''abeille', 0),
+(29, 'Jus d''orange', 9, NULL, 1, 1, NULL, 1, 'Jus fait à base d''oranges', 0),
+(30, 'Orange', 1, NULL, 1, 1, NULL, 1, 'Fruit de l''orangier à éplucher avant de consommer', 0),
+(31, 'Pomme verte', 1, NULL, 1, 1, NULL, 1, 'Pomme de couleur verte', 0),
+(32, 'Sucre', 8, NULL, 1, 1, NULL, 1, '', 0),
+(33, 'Frosted Flakes', 7, NULL, 1, 1, NULL, 0, '', 0),
+(34, 'Huile d''olive', 11, NULL, 1, 1, NULL, 0, 'Huile faite à partird''olives', 0),
+(35, 'Caramel', 8, NULL, 1, 1, NULL, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -371,14 +384,15 @@ CREATE TABLE IF NOT EXISTS `recettes` (
   `Categorie` varchar(50) NOT NULL,
   `congelable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Recette`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `recettes`
 --
 
 INSERT INTO `recettes` (`ID_Recette`, `Nom`, `Temps_Preparation`, `Temps_Cuisson`, `Nb_Portions`, `Taille_Portion`, `Unite_Mesure`, `Temperature`, `Temps_Refroidissement`, `Etapes`, `Image`, `Remarque`, `Allergene`, `Duree_Conservation`, `Categorie`, `congelable`) VALUES
-(6, 'Poulet Frit', '30 minutes', '45 minutes', '8', '125', 'g', '325', '5 minutes', 'Marinade\n\nDans un bol, mélanger le lait de beurre, le sel et les épices. Ajouter le poulet et bien l’enrober. Couvrir et réfrigérer au moins 12 heures.\n\n\nPanure\n\nDans un grand bol, mélanger la farine, les épices et le sel.\nPréchauffer l’huile de la friteuse à 160 °C (325 °F). Tapisser une plaque de cuisson de papier absorbant.\nRetirer le poulet de la marinade sans trop l’assécher. Enrober le poulet dans le mélange de farine. Tremper une seconde fois dans la marinade et enrober à nouveau le poulet. Secouer pour retirer l’excédent. Réserver sur une plaque de cuisson. Frire quatre à cinq morceaux à la fois environ 15 minutes. Si vous utilisez un thermomètre, il doit indiquer 82 °C (180 °F) lorsque celui-ci est inséré au centre d’un morceau. Égoutter sur le papier absorbant. Poursuivre avec le reste du poulet.\nMayonnaise épicée\n\nEntre-temps, dans un bol, mélanger tous les ingrédients. Servir avec le poulet.', NULL, 'Nécessite une friteuse et de l''huile de cuisson', 'Lactose\r\nGluten\r\n', '4 jours', 'Friture', 0);
+(6, 'Poulet Frit', '30 minutes', '45 minutes', '8', '125', 'g', '325', '5 minutes', 'Marinade\n\nDans un bol, mélanger le lait de beurre, le sel et les épices. Ajouter le poulet et bien l’enrober. Couvrir et réfrigérer au moins 12 heures.\n\n\nPanure\n\nDans un grand bol, mélanger la farine, les épices et le sel.\nPréchauffer l’huile de la friteuse à 160 °C (325 °F). Tapisser une plaque de cuisson de papier absorbant.\nRetirer le poulet de la marinade sans trop l’assécher. Enrober le poulet dans le mélange de farine. Tremper une seconde fois dans la marinade et enrober à nouveau le poulet. Secouer pour retirer l’excédent. Réserver sur une plaque de cuisson. Frire quatre à cinq morceaux à la fois environ 15 minutes. Si vous utilisez un thermomètre, il doit indiquer 82 °C (180 °F) lorsque celui-ci est inséré au centre d’un morceau. Égoutter sur le papier absorbant. Poursuivre avec le reste du poulet.\nMayonnaise épicée\n\nEntre-temps, dans un bol, mélanger tous les ingrédients. Servir avec le poulet.', 'JLC6.JLC', 'Nécessite une friteuse et de l''huile de cuisson', 'Lactose\r\n\n\nGluten\r\n\n\n', '4 jours', 'Friture', 0),
+(7, 'Pomme & Caramel', '15 minutes', '5 minutes', '12', '1', 'Unité', '375', '1h', 'Tremper la pomme dans le caramel\nServir\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neat', 'JLC7.JLC', 'Danger - Diabète', 'Pomme\r\n\nCaramel', '1 semaine', 'Desserts', 0);
 
 --
 -- Contraintes pour les tables exportées

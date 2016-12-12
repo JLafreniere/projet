@@ -30,7 +30,7 @@ Public Class frmAjoutRecettes
 
         'Remplir les combobox
         Dim ds As New DataSet
-        bd.Requete("select * from produits order by nom_produit", ds, bd.daProduits, "produits")
+        bd.Requete("select * from produits where hidden = 0 order by nom_produit", ds, bd.daProduits, "produits")
         cbProduit.DataSource = ds.Tables(0)
         cbProduit.ValueMember = ds.Tables(0).Columns(0).ToString
         cbProduit.DisplayMember = ds.Tables(0).Columns(1).ToString
@@ -54,7 +54,7 @@ Public Class frmAjoutRecettes
         bd.dsRecettes.Clear()
         bd.dsProduits.Clear()
         bd.dsDetails.Clear()
-        bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("select * from produits where hidden = 0", bd.dsProduits, bd.daProduits, "produits")
         bd.Requete("select * from details_recette", bd.dsDetails, bd.daDetails, "details_recette")
         bd.Requete("select * from recettes", bd.dsRecettes, bd.daRecettes, "recettes")
     End Sub
@@ -353,7 +353,7 @@ Public Class frmAjoutRecettes
     Private Sub cbProduit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProduit.TextChanged, cbProduit.KeyUp, txtQuantite.TextChanged, cbUnite.TextChanged
         Dim dsTemp As New DataSet
 
-        bd.Requete("select * from produits where upper(nom_produit) = upper('" & Replace(cbProduit.Text, "'", "''") & "')", dsTemp, bd.daProduits, "produits")
+        bd.Requete("select * from produits where hidden = 0 and upper(nom_produit) = upper('" & Replace(cbProduit.Text, "'", "''") & "')", dsTemp, bd.daProduits, "produits")
 
         If dsTemp.Tables(0).Rows.Count = 0 Or txtQuantite.Text = "" Or cbUnite.Text = "" Then
             couleurBouton("D", btnAjouter)

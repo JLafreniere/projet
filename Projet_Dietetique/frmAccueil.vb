@@ -196,10 +196,11 @@ Public Class frmAccueil
     End Sub
 
     Public Sub changerDateSelectionnee(ByVal d As Date)
+
         _date_selectionne = d
-        lblSemaine.Text = "Semaine du " & GetPreviousSunday(_date_selectionne).Day & " " & MonthName(GetPreviousSunday(_date_selectionne).Month) & " au " & GetNextSaturday(_date_selectionne).Day & " " & MonthName(GetNextSaturday(_date_selectionne).Month)
-        cal.actualiserComposants()
-        p.remplirSemaine(_date_selectionne)
+            lblSemaine.Text = "Semaine du " & GetPreviousSunday(_date_selectionne).Day & " " & MonthName(GetPreviousSunday(_date_selectionne).Month) & " au " & GetNextSaturday(_date_selectionne).Day & " " & MonthName(GetNextSaturday(_date_selectionne).Month)
+            cal.actualiserComposants()
+            p.remplirSemaine(_date_selectionne)
 
     End Sub
     Private Sub centrer() Handles MyBase.GotFocus
@@ -226,11 +227,15 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
+<<<<<<< HEAD
     Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
 
 
+=======
+
+>>>>>>> 426cbf4202867d45e05ca5711886b54f8d4e342b
 End Class
 

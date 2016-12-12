@@ -25,7 +25,7 @@
 
                                                End Sub
             AddHandler currentForm.Shown, Sub()
-                                              ' Dead Oubie c sik
+
                                           End Sub
 
 
@@ -47,11 +47,13 @@
         pbLogo.SizeMode = PictureBoxSizeMode.StretchImage
 
         AddHandler pbLogo.Click, Sub(sender2, eventargs2)
-                                     Try
-                                         currentForm.Hide()
-                                         frmAccueil.Show()
+                                     If tabs Then
+                                         Try
+                                             currentForm.Hide()
+                                             frmAccueil.Show()
 
-                                     Catch exc As Exception : End Try
+                                         Catch exc As Exception : End Try
+                                     End If
                                  End Sub
 
 

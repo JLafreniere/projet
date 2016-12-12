@@ -23,6 +23,7 @@ Public Class frmAjoutInventaire
         cmbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cmbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
 
+
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cmbUnite.Items.Add(bd.uniteMesure(i))
         Next
@@ -31,8 +32,8 @@ Public Class frmAjoutInventaire
             cmbEquivalence.Items.Add(bd.equivalence(i))
         Next
 
-        cmbUnite.Text = bd.uniteMesure(0).ToString
-        cmbEquivalence.Text = bd.equivalence(0).ToString
+        cmbUnite.Text = bd.uniteMesure(2).ToString
+        cmbEquivalence.Text = bd.equivalence(2).ToString
 
         dtpPeremption.MinDate = Today
         lblEquivalence.Visible = False
@@ -88,27 +89,32 @@ Public Class frmAjoutInventaire
 
 
             drnouvel(4) = txtFormat.Text
-        drnouvel(5) = txtDescription.Text
-        drnouvel(6) = dtpPeremption.Value
-        drnouvel(7) = dtpReception.Value
+            drnouvel(5) = txtDescription.Text
 
-        If txtEquivalence.Text IsNot "" Then
-            drnouvel(8) = txtEquivalence.Text
-            drnouvel(9) = cmbEquivalence.Text
-        End If
+            If dtpPeremption.Visible = True Then
+                drnouvel(6) = dtpPeremption.Value
+            End If
 
 
-        drnouvel(10) = cmbUnite.Text
-        drnouvel(11) = txtTotal.Text
-        bd.dsInventaire.Tables(0).Rows.Add(drnouvel)
+            drnouvel(7) = dtpReception.Value
 
-        bd.miseAjourBD(bd.dsInventaire, bd.daInventaire, "inventaire")
+                If txtEquivalence.Text IsNot "" Then
+                    drnouvel(8) = txtEquivalence.Text
+                    drnouvel(9) = cmbEquivalence.Text
+                End If
 
-        effacerText()
-        Me.Close()
-        frmInventaire.plusDeFraicheurSubway6PouceA3et99()
-        frmInventaire.Show()
-        End If
+
+                drnouvel(10) = cmbUnite.Text
+                drnouvel(11) = txtTotal.Text
+                bd.dsInventaire.Tables(0).Rows.Add(drnouvel)
+
+                bd.miseAjourBD(bd.dsInventaire, bd.daInventaire, "inventaire")
+
+                effacerText()
+                Me.Close()
+                frmInventaire.plusDeFraicheurSubway6PouceA3et99()
+                frmInventaire.Show()
+            End If
     End Sub
 
     Sub effacerText()
@@ -178,6 +184,21 @@ Public Class frmAjoutInventaire
         End If
     End Sub
 
+    Private Sub cmbProduit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProduit.SelectedIndexChanged
+        Try
+            Dim ds As New DataSet
 
+            bd.Requete("select * from produits where id_produit = " & cmbProduit.SelectedValue, ds, bd.daProduits, "produits")
+
+            If (ds.Tables(0).Rows(0).Item(7) = 0) Then
+                dtpPeremption.Visible = False
+                lblPeremption.Visible = False
+
+            Else
+                dtpPeremption.Visible = True
+                lblPeremption.Visible = True
+            End If
+        Catch ex As Exception : End Try
+    End Sub
 End Class
 

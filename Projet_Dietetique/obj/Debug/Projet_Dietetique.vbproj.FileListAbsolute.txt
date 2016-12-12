@@ -144,3 +144,61 @@ H:\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\nunit.fr
 H:\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
 H:\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
 H:\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutCommandes.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutFournisseurs.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutInventaire.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutRecettes.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmFournisseurs.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmInventaire.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmProduits.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
+C:\Users\Francis\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.dll
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
+F:\Remise Projet\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutCommandes.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutFournisseurs.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutInventaire.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutRecettes.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmFournisseurs.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmInventaire.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmProduits.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
+F:\Remise Projet\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache

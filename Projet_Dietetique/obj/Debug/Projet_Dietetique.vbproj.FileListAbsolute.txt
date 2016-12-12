@@ -26,7 +26,6 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\MySql.Data.dll
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.pdb
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\HtmlAgilityPack.xml
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources
 \\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAjoutInventaire.resources
@@ -140,5 +139,8 @@ C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.fr
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
-C:\Users\1425165\Desktop\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
-\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
+\\etudiants.cegeptr.qc.ca\Etudiants\1433095\Mes documents\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
+H:\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\nunit.framework.dll
+H:\Projet------------\application\V2\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
+H:\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
+H:\Projet------------\application\V2\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources

@@ -126,6 +126,7 @@ Public Class frmFournisseurs
 
     Private Sub btnModifier_Click(sender As Object, e As EventArgs) Handles btnModifier.Click
         remplirFormulaire()
+
         frmAjoutFournisseurs.btnEnregistrer.Text = "Modifier"
     End Sub
     'Recherche le Fournisseur dans la bd

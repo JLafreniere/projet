@@ -2,9 +2,9 @@
 Public Class frmAjoutInventaire
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
 
+    'Francis Audet
+
     Private Sub frmAjoutInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
 
         Controls.Add(New Header(Me, False))
         'connection bd + charger ds

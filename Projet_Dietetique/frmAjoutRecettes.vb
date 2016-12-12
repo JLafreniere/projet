@@ -1,7 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports System.Data
+Imports System.IO
 Imports MySql.Data.MySqlClient
-'Jonathan Villeneuve
+'Francis Audet 90%
+'Jonathan Villeneuve 10%
 
 
 Public Class frmAjoutRecettes
@@ -18,13 +20,15 @@ Public Class frmAjoutRecettes
 
 
 
-        Dim h As New Header(Me, True)
+        Dim h As New Header(Me, False) 'Met le header du formulaire
         h.exitOnClose = False
-
         Controls.Add(h)
 
         chargerDataset()
 
+
+
+        'Remplir les combobox
         Dim ds As New DataSet
         bd.Requete("select * from produits order by nom_produit", ds, bd.daProduits, "produits")
         cbProduit.DataSource = ds.Tables(0)
@@ -33,7 +37,9 @@ Public Class frmAjoutRecettes
         cbProduit.AutoCompleteMode = AutoCompleteMode.Append
         cbProduit.DropDownStyle = ComboBoxStyle.DropDown
         cbProduit.AutoCompleteSource = AutoCompleteSource.ListItems
-
+        couleurBouton("D", btnAllergies)
+        couleurBouton("D", btnSupprimerAllergies)
+        couleurBouton("D", btnEnregistrer)
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbPortions.Items.Add(bd.uniteMesure(i))
 
@@ -42,16 +48,9 @@ Public Class frmAjoutRecettes
         For i As Integer = 0 To bd.uniteMesure.length - 1
             cbUnite.Items.Add(bd.uniteMesure(i))
         Next
-
-
-        'Dim ctl As Control
-        'For Each ctl In Me.Controls
-        '    AddHandler ctl.KeyDown, AddressOf controleSuivant
-        'Next
-
     End Sub
 
-    Sub chargerDataset()
+    Sub chargerDataset() 'Rempli les dataset
         bd.dsRecettes.Clear()
         bd.dsProduits.Clear()
         bd.dsDetails.Clear()
@@ -86,6 +85,7 @@ Public Class frmAjoutRecettes
 
 
     Private Sub txtTemperature_TextChanged(sender As Object, e As EventArgs) Handles txtFaraneith.KeyUp, txtCelcius.KeyUp
+        'Calcul de temperature
         Try
             If sender.tag = "f" Then
                 ' Converti le texte de txtFaraneith en celcius (txtCelcius)
@@ -97,19 +97,8 @@ Public Class frmAjoutRecettes
                 txtFaraneith.Text = Math.Round((CDbl(txtCelcius.Text) * 1.8) + 32, 0, MidpointRounding.AwayFromZero)
             End If
         Catch exc As Exception : End Try
-
     End Sub
 
-    'Rempli le Combobox des Produits
-    'Sub remplirCombo()
-    '    bd.Requete("select * from produits", bd.dsProduits, bd.daProduits, "produits")
-
-    '    For i As Integer = 0 To bd.dsProduits.Tables(0).Rows.Count - 1
-    '        cbProduit.Items.Add(bd.dsProduits.Tables(0).Rows(i)(1))
-    '        cbProduit.AutoCompleteMode = AutoCompleteMode.Append
-
-    '    Next
-    'End Sub
 
     Private Sub btnAllergies_Click(sender As Object, e As EventArgs) Handles btnAllergies.Click
         'Ajoute le contenu de txtAllergies à la ListBox des Allergies
@@ -158,11 +147,11 @@ Public Class frmAjoutRecettes
         drnouvel(6) = cbPortions.Text
         drnouvel(5) = txtPortions.Text
 
-        'Image
+        'Image on save l'image dans le bin avec un nom associé a l'ID de la recette
         If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
             Try
                 Dim str As String = bd.executeScalar("select coalesce(max(id_recette), 1) from recettes")
-                id = str
+                id = (str + 1)
                 FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & str & ".JLC")
                 drnouvel(10) = "JLC" &
                str & ".JLC"
@@ -254,16 +243,14 @@ Public Class frmAjoutRecettes
     Dim congelable As Boolean
 
     Sub modifier()
-        ''Dim nom As String = txtNom.Text
-        'Dim preparation As String = txtPreparation.Text
-        'Dim cuisson As String = txtCuisson.Text
-        'Dim port As String = nudPortions.Value
-        'Dim porti As String = txtPortions.Text
-        'Dim refroid As String = txtRefroid.Text
-
+        'Rempli la allergies'
         For i As Integer = 0 To lstAllergies.Items.Count - 1
+            If i = 0 Then
+                allergies += Replace(lstAllergies.Items(i).ToString, "'", "''")
+            Else
+                allergies += vbCrLf & Replace(lstAllergies.Items(i).ToString, "'", "''")
+            End If
 
-            allergies += Replace(lstAllergies.Items(i).ToString, "'", "''") & vbCrLf
 
         Next
         If chkCongelable.Checked Then
@@ -277,13 +264,16 @@ Public Class frmAjoutRecettes
         Dim strImage As String = dsTemp.Tables(0).Rows(0).Item(10).ToString
         If Not picRecette.Image Is Nothing Then 'copie l'image dans le bin et sauvegarde le path dans la bd
             Try
-                FileCopy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & id & ".JLC")
+                picRecette.Image = Nothing
+                picRecette.Dispose()
+                File.Copy(OpenFileDialog1.FileName, My.Application.Info.DirectoryPath & "\Images\JLC" & id & ".JLC", True)
                 strImage = "JLC" & id & ".JLC"
             Catch exc As Exception
+
             End Try
         End If
 
-
+        'update
         bd.nonQuery("UPDATE recettes set nom = '" & Replace(txtNom.Text, "'", "''") & "', temps_preparation = '" & Replace(txtPreparation.Text, "'", "''") & "' , temps_cuisson = '" & Replace(txtCuisson.Text, "'", "''") & "' , nb_portions = " & nudPortions.Value & " , taille_portion = " & Replace(txtPortions.Text, "'", "''") & " , 
          unite_mesure = '" & Replace(cbPortions.Text, "'", "''") & "' , temps_refroidissement = '" & Replace(txtRefroid.Text, "'", "''") & "', etapes = '" & Replace(txtEtapes.Text, "'", "''") & "' , Image = '" & strImage & "', remarque = '" & Replace(txtRemarques.Text, "'", "''") & "' , Allergene = '" & allergies & "' 
          , duree_conservation = '" & Replace(txtConservation.Text, "'", "''") & "' , categorie = '" & Replace(txtCategorie.Text, "'", "''") & "' , congelable = '" & congelable.ToString & "' where id_recette = " & id)
@@ -291,6 +281,7 @@ Public Class frmAjoutRecettes
 
         bd.nonQuery("Delete from details_recette where id_recette = " & id)
 
+        'update les aliments de la recette
         chargerDataset()
         Dim drnouvel As DataRow
         For Each i As ListViewItem In lsvProduit.Items
@@ -324,17 +315,7 @@ Public Class frmAjoutRecettes
 
 
     End Sub
-    'Bloque les lettres dans les Zones de textes qui auront des valeurs numériques
-    'Private Sub txtConservation_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtConservation.KeyPress, txtCuisson.KeyPress, txtPreparation.KeyPress, txtFaraneith.KeyPress,
-    '        txtPortions.KeyPress, txtRefroid.KeyPress
-    '    If Asc(e.KeyChar) <> 8 Then
-    '        If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
-    '            e.Handled = True
-    '        End If
-    '    End If
 
-    'End Sub
-    'Met à jour les données dans le listView en fonction de de la valeur de nudPortions
     Private Sub nudPortions_ValueChanged(sender As Object, e As EventArgs) Handles nudPortions.ValueChanged
         For Each element As ListViewItem In lsvProduit.Items
             Dim qte As Double = element.SubItems(1).Text
@@ -359,21 +340,12 @@ Public Class frmAjoutRecettes
         lstAllergies.Items.Remove(lstAllergies.SelectedItem)
     End Sub
 
-    'Quand l'utilisateur pèse sur enter, le focus est mis sur le contrôle suivant
-    'Sub controleSuivant(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-    '    If e.KeyCode = Keys.Enter Then
-
-    '        e.SuppressKeyPress = True
-    '        Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
-    '    End If
-
-
-    'End Sub
-
     Private Sub lstAllergies_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstAllergies.SelectedIndexChanged
+        'Change l'état des boutons d'allergie
         If lstAllergies.SelectedItems.Count > 0 Then
-            btnSupprimerAllergies.Visible = True
-        Else btnSupprimerAllergies.Visible = False
+            couleurBouton("E", btnSupprimerAllergies)
+        Else
+            couleurBouton("D", btnSupprimerAllergies)
 
         End If
     End Sub
@@ -391,14 +363,34 @@ Public Class frmAjoutRecettes
 
         End If
 
-
-
     End Sub
 
-    Private Sub txtQuantite_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantite.KeyPress, txtPortions.KeyPress
-        If Asc(e.KeyChar) <> 13 AndAlso Asc(e.KeyChar) <> 8 AndAlso Not IsNumeric(e.KeyChar) Then
-            e.Handled = True
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCelcius.KeyPress, txtFaraneith.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
         End If
+    End Sub
+
+    Private Sub TextBox_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtQuantite.KeyPress, txtPortions.KeyPress
+
+
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+                If e.KeyChar = "," Then
+                    If sender.Text.IndexOf(",") >= 0 Then 'Allows " . " and prevents more than 1 " . "
+                        e.Handled = True
+                    Else
+                        e.Handled = False
+                    End If
+                Else
+                End If
+            End If
+        End If
+
+
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
@@ -408,5 +400,24 @@ Public Class frmAjoutRecettes
 
     Private Sub frmAjoutRecettes_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         frmVoirRecettes.Show()
+    End Sub
+
+    Private Sub txtAllergies_TextChanged(sender As Object, e As EventArgs) Handles txtAllergies.TextChanged
+        If txtAllergies.Text = "" Then
+            couleurBouton("D", btnAllergies)
+        Else
+            couleurBouton("E", btnAllergies)
+        End If
+    End Sub
+
+    Private Sub txtNom_TextChanged(sender As Object, e As EventArgs) Handles txtNom.TextChanged, txtCategorie.TextChanged, txtPreparation.TextChanged, txtCuisson.TextChanged, txtFaraneith.TextChanged, txtCelcius.TextChanged, txtRefroid.TextChanged,
+        txtConservation.TextChanged, nudPortions.ValueChanged, txtPortions.TextChanged, cbPortions.TextChanged, chkCongelable.CheckStateChanged, txtRemarques.TextChanged, txtAllergies.TextChanged, cbProduit.TextChanged, txtQuantite.TextChanged, cbUnite.TextChanged,
+        txtEtapes.TextChanged, picRecette.Click
+
+        If txtNom.Text = "" Then
+            couleurBouton("D", btnEnregistrer)
+        Else
+            couleurBouton("E", btnEnregistrer)
+        End If
     End Sub
 End Class

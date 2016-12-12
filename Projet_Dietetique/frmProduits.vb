@@ -1,6 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmProduits
+
     'Fait par Francis Audet
+
     Dim intPosition As Integer
     Dim str, itemcoll(1) As String
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")

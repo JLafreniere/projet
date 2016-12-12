@@ -22,6 +22,7 @@ Partial Class frmAjoutFournisseurs
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAjoutFournisseurs))
         Me.txtCodePostal = New System.Windows.Forms.MaskedTextBox()
         Me.txtFax = New System.Windows.Forms.MaskedTextBox()
         Me.txtCell = New System.Windows.Forms.MaskedTextBox()
@@ -434,7 +435,7 @@ Partial Class frmAjoutFournisseurs
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(773, 618)
+        Me.ClientSize = New System.Drawing.Size(773, 762)
         Me.Controls.Add(Me.txtCodePostal)
         Me.Controls.Add(Me.txtFax)
         Me.Controls.Add(Me.txtCell)
@@ -475,6 +476,7 @@ Partial Class frmAjoutFournisseurs
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtNom)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAjoutFournisseurs"
         Me.Text = "Ajouter un fournisseur"
         CType(Me.nudCommande, System.ComponentModel.ISupportInitialize).EndInit()

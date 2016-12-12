@@ -24,6 +24,7 @@ Partial Class frmFournisseurs
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFournisseurs))
         Me.mainpanel = New System.Windows.Forms.Panel()
+        Me.rdbDefaut = New System.Windows.Forms.RadioButton()
         Me.rdbVille = New System.Windows.Forms.RadioButton()
         Me.rdbNom = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -37,7 +38,6 @@ Partial Class frmFournisseurs
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnRechercher = New System.Windows.Forms.Button()
-        Me.rdbDefaut = New System.Windows.Forms.RadioButton()
         Me.mainpanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -57,6 +57,17 @@ Partial Class frmFournisseurs
         Me.mainpanel.Name = "mainpanel"
         Me.mainpanel.Size = New System.Drawing.Size(702, 528)
         Me.mainpanel.TabIndex = 2
+        '
+        'rdbDefaut
+        '
+        Me.rdbDefaut.AutoSize = True
+        Me.rdbDefaut.Location = New System.Drawing.Point(456, 59)
+        Me.rdbDefaut.Name = "rdbDefaut"
+        Me.rdbDefaut.Size = New System.Drawing.Size(121, 17)
+        Me.rdbDefaut.TabIndex = 81
+        Me.rdbDefaut.TabStop = True
+        Me.rdbDefaut.Text = "Affichage par défaut"
+        Me.rdbDefaut.UseVisualStyleBackColor = True
         '
         'rdbVille
         '
@@ -148,6 +159,7 @@ Partial Class frmFournisseurs
         '
         Me.lsvFournisseurs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lsvFournisseurs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvFournisseurs.FullRowSelect = True
         Me.lsvFournisseurs.HideSelection = False
         Me.lsvFournisseurs.Location = New System.Drawing.Point(0, 90)
         Me.lsvFournisseurs.MultiSelect = False
@@ -189,17 +201,6 @@ Partial Class frmFournisseurs
         Me.BtnRechercher.TabIndex = 56
         Me.BtnRechercher.Text = "Rechercher"
         Me.BtnRechercher.UseVisualStyleBackColor = False
-        '
-        'rdbDefaut
-        '
-        Me.rdbDefaut.AutoSize = True
-        Me.rdbDefaut.Location = New System.Drawing.Point(456, 59)
-        Me.rdbDefaut.Name = "rdbDefaut"
-        Me.rdbDefaut.Size = New System.Drawing.Size(121, 17)
-        Me.rdbDefaut.TabIndex = 81
-        Me.rdbDefaut.TabStop = True
-        Me.rdbDefaut.Text = "Affichage par défaut"
-        Me.rdbDefaut.UseVisualStyleBackColor = True
         '
         'frmFournisseurs
         '

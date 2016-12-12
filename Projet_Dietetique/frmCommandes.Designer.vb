@@ -42,19 +42,20 @@ Partial Class frmCommandes
         '
         'mainpanel
         '
+        Me.mainpanel.AutoScroll = True
         Me.mainpanel.Controls.Add(Me.rdbDefaut)
+        Me.mainpanel.Controls.Add(Me.btnAjouter)
+        Me.mainpanel.Controls.Add(Me.btnModifier)
         Me.mainpanel.Controls.Add(Me.dtpDate)
         Me.mainpanel.Controls.Add(Me.rdbFournisseur)
         Me.mainpanel.Controls.Add(Me.rdbDate)
         Me.mainpanel.Controls.Add(Me.Label1)
-        Me.mainpanel.Controls.Add(Me.btnAjouter)
-        Me.mainpanel.Controls.Add(Me.btnModifier)
         Me.mainpanel.Controls.Add(Me.lsvCommandes)
         Me.mainpanel.Controls.Add(Me.BtnRechercher)
         Me.mainpanel.Controls.Add(Me.txtRecherche)
         Me.mainpanel.Location = New System.Drawing.Point(311, 57)
         Me.mainpanel.Name = "mainpanel"
-        Me.mainpanel.Size = New System.Drawing.Size(702, 483)
+        Me.mainpanel.Size = New System.Drawing.Size(698, 569)
         Me.mainpanel.TabIndex = 3
         '
         'rdbDefaut
@@ -116,7 +117,7 @@ Partial Class frmCommandes
         Me.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAjouter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAjouter.ForeColor = System.Drawing.Color.White
-        Me.btnAjouter.Location = New System.Drawing.Point(398, 430)
+        Me.btnAjouter.Location = New System.Drawing.Point(506, 531)
         Me.btnAjouter.Name = "btnAjouter"
         Me.btnAjouter.Size = New System.Drawing.Size(91, 35)
         Me.btnAjouter.TabIndex = 58
@@ -131,7 +132,7 @@ Partial Class frmCommandes
         Me.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModifier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModifier.ForeColor = System.Drawing.Color.White
-        Me.btnModifier.Location = New System.Drawing.Point(495, 430)
+        Me.btnModifier.Location = New System.Drawing.Point(603, 531)
         Me.btnModifier.Name = "btnModifier"
         Me.btnModifier.Size = New System.Drawing.Size(91, 35)
         Me.btnModifier.TabIndex = 59
@@ -142,11 +143,12 @@ Partial Class frmCommandes
         '
         Me.lsvCommandes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader3, Me.Total})
         Me.lsvCommandes.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvCommandes.FullRowSelect = True
         Me.lsvCommandes.HideSelection = False
         Me.lsvCommandes.Location = New System.Drawing.Point(2, 111)
         Me.lsvCommandes.MultiSelect = False
         Me.lsvCommandes.Name = "lsvCommandes"
-        Me.lsvCommandes.Size = New System.Drawing.Size(697, 372)
+        Me.lsvCommandes.Size = New System.Drawing.Size(696, 417)
         Me.lsvCommandes.TabIndex = 57
         Me.lsvCommandes.UseCompatibleStateImageBehavior = False
         Me.lsvCommandes.View = System.Windows.Forms.View.Details
@@ -173,7 +175,7 @@ Partial Class frmCommandes
         Me.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRechercher.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRechercher.ForeColor = System.Drawing.Color.White
-        Me.BtnRechercher.Location = New System.Drawing.Point(510, 11)
+        Me.BtnRechercher.Location = New System.Drawing.Point(506, 11)
         Me.BtnRechercher.Name = "BtnRechercher"
         Me.BtnRechercher.Size = New System.Drawing.Size(91, 35)
         Me.BtnRechercher.TabIndex = 56

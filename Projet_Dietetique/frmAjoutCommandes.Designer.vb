@@ -22,6 +22,7 @@ Partial Class frmAjoutCommandes
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAjoutCommandes))
         Me.nudQuantite = New System.Windows.Forms.NumericUpDown()
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -283,6 +284,7 @@ Partial Class frmAjoutCommandes
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dtpDate)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAjoutCommandes"
         Me.Text = "Faire une commande"
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).EndInit()

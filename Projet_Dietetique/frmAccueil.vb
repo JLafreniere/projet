@@ -196,10 +196,11 @@ Public Class frmAccueil
     End Sub
 
     Public Sub changerDateSelectionnee(ByVal d As Date)
+
         _date_selectionne = d
-        lblSemaine.Text = "Semaine du " & GetPreviousSunday(_date_selectionne).Day & " " & MonthName(GetPreviousSunday(_date_selectionne).Month) & " au " & GetNextSaturday(_date_selectionne).Day & " " & MonthName(GetNextSaturday(_date_selectionne).Month)
-        cal.actualiserComposants()
-        p.remplirSemaine(_date_selectionne)
+            lblSemaine.Text = "Semaine du " & GetPreviousSunday(_date_selectionne).Day & " " & MonthName(GetPreviousSunday(_date_selectionne).Month) & " au " & GetNextSaturday(_date_selectionne).Day & " " & MonthName(GetNextSaturday(_date_selectionne).Month)
+            cal.actualiserComposants()
+            p.remplirSemaine(_date_selectionne)
 
     End Sub
     Private Sub centrer() Handles MyBase.GotFocus
@@ -226,21 +227,6 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
-<<<<<<< HEAD
-=======
-    Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
-
-
-<<<<<<< HEAD
-=======
-    End Sub
-
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
-        MsgBox(ListBox1.SelectedItem)
-    End Sub
->>>>>>> dfc6941280dddd9af20e10a5ded476a130cac75d
->>>>>>> 1ddf0947abea7c9e6920737b43519ff8b1ef92b5
 End Class
 

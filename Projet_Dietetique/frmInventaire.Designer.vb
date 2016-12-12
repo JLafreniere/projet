@@ -25,7 +25,7 @@ Partial Class frmInventaire
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInventaire))
         Me.btnDGV = New System.Windows.Forms.Button()
         Me.txtRechercher = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblPeremption = New System.Windows.Forms.Label()
         Me.btnEnregistrer = New System.Windows.Forms.Button()
         Me.dtpReception = New System.Windows.Forms.DateTimePicker()
         Me.dtpPeremption = New System.Windows.Forms.DateTimePicker()
@@ -84,16 +84,16 @@ Partial Class frmInventaire
         Me.txtRechercher.Size = New System.Drawing.Size(301, 22)
         Me.txtRechercher.TabIndex = 76
         '
-        'Label4
+        'lblPeremption
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(11, 320)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(116, 13)
-        Me.Label4.TabIndex = 15
-        Me.Label4.Text = "Date de péremption :"
+        Me.lblPeremption.AutoSize = True
+        Me.lblPeremption.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.lblPeremption.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPeremption.Location = New System.Drawing.Point(11, 320)
+        Me.lblPeremption.Name = "lblPeremption"
+        Me.lblPeremption.Size = New System.Drawing.Size(116, 13)
+        Me.lblPeremption.TabIndex = 15
+        Me.lblPeremption.Text = "Date de péremption :"
         '
         'btnEnregistrer
         '
@@ -168,7 +168,7 @@ Partial Class frmInventaire
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(68, 75)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(59, 13)
+        Me.Label2.Size = New System.Drawing.Size(58, 13)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Quantité :"
         '
@@ -350,7 +350,7 @@ Partial Class frmInventaire
         Me.gbInventaire.Controls.Add(Me.btnAnnuler)
         Me.gbInventaire.Controls.Add(Me.Label5)
         Me.gbInventaire.Controls.Add(Me.btnSupprimer)
-        Me.gbInventaire.Controls.Add(Me.Label4)
+        Me.gbInventaire.Controls.Add(Me.lblPeremption)
         Me.gbInventaire.Controls.Add(Me.btnEnregistrer)
         Me.gbInventaire.Controls.Add(Me.dtpReception)
         Me.gbInventaire.Controls.Add(Me.dtpPeremption)
@@ -490,7 +490,7 @@ Partial Class frmInventaire
     Friend WithEvents dtpPeremption As DateTimePicker
     Friend WithEvents dtpReception As DateTimePicker
     Friend WithEvents btnEnregistrer As Button
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblPeremption As Label
     Friend WithEvents txtRechercher As TextBox
     Friend WithEvents btnDGV As Button
     Friend WithEvents btnRetirer As Button

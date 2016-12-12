@@ -12,7 +12,7 @@ Public Class frmProduits
     Private Sub frmCategories_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
         'connection bd + charger dataset
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
-        bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
         remplircontroles()
         Controls.Add(New Header(Me, True))
 
@@ -32,7 +32,7 @@ Public Class frmProduits
                                       CacherComposantAjout()
                                       lsvProduits.Enabled = True
                                       bd.dsProduits.Clear()
-                                      bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
+                                      bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
                                       remplircontroles()
 
                                       btnSupprimer.Enabled = False
@@ -123,6 +123,7 @@ Public Class frmProduits
         End If
 
         drnouvel(8) = txtDescription.Text
+        drnouvel(9) = 0
 
         bd.dsProduits.Tables(0).Rows.Add(drnouvel)
 
@@ -173,6 +174,7 @@ Public Class frmProduits
         lsvProduits.SelectedItems.Clear()
         gbAjouter.Visible = True
         btnSupprimer.Enabled = False
+        couleurBouton("D", btnAjouter)
         couleurBouton("D", btnSupprimer) 'D = disabled
         'btnVoirModifier.Enabled = False
         lsvProduits.Enabled = False
@@ -209,7 +211,7 @@ Public Class frmProduits
             CacherComposantAjout()
             miseAjourBD()
             bd.dsProduits.Clear()
-            bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
             remplircontroles()
 
             txtAjouter.ResetText()
@@ -296,13 +298,14 @@ Public Class frmProduits
     Private Sub btnSupprimer_Click(sender As Object, e As EventArgs) Handles btnSupprimer.Click
         'Suppression d'un produit
         Try
-            If MsgBox("Voulez-vous supprimer : " & lsvProduits.FocusedItem.SubItems(0).Text & "?" & vbNewLine & "La mention au produit sera supprimée dans toutes les recettes", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-                bd.dsProduits.Tables(0).Rows(intPosition).Delete()
+            If MsgBox("Voulez-vous supprimer le produit : " & lsvProduits.FocusedItem.SubItems(0).Text & "?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+                bd.nonQuery("update produits set hidden = 1 where id_produit = " & bd.dsProduits.Tables(0).Rows(intPosition).Item(0))
 
                 btnSupprimer.Enabled = False
                 couleurBouton("D", btnSupprimer)
                 ' btnVoirModifier.Enabled = False
-                miseAjourBD()
+                bd.dsProduits.Clear()
+                bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
                 remplircontroles()
             End If
 
@@ -318,10 +321,10 @@ Public Class frmProduits
         lsvProduits.Enabled = True
         bd.dsProduits.Clear()
         If (txtRechercher.Text = "") Then
-            bd.Requete("Select * from produits order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where hidden = 0 order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
             btnVoirAjouter.Enabled = True
         Else
-            bd.Requete("Select * from produits where lower(nom_produit) like lower('" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where hidden = 0 and lower(nom_produit) like lower('" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
         End If
 
         remplircontroles()
@@ -331,7 +334,7 @@ Public Class frmProduits
             ' ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
             lsvProduits.Enabled = False
 
-            bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
         End If
 
         btnSupprimer.Enabled = False
@@ -361,7 +364,12 @@ Public Class frmProduits
 
     Private Sub txtModifier_TextChanged(sender As Object, e As EventArgs) Handles txtModifier.TextChanged, cmbCategorie2.TextChanged, txtDescription2.TextChanged, ckPerissable2.CheckedChanged, ckTaxeFederale2.CheckedChanged, ckTaxeProvinciale2.CheckedChanged
         'Active le bouton enregistrer quand il y a modification
-        couleurBouton("E", btnEnregistrer)
+        If txtModifier.Text = "" Or txtModifier.Text = " " Then
+            couleurBouton("D", btnEnregistrer)
+        Else
+            couleurBouton("E", btnEnregistrer)
+        End If
+
     End Sub
 
 
@@ -384,12 +392,20 @@ Public Class frmProduits
         End If
 
         bd.dsProduits.Clear()
-        bd.Requete("Select * from produits " & ordre, bd.dsProduits, bd.daProduits, "produits")
+        bd.Requete("Select * from produits where hidden = 0 " & ordre, bd.dsProduits, bd.daProduits, "produits")
         remplircontroles()
     End Sub
 
     Private Sub frmProduits_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub txtAjouter_TextChanged(sender As Object, e As EventArgs) Handles txtAjouter.TextChanged
+        If txtAjouter.Text = "" Then
+            couleurBouton("D", btnAjouter)
+        Else
+            couleurBouton("E", btnAjouter)
+        End If
     End Sub
 
     Private Sub txtRechercher_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRechercher.KeyDown

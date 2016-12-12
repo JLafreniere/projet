@@ -147,6 +147,13 @@ Public Class PanelJour
             Next
 
             'Image
+
+
+
+
+            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
+
+            frmAjoutRecettes.remplirListView()
             If dsRecettes.Tables(0).Rows(0).Item(10) <> "" Then
 
 
@@ -179,12 +186,7 @@ Public Class PanelJour
                 Catch exc As Exception
 
                 End Try
-
             End If
-
-            frmAjoutRecettes.btnEnregistrer.Text = "Modifier"
-
-            frmAjoutRecettes.remplirListView()
         Catch e As Exception
             MsgBox(e.Message)
         End Try

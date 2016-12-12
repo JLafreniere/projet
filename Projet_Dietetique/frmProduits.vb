@@ -324,7 +324,7 @@ Public Class frmProduits
             bd.Requete("Select * from produits where hidden = 0 order by nom_produit", bd.dsProduits, bd.daProduits, "produits")
             btnVoirAjouter.Enabled = True
         Else
-            bd.Requete("Select * from produits where hidden = 0 and lower(nom_produit) like lower('" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
+            bd.Requete("Select * from produits where hidden = 0 and lower(nom_produit) like lower('%" & Replace(txtRechercher.Text, "'", "''") & "%')  " & ordre, bd.dsProduits, bd.daProduits, "produits")
         End If
 
         remplircontroles()

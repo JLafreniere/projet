@@ -157,6 +157,7 @@ Public Class frmCommandes
 
     'Transfert les données de la commande dans les contrôles de frmAjoutCommandes
     Sub rempliFormulaire()
+        MsgBox(position)
         'Si la commande est envoyee on bloque les champs et elle est juste consultable
         If bd.dsCommandes.Tables(0).Rows(position).Item(5) = True Then
             frmAjoutCommandes.cbFournisseurs.Enabled = False

@@ -134,7 +134,6 @@ C:\Users\1425165\Desktop\projet\Projet_Dietetique\bin\Debug\nunit.framework.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
 \\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
-\\etudiants.cegeptr.qc.ca\Etudiants\0851000\Mes documents\Automne 2016\Projet\Projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmReceptionCommande.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmCommandes.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetourInventaire.resources
 C:\Users\1433095\Desktop\projet\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmRetraitInventaire.resources

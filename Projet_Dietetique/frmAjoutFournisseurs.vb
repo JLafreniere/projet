@@ -19,13 +19,27 @@ Public Class frmAjoutFournisseurs
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
         chargerDataset()
         txtId.Visible = False
-        btnEnregistrer.Enabled = False
+
 
         Dim ctl As Control
         For Each ctl In Me.Controls
             AddHandler ctl.KeyDown, AddressOf controleSuivant
         Next
 
+    End Sub
+
+
+    Sub couleurBouton(etat As String, b As Button)
+        'Fonction permetant de changer la couleur d'un bouton selon l'etat
+        If etat = "D" Then
+            b.BackColor = (Color.LightGray)
+            b.ForeColor = Color.White
+            b.Enabled = False
+
+        Else
+            b.BackColor = Color.FromArgb(0, 176, 240)
+            b.Enabled = True
+        End If
     End Sub
     'Ajoute le fournisseur dans la bd
     Sub Ajouter()
@@ -90,18 +104,49 @@ Public Class frmAjoutFournisseurs
 
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
-        If btnEnregistrer.Text = "Enregistrer" Then
-            Ajouter()
+        If txtNom.Text = "" Then
+            MsgBox("Le nom ne doit pas être vide")
+        ElseIf txtAdresse.Text = "" Then
+            MsgBox("L'adresse ne doit pas être vide")
+        ElseIf txtVille.Text = "" Then
+            MsgBox("La ville ne doit pas être vide")
+        ElseIf txtProvince.Text = "" Then
+            MsgBox("La province ne doit pas être vide")
+        ElseIf txtTel.Text = "" Then
+            MsgBox("Le téléphone ne doit pas être vide")
+        ElseIf txtCodePostal.Text = "" Then
+            MsgBox("Le code potal ne doit pas être vide")
+        ElseIf txtContact.Text = "" Then
+            MsgBox("La personne à contacter ne doit pas être vide")
+        ElseIf cbCommande.Text = "" Then
+            MsgBox("Le jour de commande ne doit pas être vide")
+        ElseIf cbLivraison.Text = "" Then
+            MsgBox("Le jour de livraison ne doit pas être vide")
+        ElseIf txtPrix.Text = "" Then
+            MsgBox("Le prix minimum ne doit pas être vide")
+        ElseIf txtFrais.Text = "" Then
+            MsgBox("Les frais de livraison ne doivent pas être vides")
+
+
 
         Else
-            If MsgBox("Voulez-vous enregistrer les modifications suivantes?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
-                modifier()
+
+            If btnEnregistrer.Text = "Enregistrer" Then
+                Ajouter()
+
+            Else
+                If MsgBox("Voulez-vous enregistrer les modifications suivantes?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+                    modifier()
+
+
+                End If
 
 
             End If
 
 
         End If
+
 
 
 
@@ -199,18 +244,6 @@ Public Class frmAjoutFournisseurs
         End If
 
 
-    End Sub
-
-
-    Sub enableBouton()
-        For Each controle In Me.Controls
-            If controle.Text = "" Then
-                btnEnregistrer.Enabled = False
-            Else
-                btnEnregistrer.Enabled = True
-            End If
-
-        Next
     End Sub
 
 

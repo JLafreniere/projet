@@ -72,7 +72,7 @@ Public Class frmAjoutCommandes
         bd.dsCommandes.Clear()
 
         bd.Requete("Select * from commandes", bd.dsCommandes, bd.daCommandes, "commandes")
-        bd.Requete("Select  * from fournisseurs where inactif = '0'", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
+        bd.Requete("Select  * from fournisseurs ", bd.dsFournisseurs, bd.daFournisseurs, "fournisseurs")
         bd.Requete("Select * from produits_fournisseurs", bd.dsProduitFourn, bd.daProduitFourn, "produits_fournisseurs")
         bd.Requete("Select * from details_commande", bd.dsDetailsCommandes, bd.daDetailsCommandes, "details_commande")
 
@@ -219,13 +219,15 @@ Public Class frmAjoutCommandes
 
 
     Private Sub btnEnregistrer_Click(sender As Object, e As EventArgs) Handles btnEnregistrer.Click
-        If btnEnregistrer.Text = "Enregistrer" Then
-            ajouter()
+        If MsgBox("Voulez-vous enregistrer les modififaction suivantes?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+            If btnEnregistrer.Text = "Enregistrer" Then
+                ajouter()
 
 
-        Else
-            modifier()
+            Else
+                modifier()
 
+            End If
         End If
 
     End Sub
@@ -332,14 +334,19 @@ Public Class frmAjoutCommandes
         nudQuantite.Enabled = True
 
         ds9.Clear()
+        dss.Clear()
+        ds11.Clear()
         ds10.Clear()
+
+
+
         bd.Requete("Select  * from produits where `nom_produit` = '" + cbProduits.Text + "'", ds9, bd.daProduits, "produits")
         bd.Requete("Select * from `produits_fournisseurs` where `id_produit` = '" + ds9.Tables(0).Rows(0).Item(0).ToString + "'", dss, bd.daProduitFourn, "produits_fournisseurs")
         bd.Requete("Select * from `format_produit` where `produit_fournisseur` = '" + dss.Tables(0).Rows(0).Item(0).ToString + "'", ds11, bd.daFormat, "format_produit")
 
         For i As Integer = 0 To ds11.Tables(0).Rows.Count - 1
-            bd.Requete("Select * from `format_produit` where `produit_fournisseur` = '" + ds11.Tables(0).Rows(i).Item(0).ToString + "'", ds10, bd.daProduitFourn, "produits_fournisseurs")
-            cbFormat.Items.Add(ds10.Tables(0).Rows(i).Item(2))
+
+            cbFormat.Items.Add(ds11.Tables(0).Rows(i).Item(2))
 
         Next
 

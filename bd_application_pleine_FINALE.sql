@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 12 Décembre 2016 à 19:17
+-- Généré le :  Lun 12 Décembre 2016 à 20:25
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -61,9 +61,6 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `No_Reference` varchar(25) DEFAULT NULL,
   `Note` text NOT NULL,
   `envoye` tinyint(1) NOT NULL,
-  `date_reception` date NOT NULL,
-  `recue` tinyint(1) NOT NULL,
-  `note_reception` text NOT NULL,
   PRIMARY KEY (`ID_Commande`),
   UNIQUE KEY `No_Reference_3` (`No_Reference`),
   KEY `No_Reference` (`No_Reference`),
@@ -75,13 +72,13 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 -- Contenu de la table `commandes`
 --
 
-INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`, `date_reception`, `recue`, `note_reception`) VALUES
-(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0, '0000-00-00', 0, ''),
-(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 1, '2016-11-30', 1, ''),
-(3, '2016-11-15', 2, '568468', '', 1, '0000-00-00', 0, ''),
-(4, '2016-11-18', 1, '125085', '', 1, '0000-00-00', 0, ''),
-(5, '2016-11-15', 2, '772181', '', 1, '0000-00-00', 0, ''),
-(6, '2016-11-15', 1, '642859', '', 1, '0000-00-00', 0, '');
+INSERT INTO `commandes` (`ID_Commande`, `Date_Commande`, `fournisseur`, `No_Reference`, `Note`, `envoye`) VALUES
+(1, '2016-11-10', 1, '45432', 'Livrée le matin', 0),
+(2, '2016-11-23', 2, '54312', 'Pas de lait dans la commande', 1),
+(3, '2016-11-15', 2, '568468', '', 1),
+(4, '2016-11-18', 1, '125085', '', 1),
+(5, '2016-11-15', 2, '772181', '', 1),
+(6, '2016-11-15', 1, '642859', '', 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `fournisseurs` (
 INSERT INTO `fournisseurs` (`ID_Fournisseur`, `Nom_Fournisseur`, `Note`, `Adresse`, `Ville`, `Province`, `Code_Postal`, `Telephone`, `Poste`, `Cell`, `Fax`, `Nom_Contact`, `Jour_Commande`, `Jour_Livraison`, `Delai_Commande`, `Cout_Minimum`, `Frais_Livraison`, `Courriel`) VALUES
 (1, 'Provigo le Marché', NULL, '2500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9841', '4613', '(819)609-1234', '(819)376-9841', 'John Doe', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
 (2, 'Métro Des Forges', NULL, '2500 Aubuchon', 'Trois-Rivières', 'Québec', 'G8Y 5G7', '(819)376-1721', '6543', '(819)325-5654', '(819)363-3213', 'Marc Lavoie', 'Mardi', 'Jeudi', 2, 45, 10, NULL),
-(3, 'IGA Marché Paquette', NULL, '3500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9542', '4643', '(819)692-1234', '(819)376-9542', 'Jean Paquette', 'Lundi', 'Mercredi', 2, 50, 15, NULL),
+(3, 'IGA Marché Paquette', '    ', '3500 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 4F2', '(819)373-9542', '4643', '(819)692-1234', '(819)376-9542', 'Jean Paquette', 'Lundi', 'Mercredi', 2, 50, 15, ''),
 (4, 'Marché Végétarien', NULL, '2502 Boulevard des Forges', 'Trois-Rivières', 'Québec', 'G8Y 6G5', '(819)376-1756', '6543', '(819)325-5443', '(819)363-3212', NULL, 'Mardi', 'Jeudi', 2, 45, 10, NULL);
 
 -- --------------------------------------------------------

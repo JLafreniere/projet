@@ -14,6 +14,10 @@ Public Class frmAjoutRecettes
     Public id As Integer
 
 
+    Public Sub fClose() Handles MyBase.FormClosing
+        frmAccueil.Hide()
+    End Sub
+
 
     Private Sub frmAjoutRecettes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bd.ConnectionString = "Server=localhost; DataBase=bd_application;UId=root;Pwd=; Convert Zero Datetime=true; Allow Zero DateTime=true;"
@@ -193,6 +197,7 @@ Public Class frmAjoutRecettes
         End If
         chargerDataset()
         Me.Close()
+        frmAccueil.Hide()
         frmVoirRecettes.Hide()
         frmVoirRecettes.refreshPage()
         frmVoirRecettes.Show()

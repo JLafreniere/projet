@@ -59,6 +59,7 @@ Public Class frmVoirRecettes
     End Sub
 
     Private Sub frmVoirRecettes_shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        frmAccueil.Hide()
         refreshPage()
     End Sub
 

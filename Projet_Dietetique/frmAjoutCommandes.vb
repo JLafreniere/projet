@@ -312,7 +312,7 @@ Public Class frmAjoutCommandes
             MsgBox("Veuillez ajouter des produits pour envoyer la commande")
 
         ElseIf frmCommandes.position = -1 Then
-            If MsgBox("Voulez-vous evoyer cette commande?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
+            If MsgBox("Voulez-vous envoyer cette commande?", MsgBoxStyle.YesNo, "Confirmation") = MsgBoxResult.Yes Then
                 envoyer()
                 MsgBox("Votre commande a été envoyée")
 

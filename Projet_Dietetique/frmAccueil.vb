@@ -227,15 +227,15 @@ Public Class frmAccueil
         Me.changerDateSelectionnee(Me._date_selectionne)
     End Sub
 
-<<<<<<< HEAD
+
     Private Sub frmAccueil_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
 
 
-=======
 
->>>>>>> 426cbf4202867d45e05ca5711886b54f8d4e342b
+
+
 End Class
 
